@@ -1,0 +1,1602 @@
+{
+ "id": "lake_ostra",
+ "name": "Lake Ostra - The Sol Villa",
+ "seed": 6151,
+ "player_spawn": {
+  "pos": [
+   200,
+   70,
+   0.0
+  ],
+  "heading": 0
+ },
+ "atmosphere": {
+  "sun_heading": 215,
+  "sun_pitch": 28,
+  "sun_color": [
+   1.5,
+   1.28,
+   0.98
+  ],
+  "ambient_color": [
+   0.42,
+   0.45,
+   0.52
+  ],
+  "fill_color": [
+   0.16,
+   0.18,
+   0.24
+  ],
+  "sky_zenith": [
+   0.2,
+   0.38,
+   0.68
+  ],
+  "sky_horizon": [
+   0.8,
+   0.8,
+   0.76
+  ],
+  "fog_color": [
+   0.68,
+   0.72,
+   0.76
+  ],
+  "fog_density": 0.0028,
+  "clouds": 0.35,
+  "grading": {
+   "exposure": 1.1,
+   "saturation": 1.14,
+   "contrast": 1.06,
+   "tint": [
+    1.03,
+    1.0,
+    0.96
+   ],
+   "bloom": 0.4,
+   "bloom_threshold": 0.95,
+   "vignette": 0.3
+  }
+ },
+ "terrain": {
+  "size": 880,
+  "divisions": 80,
+  "play_area": 90,
+  "nav_bounds": [
+   140,
+   70,
+   345,
+   250
+  ],
+  "floor_z": -40.0,
+  "holes": [
+   [
+    -440,
+    -440,
+    440,
+    -66.0
+   ]
+  ],
+  "land": [
+   [
+    -440,
+    -66.0,
+    440,
+    440
+   ]
+  ],
+  "water": {
+   "rect": [
+    -440,
+    -440,
+    440,
+    -66.0
+   ],
+   "z": -1.3,
+   "color": [
+    0.36,
+    0.56,
+    0.62
+   ]
+  },
+  "worn_color": [
+   0.74,
+   0.7,
+   0.58
+  ],
+  "grass_color": [
+   0.5,
+   0.62,
+   0.36
+  ],
+  "dark_color": [
+   0.42,
+   0.46,
+   0.32
+  ]
+ },
+ "points": {
+  "view_villa": {
+   "pos": [
+    200,
+    100,
+    0.0
+   ],
+   "heading": 0,
+   "pitch": 3
+  },
+  "view_terrace": {
+   "pos": [
+    186,
+    128,
+    0.0
+   ],
+   "heading": -30,
+   "pitch": 2
+  },
+  "view_road": {
+   "pos": [
+    40,
+    -44,
+    0.0
+   ],
+   "heading": 90,
+   "pitch": 0
+  },
+  "view_roadblock": {
+   "pos": [
+    -225,
+    -50,
+    0.0
+   ],
+   "heading": 90,
+   "pitch": 0
+  },
+  "view_ferry": {
+   "pos": [
+    -345,
+    -52,
+    0.0
+   ],
+   "heading": 110,
+   "pitch": 2
+  }
+ },
+ "fires": [],
+ "props": [
+  {
+   "type": "embankment",
+   "pos": [
+    -420,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -380,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -340,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -300,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -260,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -220,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -180,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -140,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -100,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -60,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -20,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    20,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    60,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    100,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    140,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    180,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    220,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    260,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    300,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    340,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    380,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    420,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "invisible_wall",
+   "pos": [
+    -411.35,
+    -66.6
+   ],
+   "heading": 0,
+   "params": {
+    "length": 57.30000000000001,
+    "height": 6
+   }
+  },
+  {
+   "type": "invisible_wall",
+   "pos": [
+    31.349999999999994,
+    -66.6
+   ],
+   "heading": 0,
+   "params": {
+    "length": 817.3,
+    "height": 6
+   }
+  },
+  {
+   "type": "pier",
+   "pos": [
+    -380.0,
+    -66.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 30,
+    "width": 6
+   }
+  },
+  {
+   "type": "cargo_ship",
+   "pos": [
+    -392,
+    -92
+   ],
+   "heading": 0,
+   "params": {
+    "length": 44,
+    "beam": 11,
+    "color": "white"
+   }
+  },
+  {
+   "type": "road",
+   "pos": [
+    200,
+    112
+   ],
+   "heading": 90,
+   "params": {
+    "length": 54,
+    "width": 6
+   }
+  },
+  {
+   "type": "road",
+   "pos": [
+    200,
+    17.5
+   ],
+   "heading": 90,
+   "params": {
+    "length": 135,
+    "width": 8
+   }
+  },
+  {
+   "type": "road",
+   "pos": [
+    -90.5,
+    -50.0
+   ],
+   "heading": 0,
+   "params": {
+    "length": 589,
+    "width": 8
+   }
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -360,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -310,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -260,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -210,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -160,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -110,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -60,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -10,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    40,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    90,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    140,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    190,
+    -56.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "fence",
+   "pos": [
+    172.5,
+    85
+   ],
+   "heading": 0,
+   "params": {
+    "length": 45,
+    "barbed": false
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    227.5,
+    85
+   ],
+   "heading": 0,
+   "params": {
+    "length": 45,
+    "barbed": false
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    200,
+    190
+   ],
+   "heading": 0,
+   "params": {
+    "length": 100,
+    "barbed": false
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    150,
+    137.5
+   ],
+   "heading": 90,
+   "params": {
+    "length": 105,
+    "barbed": false
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    250,
+    127.5
+   ],
+   "heading": 90,
+   "params": {
+    "length": 85,
+    "barbed": false
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    250,
+    185
+   ],
+   "heading": 90,
+   "params": {
+    "length": 10,
+    "barbed": false
+   }
+  },
+  {
+   "type": "guard_booth",
+   "pos": [
+    190,
+    80
+   ],
+   "heading": 0
+  },
+  {
+   "type": "house",
+   "pos": [
+    200,
+    150
+   ],
+   "heading": 0,
+   "params": {
+    "width": 18,
+    "depth": 11,
+    "height": 3.4,
+    "windows": 3,
+    "wall_color": "white",
+    "interior": "home"
+   }
+  },
+  {
+   "type": "house",
+   "pos": [
+    222,
+    152
+   ],
+   "heading": 0,
+   "params": {
+    "width": 9,
+    "depth": 8,
+    "height": 3.2,
+    "windows": 2,
+    "wall_color": "white",
+    "interior": "none"
+   }
+  },
+  {
+   "type": "barracks",
+   "pos": [
+    232,
+    140
+   ],
+   "heading": 0,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "windows": 1,
+    "door_width": 3.0,
+    "interior": "none",
+    "wall_color": "white"
+   }
+  },
+  {
+   "type": "concrete_pad",
+   "pos": [
+    200,
+    136
+   ],
+   "heading": 0,
+   "params": {
+    "width": 26,
+    "depth": 12
+   }
+  },
+  {
+   "type": "fountain",
+   "pos": [
+    200,
+    118
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 2.6
+   }
+  },
+  {
+   "type": "crate_stack",
+   "pos": [
+    186,
+    136
+   ],
+   "heading": 0,
+   "params": {
+    "count": 4
+   }
+  },
+  {
+   "type": "crate",
+   "pos": [
+    212,
+    134
+   ],
+   "heading": 0,
+   "params": {
+    "size": 1.0
+   }
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    192,
+    128
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    208,
+    128
+   ],
+   "heading": 0
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    190,
+    92
+   ],
+   "heading": 0,
+   "params": {
+    "length": 5
+   }
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    210,
+    92
+   ],
+   "heading": 0,
+   "params": {
+    "length": 5
+   }
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    200,
+    108
+   ],
+   "heading": 0,
+   "params": {
+    "length": 6
+   }
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    188,
+    118
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    212,
+    118
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jeep",
+   "pos": [
+    172,
+    128
+   ],
+   "heading": 40
+  },
+  {
+   "type": "tree_broadleaf",
+   "pos": [
+    170,
+    110
+   ],
+   "heading": 0
+  },
+  {
+   "type": "tree_broadleaf",
+   "pos": [
+    226,
+    104
+   ],
+   "heading": 0
+  },
+  {
+   "type": "tree_broadleaf",
+   "pos": [
+    168,
+    170
+   ],
+   "heading": 0
+  },
+  {
+   "type": "tree_broadleaf",
+   "pos": [
+    236,
+    176
+   ],
+   "heading": 0
+  },
+  {
+   "type": "bush",
+   "pos": [
+    182.0,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    186.5,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    191.0,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    195.5,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    200.0,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    204.5,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    209.0,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    213.5,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "bush",
+   "pos": [
+    218.0,
+    126.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 0.8
+   }
+  },
+  {
+   "type": "mortar_pit",
+   "pos": [
+    320,
+    230
+   ],
+   "heading": 200
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    312,
+    224
+   ],
+   "heading": 30,
+   "params": {
+    "length": 5
+   }
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    328,
+    222
+   ],
+   "heading": -30,
+   "params": {
+    "length": 5
+   }
+  },
+  {
+   "type": "crate_stack",
+   "pos": [
+    326,
+    236
+   ],
+   "heading": 0,
+   "params": {
+    "count": 3
+   }
+  },
+  {
+   "type": "crate",
+   "pos": [
+    326,
+    232
+   ],
+   "heading": 0,
+   "params": {
+    "size": 1.0
+   }
+  },
+  {
+   "type": "tent",
+   "pos": [
+    334,
+    240
+   ],
+   "heading": 30
+  },
+  {
+   "type": "rock",
+   "pos": [
+    300,
+    214
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    288,
+    200
+   ],
+   "heading": 0,
+   "params": {
+    "size": 1.8
+   }
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    120,
+    -47.6
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    60,
+    -52.4
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jeep",
+   "pos": [
+    10,
+    -43.0
+   ],
+   "heading": 90,
+   "params": {
+    "burnt": true
+   }
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    -60,
+    -41.0
+   ],
+   "heading": 0,
+   "params": {
+    "length": 5
+   }
+  },
+  {
+   "type": "sandbag_wall",
+   "pos": [
+    -150,
+    -41.0
+   ],
+   "heading": 0,
+   "params": {
+    "length": 5
+   }
+  },
+  {
+   "type": "truck",
+   "pos": [
+    -180,
+    -42.0
+   ],
+   "heading": 95
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    -260,
+    -52.4
+   ],
+   "heading": 90,
+   "id": "roadblock_a"
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    -260,
+    -49.0
+   ],
+   "heading": 90,
+   "id": "roadblock_b"
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    -260,
+    -45.6
+   ],
+   "heading": 90,
+   "id": "roadblock_c"
+  },
+  {
+   "type": "truck",
+   "pos": [
+    -263,
+    -41.0
+   ],
+   "heading": 0
+  },
+  {
+   "type": "truck",
+   "pos": [
+    -263,
+    -58.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -262,
+    -36.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 3.0
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -330,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -306,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -282,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -258,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -234,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -210,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -186,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -162,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -138,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -114,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -90,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -66,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -42,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "rock",
+   "pos": [
+    -18,
+    -26.0
+   ],
+   "heading": 0,
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "house",
+   "pos": [
+    -340,
+    -24
+   ],
+   "heading": 180
+  },
+  {
+   "type": "house",
+   "pos": [
+    -400,
+    -22
+   ],
+   "heading": 180
+  },
+  {
+   "type": "house",
+   "pos": [
+    -370,
+    -14
+   ],
+   "heading": 180
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -358,
+    -42
+   ],
+   "heading": 0
+  },
+  {
+   "type": "barrel_group",
+   "pos": [
+    -392,
+    -42
+   ],
+   "heading": 0,
+   "params": {
+    "count": 3
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    -300,
+    320
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 150,
+    "height": 90
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    -40,
+    360
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 170,
+    "height": 110
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    240,
+    400
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 180,
+    "height": 120
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    420,
+    240
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 140,
+    "height": 100
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    -420,
+    160
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 130,
+    "height": 80
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    -260,
+    -420
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 170,
+    "height": 90
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    60,
+    -430
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 190,
+    "height": 110
+   }
+  },
+  {
+   "type": "hill",
+   "pos": [
+    340,
+    -400
+   ],
+   "heading": 0,
+   "params": {
+    "radius": 170,
+    "height": 100
+   }
+  }
+ ],
+ "scatter": [
+  {
+   "type": "tree_pine",
+   "count": 220,
+   "area": [
+    -430,
+    -36,
+    430,
+    280
+   ],
+   "min_spacing": 8,
+   "exclude": [
+    [
+     140,
+     75,
+     262,
+     200
+    ],
+    [
+     190,
+     -60,
+     210,
+     90
+    ],
+    [
+     -440,
+     -60,
+     440,
+     -38
+    ],
+    [
+     280,
+     190,
+     350,
+     255
+    ],
+    [
+     -420,
+     -46,
+     -330,
+     0
+    ]
+   ],
+   "params": {
+    "height": [
+     10,
+     16
+    ]
+   }
+  },
+  {
+   "type": "bush",
+   "count": 90,
+   "area": [
+    -430,
+    -36,
+    430,
+    200
+   ],
+   "min_spacing": 4,
+   "exclude": [
+    [
+     140,
+     75,
+     262,
+     200
+    ],
+    [
+     190,
+     -60,
+     210,
+     90
+    ],
+    [
+     -440,
+     -60,
+     440,
+     -38
+    ]
+   ],
+   "params": {
+    "size": [
+     0.8,
+     1.5
+    ]
+   }
+  },
+  {
+   "type": "rock",
+   "count": 40,
+   "area": [
+    -430,
+    -30,
+    430,
+    200
+   ],
+   "min_spacing": 12,
+   "exclude": [
+    [
+     140,
+     75,
+     262,
+     200
+    ],
+    [
+     190,
+     -60,
+     210,
+     90
+    ],
+    [
+     280,
+     190,
+     350,
+     255
+    ]
+   ],
+   "params": {
+    "size": [
+     0.8,
+     1.8
+    ]
+   }
+  }
+ ]
+}

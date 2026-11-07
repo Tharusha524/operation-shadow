@@ -1,0 +1,4544 @@
+{
+ "map": "border_outpost",
+ "shots": [
+  {
+   "type": "title",
+   "title": "OPERATION SHADOW",
+   "subtitle": "The Last Morning of Peace",
+   "duration": 4.0,
+   "lines": []
+  },
+  {
+   "type": "scene",
+   "from": [
+    -40,
+    72,
+    8
+   ],
+   "to": [
+    -22,
+    76,
+    6
+   ],
+   "look_from": [
+    0,
+    112,
+    1
+   ],
+   "look_to": [
+    6,
+    116,
+    1
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Thirty-two years ago, the northern border was a battlefield. The Kareth Republic and the Varn Directorate fought a war that neither side could afford to win."
+    }
+   ],
+   "duration": 9,
+   "grade": {
+    "saturation": 0.12,
+    "tint": [
+     1.12,
+     1.0,
+     0.82
+    ],
+    "grain": 0.14,
+    "contrast": 1.22,
+    "vignette": 1.1
+   },
+   "actors": [
+    {
+     "team": "friendly",
+     "pos": [
+      -16,
+      96
+     ],
+     "heading": 0,
+     "count": 5,
+     "spread": [
+      8,
+      1
+     ]
+    },
+    {
+     "team": "enemy",
+     "pos": [
+      -18,
+      132
+     ],
+     "heading": 180,
+     "count": 5,
+     "spread": [
+      9,
+      2
+     ]
+    }
+   ],
+   "events": [
+    {
+     "t": 1.0,
+     "explosion": [
+      -6,
+      110,
+      0.5
+     ],
+     "shake": 0.2
+    },
+    {
+     "t": 3.5,
+     "explosion": [
+      10,
+      118,
+      0.5
+     ],
+     "shake": 0.2
+    },
+    {
+     "t": 6.0,
+     "explosion": [
+      -14,
+      104,
+      0.5
+     ],
+     "shake": 0.2
+    }
+   ],
+   "caption": [
+    "THE NORTHERN BORDER",
+    "THIRTY-TWO YEARS AGO"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0,
+    58,
+    3.2
+   ],
+   "to": [
+    0,
+    63,
+    2.6
+   ],
+   "look_from": [
+    0,
+    72,
+    1.6
+   ],
+   "look_to": [
+    0,
+    74,
+    1.4
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Eventually, both governments signed a ceasefire treaty. The guns fell silent. The borders remained unchanged. And for thirty-two years, there was peace."
+    },
+    {
+     "speaker": "narrator",
+     "text": "But a ceasefire does not always mean an end to war. Sometimes, it only means one side is waiting."
+    }
+   ],
+   "duration": 10,
+   "grade": {
+    "saturation": 0.5,
+    "tint": [
+     1.12,
+     1.0,
+     0.82
+    ],
+    "grain": 0.14,
+    "contrast": 1.22,
+    "vignette": 1.1
+   }
+  },
+  {
+   "type": "region",
+   "view_from": [
+    0.5,
+    0.45,
+    1.15
+   ],
+   "view_to": [
+    0.55,
+    0.72,
+    2.2
+   ],
+   "duration": 10,
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "To the south lies the Kareth Republic. A small democracy, with its capital at Aldmere. Its army is small, poorly tested, and has never fought a war."
+    },
+    {
+     "speaker": "narrator",
+     "text": "To the north stands the Varn Directorate. A powerful military state, with its capital at Vorsk. For eleven years it has been ruled by its security services, under one man: Director-General Kasimir Drevan."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Varn wants control of the northern region. Kareth stands directly in its way."
+    }
+   ],
+   "units": [
+    {
+     "pos": [
+      0.3,
+      0.8
+     ],
+     "t": 9.0,
+     "color": "red"
+    },
+    {
+     "pos": [
+      0.42,
+      0.83
+     ],
+     "t": 9.5,
+     "color": "red"
+    },
+    {
+     "pos": [
+      0.52,
+      0.81
+     ],
+     "t": 10.0,
+     "color": "red"
+    },
+    {
+     "pos": [
+      0.6,
+      0.85
+     ],
+     "t": 10.5,
+     "color": "red"
+    },
+    {
+     "pos": [
+      0.7,
+      0.8
+     ],
+     "t": 11.0,
+     "color": "red"
+    },
+    {
+     "pos": [
+      0.8,
+      0.79
+     ],
+     "t": 11.5,
+     "color": "red"
+    }
+   ],
+   "caption": [
+    "KARETH  AND  VARN",
+    "PRESENT DAY"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.9,
+    2.4,
+    2.2
+   ],
+   "to": [
+    0.9,
+    0.9,
+    1.75
+   ],
+   "look_from": [
+    0.9,
+    -1.4,
+    1.3
+   ],
+   "look_to": [
+    0.9,
+    -1.4,
+    1.62
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "Thirty-two years. We have waited long enough."
+    },
+    {
+     "speaker": "kade",
+     "text": "Our forces are positioned. The northern formations are ready. Give me the order, and Kareth will fall."
+    }
+   ],
+   "duration": 8,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      7.2,
+      -5.0
+     ],
+     "heading": 0,
+     "anim": "idle"
+    }
+   ],
+   "caption": [
+    "VORSK COMMAND BUNKER",
+    "22:40, THE NIGHT BEFORE THE INVASION"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    4.6,
+    1.8,
+    2.0
+   ],
+   "to": [
+    4.3,
+    1.5,
+    1.95
+   ],
+   "look_from": [
+    1.2,
+    -1.0,
+    1.3
+   ],
+   "look_to": [
+    1.4,
+    -1.1,
+    1.35
+   ],
+   "lines": [
+    {
+     "speaker": "ostrova",
+     "text": "Kareth has never attacked us. There is no justification for an invasion."
+    },
+    {
+     "speaker": "drevan",
+     "text": "Generals, history does not reward the patient. It rewards those who understand when patience must end."
+    }
+   ],
+   "duration": 8,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      7.2,
+      -5.0
+     ],
+     "heading": 0,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -26,
+    102,
+    13
+   ],
+   "to": [
+    -20,
+    110,
+    12
+   ],
+   "look_from": [
+    0,
+    130,
+    0.5
+   ],
+   "look_to": [
+    3,
+    138,
+    2
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "For weeks, Varn had been moving troops, tanks, artillery and aircraft towards the northern border."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Officially, they were military exercises. A routine show of strength."
+    },
+    {
+     "speaker": "kade",
+     "text": "I want every formation ready before sunrise. No delays. No mistakes."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Kareth's leaders saw the movements. They believed it was another political threat. They did not believe an attack was coming."
+    }
+   ],
+   "duration": 14,
+   "grade": {
+    "exposure": 0.45,
+    "saturation": 0.6,
+    "tint": [
+     0.75,
+     0.85,
+     1.15
+    ],
+    "lift": 0.0
+   },
+   "vehicles": [
+    {
+     "kind": "tank",
+     "pos": [
+      -12,
+      130,
+      0
+     ],
+     "heading": 180
+    },
+    {
+     "kind": "tank",
+     "pos": [
+      2,
+      128,
+      0
+     ],
+     "heading": 180
+    },
+    {
+     "kind": "tank",
+     "pos": [
+      14,
+      132,
+      0
+     ],
+     "heading": 180
+    },
+    {
+     "kind": "tank",
+     "pos": [
+      -2,
+      146,
+      0
+     ],
+     "heading": 180
+    },
+    {
+     "kind": "attack_helicopter",
+     "pos": [
+      10,
+      150,
+      18
+     ],
+     "armed": false,
+     "hover": [
+      10,
+      150,
+      18
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "model": "enemy",
+     "pos": [
+      -6,
+      116
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "path": [
+      [
+       -6,
+       116
+      ],
+      [
+       -6,
+       142
+      ]
+     ],
+     "speed": 1.6
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -3,
+      124
+     ],
+     "heading": 90,
+     "anim": "salute",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      7,
+      122
+     ],
+     "heading": -90,
+     "anim": "idle"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      8,
+      136
+     ],
+     "heading": 180,
+     "anim": "kneel_inspect"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -14,
+      140
+     ],
+     "heading": 90,
+     "anim": "idle"
+    }
+   ],
+   "events": [
+    {
+     "t": 0.0,
+     "flare": [
+      0,
+      132,
+      26
+     ]
+    }
+   ],
+   "caption": [
+    "NORTHERN VARN STAGING AREA",
+    "23:05"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.4,
+    3.4,
+    2.1
+   ],
+   "to": [
+    0.2,
+    4.4,
+    2.3
+   ],
+   "look_from": [
+    0,
+    5.8,
+    2.2
+   ],
+   "look_to": [
+    0,
+    5.8,
+    2.35
+   ],
+   "lines": [
+    {
+     "speaker": "kade",
+     "text": "Project Tempest is operational. Satellites identify targets. Drones confirm their positions. Missiles receive their coordinates."
+    }
+   ],
+   "duration": 7,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.5,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.8,
+      4.4
+     ],
+     "heading": 30,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      4.5,
+      4.8
+     ],
+     "heading": 120,
+     "anim": "stand",
+     "dark": true
+    }
+   ],
+   "caption": [
+    "CLASSIFIED TECHNOLOGY ROOM",
+    "23:18"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.5,
+    5.3,
+    1.7
+   ],
+   "to": [
+    0.5,
+    5.2,
+    1.7
+   ],
+   "look_from": [
+    0.5,
+    4.2,
+    1.62
+   ],
+   "look_to": [
+    0.5,
+    4.2,
+    1.62
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "Explain it simply."
+    }
+   ],
+   "duration": 3,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.5,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.8,
+      4.4
+     ],
+     "heading": 30,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      4.5,
+      4.8
+     ],
+     "heading": 120,
+     "anim": "stand",
+     "dark": true
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -3.4,
+    3.0,
+    2.0
+   ],
+   "to": [
+    -3.0,
+    3.2,
+    1.95
+   ],
+   "look_from": [
+    -1.8,
+    4.4,
+    1.5
+   ],
+   "look_to": [
+    -1.6,
+    4.5,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "kade",
+     "text": "Every weapon knows exactly where to strike. Every target is connected to the same network."
+    }
+   ],
+   "duration": 5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.5,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.8,
+      4.4
+     ],
+     "heading": 30,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      4.5,
+      4.8
+     ],
+     "heading": 120,
+     "anim": "stand",
+     "dark": true
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    1.5,
+    2.0,
+    1.8
+   ],
+   "to": [
+    2.6,
+    2.7,
+    1.75
+   ],
+   "look_from": [
+    3.5,
+    4.2,
+    1.6
+   ],
+   "look_to": [
+    4.5,
+    4.8,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "stranger",
+     "text": "Radar stations, air defences, command centres, communication towers. Once the network is active, they will have nowhere to hide."
+    }
+   ],
+   "duration": 7,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.5,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.8,
+      4.4
+     ],
+     "heading": 30,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      4.5,
+      4.8
+     ],
+     "heading": 120,
+     "anim": "stand",
+     "dark": true
+    }
+   ],
+   "grade": {
+    "exposure": 0.9
+   }
+  },
+  {
+   "type": "scene",
+   "from": [
+    -5.0,
+    -3.6,
+    2.6
+   ],
+   "to": [
+    -3.5,
+    -2.0,
+    2.2
+   ],
+   "look_from": [
+    0.5,
+    4.5,
+    1.6
+   ],
+   "look_to": [
+    0.5,
+    4.8,
+    2.0
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Tempest was not simply another weapon. It was a system designed to make every weapon work together."
+    },
+    {
+     "speaker": "narrator",
+     "text": "In a matter of hours, Kareth's entire defence could be destroyed."
+    }
+   ],
+   "duration": 8,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.5,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.8,
+      4.4
+     ],
+     "heading": 30,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      4.5,
+      4.8
+     ],
+     "heading": 120,
+     "anim": "stand",
+     "dark": true
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    4.6,
+    -3.4,
+    2.2
+   ],
+   "to": [
+    4.2,
+    -3.0,
+    2.1
+   ],
+   "look_from": [
+    0.5,
+    1.0,
+    1.3
+   ],
+   "look_to": [
+    0.6,
+    1.2,
+    1.35
+   ],
+   "lines": [
+    {
+     "speaker": "ostrova",
+     "text": "You are talking about destroying an entire country's military in hours. What happens after that?"
+    },
+    {
+     "speaker": "kade",
+     "text": "We secure the region. We control the border. The operation ends before Kareth understands what happened."
+    },
+    {
+     "speaker": "ostrova",
+     "text": "And if another country intervenes? If Tempest fails?"
+    }
+   ],
+   "duration": 12,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ],
+   "caption": [
+    "VORSK COMMAND BUNKER",
+    "23:27"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.2,
+    1.0,
+    1.32
+   ],
+   "to": [
+    0.2,
+    0.9,
+    1.3
+   ],
+   "look_from": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "look_to": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "Then we adapt."
+    }
+   ],
+   "duration": 3,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    2.1,
+    1.3,
+    1.72
+   ],
+   "to": [
+    2.15,
+    1.45,
+    1.72
+   ],
+   "look_from": [
+    2.2,
+    2.9,
+    1.6
+   ],
+   "look_to": [
+    2.2,
+    2.9,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "ostrova",
+     "text": "You cannot control a war once you start it."
+    }
+   ],
+   "duration": 3.5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.2,
+    1.0,
+    1.32
+   ],
+   "to": [
+    0.2,
+    0.85,
+    1.3
+   ],
+   "look_from": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "look_to": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "I am not asking you to control it, General. I am asking you to obey."
+    }
+   ],
+   "duration": 4.5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -1.4,
+    1.75,
+    2.3
+   ],
+   "to": [
+    -1.45,
+    1.7,
+    2.2
+   ],
+   "look_from": [
+    -1.5,
+    1.6,
+    0.77
+   ],
+   "look_to": [
+    -1.5,
+    1.6,
+    0.77
+   ],
+   "lines": [
+    {
+     "speaker": "crane",
+     "text": "I found another connection. The satellite movements match the old intelligence reports."
+    },
+    {
+     "speaker": "wren",
+     "text": "Elias, you have been following this for two years. The investigation was closed."
+    }
+   ],
+   "duration": 8,
+   "set": "apartment",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -1.4,
+      0.95
+     ],
+     "heading": 0,
+     "anim": "write"
+    }
+   ],
+   "caption": [
+    "ELIAS CRANE'S APARTMENT, ALDMERE",
+    "23:46"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -1.1,
+    2.2,
+    1.3
+   ],
+   "to": [
+    -1.15,
+    2.1,
+    1.3
+   ],
+   "look_from": [
+    -1.4,
+    0.95,
+    1.15
+   ],
+   "look_to": [
+    -1.4,
+    0.95,
+    1.15
+   ],
+   "lines": [
+    {
+     "speaker": "crane",
+     "text": "Because someone wanted it closed."
+    },
+    {
+     "speaker": "wren",
+     "text": "Glass Harbour was a disaster. Harrow was reported killed. You were blamed. Venn dismissed you."
+    }
+   ],
+   "duration": 7,
+   "set": "apartment",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -1.4,
+      0.95
+     ],
+     "heading": 0,
+     "anim": "sit_talk"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    2.6,
+    -1.8,
+    1.9
+   ],
+   "to": [
+    2.2,
+    -1.4,
+    1.8
+   ],
+   "look_from": [
+    -1.4,
+    1.3,
+    0.9
+   ],
+   "look_to": [
+    -1.4,
+    1.2,
+    1.0
+   ],
+   "lines": [
+    {
+     "speaker": "crane",
+     "text": "We lost the operation before it even began. Someone knew our movements."
+    },
+    {
+     "speaker": "wren",
+     "text": "You think there was a leak?"
+    },
+    {
+     "speaker": "crane",
+     "text": "I don't think, Isa. I know we were betrayed."
+    }
+   ],
+   "duration": 9,
+   "set": "apartment",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -1.4,
+      0.95
+     ],
+     "heading": 0,
+     "anim": "sit_talk"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -44,
+    -4,
+    2.0
+   ],
+   "to": [
+    -38,
+    12,
+    2.0
+   ],
+   "look_from": [
+    -34,
+    4,
+    1.5
+   ],
+   "look_to": [
+    -30,
+    22,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Two years earlier, Crane had led an intelligence operation inside Varn. Its mission was to uncover a secret military programme."
+    },
+    {
+     "speaker": "narrator",
+     "text": "It was called Operation Glass Harbour."
+    },
+    {
+     "speaker": "narrator",
+     "text": "The operation failed. Intelligence officer Colonel Desmond Harrow was reported killed. Crane was accused of compromising the mission, and dismissed by Deputy Director Alda Venn."
+    },
+    {
+     "speaker": "crane",
+     "text": "We were betrayed from inside."
+    }
+   ],
+   "duration": 16,
+   "rain": 0.9,
+   "grade": {
+    "saturation": 0.15,
+    "tint": [
+     1.12,
+     1.0,
+     0.82
+    ],
+    "grain": 0.14,
+    "contrast": 1.22,
+    "vignette": 1.1,
+    "exposure": 0.55
+   },
+   "actors": [
+    {
+     "team": "friendly",
+     "pos": [
+      -42,
+      0
+     ],
+     "heading": 0,
+     "count": 3,
+     "spread": [
+      3,
+      1
+     ]
+    },
+    {
+     "team": "enemy",
+     "pos": [
+      -34,
+      30
+     ],
+     "heading": 180,
+     "count": 4,
+     "spread": [
+      4,
+      1
+     ]
+    }
+   ],
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -40,
+      -2
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "path": [
+      [
+       -40,
+       -2
+      ],
+      [
+       -36,
+       14
+      ]
+     ],
+     "speed": 1.4
+    },
+    {
+     "model": "man",
+     "pos": [
+      -30,
+      16
+     ],
+     "heading": 30,
+     "anim": "stand",
+     "path": [
+      [
+       -30,
+       16
+      ],
+      [
+       -24,
+       26
+      ]
+     ],
+     "speed": 1.1,
+     "dark": true
+    }
+   ],
+   "events": [
+    {
+     "t": 2.0,
+     "explosion": [
+      -30,
+      24,
+      0.5
+     ],
+     "shake": 0.15
+    },
+    {
+     "t": 2.2,
+     "smoke": [
+      -30,
+      22,
+      0.5
+     ]
+    },
+    {
+     "t": 7.0,
+     "explosion": [
+      -40,
+      26,
+      0.5
+     ],
+     "shake": 0.2
+    }
+   ],
+   "caption": [
+    "OPERATION GLASS HARBOUR",
+    "TWO YEARS EARLIER"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -3.3,
+    -2.6,
+    1.9
+   ],
+   "to": [
+    -2.6,
+    -2.2,
+    1.8
+   ],
+   "look_from": [
+    0.2,
+    0.8,
+    1.4
+   ],
+   "look_to": [
+    0.3,
+    1.0,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "crane",
+     "text": "Varn is preparing something. Their movements are not exercises. They are preparing to invade."
+    },
+    {
+     "speaker": "venn",
+     "text": "You are no longer part of this service, Major."
+    }
+   ],
+   "duration": 9,
+   "set": "office",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      0.3,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "point"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      0.5,
+      2.2
+     ],
+     "heading": 180,
+     "anim": "argue"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      0.8,
+      -0.6
+     ],
+     "heading": 0,
+     "anim": "sit"
+    }
+   ],
+   "caption": [
+    "REPUBLIC INTELLIGENCE, ALDMERE",
+    "00:12"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.6,
+    0.9,
+    1.65
+   ],
+   "to": [
+    0.6,
+    0.8,
+    1.65
+   ],
+   "look_from": [
+    0.3,
+    -0.9,
+    1.6
+   ],
+   "look_to": [
+    0.3,
+    -0.9,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "crane",
+     "text": "Tempest is real. I have evidence connecting the military movements to a targeting network."
+    }
+   ],
+   "duration": 6,
+   "set": "office",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      0.3,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "argue"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      0.5,
+      2.2
+     ],
+     "heading": 180,
+     "anim": "stand"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.2,
+    0.6,
+    1.65
+   ],
+   "to": [
+    0.25,
+    0.7,
+    1.65
+   ],
+   "look_from": [
+    0.5,
+    2.2,
+    1.6
+   ],
+   "look_to": [
+    0.5,
+    2.2,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "venn",
+     "text": "You have theories. Not evidence that can justify an international crisis."
+    }
+   ],
+   "duration": 5,
+   "set": "office",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      0.3,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      0.5,
+      2.2
+     ],
+     "heading": 180,
+     "anim": "argue",
+     "actions": [
+      {
+       "t": 3.5,
+       "heading": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -3.0,
+    -2.4,
+    1.8
+   ],
+   "to": [
+    -2.4,
+    -2.0,
+    1.75
+   ],
+   "look_from": [
+    0.3,
+    -0.9,
+    1.4
+   ],
+   "look_to": [
+    0.4,
+    0.4,
+    1.4
+   ],
+   "lines": [
+    {
+     "speaker": "crane",
+     "text": "When the missiles start falling, it will be too late."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Crane was getting closer to the truth. But nobody in power was willing to listen."
+    }
+   ],
+   "duration": 9,
+   "set": "office",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      0.3,
+      -0.9
+     ],
+     "heading": 0,
+     "anim": "argue"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      0.5,
+      2.2
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      0.8,
+      -0.6
+     ],
+     "heading": 0,
+     "anim": "sit"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    1.7,
+    1.0,
+    1.6
+   ],
+   "to": [
+    1.55,
+    0.75,
+    1.58
+   ],
+   "look_from": [
+    0.9,
+    -1.4,
+    1.3
+   ],
+   "look_to": [
+    0.9,
+    -1.4,
+    1.32
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "The ceasefire protected us for thirty-two years. Tonight, it becomes irrelevant."
+    }
+   ],
+   "duration": 6,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "point"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 60,
+     "anim": "salute",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      3.8,
+      5.0
+     ],
+     "heading": 160,
+     "anim": "stand",
+     "dark": true
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ],
+   "caption": [
+    "VORSK COMMAND BUNKER",
+    "01:35"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    4.6,
+    -3.4,
+    2.2
+   ],
+   "to": [
+    4.2,
+    -3.0,
+    2.1
+   ],
+   "look_from": [
+    0.5,
+    0.6,
+    1.3
+   ],
+   "look_to": [
+    0.6,
+    0.8,
+    1.35
+   ],
+   "lines": [
+    {
+     "speaker": "kade",
+     "text": "First strike will target Kareth's radar and communication systems. Ground forces will advance immediately afterwards."
+    },
+    {
+     "speaker": "ostrova",
+     "text": "You are making a decision that cannot be reversed."
+    }
+   ],
+   "duration": 9,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 60,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      3.8,
+      5.0
+     ],
+     "heading": 160,
+     "anim": "stand",
+     "dark": true
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.9,
+    1.1,
+    1.72
+   ],
+   "to": [
+    0.9,
+    0.8,
+    1.7
+   ],
+   "look_from": [
+    0.9,
+    -1.4,
+    1.62
+   ],
+   "look_to": [
+    0.9,
+    -1.4,
+    1.62
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "The decision has already been made."
+    },
+    {
+     "speaker": "drevan",
+     "text": "General Kade. Begin the operation at 06:14."
+    }
+   ],
+   "duration": 7,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 60,
+     "anim": "salute",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      3.8,
+      5.0
+     ],
+     "heading": 160,
+     "anim": "stand",
+     "dark": true
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -3.4,
+    2.0,
+    2.2
+   ],
+   "to": [
+    -3.1,
+    1.8,
+    2.1
+   ],
+   "look_from": [
+    -1.0,
+    -0.8,
+    1.3
+   ],
+   "look_to": [
+    -0.8,
+    -0.9,
+    1.35
+   ],
+   "lines": [
+    {
+     "speaker": "kade",
+     "text": "Understood, Director-General."
+    }
+   ],
+   "duration": 3,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "stand"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 60,
+     "anim": "salute",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      3.8,
+      5.0
+     ],
+     "heading": 160,
+     "anim": "stand",
+     "dark": true
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0,
+    1.5,
+    2.0
+   ],
+   "to": [
+    0,
+    4.4,
+    2.3
+   ],
+   "look_from": [
+    0,
+    5.8,
+    2.0
+   ],
+   "look_to": [
+    0,
+    5.8,
+    2.35
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The invasion had a time. A plan. And a name. Operation Shadow."
+    }
+   ],
+   "duration": 6,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.9,
+      -1.4
+     ],
+     "heading": 0,
+     "anim": "point"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      -0.9
+     ],
+     "heading": 60,
+     "anim": "salute",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.2,
+      2.9
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      3.8,
+      5.0
+     ],
+     "heading": 160,
+     "anim": "stand",
+     "dark": true
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -7.2,
+      5.0
+     ],
+     "heading": 180,
+     "anim": "idle"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    30,
+    40,
+    10
+   ],
+   "to": [
+    46,
+    56,
+    3.5
+   ],
+   "look_from": [
+    60,
+    64,
+    2
+   ],
+   "look_to": [
+    56,
+    67,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Forty kilometres from Varn's northern command line, a small Kareth outpost prepared for another ordinary morning."
+    },
+    {
+     "speaker": "narrator",
+     "text": "Private Tomas Halden was nineteen. He had never seen combat. Neither had most of the soldiers stationed there."
+    }
+   ],
+   "duration": 11,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      48,
+      60
+     ],
+     "heading": 30,
+     "anim": "stand",
+     "path": [
+      [
+       48,
+       60
+      ],
+      [
+       54.6,
+       66.2
+      ]
+     ],
+     "speed": 1.3,
+     "then": {
+      "anim": "argue",
+      "heading": 40
+     },
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      60,
+      58
+     ],
+     "heading": -30,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK, KARETH NORTHERN BORDER",
+    "04:52"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    55.2,
+    68.3,
+    1.72
+   ],
+   "to": [
+    55.3,
+    68.2,
+    1.72
+   ],
+   "look_from": [
+    56,
+    67,
+    1.6
+   ],
+   "look_to": [
+    55.4,
+    66.8,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "kell",
+     "text": "Still thinking about home, Halden?"
+    },
+    {
+     "speaker": "halden",
+     "text": "Just wondering when they will let us go back."
+    },
+    {
+     "speaker": "kell",
+     "text": "Hopefully before the food gets worse."
+    }
+   ],
+   "duration": 7,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 40,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      60,
+      58
+     ],
+     "heading": -30,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    50.5,
+    59.0,
+    1.75
+   ],
+   "to": [
+    51.5,
+    60.0,
+    1.75
+   ],
+   "look_from": [
+    59,
+    60,
+    1.5
+   ],
+   "look_to": [
+    57.2,
+    64.0,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "Halden. Kell. Check your equipment. Stay alert."
+    },
+    {
+     "speaker": "kell",
+     "text": "Sergeant, nothing has happened here in thirty-two years."
+    },
+    {
+     "speaker": "marek",
+     "text": "And I intend to keep it that way. Do your job."
+    }
+   ],
+   "duration": 10,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 40,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      60,
+      58
+     ],
+     "heading": -30,
+     "anim": "stand",
+     "path": [
+      [
+       60,
+       58
+      ],
+      [
+       57.6,
+       64.4
+      ]
+     ],
+     "speed": 1.2,
+     "then": {
+      "anim": "point",
+      "heading": 100
+     },
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK",
+    "05:31"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    56.6,
+    65.6,
+    1.72
+   ],
+   "to": [
+    56.5,
+    65.5,
+    1.72
+   ],
+   "look_from": [
+    56,
+    67,
+    1.6
+   ],
+   "look_to": [
+    57.6,
+    64.4,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "halden",
+     "text": "Sergeant, do you think they will actually attack?"
+    },
+    {
+     "speaker": "marek",
+     "text": "I think you should stop worrying about things you cannot control."
+    }
+   ],
+   "duration": 6,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 40,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      57.6,
+      64.4
+     ],
+     "heading": 100,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    62.75,
+    58.85,
+    5.85
+   ],
+   "to": [
+    62.7,
+    59.0,
+    5.85
+   ],
+   "look_from": [
+    61.7,
+    62.6,
+    5.35
+   ],
+   "look_to": [
+    61.7,
+    62.8,
+    5.35
+   ],
+   "lines": [
+    {
+     "speaker": "voss",
+     "text": "Movement on the northern ridge."
+    }
+   ],
+   "duration": 3.5,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 40,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      60,
+      58
+     ],
+     "heading": -30,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    62.5,
+    63.0,
+    18.0
+   ],
+   "to": [
+    62.5,
+    63.0,
+    18.0
+   ],
+   "look_from": [
+    50,
+    232,
+    2
+   ],
+   "look_to": [
+    49,
+    224,
+    2
+   ],
+   "lines": [
+    {
+     "speaker": "voss",
+     "text": "I have movement. Multiple vehicles. Can't identify the formation."
+    },
+    {
+     "speaker": "marek",
+     "text": "Are they inside the border?"
+    },
+    {
+     "speaker": "voss",
+     "text": "Not yet. But they're getting closer."
+    }
+   ],
+   "duration": 10,
+   "fov": 14,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "vehicles": [
+    {
+     "kind": "tank",
+     "path": [
+      [
+       40,
+       320,
+       0
+      ],
+      [
+       44,
+       230,
+       0
+      ]
+     ],
+     "speed": 6.0
+    },
+    {
+     "kind": "tank",
+     "path": [
+      [
+       60,
+       340,
+       0
+      ],
+      [
+       58,
+       240,
+       0
+      ]
+     ],
+     "speed": 6.0
+    },
+    {
+     "kind": "tank",
+     "path": [
+      [
+       24,
+       330,
+       0
+      ],
+      [
+       28,
+       236,
+       0
+      ]
+     ],
+     "speed": 6.0
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK",
+    "05:58"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    53.5,
+    64.5,
+    1.8
+   ],
+   "to": [
+    53.8,
+    64.2,
+    1.8
+   ],
+   "look_from": [
+    56,
+    66.6,
+    1.55
+   ],
+   "look_to": [
+    56.4,
+    66.4,
+    1.55
+   ],
+   "lines": [
+    {
+     "speaker": "kell",
+     "text": "Probably another exercise."
+    },
+    {
+     "speaker": "voss",
+     "text": "Exercises don't move like that."
+    },
+    {
+     "speaker": "halden",
+     "text": "Sergeant?"
+    },
+    {
+     "speaker": "marek",
+     "text": "All stations, maintain alert. Nobody leaves their position."
+    }
+   ],
+   "duration": 9,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 40,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      58.6,
+      62.4
+     ],
+     "heading": 60,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    4.6,
+    -3.4,
+    2.2
+   ],
+   "to": [
+    4.3,
+    -3.1,
+    2.1
+   ],
+   "look_from": [
+    0.0,
+    1.5,
+    1.3
+   ],
+   "look_to": [
+    0.2,
+    1.6,
+    1.35
+   ],
+   "lines": [
+    {
+     "speaker": "kade",
+     "text": "All formations are in position. Tempest is connected."
+    },
+    {
+     "speaker": "ostrova",
+     "text": "Last chance to stop this."
+    }
+   ],
+   "duration": 7,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      -5.5,
+      -3.2
+     ],
+     "heading": 0,
+     "anim": "type",
+     "dark": true
+    }
+   ],
+   "events": [
+    {
+     "t": 0.0,
+     "clock": "06:12"
+    }
+   ],
+   "caption": [
+    "VORSK COMMAND BUNKER",
+    "06:12"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.2,
+    1.0,
+    1.32
+   ],
+   "to": [
+    0.2,
+    0.9,
+    1.3
+   ],
+   "look_from": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "look_to": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "There will be no second chance."
+    }
+   ],
+   "duration": 3.5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      -5.5,
+      -3.2
+     ],
+     "heading": 0,
+     "anim": "type",
+     "dark": true
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -4.2,
+    -1.8,
+    1.55
+   ],
+   "to": [
+    -4.5,
+    -2.0,
+    1.5
+   ],
+   "look_from": [
+    -5.5,
+    -2.9,
+    1.1
+   ],
+   "look_to": [
+    -5.5,
+    -2.9,
+    1.1
+   ],
+   "lines": [
+    {
+     "speaker": "stranger",
+     "text": "Targeting network confirmed. All systems are ready."
+    }
+   ],
+   "duration": 4.5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      -5.5,
+      -3.2
+     ],
+     "heading": 0,
+     "anim": "type",
+     "dark": true
+    }
+   ],
+   "grade": {
+    "exposure": 0.85
+   }
+  },
+  {
+   "type": "scene",
+   "from": [
+    0.2,
+    1.0,
+    1.32
+   ],
+   "to": [
+    0.2,
+    0.8,
+    1.3
+   ],
+   "look_from": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "look_to": [
+    0.0,
+    -0.85,
+    1.15
+   ],
+   "lines": [
+    {
+     "speaker": "drevan",
+     "text": "Proceed."
+    }
+   ],
+   "duration": 2.5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      -5.5,
+      -3.2
+     ],
+     "heading": 0,
+     "anim": "type",
+     "dark": true
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    6.6,
+    -4.3,
+    2.5
+   ],
+   "to": [
+    6.6,
+    -4.6,
+    2.5
+   ],
+   "look_from": [
+    6.6,
+    -5.55,
+    2.5
+   ],
+   "look_to": [
+    6.6,
+    -5.55,
+    2.5
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "At 06:14, thirty-two years of peace came to an end."
+    }
+   ],
+   "duration": 5,
+   "set": "bunker",
+   "cast": [
+    {
+     "model": "officer",
+     "pos": [
+      0.0,
+      -0.85
+     ],
+     "heading": 0,
+     "anim": "sit"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -1.6,
+      4.2
+     ],
+     "heading": 0,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      2.4,
+      -1.3
+     ],
+     "heading": -20,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "man",
+     "pos": [
+      -5.5,
+      -3.2
+     ],
+     "heading": 0,
+     "anim": "type",
+     "dark": true
+    }
+   ],
+   "fov": 30,
+   "events": [
+    {
+     "t": 0.0,
+     "clock": "06:13"
+    },
+    {
+     "t": 2.0,
+     "clock": "06:14"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    40,
+    42,
+    8
+   ],
+   "to": [
+    41,
+    43,
+    8
+   ],
+   "look_from": [
+    60,
+    64,
+    2
+   ],
+   "look_to": [
+    60,
+    64,
+    2
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "The first missiles struck before the warning sirens could finish their first cycle."
+    }
+   ],
+   "duration": 4.5,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 40,
+     "anim": "argue",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      60,
+      58
+     ],
+     "heading": -30,
+     "anim": "stand",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "z": 4.0
+    }
+   ],
+   "events": [
+    {
+     "t": 0.2,
+     "sound": "alarm_loop",
+     "volume": 0.6
+    },
+    {
+     "t": 1.2,
+     "explosion": [
+      66,
+      68,
+      1.0
+     ],
+     "shake": 0.6,
+     "fire": [
+      66,
+      68,
+      0.3,
+      1.6
+     ]
+    },
+    {
+     "t": 2.4,
+     "explosion": [
+      48,
+      74,
+      0.5
+     ],
+     "shake": 0.4
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK",
+    "06:14"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    62.75,
+    58.85,
+    5.85
+   ],
+   "to": [
+    62.8,
+    58.95,
+    5.9
+   ],
+   "look_from": [
+    61.7,
+    62.6,
+    5.35
+   ],
+   "look_to": [
+    61.7,
+    62.8,
+    5.35
+   ],
+   "lines": [
+    {
+     "speaker": "voss",
+     "text": "Incoming! Take cover!"
+    }
+   ],
+   "duration": 2.5,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "fire",
+     "z": 4.0
+    }
+   ],
+   "events": [
+    {
+     "t": 0.6,
+     "explosion": [
+      58,
+      78,
+      0.5
+     ],
+     "shake": 0.5
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    52,
+    54,
+    1.7
+   ],
+   "to": [
+    50,
+    52,
+    1.7
+   ],
+   "look_from": [
+    57,
+    61,
+    1.5
+   ],
+   "look_to": [
+    52,
+    57,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "Contact front! Enemy armour! Everyone into cover!"
+    }
+   ],
+   "duration": 4,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      58,
+      62
+     ],
+     "heading": -140,
+     "anim": "point",
+     "path": [
+      [
+       58,
+       62
+      ],
+      [
+       53,
+       57
+      ]
+     ],
+     "speed": 3.0,
+     "move": "run",
+     "then": {
+      "anim": "point",
+      "heading": 20
+     }
+    }
+   ],
+   "events": [
+    {
+     "t": 1.0,
+     "explosion": [
+      62,
+      70,
+      0.5
+     ],
+     "shake": 0.5
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    53,
+    63,
+    1.6
+   ],
+   "to": [
+    53.2,
+    63.4,
+    1.6
+   ],
+   "look_from": [
+    56,
+    66.5,
+    1.5
+   ],
+   "look_to": [
+    55.5,
+    66,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "kell",
+     "text": "Tomas! Move!"
+    },
+    {
+     "speaker": "halden",
+     "text": "What is happening?"
+    }
+   ],
+   "duration": 4.5,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      56,
+      67
+     ],
+     "heading": 0,
+     "anim": "scared",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.6,
+      66.2
+     ],
+     "heading": 220,
+     "anim": "stand",
+     "path": [
+      [
+       54.6,
+       66.2
+      ],
+      [
+       52,
+       62
+      ]
+     ],
+     "speed": 3.2,
+     "move": "run"
+    }
+   ],
+   "events": [
+    {
+     "t": 0.5,
+     "explosion": [
+      54,
+      74,
+      0.5
+     ],
+     "shake": 0.6
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    20,
+    50,
+    12
+   ],
+   "to": [
+    24,
+    56,
+    14
+   ],
+   "look_from": [
+    40,
+    110,
+    3
+   ],
+   "look_to": [
+    44,
+    100,
+    3
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Tempest had found its targets. Radar stations, communication centres and military positions across northern Kareth were being destroyed."
+    }
+   ],
+   "duration": 9,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "actors": [
+    {
+     "team": "enemy",
+     "pos": [
+      30,
+      130
+     ],
+     "heading": 180,
+     "count": 6,
+     "spread": [
+      6,
+      3
+     ],
+     "move_to": [
+      36,
+      92
+     ]
+    },
+    {
+     "team": "friendly",
+     "pos": [
+      44,
+      66
+     ],
+     "heading": 0,
+     "count": 3,
+     "spread": [
+      5,
+      0
+     ]
+    }
+   ],
+   "vehicles": [
+    {
+     "kind": "tank",
+     "path": [
+      [
+       52,
+       280,
+       0
+      ],
+      [
+       50,
+       150,
+       0
+      ]
+     ],
+     "speed": 7.0
+    },
+    {
+     "kind": "tank",
+     "path": [
+      [
+       20,
+       300,
+       0
+      ],
+      [
+       22,
+       160,
+       0
+      ]
+     ],
+     "speed": 7.0
+    },
+    {
+     "kind": "attack_helicopter",
+     "path": [
+      [
+       -120,
+       240,
+       45
+      ],
+      [
+       60,
+       90,
+       32
+      ],
+      [
+       220,
+       -120,
+       36
+      ]
+     ],
+     "speed": 36.0,
+     "armed": false
+    }
+   ],
+   "events": [
+    {
+     "t": 0.8,
+     "explosion": [
+      40,
+      80,
+      0.5
+     ],
+     "shake": 0.3
+    },
+    {
+     "t": 2.5,
+     "explosion": [
+      20,
+      72,
+      0.5
+     ],
+     "shake": 0.3,
+     "fire": [
+      20,
+      72,
+      0.3,
+      1.4
+     ]
+    },
+    {
+     "t": 4.5,
+     "explosion": [
+      55,
+      90,
+      0.5
+     ],
+     "shake": 0.3
+    },
+    {
+     "t": 6.5,
+     "explosion": [
+      30,
+      66,
+      0.5
+     ],
+     "shake": 0.4
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    55.5,
+    60.6,
+    1.25
+   ],
+   "to": [
+    55.4,
+    60.8,
+    1.2
+   ],
+   "look_from": [
+    57,
+    62.6,
+    1.0
+   ],
+   "look_to": [
+    56.6,
+    63.2,
+    1.0
+   ],
+   "lines": [
+    {
+     "speaker": "kell",
+     "text": "Tomas! Get up! We have to move!"
+    },
+    {
+     "speaker": "marek",
+     "text": "Hold this position! Do not let them through!"
+    }
+   ],
+   "duration": 6,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      57,
+      62.2
+     ],
+     "heading": 20,
+     "anim": "kneel",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      58.2,
+      62.8
+     ],
+     "heading": -40,
+     "anim": "kneel"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      54.5,
+      63.5
+     ],
+     "heading": 0,
+     "anim": "fire"
+    }
+   ],
+   "events": [
+    {
+     "t": 1.0,
+     "explosion": [
+      60,
+      76,
+      0.5
+     ],
+     "shake": 0.5
+    },
+    {
+     "t": 3.5,
+     "explosion": [
+      50,
+      80,
+      0.5
+     ],
+     "shake": 0.4
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK",
+    "06:16"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    62.75,
+    58.85,
+    5.85
+   ],
+   "to": [
+    62.8,
+    58.95,
+    5.9
+   ],
+   "look_from": [
+    61.7,
+    62.6,
+    5.35
+   ],
+   "look_to": [
+    61.7,
+    62.8,
+    5.35
+   ],
+   "lines": [
+    {
+     "speaker": "voss",
+     "text": "More armour coming! We can't hold them!"
+    }
+   ],
+   "duration": 3.5,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      62,
+      60.2
+     ],
+     "heading": 0,
+     "anim": "fire",
+     "z": 4.0
+    }
+   ],
+   "events": [
+    {
+     "t": 0.8,
+     "explosion": [
+      64,
+      82,
+      0.5
+     ],
+     "shake": 0.5
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    54.9,
+    65.3,
+    1.45
+   ],
+   "to": [
+    55.0,
+    65.1,
+    1.4
+   ],
+   "look_from": [
+    57,
+    62.2,
+    0.8
+   ],
+   "look_to": [
+    57,
+    62.2,
+    0.8
+   ],
+   "lines": [
+    {
+     "speaker": "halden",
+     "text": "Sergeant! What do we do?"
+    }
+   ],
+   "duration": 3,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      57,
+      62.2
+     ],
+     "heading": 20,
+     "anim": "kneel",
+     "gun": false
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    52.8,
+    62.4,
+    1.7
+   ],
+   "to": [
+    52.7,
+    62.3,
+    1.7
+   ],
+   "look_from": [
+    54.5,
+    63.5,
+    1.55
+   ],
+   "look_to": [
+    54.5,
+    63.5,
+    1.55
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "We fight! That's what we do!"
+    }
+   ],
+   "duration": 3,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      54.5,
+      63.5
+     ],
+     "heading": 160,
+     "anim": "fire"
+    }
+   ],
+   "events": [
+    {
+     "t": 1.5,
+     "explosion": [
+      48,
+      76,
+      0.5
+     ],
+     "shake": 0.5
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    50,
+    52,
+    6
+   ],
+   "to": [
+    44,
+    46,
+    10
+   ],
+   "look_from": [
+    56,
+    80,
+    2
+   ],
+   "look_to": [
+    56,
+    100,
+    2
+   ],
+   "lines": [
+    {
+     "speaker": "narrator",
+     "text": "Kareth had spent thirty-two years believing the war was over. Its soldiers had never fought a battle. Its defences were falling. And the enemy was already at the gates."
+    },
+    {
+     "speaker": "narrator",
+     "text": "For Private Tomas Halden, this was supposed to be another morning on border duty."
+    },
+    {
+     "speaker": "narrator",
+     "text": "It became the first day of a war that would change everything."
+    }
+   ],
+   "duration": 16,
+   "grade": {
+    "exposure": 1.0,
+    "tint": [
+     1.08,
+     0.98,
+     0.88
+    ],
+    "saturation": 0.9
+   },
+   "actors": [
+    {
+     "team": "enemy",
+     "pos": [
+      30,
+      130
+     ],
+     "heading": 180,
+     "count": 6,
+     "spread": [
+      6,
+      3
+     ],
+     "move_to": [
+      36,
+      92
+     ]
+    },
+    {
+     "team": "friendly",
+     "pos": [
+      44,
+      66
+     ],
+     "heading": 0,
+     "count": 3,
+     "spread": [
+      5,
+      0
+     ]
+    }
+   ],
+   "vehicles": [
+    {
+     "kind": "tank",
+     "path": [
+      [
+       52,
+       280,
+       0
+      ],
+      [
+       50,
+       150,
+       0
+      ]
+     ],
+     "speed": 7.0
+    },
+    {
+     "kind": "tank",
+     "path": [
+      [
+       20,
+       300,
+       0
+      ],
+      [
+       22,
+       160,
+       0
+      ]
+     ],
+     "speed": 7.0
+    },
+    {
+     "kind": "attack_helicopter",
+     "path": [
+      [
+       -120,
+       240,
+       45
+      ],
+      [
+       60,
+       90,
+       32
+      ],
+      [
+       220,
+       -120,
+       36
+      ]
+     ],
+     "speed": 36.0,
+     "armed": false
+    }
+   ],
+   "events": [
+    {
+     "t": 1.0,
+     "explosion": [
+      52,
+      76,
+      0.5
+     ],
+     "shake": 0.4
+    },
+    {
+     "t": 1.2,
+     "smoke": [
+      54,
+      70,
+      0.5
+     ]
+    },
+    {
+     "t": 5.0,
+     "explosion": [
+      40,
+      84,
+      0.5
+     ],
+     "shake": 0.3
+    },
+    {
+     "t": 9.0,
+     "explosion": [
+      62,
+      88,
+      0.5
+     ],
+     "shake": 0.3
+    },
+    {
+     "t": 12.0,
+     "explosion": [
+      46,
+      72,
+      0.5
+     ],
+     "shake": 0.4
+    }
+   ]
+  },
+  {
+   "type": "title",
+   "title": "OPERATION SHADOW",
+   "subtitle": "DAY ONE  -  OUTPOST RIDGEBACK",
+   "duration": 4.0,
+   "lines": []
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "narrator",
+   "text": "Thirty-two years ago, the northern border was a battlefield. The Kareth Republic and the Varn Directorate fought a war that neither side could afford to win."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Eventually, both governments signed a ceasefire treaty. The guns fell silent. The borders remained unchanged. And for thirty-two years, there was peace."
+  },
+  {
+   "speaker": "narrator",
+   "text": "But a ceasefire does not always mean an end to war. Sometimes, it only means one side is waiting."
+  },
+  {
+   "speaker": "narrator",
+   "text": "To the south lies the Kareth Republic. A small democracy, with its capital at Aldmere. Its army is small, poorly tested, and has never fought a war."
+  },
+  {
+   "speaker": "narrator",
+   "text": "To the north stands the Varn Directorate. A powerful military state, with its capital at Vorsk. For eleven years it has been ruled by its security services, under one man: Director-General Kasimir Drevan."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Varn wants control of the northern region. Kareth stands directly in its way."
+  },
+  {
+   "speaker": "drevan",
+   "text": "Thirty-two years. We have waited long enough."
+  },
+  {
+   "speaker": "kade",
+   "text": "Our forces are positioned. The northern formations are ready. Give me the order, and Kareth will fall."
+  },
+  {
+   "speaker": "ostrova",
+   "text": "Kareth has never attacked us. There is no justification for an invasion."
+  },
+  {
+   "speaker": "drevan",
+   "text": "Generals, history does not reward the patient. It rewards those who understand when patience must end."
+  },
+  {
+   "speaker": "narrator",
+   "text": "For weeks, Varn had been moving troops, tanks, artillery and aircraft towards the northern border."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Officially, they were military exercises. A routine show of strength."
+  },
+  {
+   "speaker": "kade",
+   "text": "I want every formation ready before sunrise. No delays. No mistakes."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Kareth's leaders saw the movements. They believed it was another political threat. They did not believe an attack was coming."
+  },
+  {
+   "speaker": "kade",
+   "text": "Project Tempest is operational. Satellites identify targets. Drones confirm their positions. Missiles receive their coordinates."
+  },
+  {
+   "speaker": "drevan",
+   "text": "Explain it simply."
+  },
+  {
+   "speaker": "kade",
+   "text": "Every weapon knows exactly where to strike. Every target is connected to the same network."
+  },
+  {
+   "speaker": "stranger",
+   "text": "Radar stations, air defences, command centres, communication towers. Once the network is active, they will have nowhere to hide."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Tempest was not simply another weapon. It was a system designed to make every weapon work together."
+  },
+  {
+   "speaker": "narrator",
+   "text": "In a matter of hours, Kareth's entire defence could be destroyed."
+  },
+  {
+   "speaker": "ostrova",
+   "text": "You are talking about destroying an entire country's military in hours. What happens after that?"
+  },
+  {
+   "speaker": "kade",
+   "text": "We secure the region. We control the border. The operation ends before Kareth understands what happened."
+  },
+  {
+   "speaker": "ostrova",
+   "text": "And if another country intervenes? If Tempest fails?"
+  },
+  {
+   "speaker": "drevan",
+   "text": "Then we adapt."
+  },
+  {
+   "speaker": "ostrova",
+   "text": "You cannot control a war once you start it."
+  },
+  {
+   "speaker": "drevan",
+   "text": "I am not asking you to control it, General. I am asking you to obey."
+  },
+  {
+   "speaker": "crane",
+   "text": "I found another connection. The satellite movements match the old intelligence reports."
+  },
+  {
+   "speaker": "wren",
+   "text": "Elias, you have been following this for two years. The investigation was closed."
+  },
+  {
+   "speaker": "crane",
+   "text": "Because someone wanted it closed."
+  },
+  {
+   "speaker": "wren",
+   "text": "Glass Harbour was a disaster. Harrow was reported killed. You were blamed. Venn dismissed you."
+  },
+  {
+   "speaker": "crane",
+   "text": "We lost the operation before it even began. Someone knew our movements."
+  },
+  {
+   "speaker": "wren",
+   "text": "You think there was a leak?"
+  },
+  {
+   "speaker": "crane",
+   "text": "I don't think, Isa. I know we were betrayed."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Two years earlier, Crane had led an intelligence operation inside Varn. Its mission was to uncover a secret military programme."
+  },
+  {
+   "speaker": "narrator",
+   "text": "It was called Operation Glass Harbour."
+  },
+  {
+   "speaker": "narrator",
+   "text": "The operation failed. Intelligence officer Colonel Desmond Harrow was reported killed. Crane was accused of compromising the mission, and dismissed by Deputy Director Alda Venn."
+  },
+  {
+   "speaker": "crane",
+   "text": "We were betrayed from inside."
+  },
+  {
+   "speaker": "crane",
+   "text": "Varn is preparing something. Their movements are not exercises. They are preparing to invade."
+  },
+  {
+   "speaker": "venn",
+   "text": "You are no longer part of this service, Major."
+  },
+  {
+   "speaker": "crane",
+   "text": "Tempest is real. I have evidence connecting the military movements to a targeting network."
+  },
+  {
+   "speaker": "venn",
+   "text": "You have theories. Not evidence that can justify an international crisis."
+  },
+  {
+   "speaker": "crane",
+   "text": "When the missiles start falling, it will be too late."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Crane was getting closer to the truth. But nobody in power was willing to listen."
+  },
+  {
+   "speaker": "drevan",
+   "text": "The ceasefire protected us for thirty-two years. Tonight, it becomes irrelevant."
+  },
+  {
+   "speaker": "kade",
+   "text": "First strike will target Kareth's radar and communication systems. Ground forces will advance immediately afterwards."
+  },
+  {
+   "speaker": "ostrova",
+   "text": "You are making a decision that cannot be reversed."
+  },
+  {
+   "speaker": "drevan",
+   "text": "The decision has already been made."
+  },
+  {
+   "speaker": "drevan",
+   "text": "General Kade. Begin the operation at 06:14."
+  },
+  {
+   "speaker": "kade",
+   "text": "Understood, Director-General."
+  },
+  {
+   "speaker": "narrator",
+   "text": "The invasion had a time. A plan. And a name. Operation Shadow."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Forty kilometres from Varn's northern command line, a small Kareth outpost prepared for another ordinary morning."
+  },
+  {
+   "speaker": "narrator",
+   "text": "Private Tomas Halden was nineteen. He had never seen combat. Neither had most of the soldiers stationed there."
+  },
+  {
+   "speaker": "kell",
+   "text": "Still thinking about home, Halden?"
+  },
+  {
+   "speaker": "halden",
+   "text": "Just wondering when they will let us go back."
+  },
+  {
+   "speaker": "kell",
+   "text": "Hopefully before the food gets worse."
+  },
+  {
+   "speaker": "marek",
+   "text": "Halden. Kell. Check your equipment. Stay alert."
+  },
+  {
+   "speaker": "kell",
+   "text": "Sergeant, nothing has happened here in thirty-two years."
+  },
+  {
+   "speaker": "marek",
+   "text": "And I intend to keep it that way. Do your job."
+  },
+  {
+   "speaker": "halden",
+   "text": "Sergeant, do you think they will actually attack?"
+  },
+  {
+   "speaker": "marek",
+   "text": "I think you should stop worrying about things you cannot control."
+  },
+  {
+   "speaker": "voss",
+   "text": "Movement on the northern ridge."
+  },
+  {
+   "speaker": "voss",
+   "text": "I have movement. Multiple vehicles. Can't identify the formation."
+  },
+  {
+   "speaker": "marek",
+   "text": "Are they inside the border?"
+  },
+  {
+   "speaker": "voss",
+   "text": "Not yet. But they're getting closer."
+  },
+  {
+   "speaker": "kell",
+   "text": "Probably another exercise."
+  },
+  {
+   "speaker": "voss",
+   "text": "Exercises don't move like that."
+  },
+  {
+   "speaker": "halden",
+   "text": "Sergeant?"
+  },
+  {
+   "speaker": "marek",
+   "text": "All stations, maintain alert. Nobody leaves their position."
+  },
+  {
+   "speaker": "kade",
+   "text": "All formations are in position. Tempest is connected."
+  },
+  {
+   "speaker": "ostrova",
+   "text": "Last chance to stop this."
+  },
+  {
+   "speaker": "drevan",
+   "text": "There will be no second chance."
+  },
+  {
+   "speaker": "stranger",
+   "text": "Targeting network confirmed. All systems are ready."
+  },
+  {
+   "speaker": "drevan",
+   "text": "Proceed."
+  },
+  {
+   "speaker": "narrator",
+   "text": "At 06:14, thirty-two years of peace came to an end."
+  },
+  {
+   "speaker": "narrator",
+   "text": "The first missiles struck before the warning sirens could finish their first cycle."
+  },
+  {
+   "speaker": "voss",
+   "text": "Incoming! Take cover!"
+  },
+  {
+   "speaker": "marek",
+   "text": "Contact front! Enemy armour! Everyone into cover!"
+  },
+  {
+   "speaker": "kell",
+   "text": "Tomas! Move!"
+  },
+  {
+   "speaker": "halden",
+   "text": "What is happening?"
+  },
+  {
+   "speaker": "narrator",
+   "text": "Tempest had found its targets. Radar stations, communication centres and military positions across northern Kareth were being destroyed."
+  },
+  {
+   "speaker": "kell",
+   "text": "Tomas! Get up! We have to move!"
+  },
+  {
+   "speaker": "marek",
+   "text": "Hold this position! Do not let them through!"
+  },
+  {
+   "speaker": "voss",
+   "text": "More armour coming! We can't hold them!"
+  },
+  {
+   "speaker": "halden",
+   "text": "Sergeant! What do we do?"
+  },
+  {
+   "speaker": "marek",
+   "text": "We fight! That's what we do!"
+  },
+  {
+   "speaker": "narrator",
+   "text": "Kareth had spent thirty-two years believing the war was over. Its soldiers had never fought a battle. Its defences were falling. And the enemy was already at the gates."
+  },
+  {
+   "speaker": "narrator",
+   "text": "For Private Tomas Halden, this was supposed to be another morning on border duty."
+  },
+  {
+   "speaker": "narrator",
+   "text": "It became the first day of a war that would change everything."
+  }
+ ]
+}

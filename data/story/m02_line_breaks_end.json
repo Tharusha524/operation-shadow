@@ -1,0 +1,272 @@
+{
+ "shots": [
+  {
+   "type": "scene",
+   "from": [
+    12,
+    -64,
+    2.0
+   ],
+   "to": [
+    -6,
+    -66,
+    2.0
+   ],
+   "look_from": [
+    2,
+    -70,
+    1.2
+   ],
+   "look_to": [
+    0,
+    -74,
+    1.2
+   ],
+   "lines": [
+    {
+     "speaker": "civilian",
+     "text": "Please! My daughter is still inside!"
+    },
+    {
+     "speaker": "halden",
+     "text": "Keep moving! The road is clear!"
+    },
+    {
+     "speaker": "kell",
+     "text": "Come on, sir. Don't stop here."
+    },
+    {
+     "speaker": "narrator",
+     "text": "For the soldiers at Kesh Ridge, every minute mattered."
+    }
+   ],
+   "duration": 10,
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -10,
+      -60
+     ],
+     "heading": 150,
+     "anim": "stand",
+     "path": [
+      [
+       -10,
+       -60
+      ],
+      [
+       6,
+       -78
+      ]
+     ],
+     "speed": 2.6,
+     "move": "run"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      -12,
+      -58
+     ],
+     "heading": 150,
+     "anim": "stand",
+     "path": [
+      [
+       -12,
+       -58
+      ],
+      [
+       4,
+       -79
+      ]
+     ],
+     "speed": 2.4,
+     "move": "run"
+    },
+    {
+     "model": "man",
+     "pos": [
+      2,
+      -69
+     ],
+     "heading": 90,
+     "anim": "death",
+     "frame": -1
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      2,
+      -67.6
+     ],
+     "heading": 180,
+     "anim": "kneel_inspect"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      4,
+      -66
+     ],
+     "heading": -150,
+     "anim": "point"
+    }
+   ],
+   "caption": [
+    "EVACUATION ROAD",
+    "11:00"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -10,
+    -4,
+    2.2
+   ],
+   "to": [
+    -6,
+    -6,
+    2.0
+   ],
+   "look_from": [
+    -4,
+    1,
+    1.4
+   ],
+   "look_to": [
+    -2,
+    3,
+    1.4
+   ],
+   "lines": [
+    {
+     "speaker": "voss",
+     "text": "They're through the eastern trench!"
+    },
+    {
+     "speaker": "marek",
+     "text": "The evacuation is complete. Fall back!"
+    },
+    {
+     "speaker": "halden",
+     "text": "We're abandoning the ridge?"
+    },
+    {
+     "speaker": "marek",
+     "text": "We're saving the people we came here to protect."
+    }
+   ],
+   "duration": 9,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -6,
+      0
+     ],
+     "heading": 180,
+     "anim": "point"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -4,
+      0.4
+     ],
+     "heading": 0,
+     "anim": "aim"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -3,
+      0
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "path": [
+      [
+       -3,
+       0
+      ],
+      [
+       -3,
+       -20
+      ]
+     ],
+     "speed": 1.0,
+     "move": "injured_walk"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      0,
+      0.5
+     ],
+     "heading": 0,
+     "anim": "aim"
+    }
+   ],
+   "events": [
+    {
+     "t": 1.0,
+     "explosion": [
+      6,
+      20,
+      0.5
+     ],
+     "shake": 0.3
+    },
+    {
+     "t": 4.0,
+     "explosion": [
+      -12,
+      16,
+      0.5
+     ],
+     "shake": 0.3
+    }
+   ],
+   "caption": [
+    "KESH RIDGE",
+    "12:15"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "civilian",
+   "text": "Please! My daughter is still inside!"
+  },
+  {
+   "speaker": "halden",
+   "text": "Keep moving! The road is clear!"
+  },
+  {
+   "speaker": "kell",
+   "text": "Come on, sir. Don't stop here."
+  },
+  {
+   "speaker": "narrator",
+   "text": "For the soldiers at Kesh Ridge, every minute mattered."
+  },
+  {
+   "speaker": "voss",
+   "text": "They're through the eastern trench!"
+  },
+  {
+   "speaker": "marek",
+   "text": "The evacuation is complete. Fall back!"
+  },
+  {
+   "speaker": "halden",
+   "text": "We're abandoning the ridge?"
+  },
+  {
+   "speaker": "marek",
+   "text": "We're saving the people we came here to protect."
+  }
+ ]
+}

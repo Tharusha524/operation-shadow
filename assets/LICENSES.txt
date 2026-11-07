@@ -1,0 +1,29 @@
+Third-party assets used by OPERATION SHADOW
+All are CC0 (public domain) from Poly Haven.
+
+model    barrel         <- Poly Haven 'Barrel_01' (CC0)  https://polyhaven.com/a/Barrel_01
+model    military_crate <- Poly Haven 'wooden_military_crate' (CC0)  https://polyhaven.com/a/wooden_military_crate
+model    ammo_box       <- Poly Haven 'ammo_box' (CC0)  https://polyhaven.com/a/ammo_box
+model    jerrycan       <- Poly Haven 'metal_jerrycan_green' (CC0)  https://polyhaven.com/a/metal_jerrycan_green
+model    road_barrier   <- Poly Haven 'concrete_road_barrier' (CC0)  https://polyhaven.com/a/concrete_road_barrier
+model    boulder        <- Poly Haven 'boulder_01' (CC0)  https://polyhaven.com/a/boulder_01
+model    dead_trunk     <- Poly Haven 'dead_tree_trunk' (CC0)  https://polyhaven.com/a/dead_tree_trunk
+model    street_lamp    <- Poly Haven 'street_lamp_01' (CC0)  https://polyhaven.com/a/street_lamp_01
+model    pistol_model   <- Poly Haven 'service_pistol' (CC0)  https://polyhaven.com/a/service_pistol
+model    rifle_model    <- Poly Haven 'bolt_action_rifle_7_62' (CC0)  https://polyhaven.com/a/bolt_action_rifle_7_62
+texture  block        <- Poly Haven 'rough_block_wall' (CC0)  https://polyhaven.com/a/rough_block_wall
+texture  concrete     <- Poly Haven 'concrete_wall_003' (CC0)  https://polyhaven.com/a/concrete_wall_003
+texture  asphalt      <- Poly Haven 'asphalt_02' (CC0)  https://polyhaven.com/a/asphalt_02
+texture  dirt         <- Poly Haven 'brown_mud_dry' (CC0)  https://polyhaven.com/a/brown_mud_dry
+texture  metal        <- Poly Haven 'metal_plate' (CC0)  https://polyhaven.com/a/metal_plate
+texture  corrugated   <- Poly Haven 'corrugated_iron_02' (CC0)  https://polyhaven.com/a/corrugated_iron_02
+texture  wood         <- Poly Haven 'weathered_planks' (CC0)  https://polyhaven.com/a/weathered_planks
+texture  bark         <- Poly Haven 'pine_bark' (CC0)  https://polyhaven.com/a/pine_bark
+texture  rock         <- Poly Haven 'rock_face_03' (CC0)  https://polyhaven.com/a/rock_face_03
+texture  plaster      <- Poly Haven 'painted_plaster_wall' (CC0)  https://polyhaven.com/a/painted_plaster_wall
+texture  roof         <- Poly Haven 'clay_roof_tiles_02' (CC0)  https://polyhaven.com/a/clay_roof_tiles_02
+texture  stone        <- Poly Haven 'stone_brick_wall_001' (CC0)  https://polyhaven.com/a/stone_brick_wall_001
+
+sounds/shot_rifle.wav, shot_enemy.wav, shot_pistol.wav, shot_sniper.wav, shot_shotgun.wav
+    Cut from "The Free Firearm Sound Library" - https://opengameart.org/content/the-free-firearm-sound-library
+    Licence: CC0 (public domain). Prepared with tools/import_gun_sounds.py.

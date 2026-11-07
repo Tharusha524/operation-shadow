@@ -1,0 +1,107 @@
+{
+  "_comment": "Free CC0 assets downloaded by tools/fetch_assets.py from Poly Haven (https://polyhaven.com, CC0 licence). 'desaturate' (0..1) removes colour from photos where the game tints the surface itself; 'brightness' sets the average brightness.",
+  "textures": {
+    "block": {
+      "polyhaven": "rough_block_wall",
+      "desaturate": 0.85,
+      "brightness": 0.72
+    },
+    "concrete": {
+      "polyhaven": "concrete_wall_003",
+      "desaturate": 0.85,
+      "brightness": 0.7
+    },
+    "asphalt": {
+      "polyhaven": "asphalt_02",
+      "desaturate": 0.6,
+      "brightness": 0.36
+    },
+    "dirt": {
+      "polyhaven": "brown_mud_dry",
+      "desaturate": 0.3,
+      "brightness": 0.5
+    },
+    "metal": {
+      "polyhaven": "metal_plate",
+      "desaturate": 0.9,
+      "brightness": 0.66
+    },
+    "corrugated": {
+      "polyhaven": "corrugated_iron_02",
+      "desaturate": 0.7,
+      "brightness": 0.68
+    },
+    "wood": {
+      "polyhaven": "weathered_planks",
+      "desaturate": 0.3,
+      "brightness": 0.62
+    },
+    "bark": {
+      "polyhaven": "pine_bark",
+      "desaturate": 0.2,
+      "brightness": 0.55
+    },
+    "rock": {
+      "polyhaven": "rock_face_03",
+      "desaturate": 0.5,
+      "brightness": 0.62
+    },
+    "plaster": {
+      "polyhaven": "painted_plaster_wall",
+      "desaturate": 0.9,
+      "brightness": 0.78
+    },
+    "roof": {
+      "polyhaven": "clay_roof_tiles_02",
+      "desaturate": 0.85,
+      "brightness": 0.7
+    },
+    "stone": {
+      "polyhaven": "stone_brick_wall_001",
+      "desaturate": 0.6,
+      "brightness": 0.7
+    }
+  },
+  "models": {
+    "barrel": {
+      "polyhaven": "Barrel_01",
+      "height": 0.88
+    },
+    "military_crate": {
+      "polyhaven": "wooden_military_crate",
+      "height": 0.6
+    },
+    "ammo_box": {
+      "polyhaven": "ammo_box",
+      "height": 0.2
+    },
+    "jerrycan": {
+      "polyhaven": "metal_jerrycan_green",
+      "height": 0.45
+    },
+    "road_barrier": {
+      "polyhaven": "concrete_road_barrier",
+      "height": 0.81
+    },
+    "boulder": {
+      "polyhaven": "boulder_01",
+      "height": 1.0
+    },
+    "dead_trunk": {
+      "polyhaven": "dead_tree_trunk",
+      "height": 1.0
+    },
+    "street_lamp": {
+      "polyhaven": "street_lamp_01",
+      "height": 4.3
+    },
+    "pistol_model": {
+      "polyhaven": "service_pistol",
+      "length": 0.2
+    },
+    "rifle_model": {
+      "polyhaven": "bolt_action_rifle_7_62",
+      "length": 1.1
+    }
+  }
+}

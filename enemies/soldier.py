@@ -1,0 +1,175 @@
+"""A soldier controlled by AI - used for both enemies and squad mates."""
+from __future__ import annotations
+
+import math
+
+from player.health import Health
+from player.movement import MotorConfig, MotorInput, PlayerMotor
+from systems.combat_system import character_hitboxes
+from weapons.factory import create_weapon
+
+
+def heading_to(dx, dy):
+    """Panda3D heading (degrees) that faces along the vector (dx, dy)."""
+    return math.degrees(math.atan2(-dx, dy))
+
+
+def angle_diff(a, b):
+    return (a - b + 180.0) % 360.0 - 180.0
+
+
+def cone_direction(d, spread_deg, rng):
+    """Random unit vector inside a cone of half-angle spread_deg around unit vector d."""
+    if spread_deg <= 0:
+        return d
+    # Two unit vectors perpendicular to d.
+    helper = (0.0, 0.0, 1.0) if abs(d[2]) < 0.9 else (1.0, 0.0, 0.0)
+    ux = d[1] * helper[2] - d[2] * helper[1]
+    uy = d[2] * helper[0] - d[0] * helper[2]
+    uz = d[0] * helper[1] - d[1] * helper[0]
+    ul = math.sqrt(ux * ux + uy * uy + uz * uz)
+    ux, uy, uz = ux / ul, uy / ul, uz / ul
+    vx, vy, vz = d[1] * uz - d[2] * uy, d[2] * ux - d[0] * uz, d[0] * uy - d[1] * ux
+    r = math.tan(math.radians(spread_deg)) * math.sqrt(rng.random())
+    a = rng.uniform(0.0, 2.0 * math.pi)
+    ca, sa = math.cos(a) * r, math.sin(a) * r
+    x, y, z = d[0] + ux * ca + vx * sa, d[1] + uy * ca + vy * sa, d[2] + uz * ca + vz * sa
+    n = math.sqrt(x * x + y * y + z * z)
+    return x / n, y / n, z / n
+
+
+class Soldier:
+    def __init__(self, manager, team, profile, x, y, heading=0.0, name=None, invulnerable=False,
+                 group=None, patrol=None, profile_name="regular", post=None):
+        from enemies.enemy_ai import SoldierAI       # local import avoids a cycle
+        self.manager = manager
+        self.team = team
+        self.name = name or ("Hostile" if team == "enemy" else "Ally")
+        self.profile = profile
+        self.profile_name = profile_name
+        self.group = group
+        cfg = MotorConfig(walk_speed=profile["walk_speed"], sprint_speed=profile["run_speed"], crouch_speed=1.6,
+                          radius=0.33, ground_accel=25.0, ground_decel=25.0)
+        self.motor = PlayerMotor(manager.world, (x, y, 0.0), cfg)
+        self.health = Health(profile["health"], invulnerable=invulnerable,
+                             regen_delay=5.0 if invulnerable else None, regen_rate=25.0)
+        self.weapon = create_weapon(manager.weapon_stats[profile["weapon"]], manager.rng, infinite_reserve=True)
+        self.facing = heading
+        self.aim_pitch = 0.0
+        self.move_input = MotorInput(yaw=heading)
+        self.crouch = False
+        self.aiming = False
+        self.killer = None
+        self.dead_time = 0.0
+        self.model = None
+        self.mount = None                   # callable -> (x, y, z) while riding a vehicle
+        self.captive = False                # a prisoner: nobody shoots at them on purpose
+        self.silent_death = False           # killed by a silent takedown: nearby allies are not alerted
+        if manager.render_root is not None:
+            from enemies import soldier_model_mixamo
+            from enemies.soldier_model import SoldierModel
+            if manager.realistic_models and soldier_model_mixamo.available(team):
+                SoldierModel = soldier_model_mixamo.MixamoSoldierModel          # noqa: N806 (realistic soldier)
+            self.model = SoldierModel(manager.render_root, manager.materials, team, self.name,
+                                      show_name=(team == "friendly" and (invulnerable or profile_name == "wounded")))
+        self.ai = SoldierAI(self, profile, patrol=patrol, post=post or (x, y, heading))
+
+    # ------------------------------------------------------------------ combat interface
+    @property
+    def alive(self):
+        return self.health.alive
+
+    @property
+    def position(self):
+        return self.motor.x, self.motor.y, self.motor.z
+
+    def eye_position(self):
+        m = self.motor
+        return m.x, m.y, m.z + m.height - 0.15
+
+    def center(self):
+        m = self.motor
+        return m.x, m.y, m.z + m.height * 0.55
+
+    def hitboxes(self):
+        m = self.motor
+        return character_hitboxes(m.x, m.y, m.z, m.height)
+
+    def take_damage(self, amount, source, zone, direction):
+        if not self.alive:
+            return False
+        killed = self.health.take_damage(amount)
+        if not self.silent_death:
+            self.ai.on_damaged(source, amount)
+        if killed:
+            self.killer = source
+            fwd = (-math.sin(math.radians(self.facing)), math.cos(math.radians(self.facing)))
+            falls_forward = direction[0] * fwd[0] + direction[1] * fwd[1] > 0
+            if self.model:
+                self.model.start_death(forward=falls_forward)
+            self.manager.on_death(self, source, zone)
+        return killed
+
+    def revive(self, x, y, z=0.0):
+        """Bring a squad member back (used when retrying from a checkpoint)."""
+        self.health.reset()
+        self.killer = None
+        self.dead_time = 0.0
+        self.crouch = False
+        self.motor.teleport(x, y, z)
+        self.motor.height = self.motor.cfg.stand_height
+        if self.model is not None:
+            self.model.reset_pose()
+        if self not in self.manager.combat.characters:
+            self.manager.combat.register(self)
+        self.ai.set_state("FOLLOW")
+
+    # ------------------------------------------------------------------ actions used by the AI
+    def muzzle_position(self):
+        if self.model is not None:
+            p = self.model.muzzle.get_pos(self.manager.render_root)
+            return p.x, p.y, p.z
+        ex, ey, ez = self.eye_position()
+        h = math.radians(self.facing)
+        return ex - math.sin(h) * 0.8, ey + math.cos(h) * 0.8, ez - 0.25
+
+    def shoot_at(self, point, spread_deg):
+        """Fire one round towards `point` with a random error cone. Returns True if a shot was fired."""
+        if not self.weapon.try_fire():
+            return False
+        mgr = self.manager
+        mx, my, mz = self.muzzle_position()
+        dx, dy, dz = point[0] - mx, point[1] - my, point[2] - mz
+        dist = math.sqrt(dx * dx + dy * dy + dz * dz) or 1.0
+        d = (dx / dist, dy / dist, dz / dist)
+        d = cone_direction(d, spread_deg, mgr.rng)
+        mgr.fire_weapon(self, (mx, my, mz), d)
+        return True
+
+    # ------------------------------------------------------------------ update
+    def update(self, dt):
+        if not self.alive:
+            self.dead_time += dt
+            if self.model:
+                self.model.update(dt, x=self.motor.x, y=self.motor.y, z=self.motor.z, heading=self.facing,
+                                  move_phase=0, move_speed=0, crouch=False, aim_pitch=0, aiming=False)
+            return
+        self.health.update(dt)
+        self.ai.update(dt)
+        self.move_input.crouch = self.crouch
+        if self.mount is not None:
+            m = self.motor
+            m.x, m.y, m.z = self.mount()
+            m.vx = m.vy = m.vz = 0.0
+            m.grounded = True
+        else:
+            self.motor.update(dt, self.move_input)
+        self.motor.pop_events()
+        self.weapon.update(dt)
+        self.weapon.pop_events()
+        if self.model:
+            self.model.update(dt, x=self.motor.x, y=self.motor.y, z=self.motor.z, heading=self.facing,
+                              move_phase=self.motor.bob_phase, move_speed=self.motor.horizontal_speed,
+                              crouch=self.motor.crouching, aim_pitch=self.aim_pitch, aiming=self.aiming,
+                              reloading=self.weapon.reloading, shots=self.weapon.shots_fired,
+                              vel=(self.motor.vx, self.motor.vy))

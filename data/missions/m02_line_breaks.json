@@ -1,0 +1,1077 @@
+{
+  "id": "m02_line_breaks",
+  "map": "kesh_ridge",
+  "date": "Day 2 - 16:20",
+  "briefing": [
+    "The survivors of the frontier companies have fallen back to Kesh Ridge, the last high ground before the town of Kesh. Eleven thousand civilians are still waiting for trucks in the streets below.",
+    "Lieutenant Anya Rusk's platoon of the 9th Infantry holds a double line of trenches across the ridge. Her orders are simple: keep the Directorate off the ridge until the last convoy has left.",
+    "Nobody expects the line to hold. It only has to hold long enough."
+  ],
+  "story_objective": "Buy time for the evacuation of Kesh.",
+  "gameplay_objective": "Hold the forward trench, destroy the enemy machine-gun nest, fall back to the second line, hold it until the convoy is ready and reach the last truck.",
+  "player": {
+    "spawn": {
+      "pos": [
+        -30,
+        -31,
+        0
+      ],
+      "heading": 0
+    },
+    "loadout": [
+      "kr7",
+      "p12",
+      "lr50",
+      "sg8"
+    ],
+    "grenades": 3
+  },
+  "squad": [
+    {
+      "id": "marek",
+      "pos": [
+        -28,
+        -33
+      ],
+      "heading": 0
+    },
+    {
+      "id": "voss",
+      "pos": [
+        -32,
+        -33.5
+      ],
+      "heading": 10
+    },
+    {
+      "id": "kell",
+      "pos": [
+        -29.5,
+        -35
+      ],
+      "heading": -10
+    }
+  ],
+  "intro": {
+    "shots": [
+      {
+        "from": [
+          -10,
+          -92,
+          30
+        ],
+        "to": [
+          -4,
+          -62,
+          18
+        ],
+        "look_from": [
+          0,
+          20,
+          0
+        ],
+        "look_to": [
+          0,
+          30,
+          0
+        ],
+        "duration": 6.5
+      },
+      {
+        "from": [
+          -22,
+          6,
+          2.2
+        ],
+        "to": [
+          -6,
+          4,
+          2.0
+        ],
+        "look_from": [
+          0,
+          60,
+          1
+        ],
+        "look_to": [
+          10,
+          70,
+          1
+        ],
+        "duration": 6.0
+      }
+    ],
+    "lines": [
+      {
+        "t": 0.4,
+        "speaker": "narrator",
+        "text": "Day Two. Kesh Ridge. What was left of the frontier companies dug in above the town.",
+        "seconds": 4.0
+      },
+      {
+        "t": 4.6,
+        "speaker": "narrator",
+        "text": "Eleven thousand people were still in Kesh. The trucks needed six hours.",
+        "seconds": 3.8
+      },
+      {
+        "t": 8.8,
+        "speaker": "rusk",
+        "text": "Ridgeback survivors? Good. Today every rifle counts.",
+        "seconds": 3.4
+      }
+    ]
+  },
+  "outro": {
+    "shots": [
+      {
+        "from": [
+          24,
+          -76,
+          2.2
+        ],
+        "to": [
+          24,
+          -94,
+          14
+        ],
+        "look_from": [
+          20,
+          0,
+          2
+        ],
+        "look_to": [
+          10,
+          40,
+          4
+        ],
+        "duration": 11.0
+      }
+    ],
+    "lines": [
+      {
+        "t": 0.3,
+        "speaker": "marek",
+        "text": "Everyone's aboard - go! Drive!",
+        "seconds": 2.6
+      },
+      {
+        "t": 3.0,
+        "speaker": "narrator",
+        "text": "Kesh Ridge held for five hours and forty minutes.",
+        "seconds": 3.6
+      },
+      {
+        "t": 6.8,
+        "speaker": "narrator",
+        "text": "Long enough. The last convoy left Kesh at 21:50.",
+        "seconds": 3.8
+      }
+    ]
+  },
+  "steps": [
+    {
+      "id": "report",
+      "objective": {
+        "type": "reach",
+        "pos": [
+          -31,
+          -29,
+          0
+        ],
+        "radius": 3.5,
+        "text": "Report to Lt. Rusk at the command bunker"
+      },
+      "on_start": [
+        {
+          "action": "spawn_friendly",
+          "group": "hq",
+          "units": [
+            {
+              "pos": [
+                -31.5,
+                -29.5
+              ],
+              "heading": 180,
+              "name": "Lt. Anya Rusk",
+              "hold": [
+                -31.5,
+                -29.5,
+                180
+              ]
+            }
+          ]
+        },
+        {
+          "action": "smoke",
+          "pos": [
+            -30,
+            -112,
+            2
+          ],
+          "seconds": 900
+        },
+        {
+          "action": "smoke",
+          "pos": [
+            12,
+            -118,
+            2
+          ],
+          "seconds": 900
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Lieutenant's at the command bunker. Let's get our orders.",
+          "delay": 1.0,
+          "seconds": 3.5
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "They'll come across no-man's land any minute. Get into the forward trench, centre section.",
+          "seconds": 4.5
+        },
+        {
+          "action": "squad_follow"
+        }
+      ]
+    },
+    {
+      "id": "man_trench",
+      "objective": {
+        "type": "reach",
+        "pos": [
+          0,
+          0.3,
+          0
+        ],
+        "radius": 4,
+        "text": "Take position in the forward trench"
+      },
+      "on_start": [
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "Down the communication trench, Halden. Keep your head low.",
+          "delay": 4.0,
+          "seconds": 3.5
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "squad_hold",
+          "positions": {
+            "marek": [
+              -4,
+              0.4,
+              0
+            ],
+            "voss": [
+              6,
+              0.9,
+              0
+            ],
+            "kell": [
+              3,
+              0.4,
+              0
+            ]
+          }
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Movement at their trench line. Lots of it.",
+          "seconds": 3.0
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            0,
+            0.3,
+            0
+          ],
+          "heading": 0
+        }
+      ]
+    },
+    {
+      "id": "hold_line",
+      "objective": {
+        "type": "survive",
+        "seconds": 100,
+        "text": "Hold the line"
+      },
+      "on_start": [
+        {
+          "action": "spawn_friendly",
+          "group": "line",
+          "units": [
+            {
+              "pos": [
+                -50,
+                0.6
+              ]
+            },
+            {
+              "pos": [
+                -44,
+                1.0
+              ]
+            },
+            {
+              "pos": [
+                -28,
+                -0.3
+              ]
+            },
+            {
+              "pos": [
+                -20,
+                -0.9
+              ]
+            },
+            {
+              "pos": [
+                20,
+                -0.2
+              ]
+            },
+            {
+              "pos": [
+                28,
+                -0.7
+              ]
+            },
+            {
+              "pos": [
+                46,
+                0.6
+              ]
+            },
+            {
+              "pos": [
+                52,
+                1.0
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "Here they come! Hold your fire until they reach the wire!",
+          "seconds": 4.0
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 2.0,
+          "units": [
+            {
+              "pos": [
+                -40,
+                114
+              ],
+              "alert": [
+                -36,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -30,
+                116
+              ],
+              "alert": [
+                -12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -10,
+                113
+              ],
+              "alert": [
+                -12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                2,
+                117
+              ],
+              "profile": "recruit",
+              "alert": [
+                12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                15,
+                114
+              ],
+              "alert": [
+                12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                30,
+                116
+              ],
+              "profile": "recruit",
+              "alert": [
+                36,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 32.0,
+          "units": [
+            {
+              "pos": [
+                -45,
+                115
+              ],
+              "alert": [
+                -36,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -20,
+                117
+              ],
+              "alert": [
+                -12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                0,
+                114
+              ],
+              "alert": [
+                0,
+                8
+              ]
+            },
+            {
+              "pos": [
+                20,
+                117
+              ],
+              "profile": "recruit",
+              "alert": [
+                12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                40,
+                115
+              ],
+              "alert": [
+                36,
+                6
+              ]
+            },
+            {
+              "pos": [
+                50,
+                118
+              ],
+              "profile": "recruit",
+              "alert": [
+                56,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "hammer",
+          "text": "Hammer, fire mission. Rounds on the way - heads down!",
+          "delay": 40.0,
+          "seconds": 3.5
+        },
+        {
+          "action": "barrage",
+          "delay": 41.0,
+          "area": [
+            -55,
+            45,
+            55,
+            95
+          ],
+          "count": 14,
+          "seconds": 22,
+          "radius": 6,
+          "damage": 120
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 62.0,
+          "units": [
+            {
+              "pos": [
+                -35,
+                114
+              ],
+              "profile": "veteran",
+              "alert": [
+                -36,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -12,
+                117
+              ],
+              "alert": [
+                -12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                8,
+                115
+              ],
+              "alert": [
+                12,
+                6
+              ]
+            },
+            {
+              "pos": [
+                25,
+                117
+              ],
+              "profile": "veteran",
+              "alert": [
+                36,
+                6
+              ]
+            },
+            {
+              "pos": [
+                45,
+                114
+              ],
+              "alert": [
+                36,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Keep firing! Don't let them reach the trench!",
+          "delay": 70.0,
+          "seconds": 3.0
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "refill_ammo",
+          "delay": 1.0
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            12,
+            -0.2,
+            0
+          ],
+          "heading": 10,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "id": "mg_nest",
+      "objective": {
+        "type": "eliminate",
+        "group": "mg",
+        "text": "Destroy the machine-gun nest",
+        "pos": [
+          18,
+          55,
+          1
+        ],
+        "marker": true
+      },
+      "on_start": [
+        {
+          "action": "spawn",
+          "group": "mg",
+          "units": [
+            {
+              "pos": [
+                18,
+                54.8
+              ],
+              "heading": 180,
+              "profile": "gunner",
+              "hold": [
+                18,
+                54.8,
+                180
+              ]
+            },
+            {
+              "pos": [
+                15.6,
+                55.4
+              ],
+              "heading": 180,
+              "profile": "veteran",
+              "hold": [
+                15.6,
+                55.4,
+                180
+              ]
+            },
+            {
+              "pos": [
+                20.4,
+                55.4
+              ],
+              "heading": 180,
+              "profile": "regular",
+              "hold": [
+                20.4,
+                55.4,
+                180
+              ]
+            }
+          ]
+        },
+        {
+          "action": "sound",
+          "sound": "radio_beep",
+          "delay": 0.0
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "Machine gun, centre-right, in the crater line! It's cutting us to pieces!",
+          "delay": 0.5,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Halden, Kell - with me. Voss, cover us from the trench.",
+          "delay": 5.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "squad_follow",
+          "member": "marek",
+          "delay": 5.0
+        },
+        {
+          "action": "squad_follow",
+          "member": "kell",
+          "delay": 5.0
+        }
+      ]
+    },
+    {
+      "id": "fall_back",
+      "objective": {
+        "type": "reach",
+        "pos": [
+          -12,
+          -40.5,
+          0
+        ],
+        "radius": 5,
+        "text": "Fall back to the second line"
+      },
+      "on_start": [
+        {
+          "action": "sound",
+          "sound": "radio_static"
+        },
+        {
+          "action": "radio",
+          "speaker": "bastion",
+          "text": "All Kesh units: enemy armour through on the left flank. The forward line is lost.",
+          "seconds": 4.5
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "They're shelling the forward trench! Everyone back to the second line - NOW!",
+          "delay": 5.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "squad_follow",
+          "delay": 5.0
+        },
+        {
+          "action": "barrage",
+          "delay": 9.0,
+          "area": [
+            -58,
+            -3,
+            58,
+            5
+          ],
+          "count": 22,
+          "seconds": 35,
+          "radius": 6,
+          "damage": 90
+        },
+        {
+          "action": "spawn",
+          "group": "breach",
+          "delay": 14.0,
+          "units": [
+            {
+              "pos": [
+                -36,
+                110
+              ],
+              "alert": [
+                -36,
+                0
+              ]
+            },
+            {
+              "pos": [
+                -12,
+                112
+              ],
+              "alert": [
+                -12,
+                0
+              ]
+            },
+            {
+              "pos": [
+                12,
+                110
+              ],
+              "alert": [
+                12,
+                0
+              ]
+            },
+            {
+              "pos": [
+                36,
+                112
+              ],
+              "alert": [
+                36,
+                0
+              ]
+            },
+            {
+              "pos": [
+                0,
+                115
+              ],
+              "profile": "veteran",
+              "alert": [
+                0,
+                0
+              ]
+            },
+            {
+              "pos": [
+                24,
+                115
+              ],
+              "alert": [
+                24,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "squad_hold",
+          "positions": {
+            "marek": [
+              -16,
+              -40.6,
+              0
+            ],
+            "voss": [
+              -6,
+              -40.6,
+              0
+            ],
+            "kell": [
+              -10,
+              -40.6,
+              0
+            ]
+          }
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            -12,
+            -41,
+            0
+          ],
+          "heading": 0
+        }
+      ]
+    },
+    {
+      "id": "hold_second",
+      "objective": {
+        "type": "survive",
+        "seconds": 75,
+        "text": "Hold the second line until the convoy is ready"
+      },
+      "on_start": [
+        {
+          "action": "spawn_friendly",
+          "group": "rear",
+          "units": [
+            {
+              "pos": [
+                -40,
+                -40.6
+              ]
+            },
+            {
+              "pos": [
+                -28,
+                -41.2
+              ]
+            },
+            {
+              "pos": [
+                -22,
+                -40.8
+              ]
+            },
+            {
+              "pos": [
+                2,
+                -40.8
+              ]
+            },
+            {
+              "pos": [
+                10,
+                -41.2
+              ]
+            },
+            {
+              "pos": [
+                22,
+                -40.6
+              ]
+            },
+            {
+              "pos": [
+                44,
+                -41.0
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "convoy",
+          "text": "Convoy Two-Six to Kesh Ridge: loading the last families now. Give us a few more minutes.",
+          "delay": 2.0,
+          "seconds": 4.5
+        },
+        {
+          "action": "spawn",
+          "group": "push",
+          "delay": 10.0,
+          "units": [
+            {
+              "pos": [
+                -36,
+                60
+              ],
+              "alert": [
+                -12,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                -12,
+                70
+              ],
+              "alert": [
+                -12,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                12,
+                64
+              ],
+              "alert": [
+                12,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                36,
+                66
+              ],
+              "alert": [
+                36,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                0,
+                80
+              ],
+              "profile": "veteran",
+              "alert": [
+                0,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                24,
+                82
+              ],
+              "profile": "veteran",
+              "alert": [
+                24,
+                -36
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "They're in the communication trenches! Watch the junctions!",
+          "delay": 35.0,
+          "seconds": 3.5
+        },
+        {
+          "action": "spawn",
+          "group": "push",
+          "delay": 40.0,
+          "units": [
+            {
+              "pos": [
+                -30,
+                30
+              ],
+              "alert": [
+                -12,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                -12,
+                20
+              ],
+              "alert": [
+                -12,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                36,
+                25
+              ],
+              "alert": [
+                36,
+                -36
+              ]
+            },
+            {
+              "pos": [
+                20,
+                35
+              ],
+              "alert": [
+                12,
+                -36
+              ]
+            }
+          ]
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "radio",
+          "speaker": "convoy",
+          "text": "Convoy Two-Six: we're full. Last truck is waiting for you - move!",
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "That's our signal. Go, Halden! We'll cover you!",
+          "delay": 4.5,
+          "seconds": 3.5
+        },
+        {
+          "action": "squad_follow"
+        }
+      ]
+    },
+    {
+      "id": "to_truck",
+      "objective": {
+        "type": "reach",
+        "pos": [
+          24,
+          -76.5,
+          0
+        ],
+        "radius": 4,
+        "text": "Get to the last truck"
+      },
+      "on_complete": [
+        {
+          "action": "complete_mission"
+        }
+      ]
+    }
+  ]
+}

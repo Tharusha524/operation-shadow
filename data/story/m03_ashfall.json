@@ -1,0 +1,368 @@
+{
+ "shots": [
+  {
+   "type": "title",
+   "title": "MISSION 3:  ASHFALL",
+   "subtitle": "Pvt. Tomas Halden  -  Veyra",
+   "duration": 4.0,
+   "lines": []
+  },
+  {
+   "type": "scene",
+   "from": [
+    -33,
+    -34,
+    2.0
+   ],
+   "to": [
+    -33,
+    -24,
+    2.0
+   ],
+   "look_from": [
+    -29.5,
+    -18,
+    1.5
+   ],
+   "look_to": [
+    -29.5,
+    -8,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "kell",
+     "text": "Remember when you said you wanted to see the country?"
+    },
+    {
+     "speaker": "halden",
+     "text": "Not like this."
+    },
+    {
+     "speaker": "marek",
+     "text": "Stay focused. We're not clear yet."
+    }
+   ],
+   "duration": 8,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -30,
+      -30
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "path": [
+      [
+       -30,
+       -30
+      ],
+      [
+       -30,
+       -16
+      ]
+     ],
+     "speed": 1.3
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -28.8,
+      -31
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "path": [
+      [
+       -28.8,
+       -31
+      ],
+      [
+       -28.8,
+       -17
+      ]
+     ],
+     "speed": 1.3
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -29.5,
+      -25
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "path": [
+      [
+       -29.5,
+       -25
+      ],
+      [
+       -29.5,
+       -11
+      ]
+     ],
+     "speed": 1.3
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -27,
+      -12
+     ],
+     "heading": 0,
+     "anim": "aim"
+    }
+   ],
+   "events": [
+    {
+     "t": 0.1,
+     "fire": [
+      -26,
+      -16,
+      0.3,
+      1.2
+     ]
+    },
+    {
+     "t": 0.1,
+     "smoke": [
+      -34,
+      -10,
+      0.5
+     ]
+    }
+   ],
+   "caption": [
+    "VEYRA",
+    "DAY 3 - 15:10"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -28.2,
+    -12.6,
+    1.0
+   ],
+   "to": [
+    -28.3,
+    -12.8,
+    0.95
+   ],
+   "look_from": [
+    -29.6,
+    -13.8,
+    0.6
+   ],
+   "look_to": [
+    -29.6,
+    -13.8,
+    0.5
+   ],
+   "lines": [
+    {
+     "speaker": "halden",
+     "text": "Jonah! Jonah, look at me!"
+    },
+    {
+     "speaker": "kell",
+     "text": "That wasn't part of the plan."
+    },
+    {
+     "speaker": "marek",
+     "text": "Get him behind cover!"
+    },
+    {
+     "speaker": "halden",
+     "text": "He's bleeding badly!"
+    },
+    {
+     "speaker": "marek",
+     "text": "Then move faster!"
+    }
+   ],
+   "duration": 9,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -30,
+      -14
+     ],
+     "heading": 0,
+     "anim": "death",
+     "frame": -1
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -29.2,
+      -13.5
+     ],
+     "heading": 100,
+     "anim": "kneel"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -31.5,
+      -12
+     ],
+     "heading": -30,
+     "anim": "point"
+    },
+    {
+     "model": "enemy",
+     "pos": [
+      -20,
+      -2
+     ],
+     "heading": 140,
+     "anim": "aim"
+    }
+   ],
+   "events": [
+    {
+     "t": 0.3,
+     "sound": "shot_enemy"
+    },
+    {
+     "t": 0.6,
+     "sound": "shot_enemy"
+    }
+   ],
+   "caption": [
+    "RESIDENTIAL STREET",
+    "15:25"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -32.6,
+    -20.9,
+    1.1
+   ],
+   "to": [
+    -32.6,
+    -21.1,
+    1.05
+   ],
+   "look_from": [
+    -32.6,
+    -22,
+    0.8
+   ],
+   "look_to": [
+    -32.6,
+    -22,
+    0.8
+   ],
+   "lines": [
+    {
+     "speaker": "halden",
+     "text": "I'm not leaving you."
+    },
+    {
+     "speaker": "kell",
+     "text": "Good. I was getting tired of walking."
+    },
+    {
+     "speaker": "marek",
+     "text": "The field hospital is two streets away. Get him there."
+    }
+   ],
+   "duration": 7,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -32,
+      -22
+     ],
+     "heading": 90,
+     "anim": "kneel"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -33.2,
+      -22
+     ],
+     "heading": -90,
+     "anim": "kneel"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -31,
+      -20.5
+     ],
+     "heading": 150,
+     "anim": "argue"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -30,
+      -24
+     ],
+     "heading": 180,
+     "anim": "aim"
+    }
+   ],
+   "caption": [
+    "ALLEYWAY",
+    "15:35"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "kell",
+   "text": "Remember when you said you wanted to see the country?"
+  },
+  {
+   "speaker": "halden",
+   "text": "Not like this."
+  },
+  {
+   "speaker": "marek",
+   "text": "Stay focused. We're not clear yet."
+  },
+  {
+   "speaker": "halden",
+   "text": "Jonah! Jonah, look at me!"
+  },
+  {
+   "speaker": "kell",
+   "text": "That wasn't part of the plan."
+  },
+  {
+   "speaker": "marek",
+   "text": "Get him behind cover!"
+  },
+  {
+   "speaker": "halden",
+   "text": "He's bleeding badly!"
+  },
+  {
+   "speaker": "marek",
+   "text": "Then move faster!"
+  },
+  {
+   "speaker": "halden",
+   "text": "I'm not leaving you."
+  },
+  {
+   "speaker": "kell",
+   "text": "Good. I was getting tired of walking."
+  },
+  {
+   "speaker": "marek",
+   "text": "The field hospital is two streets away. Get him there."
+  }
+ ]
+}

@@ -1,0 +1,1083 @@
+{
+  "id": "kesh_ridge",
+  "name": "Kesh Ridge Trench Line",
+  "seed": 2042,
+  "player_spawn": {
+    "pos": [
+      -30,
+      -31,
+      0
+    ],
+    "heading": 0
+  },
+  "atmosphere": {
+    "sun_heading": 210,
+    "sun_pitch": -18,
+    "sun_color": [
+      1.05,
+      0.86,
+      0.66
+    ],
+    "ambient_color": [
+      0.38,
+      0.38,
+      0.42
+    ],
+    "fill_color": [
+      0.12,
+      0.12,
+      0.16
+    ],
+    "sky_zenith": [
+      0.36,
+      0.38,
+      0.43
+    ],
+    "sky_horizon": [
+      0.72,
+      0.6,
+      0.5
+    ],
+    "fog_color": [
+      0.58,
+      0.53,
+      0.48
+    ],
+    "fog_density": 0.0085,
+    "grading": {
+      "exposure": 1.25,
+      "saturation": 0.85,
+      "contrast": 1.1,
+      "tint": [
+        1.0,
+        0.98,
+        0.94
+      ],
+      "shadow_tint": [
+        0.92,
+        0.95,
+        1.02
+      ],
+      "lift": 0.03,
+      "vignette": 0.5,
+      "grain": 0.03
+    },
+    "clouds": 0.75
+  },
+  "terrain": {
+    "size": 900,
+    "divisions": 90,
+    "play_area": 110,
+    "nav_bounds": [
+      -72,
+      -97,
+      72,
+      130
+    ],
+    "worn_color": [
+      0.8,
+      0.7,
+      0.57
+    ],
+    "grass_color": [
+      0.7,
+      0.7,
+      0.52
+    ],
+    "dark_color": [
+      0.52,
+      0.45,
+      0.37
+    ]
+  },
+  "points": {
+    "trench_post": {
+      "pos": [
+        0,
+        0.3,
+        0
+      ],
+      "heading": 0
+    },
+    "view_nomansland": {
+      "pos": [
+        0,
+        0.75,
+        0.4
+      ],
+      "heading": 0,
+      "pitch": 1
+    },
+    "view_trench": {
+      "pos": [
+        -3,
+        0.4,
+        0
+      ],
+      "heading": 92,
+      "pitch": 0
+    },
+    "view_comm": {
+      "pos": [
+        -12,
+        -30,
+        0
+      ],
+      "heading": 0,
+      "pitch": 0
+    },
+    "view_convoy": {
+      "pos": [
+        2,
+        -72,
+        0
+      ],
+      "heading": -70,
+      "pitch": 0
+    },
+    "view_enemy_side": {
+      "pos": [
+        10,
+        85,
+        0
+      ],
+      "heading": 180,
+      "pitch": -2
+    }
+  },
+  "props": [
+    {
+      "type": "trench",
+      "pos": [
+        -48,
+        0.8
+      ],
+      "heading": 4,
+      "params": {
+        "length": 20
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        -24,
+        -0.6
+      ],
+      "heading": -5,
+      "params": {
+        "length": 20
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        0,
+        0.5
+      ],
+      "heading": 3,
+      "params": {
+        "length": 20
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        24,
+        -0.4
+      ],
+      "heading": -4,
+      "params": {
+        "length": 20
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        48,
+        0.7
+      ],
+      "heading": 5,
+      "params": {
+        "length": 20
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        -12,
+        -20.5
+      ],
+      "heading": 90,
+      "params": {
+        "length": 37,
+        "front_height": 1.3,
+        "rear_height": 1.3,
+        "sandbags": false
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        36,
+        -20.5
+      ],
+      "heading": 90,
+      "params": {
+        "length": 37,
+        "front_height": 1.3,
+        "rear_height": 1.3,
+        "sandbags": false
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        -36,
+        -41
+      ],
+      "heading": 0,
+      "params": {
+        "length": 40
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        12,
+        -41
+      ],
+      "heading": 0,
+      "params": {
+        "length": 40
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        48,
+        -41
+      ],
+      "heading": 0,
+      "params": {
+        "length": 20
+      }
+    },
+    {
+      "type": "hesco",
+      "pos": [
+        -63,
+        0
+      ],
+      "heading": 0,
+      "params": {
+        "count": 5
+      }
+    },
+    {
+      "type": "hesco",
+      "pos": [
+        63,
+        0
+      ],
+      "heading": 0,
+      "params": {
+        "count": 5
+      }
+    },
+    {
+      "type": "hesco",
+      "pos": [
+        -62,
+        -41
+      ],
+      "heading": 0,
+      "params": {
+        "count": 4
+      }
+    },
+    {
+      "type": "hesco",
+      "pos": [
+        62,
+        -41
+      ],
+      "heading": 0,
+      "params": {
+        "count": 4
+      }
+    },
+    {
+      "type": "bunker",
+      "pos": [
+        -30,
+        -24
+      ],
+      "heading": 0
+    },
+    {
+      "type": "mortar_pit",
+      "pos": [
+        14,
+        -22
+      ],
+      "heading": 0
+    },
+    {
+      "type": "mortar_pit",
+      "pos": [
+        24,
+        -26
+      ],
+      "heading": 10
+    },
+    {
+      "type": "tent",
+      "pos": [
+        -48,
+        -58
+      ],
+      "heading": 0
+    },
+    {
+      "type": "tent",
+      "pos": [
+        -38,
+        -58
+      ],
+      "heading": 0,
+      "params": {
+        "color": "tan"
+      }
+    },
+    {
+      "type": "crate_stack",
+      "pos": [
+        -26,
+        -55
+      ],
+      "heading": 0,
+      "params": {
+        "count": 5
+      }
+    },
+    {
+      "type": "barrel_group",
+      "pos": [
+        -20,
+        -57
+      ],
+      "params": {
+        "count": 4,
+        "color": "mixed"
+      }
+    },
+    {
+      "type": "crate_stack",
+      "pos": [
+        -2,
+        -18
+      ],
+      "heading": 90,
+      "params": {
+        "count": 3
+      }
+    },
+    {
+      "type": "sandbag_wall",
+      "pos": [
+        -22,
+        -12
+      ],
+      "heading": 0,
+      "params": {
+        "length": 4
+      }
+    },
+    {
+      "type": "generator",
+      "pos": [
+        -36,
+        -24
+      ],
+      "heading": 90
+    },
+    {
+      "type": "road",
+      "pos": [
+        0,
+        -80
+      ],
+      "heading": 0,
+      "params": {
+        "length": 140,
+        "width": 7
+      }
+    },
+    {
+      "type": "truck",
+      "pos": [
+        -30,
+        -80
+      ],
+      "heading": -90
+    },
+    {
+      "type": "truck",
+      "pos": [
+        -12,
+        -80
+      ],
+      "heading": -90,
+      "params": {
+        "color": "tan"
+      }
+    },
+    {
+      "type": "truck",
+      "pos": [
+        6,
+        -80
+      ],
+      "heading": -90
+    },
+    {
+      "type": "truck",
+      "pos": [
+        24,
+        -80
+      ],
+      "heading": -90,
+      "params": {
+        "color": "olive"
+      }
+    },
+    {
+      "type": "jeep",
+      "pos": [
+        42,
+        -77
+      ],
+      "heading": -80
+    },
+    {
+      "type": "tree_dead",
+      "pos": [
+        -55,
+        -70
+      ],
+      "params": {
+        "height": 8
+      }
+    },
+    {
+      "type": "tree_dead",
+      "pos": [
+        55,
+        -65
+      ],
+      "params": {
+        "height": 7
+      }
+    },
+    {
+      "type": "tree_broadleaf",
+      "pos": [
+        -60,
+        -88
+      ],
+      "params": {
+        "height": 9
+      }
+    },
+    {
+      "type": "tree_broadleaf",
+      "pos": [
+        58,
+        -88
+      ],
+      "params": {
+        "height": 10
+      }
+    },
+    {
+      "type": "ruined_building",
+      "pos": [
+        -30,
+        -112
+      ],
+      "heading": 0
+    },
+    {
+      "type": "ruined_building",
+      "pos": [
+        10,
+        -118
+      ],
+      "heading": 8
+    },
+    {
+      "type": "ruined_building",
+      "pos": [
+        45,
+        -110
+      ],
+      "heading": -6
+    },
+    {
+      "type": "crater",
+      "pos": [
+        -40,
+        25
+      ],
+      "params": {
+        "radius": 3.2
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        -18,
+        38
+      ],
+      "params": {
+        "radius": 3.5
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        5,
+        22
+      ],
+      "params": {
+        "radius": 2.8
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        28,
+        30
+      ],
+      "params": {
+        "radius": 3.2
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        45,
+        46
+      ],
+      "params": {
+        "radius": 3.6
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        -30,
+        58
+      ],
+      "params": {
+        "radius": 3.0
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        0,
+        65
+      ],
+      "params": {
+        "radius": 3.4
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        22,
+        76
+      ],
+      "params": {
+        "radius": 3.0
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        -50,
+        80
+      ],
+      "params": {
+        "radius": 3.2
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        35,
+        90
+      ],
+      "params": {
+        "radius": 3.0
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        -8,
+        92
+      ],
+      "params": {
+        "radius": 3.2
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        54,
+        18
+      ],
+      "params": {
+        "radius": 2.6
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        -55,
+        42
+      ],
+      "params": {
+        "radius": 2.8
+      }
+    },
+    {
+      "type": "crater",
+      "pos": [
+        8,
+        44
+      ],
+      "params": {
+        "radius": 2.6
+      }
+    },
+    {
+      "type": "mg_nest",
+      "pos": [
+        18,
+        55
+      ],
+      "heading": 0
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        -35,
+        15
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        -25,
+        18
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        15,
+        16
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        40,
+        20
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        -10,
+        50
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        32,
+        54
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        -45,
+        65
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        48,
+        72
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        6,
+        82
+      ]
+    },
+    {
+      "type": "hedgehog",
+      "pos": [
+        -25,
+        88
+      ]
+    },
+    {
+      "type": "wire_line",
+      "pos": [
+        -40,
+        10
+      ],
+      "heading": 0,
+      "params": {
+        "length": 14
+      }
+    },
+    {
+      "type": "wire_line",
+      "pos": [
+        -4,
+        9.5
+      ],
+      "heading": 5,
+      "params": {
+        "length": 12
+      }
+    },
+    {
+      "type": "wire_line",
+      "pos": [
+        28,
+        10
+      ],
+      "heading": -4,
+      "params": {
+        "length": 14
+      }
+    },
+    {
+      "type": "wire_line",
+      "pos": [
+        52,
+        10
+      ],
+      "heading": 0,
+      "params": {
+        "length": 8
+      }
+    },
+    {
+      "type": "wire_line",
+      "pos": [
+        -20,
+        70
+      ],
+      "heading": 10,
+      "params": {
+        "length": 10
+      }
+    },
+    {
+      "type": "wire_line",
+      "pos": [
+        26,
+        96
+      ],
+      "heading": -6,
+      "params": {
+        "length": 12
+      }
+    },
+    {
+      "type": "tank",
+      "pos": [
+        -22,
+        48
+      ],
+      "heading": 30
+    },
+    {
+      "type": "tank",
+      "pos": [
+        42,
+        64
+      ],
+      "heading": 200
+    },
+    {
+      "type": "trench",
+      "pos": [
+        -42,
+        106
+      ],
+      "heading": 180,
+      "params": {
+        "length": 22
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        -12,
+        106
+      ],
+      "heading": 180,
+      "params": {
+        "length": 22
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        18,
+        106
+      ],
+      "heading": 180,
+      "params": {
+        "length": 22
+      }
+    },
+    {
+      "type": "trench",
+      "pos": [
+        48,
+        106
+      ],
+      "heading": 180,
+      "params": {
+        "length": 22
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        0,
+        128
+      ],
+      "heading": 0,
+      "params": {
+        "length": 160
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        0,
+        -95
+      ],
+      "heading": 0,
+      "params": {
+        "length": 160
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        -70,
+        16
+      ],
+      "heading": 90,
+      "params": {
+        "length": 230
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        70,
+        16
+      ],
+      "heading": 90,
+      "params": {
+        "length": 230
+      }
+    }
+  ],
+  "scatter": [
+    {
+      "type": "tree_dead",
+      "count": 16,
+      "area": [
+        -64,
+        14,
+        64,
+        100
+      ],
+      "exclude": [
+        [
+          10,
+          48,
+          26,
+          62
+        ],
+        [
+          -28,
+          42,
+          -16,
+          54
+        ],
+        [
+          36,
+          58,
+          48,
+          70
+        ]
+      ],
+      "min_spacing": 7,
+      "params": {
+        "height": [
+          5,
+          9
+        ]
+      }
+    },
+    {
+      "type": "rock",
+      "count": 22,
+      "area": [
+        -64,
+        12,
+        64,
+        100
+      ],
+      "exclude": [
+        [
+          10,
+          48,
+          26,
+          62
+        ]
+      ],
+      "min_spacing": 4,
+      "params": {
+        "size": [
+          0.4,
+          1.0
+        ]
+      }
+    },
+    {
+      "type": "tree_pine",
+      "count": 150,
+      "area": [
+        -170,
+        -150,
+        170,
+        200
+      ],
+      "exclude": [
+        [
+          -76,
+          -100,
+          76,
+          134
+        ]
+      ],
+      "min_spacing": 5,
+      "params": {
+        "height": [
+          9,
+          15
+        ]
+      }
+    },
+    {
+      "type": "tree_dead",
+      "count": 30,
+      "area": [
+        -170,
+        -150,
+        170,
+        200
+      ],
+      "exclude": [
+        [
+          -76,
+          -100,
+          76,
+          134
+        ]
+      ],
+      "min_spacing": 6,
+      "params": {
+        "height": [
+          6,
+          10
+        ]
+      }
+    },
+    {
+      "type": "rock",
+      "count": 40,
+      "area": [
+        -160,
+        -150,
+        160,
+        200
+      ],
+      "exclude": [
+        [
+          -76,
+          -100,
+          76,
+          134
+        ]
+      ],
+      "min_spacing": 3,
+      "params": {
+        "size": [
+          0.8,
+          2.4
+        ]
+      }
+    },
+    {
+      "type": "hill",
+      "count": 26,
+      "area": [
+        -360,
+        -360,
+        360,
+        380
+      ],
+      "exclude": [
+        [
+          -180,
+          -170,
+          180,
+          220
+        ]
+      ],
+      "min_spacing": 50,
+      "params": {
+        "radius": [
+          45,
+          95
+        ],
+        "height": [
+          20,
+          45
+        ]
+      }
+    }
+  ]
+}

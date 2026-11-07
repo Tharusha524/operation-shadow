@@ -1,0 +1,2036 @@
+{
+ "id": "m04_no_way_back",
+ "map": "tamsin_river",
+ "date": "Day 5 - 02:10",
+ "briefing": [
+  "Kareth forces are falling back across the Tamsin River. One road bridge is still standing - and a Varn armoured column will reach it before dawn.",
+  "Sgt. Marek's squad and the combat engineer Pvt. Rafe Doran will go up-river by boat under cover of darkness, slip into the guard post at the north end and wire the bridge to blow.",
+  "Wait for the tanks to roll onto the bridge, drop it into the river, then fight your way to the landing zone for extraction."
+ ],
+ "story_objective": "Destroy the Tamsin bridge with the Varn armour on it.",
+ "gameplay_objective": "Boat insertion, drone recon, stealth (V = silent takedown, N = night vision), plant charges, shoot down drones and a gunship, hold for the tanks, detonate, extract. Optional: find 3 intel documents and stay undetected.",
+ "par_time": 1260,
+ "night": {
+  "visibility": 0.5,
+  "lit": [
+   [
+    195,
+    11,
+    8
+   ],
+   [
+    217,
+    11,
+    8
+   ],
+   [
+    -120,
+    1,
+    9
+   ],
+   [
+    -11,
+    2,
+    9
+   ]
+  ]
+ },
+ "player": {
+  "spawn": {
+   "pos": [
+    110,
+    29,
+    0.0
+   ],
+   "heading": -80
+  },
+  "loadout": [
+   "kr7",
+   "p12"
+  ],
+  "grenades": 3,
+  "nvg": true
+ },
+ "squad": [
+  {
+   "id": "marek",
+   "pos": [
+    -380,
+    40
+   ],
+   "heading": 90
+  },
+  {
+   "id": "voss",
+   "pos": [
+    -378,
+    42
+   ],
+   "heading": 90
+  },
+  {
+   "id": "doran",
+   "pos": [
+    -376,
+    40
+   ],
+   "heading": 90
+  }
+ ],
+ "intel": [
+  {
+   "id": "m04_patrol_schedule",
+   "name": "Varn patrol schedule",
+   "pos": [
+    104,
+    34,
+    0.62
+   ]
+  },
+  {
+   "id": "m04_bridge_survey",
+   "name": "Bridge demolition survey",
+   "pos": [
+    226,
+    52.5,
+    0.62
+   ]
+  },
+  {
+   "id": "m04_flight_log",
+   "name": "Gunship flight log",
+   "pos": [
+    236,
+    99,
+    0.62
+   ]
+  }
+ ],
+ "alarm": {
+  "groups": [
+   "compound",
+   "bridge_guard"
+  ],
+  "actions": [
+   {
+    "action": "loop_start",
+    "sound": "alarm_loop",
+    "volume": 0.35
+   },
+   {
+    "action": "radio",
+    "speaker": "marek",
+    "text": "They've spotted you! So much for quiet - fight!",
+    "delay": 0.5,
+    "seconds": 2.764705882352941
+   },
+   {
+    "action": "flare",
+    "pos": [
+     205,
+     70,
+     45
+    ],
+    "seconds": 30.0,
+    "delay": 2.0
+   },
+   {
+    "action": "spawn",
+    "group": "alarm_wave",
+    "units": [
+     {
+      "pos": [
+       200,
+       150
+      ],
+      "heading": 180,
+      "alert": [
+       200,
+       70
+      ]
+     },
+     {
+      "pos": [
+       206,
+       152
+      ],
+      "heading": 180,
+      "alert": [
+       210,
+       70
+      ]
+     },
+     {
+      "pos": [
+       194,
+       156
+      ],
+      "heading": 180,
+      "alert": [
+       190,
+       70
+      ],
+      "profile": "recruit"
+     }
+    ],
+    "delay": 8.0
+   },
+   {
+    "action": "squad_hold",
+    "positions": {
+     "marek": [
+      150,
+      46,
+      -90
+     ],
+     "voss": [
+      140,
+      44,
+      -80
+     ],
+     "doran": [
+      146,
+      40,
+      -90
+     ]
+    }
+   }
+  ]
+ },
+ "intro": {
+  "shots": [
+   {
+    "from": [
+     -300,
+     -60,
+     26
+    ],
+    "to": [
+     -200,
+     -40,
+     18
+    ],
+    "look_from": [
+     -150,
+     0,
+     0
+    ],
+    "look_to": [
+     -60,
+     0,
+     0
+    ],
+    "duration": 7.0
+   },
+   {
+    "from": [
+     150,
+     -60,
+     14
+    ],
+    "to": [
+     160,
+     -40,
+     10
+    ],
+    "look_from": [
+     200,
+     0,
+     0
+    ],
+    "look_to": [
+     200,
+     10,
+     0
+    ],
+    "duration": 7.0
+   }
+  ],
+  "lines": [
+   {
+    "t": 0.4,
+    "speaker": "narrator",
+    "text": "Day Five. The Tamsin River.",
+    "seconds": 2.6
+   },
+   {
+    "t": 3.2,
+    "speaker": "narrator",
+    "text": "Everything we had left was falling back across it.",
+    "seconds": 3.4
+   },
+   {
+    "t": 7.2,
+    "speaker": "marek",
+    "text": "One bridge still standing. By sunrise there'll be Varn tanks on it.",
+    "seconds": 3.6
+   },
+   {
+    "t": 11.0,
+    "speaker": "doran",
+    "text": "Not if I get there first.",
+    "seconds": 2.4
+   }
+  ]
+ },
+ "outro": {
+  "shots": [
+   {
+    "from": [
+     230,
+     150,
+     40
+    ],
+    "to": [
+     200,
+     120,
+     60
+    ],
+    "look_from": [
+     200,
+     0,
+     -2
+    ],
+    "look_to": [
+     200,
+     0,
+     -2
+    ],
+    "duration": 12.0
+   }
+  ],
+  "lines": [
+   {
+    "t": 0.4,
+    "speaker": "narrator",
+    "text": "We dropped the Tamsin bridge with three tanks on it.",
+    "seconds": 3.4
+   },
+   {
+    "t": 4.0,
+    "speaker": "narrator",
+    "text": "It bought the army a week.",
+    "seconds": 2.4
+   },
+   {
+    "t": 6.6,
+    "speaker": "marek",
+    "text": "Good work, all of you. Get some sleep.",
+    "seconds": 2.8
+   },
+   {
+    "t": 9.6,
+    "speaker": "narrator",
+    "text": "None of us did.",
+    "seconds": 2.2
+   }
+  ]
+ },
+ "steps": [
+  {
+   "id": "insertion",
+   "objective": {
+    "type": "ride",
+    "text": "Ride the river to the drop point - shoot from the boat"
+   },
+   "on_start": [
+    {
+     "action": "spawn_vehicle",
+     "kind": "player_boat",
+     "id": "insertion",
+     "path": [
+      [
+       -380,
+       -4,
+       -1.3
+      ],
+      [
+       -330,
+       3,
+       -1.3
+      ],
+      [
+       -270,
+       -5,
+       -1.3
+      ],
+      [
+       -210,
+       6,
+       -1.3
+      ],
+      [
+       -150,
+       -4,
+       -1.3
+      ],
+      [
+       -90,
+       5,
+       -1.3
+      ],
+      [
+       -30,
+       -5,
+       -1.3
+      ],
+      [
+       30,
+       4,
+       -1.3
+      ],
+      [
+       80,
+       9,
+       -1.3
+      ],
+      [
+       100,
+       12,
+       -1.3
+      ],
+      [
+       108,
+       13,
+       -1.3
+      ]
+     ],
+     "speed": 6.0
+    },
+    {
+     "action": "start_ride",
+     "vehicle": "insertion",
+     "seat": [
+      0.6,
+      -0.6,
+      -0.1
+     ],
+     "squad": {
+      "marek": [
+       -0.55,
+       -0.7,
+       -0.1
+      ],
+      "voss": [
+       0.0,
+       1.8,
+       -0.1
+      ],
+      "doran": [
+       0.0,
+       -2.5,
+       -0.1
+      ]
+     }
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "patrol_boat",
+     "id": "pb1",
+     "health": 260,
+     "speed": 7.0,
+     "loop": true,
+     "path": [
+      [
+       -170,
+       -12,
+       -1.3
+      ],
+      [
+       -210,
+       -14,
+       -1.3
+      ],
+      [
+       -250,
+       -8,
+       -1.3
+      ],
+      [
+       -250,
+       8,
+       -1.3
+      ],
+      [
+       -210,
+       12,
+       -1.3
+      ],
+      [
+       -170,
+       8,
+       -1.3
+      ]
+     ]
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "patrol_boat",
+     "id": "pb2",
+     "health": 260,
+     "speed": 7.0,
+     "loop": true,
+     "path": [
+      [
+       30,
+       -10,
+       -1.3
+      ],
+      [
+       -10,
+       -13,
+       -1.3
+      ],
+      [
+       -50,
+       -8,
+       -1.3
+      ],
+      [
+       -50,
+       8,
+       -1.3
+      ],
+      [
+       -10,
+       12,
+       -1.3
+      ],
+      [
+       30,
+       8,
+       -1.3
+      ]
+     ]
+    },
+    {
+     "action": "spawn",
+     "group": "bank",
+     "units": [
+      {
+       "pos": [
+        -222,
+        31
+       ],
+       "heading": 180,
+       "hold": [
+        -222,
+        31,
+        180
+       ]
+      },
+      {
+       "pos": [
+        -217,
+        31
+       ],
+       "heading": 180,
+       "hold": [
+        -217,
+        31,
+        180
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        -112,
+        -30
+       ],
+       "heading": 0,
+       "hold": [
+        -112,
+        -30,
+        0
+       ]
+      },
+      {
+       "pos": [
+        -106,
+        -31
+       ],
+       "heading": 0,
+       "hold": [
+        -106,
+        -31,
+        0
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        -27,
+        31
+       ],
+       "heading": 180,
+       "hold": [
+        -27,
+        31,
+        180
+       ]
+      },
+      {
+       "pos": [
+        -22,
+        32
+       ],
+       "heading": 180,
+       "hold": [
+        -22,
+        32,
+        180
+       ],
+       "profile": "recruit"
+      }
+     ]
+    },
+    {
+     "action": "loop_start",
+     "sound": "wind_loop",
+     "volume": 0.25
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Engines low. Nobody fires unless they find us first.",
+     "delay": 1.0,
+     "seconds": 3.0588235294117645
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Bridge is eight hundred metres up-river. I've got enough charge to drop it three times over.",
+     "delay": 6.0,
+     "seconds": 5.411764705882353
+    },
+    {
+     "action": "notice",
+     "text": "PRESS [N] FOR NIGHT VISION",
+     "delay": 10.0
+    },
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "Patrol boat, dead ahead. They've seen us - light it up!",
+     "delay": 22.0,
+     "seconds": 3.235294117647059
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "MG on the north bank! Keep your heads down!",
+     "delay": 30.0,
+     "seconds": 2.5294117647058822
+    },
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "Searchlight on the south side. Stay out of the beam.",
+     "delay": 50.0,
+     "seconds": 3.0588235294117645
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Second boat by the old quay - hit the gunner!",
+     "delay": 64.0,
+     "seconds": 2.6470588235294117
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "end_ride",
+     "pos": [
+      110,
+      29,
+      0.0
+     ],
+     "heading": -80,
+     "squad": {
+      "marek": [
+       107,
+       30
+      ],
+      "voss": [
+       113,
+       31
+      ],
+      "doran": [
+       110,
+       33
+      ]
+     }
+    },
+    {
+     "action": "squad_hold",
+     "positions": {
+      "marek": [
+       108,
+       34,
+       -90
+      ],
+      "voss": [
+       113,
+       36,
+       -80
+      ],
+      "doran": [
+       104,
+       31,
+       -90
+      ]
+     }
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      110,
+      29,
+      0.0
+     ],
+     "heading": -80
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Everybody out. Quiet now.",
+     "delay": 0.5,
+     "seconds": 2.5
+    }
+   ]
+  },
+  {
+   "id": "launch_drone",
+   "objective": {
+    "type": "interact",
+    "text": "Launch the recon drone",
+    "pos": [
+     116,
+     36,
+     0.9
+    ],
+    "radius": 2.6,
+    "hold": 1.0,
+    "prompt": "Hold E to launch the drone"
+   },
+   "on_start": [
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Drone case is on the crates. Put it up and mark every guard you can see.",
+     "delay": 1.0,
+     "seconds": 4.235294117647059
+    }
+   ],
+   "on_complete": []
+  },
+  {
+   "id": "recon",
+   "objective": {
+    "type": "tag",
+    "count": 5,
+    "text": "Tag enemies with the drone"
+   },
+   "on_start": [
+    {
+     "action": "spawn",
+     "group": "compound",
+     "units": [
+      {
+       "pos": [
+        150,
+        60
+       ],
+       "heading": 0,
+       "patrol": [
+        [
+         150,
+         60
+        ],
+        [
+         150,
+         90
+        ],
+        [
+         175,
+         95
+        ],
+        [
+         175,
+         62
+        ]
+       ]
+      },
+      {
+       "pos": [
+        210,
+        58
+       ],
+       "heading": 90,
+       "patrol": [
+        [
+         210,
+         58
+        ],
+        [
+         240,
+         50
+        ],
+        [
+         252,
+         82
+        ],
+        [
+         215,
+         86
+        ]
+       ]
+      },
+      {
+       "pos": [
+        228,
+        104
+       ],
+       "heading": 180,
+       "profile": "regular"
+      },
+      {
+       "pos": [
+        234,
+        90
+       ],
+       "heading": 270,
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        160,
+        100
+       ],
+       "heading": 270,
+       "patrol": [
+        [
+         160,
+         100
+        ],
+        [
+         200,
+         106
+        ],
+        [
+         232,
+         118
+        ]
+       ]
+      },
+      {
+       "pos": [
+        178,
+        63
+       ],
+       "heading": 270,
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        244,
+        73
+       ],
+       "heading": 270,
+       "profile": "regular"
+      }
+     ]
+    },
+    {
+     "action": "spawn",
+     "group": "bridge_guard",
+     "units": [
+      {
+       "pos": [
+        191,
+        40
+       ],
+       "heading": 180,
+       "profile": "regular"
+      },
+      {
+       "pos": [
+        209,
+        40
+       ],
+       "heading": 180,
+       "profile": "regular"
+      },
+      {
+       "pos": [
+        200,
+        28
+       ],
+       "heading": 180,
+       "patrol": [
+        [
+         200,
+         28
+        ],
+        [
+         200,
+         -26
+        ]
+       ],
+       "profile": "recruit"
+      }
+     ]
+    },
+    {
+     "action": "drone_start",
+     "pos": [
+      116,
+      36,
+      26
+     ],
+     "heading": -70,
+     "max_range": 170
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Drone's up. Thermal camera on. Fly it over the compound east of here.",
+     "delay": 0.5,
+     "seconds": 4.0588235294117645
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Guards on the bridge, more around the barracks. Tag them all.",
+     "delay": 9.0,
+     "seconds": 3.588235294117647
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "drone_end",
+     "delay": 1.0
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Good tags. They're on your display now.",
+     "delay": 1.2,
+     "seconds": 2.5
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      116,
+      33,
+      0.0
+     ],
+     "heading": -80,
+     "delay": 1.5
+    }
+   ]
+  },
+  {
+   "id": "aa_gun",
+   "objective": {
+    "type": "interact",
+    "text": "Sneak in and plant a charge on the AA gun",
+    "pos": [
+     228,
+     96,
+     1.6
+    ],
+    "radius": 4.2,
+    "hold": 2.5,
+    "prompt": "Hold E to plant the charge",
+    "charge": true
+   },
+   "on_start": [
+    {
+     "action": "alarm_arm"
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "That AA gun keeps our ride away. Halden - go in alone, quietly. Use your knife. [V]",
+     "delay": 1.0,
+     "seconds": 5.0
+    },
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "I'll watch you from the trees. Stay in the dark and stay crouched.",
+     "delay": 7.0,
+     "seconds": 3.8823529411764706
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "sound",
+     "sound": "c4_plant"
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Charge on the AA gun. I'll blow it when the helicopter comes in.",
+     "delay": 0.5,
+     "seconds": 3.764705882352941
+    }
+   ]
+  },
+  {
+   "id": "bridge_charges",
+   "objective": {
+    "type": "interact_multi",
+    "text": "Plant charges on the bridge",
+    "points": [
+     [
+      197.5,
+      16,
+      0.75
+     ],
+     [
+      202.5,
+      0,
+      0.75
+     ],
+     [
+      197.5,
+      -16,
+      0.75
+     ]
+    ],
+    "radius": 2.6,
+    "hold": 2.5,
+    "prompt": "Hold E to plant the charge",
+    "charge": true
+   },
+   "on_start": [
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Three charges, one on each span. North, middle, south.",
+     "delay": 1.0,
+     "seconds": 3.176470588235294
+    },
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "Searchlights sweep the north end. Move between the beams.",
+     "delay": 6.0,
+     "seconds": 3.3529411764705883
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "alarm_disarm"
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "All three set. Wire's running back to the detonator by the bunker.",
+     "delay": 0.5,
+     "seconds": 3.8823529411764706
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      186,
+      47,
+      0.0
+     ],
+     "heading": 180,
+     "delay": 1.0
+    }
+   ]
+  },
+  {
+   "id": "drones",
+   "objective": {
+    "type": "destroy",
+    "text": "Shoot down the attack drones",
+    "targets": [
+     "kd1",
+     "kd2",
+     "kd3",
+     "kd4",
+     "kd5"
+    ],
+    "marker": false
+   },
+   "on_start": [
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "Drones! Coming in from the east - shoot them before they reach you!",
+     "delay": 0.5,
+     "seconds": 3.9411764705882355
+    },
+    {
+     "action": "loop_start",
+     "sound": "alarm_loop",
+     "volume": 0.3
+    },
+    {
+     "action": "squad_hold",
+     "positions": {
+      "marek": [
+       189,
+       49,
+       180
+      ],
+      "voss": [
+       178,
+       50,
+       160
+      ],
+      "doran": [
+       184,
+       47,
+       180
+      ]
+     }
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "kamikaze_drone",
+     "id": "kd1",
+     "pos": [
+      300,
+      60,
+      22
+     ],
+     "delay": 2.0
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "kamikaze_drone",
+     "id": "kd2",
+     "pos": [
+      300,
+      90,
+      26
+     ],
+     "delay": 4.0
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "kamikaze_drone",
+     "id": "kd3",
+     "pos": [
+      290,
+      30,
+      20
+     ],
+     "delay": 7.0
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "kamikaze_drone",
+     "id": "kd4",
+     "pos": [
+      300,
+      120,
+      28
+     ],
+     "delay": 10.0
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "kamikaze_drone",
+     "id": "kd5",
+     "pos": [
+      280,
+      140,
+      24
+     ],
+     "delay": 12.0
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Drones down. That won't be all they've got.",
+     "delay": 0.5,
+     "seconds": 2.5294117647058822
+    }
+   ]
+  },
+  {
+   "id": "launcher",
+   "objective": {
+    "type": "interact",
+    "text": "Grab the RL-3 launcher from the weapons crate",
+    "pos": [
+     196,
+     52,
+     1.0
+    ],
+    "radius": 2.6,
+    "hold": 1.0,
+    "prompt": "Hold E to take the launcher"
+   },
+   "on_start": [
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Gunship inbound! There's a launcher in the Varn weapons crate by the road.",
+     "delay": 1.0,
+     "seconds": 4.352941176470588
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "give_weapon",
+     "id": "rl3",
+     "ammo": 4
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Switch to the launcher. Lead the target - and let it come to you.",
+     "delay": 0.5,
+     "seconds": 3.823529411764706
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      194,
+      54,
+      0.0
+     ],
+     "heading": 90,
+     "delay": 1.0
+    }
+   ]
+  },
+  {
+   "id": "gunship",
+   "objective": {
+    "type": "destroy",
+    "text": "Shoot down the attack helicopter",
+    "targets": [
+     "gunship"
+    ]
+   },
+   "on_start": [
+    {
+     "action": "spawn_vehicle",
+     "kind": "attack_helicopter",
+     "id": "gunship",
+     "speed": 30.0,
+     "health": 900,
+     "path": [
+      [
+       480,
+       220,
+       45
+      ],
+      [
+       340,
+       130,
+       32
+      ],
+      [
+       250,
+       80,
+       24
+      ]
+     ],
+     "orbit_radius": 48,
+     "altitude": 20
+    },
+    {
+     "action": "refill_ammo"
+    },
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "Gunship, east! Get under cover!",
+     "delay": 2.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "flare",
+     "pos": [
+      205,
+      70,
+      45
+     ],
+     "seconds": 30.0,
+     "delay": 4.0
+    },
+    {
+     "action": "spawn",
+     "group": "alarm_wave",
+     "units": [
+      {
+       "pos": [
+        200,
+        150
+       ],
+       "heading": 180,
+       "alert": [
+        200,
+        60
+       ]
+      },
+      {
+       "pos": [
+        206,
+        155
+       ],
+       "heading": 180,
+       "alert": [
+        200,
+        60
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        194,
+        158
+       ],
+       "heading": 180,
+       "alert": [
+        196,
+        56
+       ]
+      }
+     ],
+     "delay": 6.0
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Splash one! Nice shot, Halden!",
+     "delay": 1.5,
+     "seconds": 2.5
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      186,
+      47,
+      0.0
+     ],
+     "heading": 180,
+     "delay": 2.5
+    }
+   ]
+  },
+  {
+   "id": "hold",
+   "objective": {
+    "type": "vehicles_arrive",
+    "text": "Hold the north bank - let the tanks onto the bridge",
+    "targets": [
+     "tank1",
+     "tank2",
+     "tank3"
+    ]
+   },
+   "on_start": [
+    {
+     "action": "spawn_vehicle",
+     "kind": "tank",
+     "id": "tank1",
+     "speed": 5.0,
+     "path": [
+      [
+       200,
+       -300,
+       0
+      ],
+      [
+       200,
+       -40,
+       0
+      ],
+      [
+       200,
+       -30,
+       0.25
+      ],
+      [
+       200,
+       14,
+       0.25
+      ]
+     ]
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "tank",
+     "id": "tank2",
+     "speed": 5.0,
+     "path": [
+      [
+       200,
+       -316,
+       0
+      ],
+      [
+       200,
+       -40,
+       0
+      ],
+      [
+       200,
+       -30,
+       0.25
+      ],
+      [
+       200,
+       0,
+       0.25
+      ]
+     ]
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "tank",
+     "id": "tank3",
+     "speed": 5.0,
+     "path": [
+      [
+       200,
+       -332,
+       0
+      ],
+      [
+       200,
+       -40,
+       0
+      ],
+      [
+       200,
+       -30,
+       0.25
+      ],
+      [
+       200,
+       -14,
+       0.25
+      ]
+     ]
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Armour on the south road! Wait until they're all on the bridge!",
+     "delay": 1.0,
+     "seconds": 3.7058823529411766
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "If we blow it early they just go round. Hold!",
+     "delay": 6.0,
+     "seconds": 2.6470588235294117
+    },
+    {
+     "action": "spawn",
+     "group": "crossing",
+     "units": [
+      {
+       "pos": [
+        195,
+        -60
+       ],
+       "heading": 0,
+       "alert": [
+        196,
+        44
+       ]
+      },
+      {
+       "pos": [
+        205,
+        -62
+       ],
+       "heading": 0,
+       "alert": [
+        204,
+        44
+       ]
+      },
+      {
+       "pos": [
+        200,
+        -66
+       ],
+       "heading": 0,
+       "alert": [
+        200,
+        46
+       ],
+       "profile": "recruit"
+      }
+     ],
+     "delay": 8.0
+    },
+    {
+     "action": "spawn",
+     "group": "crossing",
+     "units": [
+      {
+       "pos": [
+        196,
+        -60
+       ],
+       "heading": 0,
+       "alert": [
+        190,
+        44
+       ]
+      },
+      {
+       "pos": [
+        204,
+        -60
+       ],
+       "heading": 0,
+       "alert": [
+        208,
+        46
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        200,
+        -64
+       ],
+       "heading": 0,
+       "alert": [
+        200,
+        46
+       ]
+      }
+     ],
+     "delay": 28.0
+    },
+    {
+     "action": "spawn",
+     "group": "crossing",
+     "units": [
+      {
+       "pos": [
+        197,
+        -60
+       ],
+       "heading": 0,
+       "alert": [
+        186,
+        46
+       ],
+       "profile": "veteran"
+      },
+      {
+       "pos": [
+        203,
+        -62
+       ],
+       "heading": 0,
+       "alert": [
+        212,
+        46
+       ]
+      }
+     ],
+     "delay": 46.0
+    },
+    {
+     "action": "flare",
+     "pos": [
+      200,
+      -10,
+      45
+     ],
+     "seconds": 30.0,
+     "delay": 20.0
+    },
+    {
+     "action": "radio",
+     "speaker": "voss",
+     "text": "Infantry on the bridge!",
+     "delay": 10.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Lead tank is almost across - keep them busy!",
+     "delay": 50.0,
+     "seconds": 2.588235294117647
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "They're all on it! Halden - the detonator! NOW!",
+     "delay": 0.3,
+     "seconds": 2.764705882352941
+    }
+   ]
+  },
+  {
+   "id": "detonate",
+   "objective": {
+    "type": "interact",
+    "text": "Blow the bridge",
+    "pos": [
+     182.5,
+     45.5,
+     0.75
+    ],
+    "radius": 2.8,
+    "hold": 0.8,
+    "prompt": "Hold E to detonate"
+   },
+   "on_start": [],
+   "on_complete": [
+    {
+     "action": "collapse_bridge",
+     "spans": [
+      "span_n",
+      "span_m",
+      "span_s"
+     ],
+     "show": [
+      "ruin_n",
+      "ruin_m",
+      "ruin_s",
+      "bridge_end_wall"
+     ],
+     "blasts": [
+      [
+       197.5,
+       16,
+       0.5
+      ],
+      [
+       202.5,
+       0,
+       0.5
+      ],
+      [
+       197.5,
+       -16,
+       0.5
+      ],
+      [
+       200,
+       20,
+       -1.0
+      ],
+      [
+       200,
+       0,
+       -1.0
+      ],
+      [
+       200,
+       -20,
+       -1.0
+      ]
+     ],
+     "vehicles": [
+      "tank1",
+      "tank2",
+      "tank3"
+     ]
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Bridge is down! The column's in the river!",
+     "delay": 2.5,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Hah! Three tanks, one button.",
+     "delay": 5.5,
+     "seconds": 2.5
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      186,
+      50,
+      0.0
+     ],
+     "heading": 0,
+     "delay": 7.0
+    }
+   ]
+  },
+  {
+   "id": "escape",
+   "objective": {
+    "type": "reach",
+    "text": "Fight your way to the landing zone",
+    "pos": [
+     214,
+     190,
+     0
+    ],
+    "radius": 8
+   },
+   "on_start": [
+    {
+     "action": "squad_follow",
+     "member": "all"
+    },
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Bastion, this is Marek. Bridge is gone. Request pick-up at the north LZ.",
+     "delay": 2.0,
+     "seconds": 4.235294117647059
+    },
+    {
+     "action": "radio",
+     "speaker": "bastion",
+     "text": "Copy, Marek. Bird is two minutes out. Keep the LZ clear.",
+     "delay": 7.5,
+     "seconds": 3.2941176470588234
+    },
+    {
+     "action": "spawn",
+     "group": "pursuit",
+     "units": [
+      {
+       "pos": [
+        280,
+        150
+       ],
+       "heading": 270,
+       "alert": [
+        214,
+        170
+       ]
+      },
+      {
+       "pos": [
+        284,
+        160
+       ],
+       "heading": 270,
+       "alert": [
+        214,
+        175
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        276,
+        175
+       ],
+       "heading": 270,
+       "alert": [
+        214,
+        180
+       ]
+      },
+      {
+       "pos": [
+        140,
+        170
+       ],
+       "heading": 90,
+       "alert": [
+        200,
+        170
+       ]
+      },
+      {
+       "pos": [
+        136,
+        180
+       ],
+       "heading": 90,
+       "alert": [
+        205,
+        185
+       ],
+       "profile": "veteran"
+      }
+     ],
+     "delay": 3.0
+    },
+    {
+     "action": "spawn",
+     "group": "pursuit",
+     "units": [
+      {
+       "pos": [
+        214,
+        214
+       ],
+       "heading": 180,
+       "alert": [
+        214,
+        190
+       ]
+      },
+      {
+       "pos": [
+        222,
+        212
+       ],
+       "heading": 180,
+       "alert": [
+        214,
+        190
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        206,
+        212
+       ],
+       "heading": 180,
+       "alert": [
+        214,
+        190
+       ]
+      }
+     ],
+     "delay": 25.0
+    },
+    {
+     "action": "smoke",
+     "pos": [
+      214,
+      196,
+      0.2
+     ],
+     "seconds": 120.0,
+     "delay": 10.0
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "LZ's ours. Hold here!",
+     "delay": 0.5,
+     "seconds": 2.5
+    }
+   ]
+  },
+  {
+   "id": "extraction",
+   "objective": {
+    "type": "vehicles_arrive",
+    "targets": [
+     "evac"
+    ],
+    "text": "Hold the LZ until the helicopter lands"
+   },
+   "on_start": [
+    {
+     "action": "spawn_vehicle",
+     "kind": "transport_helicopter",
+     "id": "evac",
+     "speed": 26.0,
+     "path": [
+      [
+       -60,
+       420,
+       60
+      ],
+      [
+       100,
+       290,
+       38
+      ],
+      [
+       190,
+       220,
+       16
+      ],
+      [
+       214,
+       197,
+       0.4
+      ]
+     ]
+    },
+    {
+     "action": "destroy_prop",
+     "id": "aa_gun",
+     "explode": true,
+     "delay": 4.0
+    },
+    {
+     "action": "radio",
+     "speaker": "doran",
+     "text": "Blowing the AA gun - the sky is clear!",
+     "delay": 3.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "spawn",
+     "group": "lz_attack",
+     "units": [
+      {
+       "pos": [
+        250,
+        220
+       ],
+       "heading": 220,
+       "alert": [
+        214,
+        192
+       ]
+      },
+      {
+       "pos": [
+        255,
+        205
+       ],
+       "heading": 250,
+       "alert": [
+        214,
+        192
+       ]
+      },
+      {
+       "pos": [
+        178,
+        222
+       ],
+       "heading": 140,
+       "alert": [
+        214,
+        192
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        170,
+        205
+       ],
+       "heading": 110,
+       "alert": [
+        214,
+        192
+       ]
+      }
+     ],
+     "delay": 2.0
+    },
+    {
+     "action": "radio",
+     "speaker": "bastion",
+     "text": "Marek, I see your smoke. Coming in hot.",
+     "delay": 14.0,
+     "seconds": 2.5
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "radio",
+     "speaker": "marek",
+     "text": "Clear! Get on the bird!",
+     "delay": 0.5,
+     "seconds": 2.5
+    }
+   ]
+  },
+  {
+   "id": "board",
+   "objective": {
+    "type": "reach",
+    "text": "Board the helicopter",
+    "pos": [
+     215.5,
+     197,
+     0
+    ],
+    "radius": 3.0
+   },
+   "on_start": [],
+   "on_complete": [
+    {
+     "action": "start_ride",
+     "vehicle": "evac",
+     "seat": [
+      1.0,
+      0.4,
+      0.45
+     ],
+     "squad": {
+      "marek": [
+       -0.7,
+       0.6,
+       0.45
+      ],
+      "voss": [
+       -0.7,
+       -0.6,
+       0.45
+      ],
+      "doran": [
+       0.6,
+       -0.8,
+       0.45
+      ]
+     }
+    },
+    {
+     "action": "vehicle_command",
+     "id": "evac",
+     "path": [
+      [
+       214,
+       197,
+       0.4
+      ],
+      [
+       214,
+       205,
+       12
+      ],
+      [
+       150,
+       300,
+       40
+      ],
+      [
+       0,
+       420,
+       70
+      ]
+     ],
+     "speed": 18.0,
+     "delay": 1.5
+    },
+    {
+     "action": "radio",
+     "speaker": "bastion",
+     "text": "Everybody aboard. Lifting off.",
+     "delay": 1.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "complete_mission",
+     "delay": 9.0
+    }
+   ]
+  }
+ ]
+}

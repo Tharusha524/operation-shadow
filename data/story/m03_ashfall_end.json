@@ -1,0 +1,117 @@
+{
+ "shots": [
+  {
+   "type": "scene",
+   "from": [
+    42,
+    48.5,
+    1.7
+   ],
+   "to": [
+    43,
+    50,
+    1.65
+   ],
+   "look_from": [
+    44,
+    52,
+    1.55
+   ],
+   "look_to": [
+    44,
+    52,
+    1.55
+   ],
+   "lines": [
+    {
+     "speaker": "halden",
+     "text": "Will he survive?"
+    },
+    {
+     "speaker": "marek",
+     "text": "The doctors are doing everything they can."
+    },
+    {
+     "speaker": "halden",
+     "text": "I should have protected him."
+    },
+    {
+     "speaker": "marek",
+     "text": "You brought him here. Don't forget that."
+    },
+    {
+     "speaker": "narrator",
+     "text": "That evening, Halden learned that surviving a battle was not the same as winning."
+    }
+   ],
+   "duration": 12,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      44,
+      52
+     ],
+     "heading": 20,
+     "anim": "stand"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      45.5,
+      52.5
+     ],
+     "heading": -30,
+     "anim": "stand"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      44,
+      54
+     ],
+     "heading": 0,
+     "anim": "stand",
+     "path": [
+      [
+       44,
+       54
+      ],
+      [
+       44,
+       61
+      ]
+     ],
+     "speed": 0.8,
+     "move": "injured_walk"
+    }
+   ],
+   "caption": [
+    "VEYRA FIELD HOSPITAL",
+    "16:30"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "halden",
+   "text": "Will he survive?"
+  },
+  {
+   "speaker": "marek",
+   "text": "The doctors are doing everything they can."
+  },
+  {
+   "speaker": "halden",
+   "text": "I should have protected him."
+  },
+  {
+   "speaker": "marek",
+   "text": "You brought him here. Don't forget that."
+  },
+  {
+   "speaker": "narrator",
+   "text": "That evening, Halden learned that surviving a battle was not the same as winning."
+  }
+ ]
+}

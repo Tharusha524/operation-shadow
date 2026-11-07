@@ -1,0 +1,319 @@
+{
+ "shots": [
+  {
+   "type": "scene",
+   "from": [
+    -2.4,
+    46.8,
+    1.3
+   ],
+   "to": [
+    -2.6,
+    46.5,
+    1.25
+   ],
+   "look_from": [
+    -4,
+    45.2,
+    1.0
+   ],
+   "look_to": [
+    -4,
+    45.2,
+    0.9
+   ],
+   "lines": [
+    {
+     "speaker": "halden",
+     "text": "He's not moving."
+    },
+    {
+     "speaker": "marek",
+     "text": "Halden, look at me. We have to move."
+    },
+    {
+     "speaker": "halden",
+     "text": "We can't leave him."
+    },
+    {
+     "speaker": "marek",
+     "text": "We cannot save everyone. Get up."
+    }
+   ],
+   "duration": 9,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -4,
+      44
+     ],
+     "heading": 90,
+     "anim": "death",
+     "frame": -1
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -4,
+      45.2
+     ],
+     "heading": 180,
+     "anim": "kneel_inspect"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -1,
+      46
+     ],
+     "heading": 0,
+     "anim": "aim"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -6.5,
+      46.5
+     ],
+     "heading": -120,
+     "anim": "argue"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -8,
+      48
+     ],
+     "heading": 20,
+     "anim": "aim"
+    }
+   ],
+   "events": [
+    {
+     "t": 0.2,
+     "smoke": [
+      -6,
+      42,
+      0.5
+     ]
+    },
+    {
+     "t": 3.0,
+     "explosion": [
+      6,
+      60,
+      0.5
+     ],
+     "shake": 0.25,
+     "fire": [
+      6,
+      60,
+      0.3,
+      1.2
+     ]
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK",
+    "06:25"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    0,
+    -44,
+    2.2
+   ],
+   "to": [
+    0,
+    -82,
+    2.2
+   ],
+   "look_from": [
+    0,
+    -60,
+    1.4
+   ],
+   "look_to": [
+    0,
+    -100,
+    1.4
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "Fall back to Kesh Ridge!"
+    },
+    {
+     "speaker": "kell",
+     "text": "First day, and they already destroyed our post."
+    },
+    {
+     "speaker": "halden",
+     "text": "Where are we going?"
+    },
+    {
+     "speaker": "marek",
+     "text": "Somewhere we can still fight."
+    },
+    {
+     "speaker": "narrator",
+     "text": "The invasion had only just begun."
+    }
+   ],
+   "duration": 12,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      0,
+      -50
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "path": [
+      [
+       0,
+       -50
+      ],
+      [
+       0,
+       -110
+      ]
+     ],
+     "speed": 1.1,
+     "move": "injured_walk"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      1.4,
+      -48
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "path": [
+      [
+       1.4,
+       -48
+      ],
+      [
+       1.4,
+       -112
+      ]
+     ],
+     "speed": 1.6
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -1.4,
+      -47
+     ],
+     "heading": 180,
+     "anim": "stand",
+     "path": [
+      [
+       -1.4,
+       -47
+      ],
+      [
+       -1.4,
+       -108
+      ]
+     ],
+     "speed": 1.0,
+     "move": "injured_walk"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      2.5,
+      -46
+     ],
+     "heading": 0,
+     "anim": "aim",
+     "path": [
+      [
+       2.5,
+       -46
+      ],
+      [
+       2.5,
+       -60
+      ]
+     ],
+     "speed": 0.9,
+     "then": {
+      "anim": "aim",
+      "heading": 0
+     }
+    }
+   ],
+   "events": [
+    {
+     "t": 2.0,
+     "explosion": [
+      8,
+      -20,
+      0.5
+     ],
+     "shake": 0.2
+    },
+    {
+     "t": 6.0,
+     "explosion": [
+      -10,
+      -10,
+      0.5
+     ],
+     "shake": 0.2
+    }
+   ],
+   "caption": [
+    "SOUTH GATE",
+    "06:40"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "halden",
+   "text": "He's not moving."
+  },
+  {
+   "speaker": "marek",
+   "text": "Halden, look at me. We have to move."
+  },
+  {
+   "speaker": "halden",
+   "text": "We can't leave him."
+  },
+  {
+   "speaker": "marek",
+   "text": "We cannot save everyone. Get up."
+  },
+  {
+   "speaker": "marek",
+   "text": "Fall back to Kesh Ridge!"
+  },
+  {
+   "speaker": "kell",
+   "text": "First day, and they already destroyed our post."
+  },
+  {
+   "speaker": "halden",
+   "text": "Where are we going?"
+  },
+  {
+   "speaker": "marek",
+   "text": "Somewhere we can still fight."
+  },
+  {
+   "speaker": "narrator",
+   "text": "The invasion had only just begun."
+  }
+ ]
+}

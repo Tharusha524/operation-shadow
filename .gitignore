@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+data/settings.json
+data/settings.json.*
+data/save*.json
+data/logs/
+build/
+dist/
+assets/downloads/
+data/voice_cache/
+data/cache/
+
+# Mixamo characters (Adobe licence: may be used inside the game, not shared as raw files).
+# Re-create them with tools/convert_soldiers.py from your own Mixamo downloads.
+assets/models/soldier_*
+assets/models/actor_*

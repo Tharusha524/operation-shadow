@@ -1,0 +1,164 @@
+{
+  "id": "m03_ashfall",
+  "map": "veyra",
+  "date": "Day 3 - 19:40",
+  "briefing": [
+    "Kesh Ridge fell after dark. The survivors of Rusk's platoon fell back through Veyra, a frontier market town now burning from end to end.",
+    "On the edge of town a shell burst wounded Private Jonah Kell. He can still walk - barely - and he cannot fight.",
+    "The only field hospital left in Veyra is on the north side of town, three streets away. Directorate patrols are already in the streets between."
+  ],
+  "story_objective": "Get Kell to the field hospital alive.",
+  "gameplay_objective": "Clear the street, escort Kell through town, retake the plaza and hold the hospital while the surgeon works. If Kell dies, the mission fails.",
+
+  "player": {
+    "spawn": {"pos": [-46.5, -38.5, 0.25], "heading": -90},
+    "loadout": ["kr7", "sg8", "p12"],
+    "grenades": 3
+  },
+
+  "squad": [
+    {"id": "marek", "pos": [-49.5, -37.2], "heading": -90},
+    {"id": "voss",  "pos": [-46.0, -36.9], "heading": -90},
+    {"id": "kell",  "pos": [-50.0, -39.0], "heading": -60, "profile": "wounded", "invulnerable": false}
+  ],
+
+  "protect": [
+    {"id": "kell", "message": "Pvt. Kell didn't make it."}
+  ],
+
+  "intro": {
+    "shots": [
+      {"from": [-75, -78, 34], "to": [-60, -66, 22], "look_from": [0, 10, 0], "look_to": [-30, -20, 0], "duration": 6.0},
+      {"from": [-44.8, -36.0, 1.9], "to": [-45.6, -37.4, 1.6], "look_from": [-50, -39, 0.9], "look_to": [-50, -39, 0.8], "duration": 7.0}
+    ],
+    "lines": [
+      {"t": 0.4, "speaker": "narrator", "text": "Day Three. The line at Kesh broke after dark. We fell back through Veyra.", "seconds": 3.8},
+      {"t": 4.3, "speaker": "narrator", "text": "Kell caught shrapnel on the edge of town.", "seconds": 2.8},
+      {"t": 7.2, "speaker": "marek", "text": "Easy, Jonah. The field hospital is on the north side. We're getting you there.", "seconds": 3.4},
+      {"t": 10.6, "speaker": "kell", "text": "Just... don't leave me here, alright?", "seconds": 2.6}
+    ]
+  },
+
+  "outro": {
+    "shots": [
+      {"from": [44, 54, 2.0], "to": [30, 30, 26], "look_from": [48, 64, 1.5], "look_to": [-10, 0, 0], "duration": 12.0}
+    ],
+    "lines": [
+      {"t": 0.3, "speaker": "lind", "text": "Shrapnel in the lung, but he's stable. He'll live.", "seconds": 3.2},
+      {"t": 3.7, "speaker": "kell", "text": "Told you... nothing ever happens to me.", "seconds": 2.8},
+      {"t": 6.8, "speaker": "narrator", "text": "Veyra burned for three days. Kell was on the first hospital train south.", "seconds": 3.6},
+      {"t": 10.5, "speaker": "narrator", "text": "The rest of us were sent to the river.", "seconds": 2.0}
+    ]
+  },
+
+  "steps": [
+    {
+      "id": "clear_street",
+      "objective": {"type": "eliminate", "group": "street", "text": "Clear the street outside"},
+      "on_start": [
+        {"action": "squad_hold", "positions": {"kell": [-50.0, -39.0, -60], "marek": [-49.5, -37.2, -90]}},
+        {"action": "spawn", "group": "street", "units": [
+          {"pos": [-31, -24], "heading": 180, "patrol": [[-31, -24], [-31, -44]]},
+          {"pos": [-28, -12], "heading": 180, "patrol": [[-28, -12], [-28, -30]]},
+          {"pos": [-24, -33], "heading": 270, "profile": "recruit"},
+          {"pos": [-33, -6], "heading": 180, "profile": "recruit"}
+        ]},
+        {"action": "loop_start", "sound": "wind_loop", "volume": 0.3},
+        {"action": "radio", "speaker": "marek", "text": "Street's crawling with them. Halden, Voss - clear it. I'll stay with Kell.", "delay": 1.0, "seconds": 4.5},
+        {"action": "radio", "speaker": "voss", "text": "Patrol on the main road, heading south. Watch the doorways.", "delay": 7.0, "seconds": 3.5}
+      ],
+      "on_complete": [
+        {"action": "radio", "speaker": "voss", "text": "Street's clear.", "seconds": 2.0},
+        {"action": "radio", "speaker": "marek", "text": "Up you get, Jonah. Nice and slow. Halden, take point.", "delay": 2.5, "seconds": 3.5},
+        {"action": "checkpoint", "pos": [-42.5, -38.5, 0], "heading": -90}
+      ]
+    },
+    {
+      "id": "escort_plaza",
+      "objective": {"type": "escort", "target": "kell", "radius": 3.0, "text": "Escort Kell to the market square",
+                    "route": [[-50, -39], [-41, -38.5], [-30, -30], [-30, -5], [-30, 10], [-24.5, 12]]},
+      "on_start": [
+        {"action": "squad_leader", "member": "marek", "leader": "kell"},
+        {"action": "squad_follow", "member": "voss"},
+        {"action": "spawn", "group": "ambush", "delay": 14.0, "units": [
+          {"pos": [-10.5, -16], "heading": 90, "profile": "regular", "hold": [-10.5, -16, 90]},
+          {"pos": [-6, -24.5], "heading": 90, "profile": "regular", "hold": [-6, -24.5, 90]},
+          {"pos": [-30, 31], "alert": [-30, -5]},
+          {"pos": [-27, 37], "profile": "recruit", "alert": [-30, 0]}
+        ]},
+        {"action": "radio", "speaker": "kell", "text": "I'm fine. I'm fine. Keep moving.", "delay": 6.0, "seconds": 2.6},
+        {"action": "radio", "speaker": "voss", "text": "Contact - the ruins on the right!", "delay": 17.0, "seconds": 2.8}
+      ],
+      "on_complete": [
+        {"action": "radio", "speaker": "marek", "text": "Plaza's held. Kell stays here with me. Clear it out!", "seconds": 3.5},
+        {"action": "squad_hold", "positions": {"marek": [-25.5, 10.5, -90]}},
+        {"action": "refill_ammo"},
+        {"action": "checkpoint", "pos": [-25, 13, 0], "heading": -90}
+      ]
+    },
+    {
+      "id": "plaza",
+      "objective": {"type": "eliminate", "group": "plaza", "text": "Retake the market square"},
+      "on_start": [
+        {"action": "spawn", "group": "plaza", "units": [
+          {"pos": [-2, 19.6], "heading": 180, "hold": [-2, 19.6, 180]},
+          {"pos": [-12, 23.6], "heading": 190, "hold": [-12, 23.6, 190]},
+          {"pos": [16, 24.5], "heading": 200, "profile": "regular", "hold": [16, 24.5, 200]},
+          {"pos": [-2, 24.0], "heading": 180, "profile": "recruit", "hold": [-2, 24.0, 180]},
+          {"pos": [7, 24.0], "heading": 180, "profile": "veteran", "hold": [7, 24.0, 180]},
+          {"pos": [17, 9], "heading": 240, "profile": "regular"}
+        ]},
+        {"action": "radio", "speaker": "voss", "text": "Six, maybe more. Fountain, church steps, the burning truck.", "delay": 2.0, "seconds": 3.5}
+      ],
+      "on_complete": [
+        {"action": "radio", "speaker": "kell", "text": "Is it over? Can we go?", "seconds": 2.4},
+        {"action": "radio", "speaker": "marek", "text": "North road, then the hospital. Almost there.", "delay": 2.6, "seconds": 3.0},
+        {"action": "checkpoint", "pos": [-22, 13, 0], "heading": -90}
+      ]
+    },
+    {
+      "id": "escort_hospital",
+      "objective": {"type": "escort", "target": "kell", "radius": 3.5, "text": "Get Kell to the field hospital",
+                    "route": [[-24.5, 12], [-20, 15], [-10, 10], [8, 7], [18, 13], [25, 22], [25, 35],
+                              [25, 48], [35, 50], [44, 58]]},
+      "on_start": [
+        {"action": "squad_leader", "member": "marek", "leader": "kell"},
+        {"action": "squad_follow", "member": "voss"},
+        {"action": "spawn", "group": "road", "delay": 16.0, "units": [
+          {"pos": [5, 54], "alert": [25, 40]},
+          {"pos": [-4, 56], "profile": "recruit", "alert": [25, 45]},
+          {"pos": [14, 56], "profile": "veteran", "alert": [25, 48]},
+          {"pos": [31.5, 44], "heading": 200, "hold": [31.5, 44, 200]},
+          {"pos": [30, 66], "heading": 200, "hold": [30, 66, 200]}
+        ]},
+        {"action": "radio", "speaker": "voss", "text": "Movement on the north road. They've seen the tents.", "delay": 19.0, "seconds": 3.2}
+      ],
+      "on_complete": [
+        {"action": "squad_invulnerable", "member": "kell", "value": true},
+        {"action": "squad_hold", "positions": {"kell": [46, 66.5, 180], "marek": [44, 56.5, 270]}},
+        {"action": "radio", "speaker": "lind", "text": "Bring him in! Stretcher, now! Somebody keep them off us!", "seconds": 4.0},
+        {"action": "squad_follow", "member": "voss"},
+        {"action": "refill_ammo"},
+        {"action": "checkpoint", "pos": [42, 55, 0], "heading": 90}
+      ]
+    },
+    {
+      "id": "defend",
+      "objective": {"type": "survive", "seconds": 50, "text": "Hold the hospital while the surgeon works"},
+      "on_start": [
+        {"action": "spawn", "group": "counter", "delay": 4.0, "units": [
+          {"pos": [-50, 50], "alert": [40, 54]}, {"pos": [-40, 52], "alert": [40, 54]},
+          {"pos": [-30, 48], "profile": "recruit", "alert": [40, 54]}, {"pos": [-60, 49], "alert": [40, 54]}
+        ]},
+        {"action": "spawn", "group": "counter", "delay": 25.0, "units": [
+          {"pos": [-55, 52], "alert": [40, 54]}, {"pos": [-45, 48], "profile": "veteran", "alert": [40, 54]},
+          {"pos": [25, -10], "alert": [25, 45]}, {"pos": [25, 0], "profile": "recruit", "alert": [25, 45]}
+        ]},
+        {"action": "radio", "speaker": "marek", "text": "West road! Here they come!", "delay": 8.0, "seconds": 2.5}
+      ],
+      "on_complete": [
+        {"action": "complete_mission"}
+      ]
+    }
+  ]
+}

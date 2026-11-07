@@ -1,0 +1,88 @@
+{
+ "shots": [
+  {
+   "type": "scene",
+   "from": [
+    -372,
+    -84,
+    1.8
+   ],
+   "to": [
+    -374,
+    -88,
+    1.8
+   ],
+   "look_from": [
+    -380,
+    -92,
+    1.5
+   ],
+   "look_to": [
+    -382,
+    -96,
+    1.5
+   ],
+   "lines": [
+    {
+     "speaker": "mira",
+     "text": "Saint-Aurel is where everything comes together."
+    },
+    {
+     "speaker": "crane",
+     "text": "Then that's where I'm going."
+    },
+    {
+     "speaker": "mira",
+     "text": "You won't find Harrow there."
+    },
+    {
+     "speaker": "crane",
+     "text": "I don't need to find him yet. I need to find Tempest."
+    }
+   ],
+   "duration": 11,
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -379,
+      -92
+     ],
+     "heading": 200,
+     "anim": "stand"
+    },
+    {
+     "model": "woman",
+     "pos": [
+      -381,
+      -92.5
+     ],
+     "heading": 160,
+     "anim": "argue"
+    }
+   ],
+   "caption": [
+    "LAKE OSTRA FERRY",
+    "20:40"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "mira",
+   "text": "Saint-Aurel is where everything comes together."
+  },
+  {
+   "speaker": "crane",
+   "text": "Then that's where I'm going."
+  },
+  {
+   "speaker": "mira",
+   "text": "You won't find Harrow there."
+  },
+  {
+   "speaker": "crane",
+   "text": "I don't need to find him yet. I need to find Tempest."
+  }
+ ]
+}

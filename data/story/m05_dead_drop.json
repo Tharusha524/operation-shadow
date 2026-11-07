@@ -1,0 +1,154 @@
+{
+ "shots": [
+  {
+   "type": "title",
+   "title": "MISSION 5:  DEAD DROP",
+   "subtitle": "Elias Crane  -  Port Calder",
+   "duration": 4.0,
+   "lines": []
+  },
+  {
+   "type": "scene",
+   "from": [
+    2.6,
+    -1.8,
+    1.9
+   ],
+   "to": [
+    2.3,
+    -1.5,
+    1.8
+   ],
+   "look_from": [
+    -1.4,
+    1.3,
+    0.9
+   ],
+   "look_to": [
+    -1.4,
+    1.2,
+    1.0
+   ],
+   "lines": [
+    {
+     "speaker": "wren",
+     "text": "You shouldn't go to Port Calder."
+    },
+    {
+     "speaker": "crane",
+     "text": "Someone wants me to see something."
+    }
+   ],
+   "duration": 6,
+   "set": "apartment",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -1.4,
+      0.95
+     ],
+     "heading": 0,
+     "anim": "sit"
+    }
+   ],
+   "caption": [
+    "ALDMERE",
+    "DAY 9 - 20:40"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -1.1,
+    2.2,
+    1.3
+   ],
+   "to": [
+    -1.15,
+    2.1,
+    1.3
+   ],
+   "look_from": [
+    -1.4,
+    0.95,
+    1.15
+   ],
+   "look_to": [
+    -1.4,
+    0.95,
+    1.15
+   ],
+   "lines": [
+    {
+     "speaker": "wren",
+     "text": "Someone wanted you dead two years ago."
+    },
+    {
+     "speaker": "crane",
+     "text": "Then perhaps I should find out who."
+    }
+   ],
+   "duration": 6,
+   "set": "apartment",
+   "cast": [
+    {
+     "model": "man",
+     "pos": [
+      -1.4,
+      0.95
+     ],
+     "heading": 0,
+     "anim": "sit"
+    }
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -60,
+    30,
+    12
+   ],
+   "to": [
+    -40,
+    18,
+    9
+   ],
+   "look_from": [
+    -10,
+    -40,
+    4
+   ],
+   "look_to": [
+    -10,
+    -46,
+    6
+   ],
+   "lines": [],
+   "duration": 5,
+   "caption": [
+    "PORT CALDER HARBOUR",
+    "23:15"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "wren",
+   "text": "You shouldn't go to Port Calder."
+  },
+  {
+   "speaker": "crane",
+   "text": "Someone wants me to see something."
+  },
+  {
+   "speaker": "wren",
+   "text": "Someone wanted you dead two years ago."
+  },
+  {
+   "speaker": "crane",
+   "text": "Then perhaps I should find out who."
+  }
+ ]
+}

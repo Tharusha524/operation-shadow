@@ -1,0 +1,1483 @@
+{
+ "id": "port_calder",
+ "name": "Port Calder - Harbour",
+ "seed": 5309,
+ "player_spawn": {
+  "pos": [
+   -118,
+   100,
+   0.0
+  ],
+  "heading": -150
+ },
+ "atmosphere": {
+  "sun_heading": 250,
+  "sun_pitch": 8,
+  "sun_color": [
+   0.55,
+   0.55,
+   0.62
+  ],
+  "ambient_color": [
+   0.3,
+   0.32,
+   0.38
+  ],
+  "fill_color": [
+   0.12,
+   0.13,
+   0.17
+  ],
+  "sky_zenith": [
+   0.12,
+   0.14,
+   0.18
+  ],
+  "sky_horizon": [
+   0.36,
+   0.37,
+   0.4
+  ],
+  "fog_color": [
+   0.3,
+   0.32,
+   0.36
+  ],
+  "fog_density": 0.0145,
+  "clouds": 0.85,
+  "rain": 0.85,
+  "grading": {
+   "exposure": 1.55,
+   "saturation": 0.72,
+   "contrast": 1.06,
+   "tint": [
+    0.94,
+    0.98,
+    1.06
+   ],
+   "shadow_tint": [
+    0.88,
+    0.94,
+    1.12
+   ],
+   "lift": 0.03,
+   "bloom": 0.7,
+   "bloom_threshold": 0.7,
+   "vignette": 0.5
+  }
+ },
+ "terrain": {
+  "size": 880,
+  "divisions": 80,
+  "play_area": 140,
+  "nav_bounds": [
+   -132,
+   -76,
+   122,
+   132
+  ],
+  "floor_z": -40.0,
+  "holes": [
+   [
+    -440,
+    -440,
+    440,
+    -33.0
+   ]
+  ],
+  "land": [
+   [
+    -440,
+    -33.0,
+    440,
+    440
+   ]
+  ],
+  "water": {
+   "rect": [
+    -440,
+    -440,
+    440,
+    -33.0
+   ],
+   "z": -1.3,
+   "color": [
+    0.3,
+    0.36,
+    0.4
+   ]
+  },
+  "worn_color": [
+   0.62,
+   0.61,
+   0.58
+  ],
+  "grass_color": [
+   0.5,
+   0.55,
+   0.42
+  ],
+  "dark_color": [
+   0.4,
+   0.4,
+   0.38
+  ]
+ },
+ "points": {
+  "view_quay": {
+   "pos": [
+    -70,
+    -8,
+    3.67
+   ],
+   "heading": -110,
+   "pitch": -4
+  },
+  "view_market": {
+   "pos": [
+    -90,
+    10,
+    0.0
+   ],
+   "heading": 10,
+   "pitch": 2
+  },
+  "view_office": {
+   "pos": [
+    14,
+    20,
+    0.0
+   ],
+   "heading": 0,
+   "pitch": 3
+  },
+  "view_warehouse": {
+   "pos": [
+    80,
+    -8,
+    0.0
+   ],
+   "heading": 0,
+   "pitch": 4
+  },
+  "view_pier": {
+   "pos": [
+    70,
+    -28,
+    0.0
+   ],
+   "heading": -150,
+   "pitch": 0
+  }
+ },
+ "fires": [],
+ "props": [
+  {
+   "type": "embankment",
+   "pos": [
+    -420,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -380,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -340,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -300,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -260,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -220,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -180,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -140,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -100,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -60,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    -20,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    20,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    60,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    100,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    140,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    180,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    220,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    260,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    300,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    340,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    380,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "embankment",
+   "pos": [
+    420,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "depth": 4
+   }
+  },
+  {
+   "type": "invisible_wall",
+   "pos": [
+    -271.35,
+    -33.6
+   ],
+   "heading": 0,
+   "params": {
+    "length": 337.3,
+    "height": 6
+   }
+  },
+  {
+   "type": "invisible_wall",
+   "pos": [
+    -5.0,
+    -33.6
+   ],
+   "heading": 0,
+   "params": {
+    "length": 184.6,
+    "height": 6
+   }
+  },
+  {
+   "type": "invisible_wall",
+   "pos": [
+    266.35,
+    -33.6
+   ],
+   "heading": 0,
+   "params": {
+    "length": 347.3,
+    "height": 6
+   }
+  },
+  {
+   "type": "pier",
+   "pos": [
+    90.0,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "width": 6
+   }
+  },
+  {
+   "type": "pier",
+   "pos": [
+    -100.0,
+    -33.0
+   ],
+   "heading": 180,
+   "params": {
+    "length": 40,
+    "width": 6
+   }
+  },
+  {
+   "type": "concrete_pad",
+   "pos": [
+    -10,
+    -18
+   ],
+   "heading": 0,
+   "params": {
+    "width": 260,
+    "depth": 30
+   }
+  },
+  {
+   "type": "cargo_ship",
+   "pos": [
+    -10,
+    -49
+   ],
+   "heading": 90,
+   "params": {
+    "length": 96,
+    "beam": 16,
+    "color": "blue"
+   }
+  },
+  {
+   "type": "gantry_crane",
+   "pos": [
+    -100,
+    -26
+   ],
+   "heading": 0
+  },
+  {
+   "type": "gantry_crane",
+   "pos": [
+    32,
+    -26
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jeep",
+   "pos": [
+    -32,
+    -12
+   ],
+   "heading": 0
+  },
+  {
+   "type": "truck",
+   "pos": [
+    -40,
+    -16
+   ],
+   "heading": 90
+  },
+  {
+   "type": "crate",
+   "pos": [
+    -25,
+    -19.5
+   ],
+   "heading": 0,
+   "params": {
+    "size": 1.0
+   }
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    -30,
+    -10
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jersey_barrier",
+   "pos": [
+    -4,
+    -10
+   ],
+   "heading": 0
+  },
+  {
+   "type": "barrel_group",
+   "pos": [
+    4,
+    -22
+   ],
+   "heading": 0,
+   "params": {
+    "count": 4,
+    "color": "blue"
+   }
+  },
+  {
+   "type": "pallet",
+   "pos": [
+    10,
+    -20
+   ],
+   "heading": 30
+  },
+  {
+   "type": "tire_stack",
+   "pos": [
+    14,
+    -24
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -120,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -90,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -60,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -30,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    0,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    30,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    60,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    90,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    120,
+    -30.5
+   ],
+   "heading": 0
+  },
+  {
+   "type": "container",
+   "pos": [
+    46,
+    -22
+   ],
+   "heading": 90,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    46,
+    -14
+   ],
+   "heading": 90,
+   "params": {
+    "color": "blue"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    46,
+    -14,
+    2.6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "grey"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    46,
+    -6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "green"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    46,
+    -6,
+    2.6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "red"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    54,
+    -22
+   ],
+   "heading": 90,
+   "params": {
+    "color": "grey"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    54,
+    -22,
+    2.6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    54,
+    -14
+   ],
+   "heading": 90,
+   "params": {
+    "color": "red"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    54,
+    -14,
+    2.6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    54,
+    -6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    62,
+    -22
+   ],
+   "heading": 90,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    62,
+    -22,
+    2.6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "green"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    62,
+    -14
+   ],
+   "heading": 90,
+   "params": {
+    "color": "blue"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    62,
+    -6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "green"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    62,
+    -6,
+    2.6
+   ],
+   "heading": 90,
+   "params": {
+    "color": "red"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    -112,
+    -20
+   ],
+   "heading": 0,
+   "params": {
+    "color": "grey"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    -112,
+    -10
+   ],
+   "heading": 0,
+   "params": {
+    "color": "red"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    -112,
+    0
+   ],
+   "heading": 0,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    -118,
+    -20
+   ],
+   "heading": 0,
+   "params": {
+    "color": "rust"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    -118,
+    -10
+   ],
+   "heading": 0,
+   "params": {
+    "color": "blue"
+   }
+  },
+  {
+   "type": "container",
+   "pos": [
+    -118,
+    0
+   ],
+   "heading": 0,
+   "params": {
+    "color": "green"
+   }
+  },
+  {
+   "type": "barracks",
+   "pos": [
+    -70,
+    -8
+   ],
+   "heading": 0,
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "windows": 3,
+    "roof_stairs": true,
+    "interior": "none",
+    "wall_color": "white"
+   }
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -104,
+    24
+   ],
+   "heading": 0
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -104,
+    34
+   ],
+   "heading": 180
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -96,
+    24
+   ],
+   "heading": 0
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -96,
+    34
+   ],
+   "heading": 180
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -88,
+    24
+   ],
+   "heading": 0
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -88,
+    34
+   ],
+   "heading": 180
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -80,
+    24
+   ],
+   "heading": 0
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -80,
+    34
+   ],
+   "heading": 180
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -72,
+    24
+   ],
+   "heading": 0
+  },
+  {
+   "type": "market_stall",
+   "pos": [
+    -72,
+    34
+   ],
+   "heading": 180
+  },
+  {
+   "type": "locker_row",
+   "pos": [
+    -100,
+    46.5
+   ],
+   "heading": 0,
+   "params": {
+    "count": 6
+   }
+  },
+  {
+   "type": "crate",
+   "pos": [
+    -80,
+    40
+   ],
+   "heading": 0,
+   "params": {
+    "size": 1.0
+   }
+  },
+  {
+   "type": "barrel_group",
+   "pos": [
+    -110,
+    40
+   ],
+   "heading": 0,
+   "params": {
+    "count": 3
+   }
+  },
+  {
+   "type": "tent",
+   "pos": [
+    -64,
+    44
+   ],
+   "heading": 90,
+   "params": {
+    "color": "white"
+   }
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -92,
+    29
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -76,
+    29
+   ],
+   "heading": 0
+  },
+  {
+   "type": "fence",
+   "pos": [
+    -86,
+    52
+   ],
+   "heading": 0,
+   "params": {
+    "length": 50,
+    "barbed": false
+   }
+  },
+  {
+   "type": "barracks",
+   "pos": [
+    15,
+    38
+   ],
+   "heading": 0,
+   "params": {
+    "width": 16,
+    "depth": 9,
+    "windows": 4,
+    "interior": "none",
+    "wall_color": "concrete"
+   }
+  },
+  {
+   "type": "terminal_desk",
+   "pos": [
+    19,
+    41.3
+   ],
+   "heading": 0
+  },
+  {
+   "type": "locker_row",
+   "pos": [
+    10,
+    41.8
+   ],
+   "heading": 0,
+   "params": {
+    "count": 4
+   }
+  },
+  {
+   "type": "crate_stack",
+   "pos": [
+    21.5,
+    36.0
+   ],
+   "heading": 0,
+   "params": {
+    "count": 2
+   }
+  },
+  {
+   "type": "generator",
+   "pos": [
+    27,
+    40
+   ],
+   "heading": 90
+  },
+  {
+   "type": "light_pole",
+   "pos": [
+    15,
+    28
+   ],
+   "heading": 0
+  },
+  {
+   "type": "hangar",
+   "pos": [
+    80,
+    20
+   ],
+   "heading": 0,
+   "params": {
+    "length": 24,
+    "radius": 8
+   }
+  },
+  {
+   "type": "hangar",
+   "pos": [
+    104,
+    20
+   ],
+   "heading": 0,
+   "params": {
+    "length": 24,
+    "radius": 7
+   }
+  },
+  {
+   "type": "hangar",
+   "pos": [
+    56,
+    30
+   ],
+   "heading": 0,
+   "params": {
+    "length": 20,
+    "radius": 7
+   }
+  },
+  {
+   "type": "crate_stack",
+   "pos": [
+    75,
+    28
+   ],
+   "heading": 0,
+   "params": {
+    "count": 4
+   }
+  },
+  {
+   "type": "crate",
+   "pos": [
+    86,
+    28
+   ],
+   "heading": 0,
+   "params": {
+    "size": 1.0
+   }
+  },
+  {
+   "type": "pallet",
+   "pos": [
+    84,
+    16
+   ],
+   "heading": 20
+  },
+  {
+   "type": "barrel_group",
+   "pos": [
+    74,
+    12
+   ],
+   "heading": 0,
+   "params": {
+    "count": 3
+   }
+  },
+  {
+   "type": "truck",
+   "pos": [
+    92,
+    0
+   ],
+   "heading": 160
+  },
+  {
+   "type": "light_pole",
+   "pos": [
+    70,
+    4
+   ],
+   "heading": 0
+  },
+  {
+   "type": "road",
+   "pos": [
+    0,
+    64
+   ],
+   "heading": 0,
+   "params": {
+    "length": 280,
+    "width": 8
+   }
+  },
+  {
+   "type": "road",
+   "pos": [
+    -40,
+    20
+   ],
+   "heading": 90,
+   "params": {
+    "length": 80,
+    "width": 7
+   }
+  },
+  {
+   "type": "townhouse_row",
+   "pos": [
+    -60,
+    92
+   ],
+   "heading": 0
+  },
+  {
+   "type": "townhouse_row",
+   "pos": [
+    -10,
+    92
+   ],
+   "heading": 0
+  },
+  {
+   "type": "townhouse_row",
+   "pos": [
+    40,
+    92
+   ],
+   "heading": 0
+  },
+  {
+   "type": "house",
+   "pos": [
+    85,
+    90
+   ],
+   "heading": 0
+  },
+  {
+   "type": "house",
+   "pos": [
+    -110,
+    88
+   ],
+   "heading": 0
+  },
+  {
+   "type": "church",
+   "pos": [
+    0,
+    125
+   ],
+   "heading": 0
+  },
+  {
+   "type": "jeep",
+   "pos": [
+    30,
+    70
+   ],
+   "heading": 100
+  },
+  {
+   "type": "truck",
+   "pos": [
+    -20,
+    58
+   ],
+   "heading": 0,
+   "params": {
+    "covered": true
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    -130,
+    30
+   ],
+   "heading": 90,
+   "params": {
+    "length": 120,
+    "barbed": false
+   }
+  },
+  {
+   "type": "fence",
+   "pos": [
+    125,
+    30
+   ],
+   "heading": 90,
+   "params": {
+    "length": 120,
+    "barbed": false
+   }
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -120,
+    69
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -80,
+    69
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    -40,
+    69
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    0,
+    69
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    40,
+    69
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    80,
+    69
+   ],
+   "heading": 0
+  },
+  {
+   "type": "lamp_post",
+   "pos": [
+    120,
+    69
+   ],
+   "heading": 0
+  }
+ ],
+ "scatter": [
+  {
+   "type": "bush",
+   "count": 40,
+   "area": [
+    -130,
+    60,
+    130,
+    140
+   ],
+   "min_spacing": 6,
+   "exclude": [
+    [
+     -130,
+     58,
+     130,
+     72
+    ],
+    [
+     -80,
+     80,
+     100,
+     135
+    ]
+   ],
+   "params": {
+    "size": [
+     0.8,
+     1.4
+    ]
+   }
+  },
+  {
+   "type": "tree_broadleaf",
+   "count": 30,
+   "area": [
+    -300,
+    140,
+    300,
+    400
+   ],
+   "min_spacing": 12
+  },
+  {
+   "type": "tree_pine",
+   "count": 60,
+   "area": [
+    -430,
+    -30,
+    430,
+    430
+   ],
+   "min_spacing": 10,
+   "exclude": [
+    [
+     -140,
+     -33,
+     140,
+     160
+    ]
+   ],
+   "params": {
+    "height": [
+     9,
+     14
+    ]
+   }
+  }
+ ]
+}

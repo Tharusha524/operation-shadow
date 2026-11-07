@@ -1,0 +1,955 @@
+{
+  "id": "veyra",
+  "name": "Veyra - Frontier Town",
+  "seed": 3317,
+  "player_spawn": {
+    "pos": [
+      -46.5,
+      -38.5,
+      0.25
+    ],
+    "heading": -90
+  },
+  "atmosphere": {
+    "sun_heading": 255,
+    "sun_pitch": -7,
+    "sun_color": [
+      1.25,
+      0.58,
+      0.32
+    ],
+    "ambient_color": [
+      0.24,
+      0.24,
+      0.32
+    ],
+    "fill_color": [
+      0.1,
+      0.1,
+      0.18
+    ],
+    "sky_zenith": [
+      0.12,
+      0.14,
+      0.25
+    ],
+    "sky_horizon": [
+      0.66,
+      0.34,
+      0.22
+    ],
+    "fog_color": [
+      0.33,
+      0.25,
+      0.22
+    ],
+    "fog_density": 0.0105,
+    "grading": {
+      "exposure": 1.65,
+      "saturation": 1.05,
+      "contrast": 1.04,
+      "tint": [
+        1.04,
+        0.98,
+        0.94
+      ],
+      "shadow_tint": [
+        0.85,
+        0.92,
+        1.15
+      ],
+      "lift": 0.05,
+      "bloom": 0.6,
+      "bloom_threshold": 0.8
+    },
+    "clouds": 0.55
+  },
+  "terrain": {
+    "size": 900,
+    "divisions": 90,
+    "play_area": 80,
+    "nav_bounds": [
+      -72,
+      -74,
+      72,
+      74
+    ],
+    "worn_color": [
+      0.7,
+      0.66,
+      0.6
+    ],
+    "grass_color": [
+      0.62,
+      0.66,
+      0.5
+    ],
+    "dark_color": [
+      0.45,
+      0.42,
+      0.38
+    ]
+  },
+  "points": {
+    "house_door": {
+      "pos": [
+        -42.5,
+        -38.5,
+        0
+      ],
+      "heading": -90
+    },
+    "street_b": {
+      "pos": [
+        -30,
+        -20,
+        0
+      ],
+      "heading": 0
+    },
+    "plaza_view": {
+      "pos": [
+        -24,
+        12,
+        0
+      ],
+      "heading": -80,
+      "pitch": 2
+    },
+    "street_c": {
+      "pos": [
+        25,
+        30,
+        0
+      ],
+      "heading": 0
+    },
+    "hospital": {
+      "pos": [
+        44,
+        56,
+        0
+      ],
+      "heading": -30
+    },
+    "view_town": {
+      "pos": [
+        -30,
+        -45,
+        0
+      ],
+      "heading": -10,
+      "pitch": 4
+    }
+  },
+  "fires": [
+    {
+      "pos": [
+        -37,
+        4,
+        0.9
+      ],
+      "size": 1.0
+    },
+    {
+      "pos": [
+        12,
+        20,
+        1.2
+      ],
+      "size": 1.4
+    },
+    {
+      "pos": [
+        5,
+        -22,
+        0.9
+      ],
+      "size": 1.0
+    },
+    {
+      "pos": [
+        -58,
+        -15,
+        0.3
+      ],
+      "size": 1.7
+    },
+    {
+      "pos": [
+        58,
+        0,
+        0.3
+      ],
+      "size": 1.5
+    },
+    {
+      "pos": [
+        -10,
+        50,
+        0.9
+      ],
+      "size": 1.1
+    },
+    {
+      "pos": [
+        -35.5,
+        -22,
+        0.1
+      ],
+      "size": 0.9
+    },
+    {
+      "pos": [
+        33.5,
+        12,
+        0.1
+      ],
+      "size": 0.9
+    },
+    {
+      "pos": [
+        -8,
+        -20,
+        0.3
+      ],
+      "size": 1.3
+    }
+  ],
+  "props": [
+    {
+      "type": "road",
+      "pos": [
+        0,
+        -50
+      ],
+      "heading": 0,
+      "params": {
+        "length": 140,
+        "width": 8,
+        "gaps": [
+          [
+            -34.5,
+            -25.5
+          ],
+          [
+            20.5,
+            29.5
+          ]
+        ]
+      }
+    },
+    {
+      "type": "road",
+      "pos": [
+        0,
+        50
+      ],
+      "heading": 0,
+      "params": {
+        "length": 140,
+        "width": 8,
+        "gaps": [
+          [
+            -34.5,
+            -25.5
+          ],
+          [
+            20.5,
+            29.5
+          ]
+        ]
+      }
+    },
+    {
+      "type": "road",
+      "pos": [
+        -30,
+        0
+      ],
+      "heading": 90,
+      "params": {
+        "length": 144,
+        "width": 7,
+        "gaps": [
+          [
+            -54.5,
+            -45.5
+          ],
+          [
+            45.5,
+            54.5
+          ]
+        ]
+      }
+    },
+    {
+      "type": "road",
+      "pos": [
+        25,
+        0
+      ],
+      "heading": 90,
+      "params": {
+        "length": 144,
+        "width": 7,
+        "gaps": [
+          [
+            -54.5,
+            -45.5
+          ],
+          [
+            45.5,
+            54.5
+          ]
+        ]
+      }
+    },
+    {
+      "type": "concrete_pad",
+      "pos": [
+        -2.5,
+        15
+      ],
+      "params": {
+        "width": 48,
+        "depth": 24
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -52,
+        -63
+      ],
+      "heading": 180,
+      "params": {
+        "length": 30
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -3,
+        -63
+      ],
+      "heading": 180,
+      "params": {
+        "length": 40
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        48,
+        -63
+      ],
+      "heading": 180,
+      "params": {
+        "length": 36
+      }
+    },
+    {
+      "type": "house",
+      "pos": [
+        -48,
+        -38.5
+      ],
+      "heading": 90,
+      "params": {
+        "wall_color": [
+          0.74,
+          0.66,
+          0.56
+        ]
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -40,
+        -15
+      ],
+      "heading": 90,
+      "params": {
+        "length": 26,
+        "burnt": 0.4
+      }
+    },
+    {
+      "type": "ruined_building",
+      "pos": [
+        -58,
+        -15
+      ],
+      "heading": 0
+    },
+    {
+      "type": "house",
+      "pos": [
+        -50,
+        14
+      ],
+      "heading": 90
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -40,
+        30
+      ],
+      "heading": 90,
+      "params": {
+        "length": 26
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -12,
+        -40
+      ],
+      "heading": 0,
+      "params": {
+        "length": 24
+      }
+    },
+    {
+      "type": "house",
+      "pos": [
+        12,
+        -38
+      ],
+      "heading": 0,
+      "params": {
+        "wall_color": [
+          0.62,
+          0.6,
+          0.55
+        ]
+      }
+    },
+    {
+      "type": "ruined_building",
+      "pos": [
+        -8,
+        -20
+      ],
+      "heading": 90
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -3,
+        -4
+      ],
+      "heading": 180,
+      "params": {
+        "length": 40,
+        "burnt": 0.3
+      }
+    },
+    {
+      "type": "jeep",
+      "pos": [
+        5,
+        -22
+      ],
+      "heading": 40,
+      "params": {
+        "burnt": true
+      }
+    },
+    {
+      "type": "rubble",
+      "pos": [
+        12,
+        -24
+      ],
+      "params": {
+        "size": 2.0
+      }
+    },
+    {
+      "type": "fountain",
+      "pos": [
+        -2,
+        15
+      ]
+    },
+    {
+      "type": "truck",
+      "pos": [
+        12,
+        20
+      ],
+      "heading": 30,
+      "params": {
+        "burnt": true
+      }
+    },
+    {
+      "type": "jersey_barrier",
+      "pos": [
+        -14,
+        20
+      ],
+      "heading": 0
+    },
+    {
+      "type": "jersey_barrier",
+      "pos": [
+        -9.5,
+        22
+      ],
+      "heading": 20
+    },
+    {
+      "type": "crate_stack",
+      "pos": [
+        -18,
+        8
+      ],
+      "heading": 10,
+      "params": {
+        "count": 4
+      }
+    },
+    {
+      "type": "sandbag_bunker",
+      "pos": [
+        7,
+        24
+      ],
+      "heading": 0
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        -24,
+        5
+      ]
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        19,
+        5
+      ],
+      "params": {
+        "lit": false
+      }
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        -24,
+        25
+      ]
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        19,
+        25
+      ]
+    },
+    {
+      "type": "church",
+      "pos": [
+        -2,
+        36.5
+      ],
+      "heading": 0
+    },
+    {
+      "type": "tree_broadleaf",
+      "pos": [
+        12,
+        34
+      ],
+      "params": {
+        "height": 8
+      }
+    },
+    {
+      "type": "tree_broadleaf",
+      "pos": [
+        17,
+        42
+      ],
+      "params": {
+        "height": 9
+      }
+    },
+    {
+      "type": "tree_dead",
+      "pos": [
+        -19,
+        36
+      ],
+      "params": {
+        "height": 7
+      }
+    },
+    {
+      "type": "rubble",
+      "pos": [
+        -17,
+        42
+      ],
+      "params": {
+        "size": 1.8
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        38,
+        -25
+      ],
+      "heading": -90,
+      "params": {
+        "length": 36
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        38,
+        22
+      ],
+      "heading": -90,
+      "params": {
+        "length": 40,
+        "burnt": 0.35
+      }
+    },
+    {
+      "type": "ruined_building",
+      "pos": [
+        58,
+        0
+      ],
+      "heading": 90
+    },
+    {
+      "type": "house",
+      "pos": [
+        55,
+        -32
+      ],
+      "heading": -90
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -45,
+        62
+      ],
+      "heading": 0,
+      "params": {
+        "length": 46
+      }
+    },
+    {
+      "type": "townhouse_row",
+      "pos": [
+        -2,
+        62
+      ],
+      "heading": 0,
+      "params": {
+        "length": 30
+      }
+    },
+    {
+      "type": "jeep",
+      "pos": [
+        -10,
+        50
+      ],
+      "heading": 95,
+      "params": {
+        "burnt": true
+      }
+    },
+    {
+      "type": "medical_tent",
+      "pos": [
+        40,
+        62
+      ],
+      "heading": 0
+    },
+    {
+      "type": "medical_tent",
+      "pos": [
+        52,
+        62
+      ],
+      "heading": 0
+    },
+    {
+      "type": "medical_tent",
+      "pos": [
+        63,
+        64
+      ],
+      "heading": 90
+    },
+    {
+      "type": "truck",
+      "pos": [
+        34,
+        60
+      ],
+      "heading": 90,
+      "params": {
+        "color": "white",
+        "covered": true
+      }
+    },
+    {
+      "type": "sandbag_wall",
+      "pos": [
+        50,
+        56.5
+      ],
+      "heading": 0,
+      "params": {
+        "length": 5
+      }
+    },
+    {
+      "type": "crate_stack",
+      "pos": [
+        58,
+        57
+      ],
+      "heading": 0,
+      "params": {
+        "count": 3,
+        "color": "white"
+      }
+    },
+    {
+      "type": "jeep",
+      "pos": [
+        -37,
+        4
+      ],
+      "heading": 80,
+      "params": {
+        "burnt": true
+      }
+    },
+    {
+      "type": "barrel_group",
+      "pos": [
+        -24,
+        -32
+      ],
+      "params": {
+        "count": 3,
+        "color": "mixed"
+      }
+    },
+    {
+      "type": "tire_stack",
+      "pos": [
+        -26,
+        34
+      ]
+    },
+    {
+      "type": "crate_stack",
+      "pos": [
+        30,
+        -30
+      ],
+      "heading": 90,
+      "params": {
+        "count": 3
+      }
+    },
+    {
+      "type": "rubble",
+      "pos": [
+        -30,
+        -2
+      ],
+      "params": {
+        "size": 1.6,
+        "count": 6
+      }
+    },
+    {
+      "type": "rubble",
+      "pos": [
+        25,
+        38
+      ],
+      "params": {
+        "size": 1.5,
+        "count": 6
+      }
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        -26,
+        -55
+      ]
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        21,
+        -55
+      ],
+      "params": {
+        "lit": false
+      }
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        -34,
+        45
+      ]
+    },
+    {
+      "type": "lamp_post",
+      "pos": [
+        29,
+        45
+      ]
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        0,
+        72
+      ],
+      "heading": 0,
+      "params": {
+        "length": 150
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        0,
+        -72
+      ],
+      "heading": 0,
+      "params": {
+        "length": 150
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        -70,
+        0
+      ],
+      "heading": 90,
+      "params": {
+        "length": 150
+      }
+    },
+    {
+      "type": "invisible_wall",
+      "pos": [
+        70,
+        0
+      ],
+      "heading": 90,
+      "params": {
+        "length": 150
+      }
+    }
+  ],
+  "scatter": [
+    {
+      "type": "tree_broadleaf",
+      "count": 70,
+      "area": [
+        -170,
+        -170,
+        170,
+        170
+      ],
+      "exclude": [
+        [
+          -78,
+          -78,
+          78,
+          78
+        ]
+      ],
+      "min_spacing": 6,
+      "params": {
+        "height": [
+          7,
+          11
+        ]
+      }
+    },
+    {
+      "type": "tree_pine",
+      "count": 90,
+      "area": [
+        -170,
+        -170,
+        170,
+        170
+      ],
+      "exclude": [
+        [
+          -78,
+          -78,
+          78,
+          78
+        ]
+      ],
+      "min_spacing": 5,
+      "params": {
+        "height": [
+          9,
+          14
+        ]
+      }
+    },
+    {
+      "type": "hill",
+      "count": 24,
+      "area": [
+        -360,
+        -360,
+        360,
+        360
+      ],
+      "exclude": [
+        [
+          -180,
+          -180,
+          180,
+          180
+        ]
+      ],
+      "min_spacing": 50,
+      "params": {
+        "radius": [
+          45,
+          90
+        ],
+        "height": [
+          18,
+          40
+        ]
+      }
+    }
+  ]
+}

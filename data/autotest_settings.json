@@ -1,0 +1,18 @@
+{
+  "mouse_sensitivity": 1.0,
+  "invert_mouse_y": false,
+  "field_of_view": 90.0,
+  "master_volume": 0.35,
+  "music_volume": 0.6000000238418579,
+  "sfx_volume": 0.8999999761581421,
+  "graphics_quality": "medium",
+  "shadow_quality": "medium",
+  "resolution": [
+    1280,
+    720
+  ],
+  "fullscreen": false,
+  "vsync": true,
+  "show_fps": false,
+  "difficulty": "normal"
+}

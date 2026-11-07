@@ -1,0 +1,159 @@
+{
+  "_comment": "AI soldier profiles. accuracy_spread = aim error cone in degrees (smaller = deadlier). Times in seconds.",
+  "profiles": {
+    "recruit": {
+      "health": 80,
+      "accuracy_spread": 4.6,
+      "reaction_time": 0.95,
+      "vision_range": 45,
+      "fov": 100,
+      "burst": [
+        2,
+        4
+      ],
+      "burst_pause": [
+        0.9,
+        1.7
+      ],
+      "walk_speed": 1.8,
+      "run_speed": 3.9,
+      "aggression": 0.3,
+      "grenade_chance": 0.0,
+      "weapon": "vk74"
+    },
+    "regular": {
+      "health": 100,
+      "accuracy_spread": 3.3,
+      "reaction_time": 0.65,
+      "vision_range": 60,
+      "fov": 110,
+      "burst": [
+        3,
+        5
+      ],
+      "burst_pause": [
+        0.7,
+        1.3
+      ],
+      "walk_speed": 1.9,
+      "run_speed": 4.3,
+      "aggression": 0.5,
+      "grenade_chance": 0.12,
+      "weapon": "vk74"
+    },
+    "veteran": {
+      "health": 140,
+      "accuracy_spread": 2.3,
+      "reaction_time": 0.42,
+      "vision_range": 75,
+      "fov": 120,
+      "burst": [
+        3,
+        6
+      ],
+      "burst_pause": [
+        0.45,
+        0.9
+      ],
+      "walk_speed": 2.0,
+      "run_speed": 4.6,
+      "aggression": 0.7,
+      "grenade_chance": 0.25,
+      "weapon": "vk74"
+    },
+    "gunner": {
+      "health": 140,
+      "accuracy_spread": 3.6,
+      "reaction_time": 0.5,
+      "vision_range": 95,
+      "fov": 130,
+      "burst": [
+        8,
+        14
+      ],
+      "burst_pause": [
+        0.9,
+        1.5
+      ],
+      "walk_speed": 1.8,
+      "run_speed": 3.8,
+      "aggression": 1.0,
+      "grenade_chance": 0.0,
+      "weapon": "mg_npc"
+    },
+    "rifleman": {
+      "health": 100,
+      "accuracy_spread": 3.4,
+      "reaction_time": 0.6,
+      "vision_range": 75,
+      "fov": 140,
+      "burst": [
+        3,
+        5
+      ],
+      "burst_pause": [
+        0.7,
+        1.3
+      ],
+      "walk_speed": 1.9,
+      "run_speed": 4.6,
+      "aggression": 0.6,
+      "grenade_chance": 0.0,
+      "weapon": "kr7_npc"
+    },
+    "wounded": {
+      "health": 260,
+      "accuracy_spread": 3.0,
+      "reaction_time": 0.6,
+      "vision_range": 50,
+      "fov": 160,
+      "burst": [
+        3,
+        5
+      ],
+      "burst_pause": [
+        0.6,
+        1.1
+      ],
+      "walk_speed": 1.6,
+      "run_speed": 2.3,
+      "aggression": 0.0,
+      "grenade_chance": 0.0,
+      "weapon": "kr7_npc"
+    },
+    "squad": {
+      "health": 100,
+      "accuracy_spread": 2.0,
+      "reaction_time": 0.5,
+      "vision_range": 70,
+      "fov": 140,
+      "burst": [
+        3,
+        5
+      ],
+      "burst_pause": [
+        0.6,
+        1.1
+      ],
+      "walk_speed": 2.0,
+      "run_speed": 5.0,
+      "aggression": 0.5,
+      "grenade_chance": 0.0,
+      "weapon": "kr7_npc"
+    }
+  },
+  "difficulty": {
+    "easy": {
+      "enemy_damage": 0.6,
+      "enemy_accuracy": 1.35
+    },
+    "normal": {
+      "enemy_damage": 1.0,
+      "enemy_accuracy": 1.0
+    },
+    "hard": {
+      "enemy_damage": 1.4,
+      "enemy_accuracy": 0.8
+    }
+  }
+}

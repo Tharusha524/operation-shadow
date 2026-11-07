@@ -1,0 +1,799 @@
+{
+  "id": "m01_first_light",
+  "map": "border_outpost",
+  "date": "Day 1 - 06:00",
+  "briefing": [
+    "Outpost Ridgeback watches the most peaceful stretch of the northern frontier. For thirty-two years the ceasefire with the Varn Directorate has held, and the soldiers posted here joke that the biggest threat is boredom.",
+    "This morning, Private Tomas Halden's squad has one job: the dawn patrol of the north fence.",
+    "Nobody at Ridgeback knows that, forty kilometres north, Directorate armour has been moving all night."
+  ],
+  "story_objective": "Survive the first hours of the invasion.",
+  "gameplay_objective": "Patrol the fence, restore communications, repel the assault, recover the cipher book and fall back to the south gate.",
+  "atmosphere": {
+    "sun_heading": 95,
+    "sun_pitch": -14,
+    "sun_color": [
+      1.55,
+      1.08,
+      0.72
+    ],
+    "ambient_color": [
+      0.33,
+      0.34,
+      0.43
+    ],
+    "fill_color": [
+      0.12,
+      0.14,
+      0.22
+    ],
+    "sky_zenith": [
+      0.3,
+      0.4,
+      0.62
+    ],
+    "sky_horizon": [
+      0.96,
+      0.74,
+      0.55
+    ],
+    "fog_color": [
+      0.8,
+      0.7,
+      0.6
+    ],
+    "fog_density": 0.0062,
+    "grading": {
+      "exposure": 1.2,
+      "saturation": 1.08,
+      "contrast": 1.06,
+      "tint": [
+        1.06,
+        0.99,
+        0.92
+      ],
+      "shadow_tint": [
+        0.88,
+        0.94,
+        1.1
+      ],
+      "lift": 0.03,
+      "bloom": 0.6
+    }
+  },
+  "player": {
+    "spawn": {
+      "pos": [
+        -18.5,
+        -34.5,
+        0
+      ],
+      "heading": -55
+    },
+    "loadout": [
+      "kr7",
+      "p12",
+      "lr50",
+      "sg8"
+    ],
+    "grenades": 2
+  },
+  "squad": [
+    {
+      "id": "marek",
+      "pos": [
+        -16.5,
+        -32.0
+      ],
+      "heading": -60
+    },
+    {
+      "id": "voss",
+      "pos": [
+        -17.0,
+        -37.0
+      ],
+      "heading": -40
+    },
+    {
+      "id": "kell",
+      "pos": [
+        -15.5,
+        -35.0
+      ],
+      "heading": -70
+    }
+  ],
+  "intro": {
+    "shots": [
+      {
+        "from": [
+          0,
+          -118,
+          28
+        ],
+        "to": [
+          0,
+          -84,
+          16
+        ],
+        "look_from": [
+          0,
+          0,
+          0
+        ],
+        "look_to": [
+          0,
+          -10,
+          2
+        ],
+        "duration": 6.5
+      },
+      {
+        "from": [
+          -31,
+          -44,
+          3.5
+        ],
+        "to": [
+          -24,
+          -41,
+          2.4
+        ],
+        "look_from": [
+          -22,
+          -35,
+          1.6
+        ],
+        "look_to": [
+          -17,
+          -34,
+          1.6
+        ],
+        "duration": 6.0
+      }
+    ],
+    "lines": [
+      {
+        "t": 0.4,
+        "speaker": "narrator",
+        "text": "Northern Frontier. Outpost Ridgeback. The quietest posting in the Republic.",
+        "seconds": 3.8
+      },
+      {
+        "t": 4.4,
+        "speaker": "narrator",
+        "text": "Three years of ceasefire. Nobody believed the Directorate would ever cross the line.",
+        "seconds": 3.8
+      },
+      {
+        "t": 8.6,
+        "speaker": "marek",
+        "text": "Halden! Kell! Boots on. North fence, same as every morning.",
+        "seconds": 3.6
+      }
+    ]
+  },
+  "outro": {
+    "shots": [
+      {
+        "from": [
+          0,
+          -64,
+          1.8
+        ],
+        "to": [
+          0,
+          -92,
+          24
+        ],
+        "look_from": [
+          0,
+          0,
+          3
+        ],
+        "look_to": [
+          0,
+          -10,
+          0
+        ],
+        "duration": 12.0
+      }
+    ],
+    "lines": [
+      {
+        "t": 0.3,
+        "speaker": "marek",
+        "text": "Into the truck! Go, go, go!",
+        "seconds": 2.6
+      },
+      {
+        "t": 3.0,
+        "speaker": "narrator",
+        "text": "At 06:14 the Directorate crossed the frontier along two hundred kilometres.",
+        "seconds": 4.0
+      },
+      {
+        "t": 7.2,
+        "speaker": "narrator",
+        "text": "Outpost Ridgeback held for thirty-one minutes. We were the lucky ones.",
+        "seconds": 4.5
+      }
+    ]
+  },
+  "steps": [
+    {
+      "id": "patrol",
+      "objective": {
+        "type": "reach",
+        "pos": [
+          3,
+          58,
+          0
+        ],
+        "radius": 6,
+        "text": "Patrol the north fence with Sgt. Marek"
+      },
+      "on_start": [
+        {
+          "action": "squad_hold",
+          "positions": {
+            "marek": [
+              -2,
+              61,
+              0
+            ],
+            "voss": [
+              6,
+              62,
+              20
+            ],
+            "kell": [
+              2,
+              57,
+              -10
+            ]
+          },
+          "delay": 1.0
+        },
+        {
+          "action": "loop_start",
+          "sound": "wind_loop",
+          "volume": 0.35
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "Same fence as yesterday, Sarge?",
+          "delay": 5.0,
+          "seconds": 3.0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Same fence as every day. Keep your eyes open anyway.",
+          "delay": 8.5,
+          "seconds": 3.5
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Birds went quiet about an hour ago. Don't like it.",
+          "delay": 16.0,
+          "seconds": 3.5
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Fence is intact. Quiet as always.",
+          "seconds": 3.0
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "Told you. Nothing ever happens up here.",
+          "delay": 3.2,
+          "seconds": 3.0
+        },
+        {
+          "action": "sound",
+          "sound": "radio_static",
+          "delay": 6.5
+        },
+        {
+          "action": "radio",
+          "speaker": "bastion",
+          "text": "...all frontier posts... [static] ...Ridgeback, do you co--",
+          "delay": 6.6,
+          "seconds": 3.5
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Comms just dropped. Halden - HQ roof, reset the relay. Now.",
+          "delay": 10.5,
+          "seconds": 4.0
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            3,
+            56,
+            0
+          ],
+          "heading": 180,
+          "delay": 10.0
+        }
+      ]
+    },
+    {
+      "id": "relay",
+      "objective": {
+        "type": "interact",
+        "pos": [
+          30.4,
+          -37.0,
+          4.6
+        ],
+        "radius": 2.6,
+        "hold": 2.5,
+        "prompt": "Hold [E] to reset the radio relay",
+        "text": "Reset the radio relay on the HQ roof"
+      }
+    },
+    {
+      "id": "assault",
+      "objective": {
+        "type": "eliminate",
+        "group": "wave1",
+        "text": "Repel the assault"
+      },
+      "on_start": [
+        {
+          "action": "sound",
+          "sound": "radio_static"
+        },
+        {
+          "action": "radio",
+          "speaker": "bastion",
+          "text": "All units Northern Sector, armour crossing at grid four-one-- [static]",
+          "seconds": 3.5
+        },
+        {
+          "action": "destroy_prop",
+          "id": "north_breach",
+          "explode": true,
+          "delay": 3.0
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            -6,
+            71,
+            0.3
+          ],
+          "delay": 3.4
+        },
+        {
+          "action": "smoke",
+          "pos": [
+            0,
+            70,
+            0.5
+          ],
+          "seconds": 400,
+          "delay": 3.2
+        },
+        {
+          "action": "smoke",
+          "pos": [
+            -6,
+            71,
+            0.5
+          ],
+          "seconds": 400,
+          "delay": 3.6
+        },
+        {
+          "action": "loop_start",
+          "sound": "alarm_loop",
+          "volume": 0.25,
+          "delay": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "CONTACT NORTH! They've blown the fence! Halden, you've got the high ground - use it!",
+          "delay": 4.5,
+          "seconds": 4.5
+        },
+        {
+          "action": "squad_hold",
+          "delay": 5.0,
+          "positions": {
+            "marek": [
+              -10,
+              15.5,
+              0
+            ],
+            "voss": [
+              10.0,
+              -3.5,
+              20
+            ],
+            "kell": [
+              -5.2,
+              -30,
+              0
+            ]
+          }
+        },
+        {
+          "action": "spawn",
+          "group": "wave1",
+          "delay": 5.0,
+          "units": [
+            {
+              "pos": [
+                -8,
+                80
+              ],
+              "profile": "regular",
+              "alert": [
+                0,
+                45
+              ]
+            },
+            {
+              "pos": [
+                -3,
+                84
+              ],
+              "profile": "regular",
+              "alert": [
+                -10,
+                30
+              ]
+            },
+            {
+              "pos": [
+                2,
+                79
+              ],
+              "profile": "recruit",
+              "alert": [
+                0,
+                40
+              ]
+            },
+            {
+              "pos": [
+                7,
+                83
+              ],
+              "profile": "regular",
+              "alert": [
+                10,
+                30
+              ]
+            },
+            {
+              "pos": [
+                -5,
+                90
+              ],
+              "profile": "recruit",
+              "alert": [
+                -5,
+                35
+              ]
+            },
+            {
+              "pos": [
+                4,
+                92
+              ],
+              "profile": "regular",
+              "alert": [
+                5,
+                35
+              ]
+            },
+            {
+              "pos": [
+                10,
+                88
+              ],
+              "profile": "regular",
+              "alert": [
+                15,
+                25
+              ]
+            },
+            {
+              "pos": [
+                -11,
+                86
+              ],
+              "profile": "recruit",
+              "alert": [
+                -15,
+                25
+              ]
+            }
+          ]
+        },
+        {
+          "action": "notice",
+          "text": "THE OUTPOST IS UNDER ATTACK",
+          "delay": 5.5
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Squad, man the sandbags! Halden, pick them off from up there!",
+          "delay": 9.5,
+          "seconds": 3.5
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "That's the first wave. They'll be back, and they'll bring more.",
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Halden! The cipher book - HQ main office. They can't have it!",
+          "delay": 4.5,
+          "seconds": 4.0
+        },
+        {
+          "action": "refill_ammo",
+          "delay": 1.0
+        },
+        {
+          "action": "checkpoint",
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "id": "codebook",
+      "objective": {
+        "type": "interact",
+        "pos": [
+          28.0,
+          -30.0,
+          1.2
+        ],
+        "radius": 2.8,
+        "hold": 2.0,
+        "prompt": "Hold [E] to take the cipher book",
+        "text": "Recover the cipher book from HQ"
+      },
+      "on_start": [
+        {
+          "action": "squad_follow"
+        },
+        {
+          "action": "spawn",
+          "group": "wave2",
+          "delay": 6.0,
+          "units": [
+            {
+              "pos": [
+                -4,
+                95
+              ],
+              "profile": "regular",
+              "alert": [
+                20,
+                -20
+              ]
+            },
+            {
+              "pos": [
+                4,
+                96
+              ],
+              "profile": "regular",
+              "alert": [
+                20,
+                -25
+              ]
+            },
+            {
+              "pos": [
+                0,
+                100
+              ],
+              "profile": "veteran",
+              "alert": [
+                25,
+                -25
+              ]
+            },
+            {
+              "pos": [
+                -22,
+                63
+              ],
+              "profile": "regular",
+              "alert": [
+                10,
+                -10
+              ]
+            },
+            {
+              "pos": [
+                -16,
+                66
+              ],
+              "profile": "recruit",
+              "alert": [
+                5,
+                -15
+              ]
+            },
+            {
+              "pos": [
+                9,
+                97
+              ],
+              "profile": "regular",
+              "alert": [
+                30,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Second group through the breach - heading for HQ!",
+          "delay": 9.0,
+          "seconds": 3.5
+        }
+      ]
+    },
+    {
+      "id": "clear",
+      "objective": {
+        "type": "eliminate",
+        "group": "wave2",
+        "text": "Clear the attackers around HQ"
+      },
+      "on_start": [
+        {
+          "action": "notice",
+          "text": "CIPHER BOOK RECOVERED"
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "Got it? Good - now help us out here!",
+          "delay": 1.5,
+          "seconds": 3.0
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "sound",
+          "sound": "radio_beep"
+        },
+        {
+          "action": "radio",
+          "speaker": "bastion",
+          "text": "All Northern Sector units: fall back to Line Kesh. I repeat, fall back.",
+          "seconds": 4.5
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "That's it, we're leaving. Everyone to the south gate - the truck's waiting!",
+          "delay": 5.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "destroy_prop",
+          "id": "main_gate",
+          "explode": false
+        },
+        {
+          "action": "refill_ammo"
+        },
+        {
+          "action": "checkpoint"
+        }
+      ]
+    },
+    {
+      "id": "fall_back",
+      "objective": {
+        "type": "reach",
+        "pos": [
+          0,
+          -63,
+          0
+        ],
+        "radius": 5,
+        "text": "Fall back to the south gate"
+      },
+      "on_start": [
+        {
+          "action": "spawn",
+          "group": "wave3",
+          "delay": 7.0,
+          "units": [
+            {
+              "pos": [
+                -6,
+                92
+              ],
+              "profile": "veteran",
+              "alert": [
+                0,
+                0
+              ]
+            },
+            {
+              "pos": [
+                0,
+                96
+              ],
+              "profile": "veteran",
+              "alert": [
+                0,
+                -10
+              ]
+            },
+            {
+              "pos": [
+                6,
+                92
+              ],
+              "profile": "regular",
+              "alert": [
+                5,
+                -5
+              ]
+            },
+            {
+              "pos": [
+                -2,
+                100
+              ],
+              "profile": "regular",
+              "alert": [
+                -5,
+                -5
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "More of them coming over the north fence. Don't stop to fight!",
+          "delay": 12.0,
+          "seconds": 4.0
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "loop_stop",
+          "sound": "alarm_loop"
+        },
+        {
+          "action": "complete_mission"
+        }
+      ]
+    }
+  ]
+}

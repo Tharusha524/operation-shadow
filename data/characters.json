@@ -1,0 +1,108 @@
+{
+  "_comment": "Original characters for OPERATION SHADOW. Speaker ids are used by mission dialogue.",
+  "characters": {
+    "halden": {
+      "name": "Pvt. Tomas Halden", "short": "Halden", "faction": "kareth", "playable": true,
+      "role": "Rifleman, 3rd Frontier Company",
+      "bio": "Nineteen years old and eight months into his service, Halden was posted to the quietest stretch of the northern frontier. He has never fired a shot outside the range."
+    },
+    "crane": {
+      "name": "Elias Crane", "short": "Crane", "faction": "independent", "playable": true,
+      "role": "Former intelligence officer",
+      "bio": "Dismissed from Republic Intelligence after a failed operation he was blamed for, Crane now works alone. He believes the invasion is a cover for something far worse."
+    },
+    "marek": {
+      "name": "Sgt. Ilya Marek", "short": "Marek", "faction": "kareth", "playable": false,
+      "role": "Squad leader",
+      "bio": "A twenty-year veteran who asked for a quiet posting. Gruff, careful, and fiercely protective of his soldiers."
+    },
+    "voss": {
+      "name": "Cpl. Nadia Voss", "short": "Voss", "faction": "kareth", "playable": false,
+      "role": "Squad marksman",
+      "bio": "The best shot in the company. Calm under fire and sparing with words."
+    },
+    "kell": {
+      "name": "Pvt. Jonah Kell", "short": "Kell", "faction": "kareth", "playable": false,
+      "role": "Rifleman",
+      "bio": "Halden's friend from basic training. Jokes when he is nervous, which is often."
+    },
+    "doran": {
+      "name": "Pvt. Rafe Doran", "short": "Doran", "faction": "kareth", "playable": false,
+      "role": "Combat engineer",
+      "bio": "A quarry blaster before the war. Talks about explosives the way other people talk about music."
+    },
+    "wren": {
+      "name": "Isa Wren", "short": "Wren", "faction": "independent", "playable": false,
+      "role": "Former intelligence analyst, Crane's eyes on the network",
+      "bio": "Quit the service the week Crane was dismissed. Works from a rented room full of borrowed radios and stolen passwords."
+    },
+    "brandt": {
+      "name": "Lio Brandt", "short": "Brandt", "faction": "kareth", "playable": false,
+      "role": "Shipping clerk turned courier",
+      "bio": "Copied one shipping manifest he was never meant to see, and has been running ever since."
+    },
+    "drevan": {
+      "name": "Director-General Kasimir Drevan", "short": "Drevan", "faction": "varn", "playable": false,
+      "role": "Head of the Varn Directorate",
+      "bio": "Rose through the Directorate's security service. Has ruled Varn for eleven years without ever giving a speech."
+    },
+    "kade": {
+      "name": "Gen. Teodor Kade", "short": "Kade", "faction": "varn", "playable": false,
+      "role": "Commander, Southern Front",
+      "bio": "Young for a general. Planned the invasion down to the hour."
+    },
+    "ostrova": {
+      "name": "Gen. Anton Ostrova", "short": "Ostrova", "faction": "varn", "playable": false,
+      "role": "Chief of the General Staff",
+      "bio": "Fought in the last war. The only man in the room who remembers how it ended."
+    },
+    "civilian": {
+      "name": "Civilian", "short": "Civilian", "faction": "kareth", "playable": false, "role": "", "bio": ""
+    },
+    "stranger": {
+      "name": "Man in the grey coat", "short": "Stranger", "faction": "unknown", "playable": false,
+      "role": "Unknown", "bio": ""
+    },
+    "venn": {
+      "name": "Deputy Director Alda Venn", "short": "Venn", "faction": "kareth", "playable": false,
+      "role": "Republic Intelligence",
+      "bio": "Ran the inquiry into Operation Glass Harbour."
+    },
+    "rusk": {
+      "name": "Lt. Anya Rusk", "short": "Rusk", "faction": "kareth", "playable": false,
+      "role": "Platoon leader, 9th Infantry",
+      "bio": "Commands the last platoon on Kesh Ridge. Her family is among the people still waiting in the town below."
+    },
+    "hammer": {
+      "name": "Hammer (Mortar Section)", "short": "Hammer", "faction": "kareth", "playable": false,
+      "role": "Radio callsign of the ridge mortar team", "bio": ""
+    },
+    "convoy": {
+      "name": "Convoy Two-Six", "short": "Convoy", "faction": "kareth", "playable": false,
+      "role": "Evacuation convoy", "bio": ""
+    },
+    "lind": {
+      "name": "Dr. Ora Lind", "short": "Lind", "faction": "kareth", "playable": false,
+      "role": "Field surgeon", "bio": "Runs the last field hospital in Veyra out of three tents and a truck."
+    },
+    "bastion": {
+      "name": "Bastion (Sector Command)", "short": "Bastion", "faction": "kareth", "playable": false,
+      "role": "Radio callsign of Northern Sector Command", "bio": ""
+    },
+    "mira": {
+      "name": "Mira Sol", "short": "Sol", "faction": "independent", "playable": false,
+      "role": "Arms broker and reluctant informant",
+      "bio": "She sold to everyone, until she learned what the buyers of Project TEMPEST intended."
+    },
+    "harrow": {
+      "name": "Col. Desmond Harrow", "short": "Harrow", "faction": "unknown", "playable": false,
+      "role": "Crane's former commanding officer", "bio": "Officially dead for two years."
+    },
+    "narrator": {"name": "", "short": "", "faction": "none", "playable": false, "role": "", "bio": ""}
+  },
+  "factions": {
+    "kareth": {"name": "Kareth Republic Army", "color": [0.22, 0.42, 0.75]},
+    "varn": {"name": "Varn Directorate", "color": [0.62, 0.1, 0.08]},
+    "independent": {"name": "Independent", "color": [0.8, 0.8, 0.8]}
+  }
+}

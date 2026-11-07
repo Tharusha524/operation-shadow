@@ -1,0 +1,87 @@
+{
+ "shots": [
+  {
+   "type": "scene",
+   "from": [
+    160,
+    -40,
+    22
+   ],
+   "to": [
+    150,
+    -10,
+    30
+   ],
+   "look_from": [
+    200,
+    0,
+    -1
+   ],
+   "look_to": [
+    200,
+    0,
+    -2
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "Bastion, this is Marek. The Tamsin bridge is down."
+    },
+    {
+     "speaker": "doran",
+     "text": "Goodbye, Tamsin."
+    },
+    {
+     "speaker": "narrator",
+     "text": "The road was closed. But the war was far from over."
+    }
+   ],
+   "duration": 10,
+   "grade": {
+    "exposure": 3.4,
+    "lift": 0.05
+   },
+   "vehicles": [
+    {
+     "kind": "transport_helicopter",
+     "path": [
+      [
+       214,
+       197,
+       12
+      ],
+      [
+       180,
+       80,
+       30
+      ],
+      [
+       120,
+       -80,
+       45
+      ]
+     ],
+     "speed": 16.0
+    }
+   ],
+   "caption": [
+    "TAMSIN RIVER",
+    "00:02"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "marek",
+   "text": "Bastion, this is Marek. The Tamsin bridge is down."
+  },
+  {
+   "speaker": "doran",
+   "text": "Goodbye, Tamsin."
+  },
+  {
+   "speaker": "narrator",
+   "text": "The road was closed. But the war was far from over."
+  }
+ ]
+}

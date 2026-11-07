@@ -1,0 +1,213 @@
+{
+ "shots": [
+  {
+   "type": "title",
+   "title": "MISSION 2:  THE LINE BREAKS",
+   "subtitle": "Pvt. Tomas Halden  -  Kesh Ridge",
+   "duration": 4.0,
+   "lines": []
+  },
+  {
+   "type": "scene",
+   "from": [
+    -14,
+    -6,
+    3.0
+   ],
+   "to": [
+    -10,
+    -5,
+    2.6
+   ],
+   "look_from": [
+    -4,
+    2,
+    1.0
+   ],
+   "look_to": [
+    -3,
+    6,
+    1.4
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "This road is the only safe evacuation route."
+    },
+    {
+     "speaker": "halden",
+     "text": "How many civilians?"
+    },
+    {
+     "speaker": "marek",
+     "text": "Thousands."
+    },
+    {
+     "speaker": "kell",
+     "text": "Then I suppose we're staying."
+    }
+   ],
+   "duration": 9,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -6,
+      0.2
+     ],
+     "heading": 0,
+     "anim": "point"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -4,
+      -0.3
+     ],
+     "heading": 20,
+     "anim": "kneel"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -2.8,
+      0.1
+     ],
+     "heading": -60,
+     "anim": "argue"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      0,
+      0.5
+     ],
+     "heading": 0,
+     "anim": "aim"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -8,
+      -0.2
+     ],
+     "heading": 40,
+     "anim": "kneel_inspect"
+    }
+   ],
+   "caption": [
+    "KESH RIDGE",
+    "DAY 2 - 09:20"
+   ]
+  },
+  {
+   "type": "scene",
+   "from": [
+    -30,
+    -27.2,
+    1.65
+   ],
+   "to": [
+    -30.2,
+    -27.4,
+    1.65
+   ],
+   "look_from": [
+    -30,
+    -29,
+    1.6
+   ],
+   "look_to": [
+    -30,
+    -29,
+    1.6
+   ],
+   "lines": [
+    {
+     "speaker": "bastion",
+     "text": "Hold Kesh Ridge until the evacuation is complete."
+    },
+    {
+     "speaker": "marek",
+     "text": "Understood."
+    },
+    {
+     "speaker": "voss",
+     "text": "They are already moving through the valley."
+    },
+    {
+     "speaker": "marek",
+     "text": "Then we make sure they don't reach the road."
+    }
+   ],
+   "duration": 8,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -30,
+      -29
+     ],
+     "heading": 0,
+     "anim": "phone"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -28.6,
+      -28.5
+     ],
+     "heading": -60,
+     "anim": "stand"
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -31.6,
+      -27.8
+     ],
+     "heading": 120,
+     "anim": "stand"
+    }
+   ],
+   "caption": [
+    "COMMAND TRENCH",
+    "09:35"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "marek",
+   "text": "This road is the only safe evacuation route."
+  },
+  {
+   "speaker": "halden",
+   "text": "How many civilians?"
+  },
+  {
+   "speaker": "marek",
+   "text": "Thousands."
+  },
+  {
+   "speaker": "kell",
+   "text": "Then I suppose we're staying."
+  },
+  {
+   "speaker": "bastion",
+   "text": "Hold Kesh Ridge until the evacuation is complete."
+  },
+  {
+   "speaker": "marek",
+   "text": "Understood."
+  },
+  {
+   "speaker": "voss",
+   "text": "They are already moving through the valley."
+  },
+  {
+   "speaker": "marek",
+   "text": "Then we make sure they don't reach the road."
+  }
+ ]
+}

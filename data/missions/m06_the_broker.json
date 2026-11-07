@@ -1,0 +1,1381 @@
+{
+ "id": "m06_the_broker",
+ "map": "lake_ostra",
+ "date": "Day 12 - 16:30",
+ "briefing": [
+  "The Port Calder manifests point to Lake Ostra, and to Mira Sol - an arms broker who has armed both sides of every war in ten years.",
+  "Sol has offered to meet Crane at her villa above the lake. She says she sold something to the people behind TEMPEST, and that she wants out.",
+  "Crane doesn't trust her. But he trusts Desmond Harrow's silence even less."
+ ],
+ "story_objective": "Find out what Mira Sol knows about TEMPEST, and keep her alive.",
+ "gameplay_objective": "Meet Mira, survive the ambush with smoke and flashbangs (T switches, G throws), take out the mortar, then drive the jeep down the lake road and smash through the roadblock.",
+ "par_time": 1020,
+ "player": {
+  "spawn": {
+   "pos": [
+    200,
+    70,
+    0.0
+   ],
+   "heading": 0
+  },
+  "loadout": [
+   "kr7s",
+   "p9s"
+  ],
+  "grenades": 1
+ },
+ "squad": [
+  {
+   "id": "mira",
+   "pos": [
+    200,
+    134
+   ],
+   "heading": 180
+  }
+ ],
+ "intel": [
+  {
+   "id": "m06_sales_ledger",
+   "name": "Mira's sales ledger",
+   "pos": [
+    212,
+    134,
+    0.62
+   ]
+  },
+  {
+   "id": "m06_harrow_orders",
+   "name": "Harrow's written orders",
+   "pos": [
+    326,
+    232,
+    0.62
+   ]
+  }
+ ],
+ "intro": {
+  "shots": [
+   {
+    "from": [
+     120,
+     -160,
+     40
+    ],
+    "to": [
+     160,
+     -90,
+     30
+    ],
+    "look_from": [
+     200,
+     150,
+     6
+    ],
+    "look_to": [
+     200,
+     150,
+     4
+    ],
+    "duration": 7.0
+   },
+   {
+    "from": [
+     206,
+     58,
+     2.2
+    ],
+    "to": [
+     202,
+     68,
+     1.8
+    ],
+    "look_from": [
+     200,
+     150,
+     4
+    ],
+    "look_to": [
+     200,
+     150,
+     3
+    ],
+    "duration": 6.0
+   }
+  ],
+  "lines": [
+   {
+    "t": 0.4,
+    "speaker": "narrator",
+    "text": "Lake Ostra. Two weeks into the war, you could still buy anything here.",
+    "seconds": 3.6
+   },
+   {
+    "t": 4.4,
+    "speaker": "wren",
+    "text": "She invited you. That's what worries me.",
+    "seconds": 3.0
+   },
+   {
+    "t": 8.0,
+    "speaker": "crane",
+    "text": "It should. Stay on the line.",
+    "seconds": 2.6
+   }
+  ]
+ },
+ "outro": {
+  "shots": [
+   {
+    "from": [
+     -380,
+     -130,
+     9
+    ],
+    "to": [
+     -330,
+     -190,
+     14
+    ],
+    "look_from": [
+     -380,
+     -60,
+     3
+    ],
+    "look_to": [
+     200,
+     150,
+     10
+    ],
+    "duration": 12.0
+   }
+  ],
+  "lines": [
+   {
+    "t": 0.4,
+    "speaker": "mira",
+    "text": "The parts went to a data centre outside Saint-Aurel.",
+    "seconds": 3.4
+   },
+   {
+    "t": 4.0,
+    "speaker": "crane",
+    "text": "A data centre. For a weapon.",
+    "seconds": 2.6
+   },
+   {
+    "t": 6.8,
+    "speaker": "mira",
+    "text": "TEMPEST doesn't blow anything up, Elias. It tells everything else what to hit.",
+    "seconds": 4.2
+   }
+  ]
+ },
+ "steps": [
+  {
+   "id": "arrive",
+   "objective": {
+    "type": "reach",
+    "text": "Walk up to Mira Sol's villa",
+    "pos": [
+     200,
+     130,
+     0
+    ],
+    "radius": 6
+   },
+   "on_start": [
+    {
+     "action": "squad_hold",
+     "positions": {
+      "mira": [
+       200,
+       134,
+       180
+      ]
+     }
+    },
+    {
+     "action": "spawn_friendly",
+     "group": "mira_guards",
+     "units": [
+      {
+       "pos": [
+        194,
+        83
+       ],
+       "heading": 180,
+       "name": "Villa Guard"
+      },
+      {
+       "pos": [
+        206,
+        83
+       ],
+       "heading": 180,
+       "name": "Villa Guard"
+      },
+      {
+       "pos": [
+        190,
+        133
+       ],
+       "heading": 180,
+       "name": "Villa Guard"
+      },
+      {
+       "pos": [
+        210,
+        133
+       ],
+       "heading": 180,
+       "name": "Villa Guard"
+      },
+      {
+       "pos": [
+        216,
+        118
+       ],
+       "heading": 150,
+       "name": "Villa Guard"
+      },
+      {
+       "pos": [
+        184,
+        118
+       ],
+       "heading": 210,
+       "name": "Villa Guard"
+      }
+     ]
+    },
+    {
+     "action": "radio",
+     "speaker": "wren",
+     "text": "Mira Sol. She has sold rifles to both sides of every war in ten years.",
+     "delay": 1.0,
+     "seconds": 4.117647058823529
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "And now she wants to talk about TEMPEST.",
+     "delay": 6.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "wren",
+     "text": "Those are her guards. Don't shoot anyone who isn't shooting you.",
+     "delay": 9.5,
+     "seconds": 3.764705882352941
+    }
+   ],
+   "on_complete": []
+  },
+  {
+   "id": "meet",
+   "objective": {
+    "type": "interact",
+    "text": "Talk to Mira Sol",
+    "pos": [
+     200,
+     134,
+     1.5
+    ],
+    "radius": 3.0,
+    "hold": 0.8,
+    "prompt": "Hold E to talk to Mira"
+   },
+   "on_start": [],
+   "on_complete": []
+  },
+  {
+   "id": "talk",
+   "objective": {
+    "type": "survive",
+    "text": "Hear Mira out",
+    "seconds": 38
+   },
+   "on_start": [
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "You came a long way to ask questions.",
+     "delay": 0.5,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "You came a long way to avoid answering them.",
+     "delay": 3.5,
+     "seconds": 2.588235294117647
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "I sold equipment. I didn't build a war.",
+     "delay": 7.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "But you helped someone who did.",
+     "delay": 10.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "The final components went to a facility near Saint-Aurel.",
+     "delay": 13.5,
+     "seconds": 3.3529411764705883
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "What is Tempest?",
+     "delay": 18.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "A targeting network. Satellites, drones, missiles. One connected system.",
+     "delay": 20.5,
+     "seconds": 4.235294117647059
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "Who controls it?",
+     "delay": 26.5,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Harrow. The rest is in my safe.",
+     "delay": 29.0,
+     "seconds": 2.5
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "kill_group",
+     "group": "mira_guards",
+     "count": 1,
+     "sound": "shot_sniper"
+    },
+    {
+     "action": "explosion",
+     "pos": [
+      200,
+      88,
+      0.5
+     ]
+    },
+    {
+     "action": "loop_start",
+     "sound": "alarm_loop",
+     "volume": 0.25
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "You brought them here!",
+     "delay": 0.3,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "They were already watching you!",
+     "delay": 2.6,
+     "seconds": 2.5
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      198,
+      132,
+      0.0
+     ],
+     "heading": 180,
+     "delay": 1.0
+    }
+   ]
+  },
+  {
+   "id": "armoury",
+   "objective": {
+    "type": "interact",
+    "text": "Grab grenades from Mira's crates",
+    "pos": [
+     186,
+     136,
+     1.0
+    ],
+    "radius": 2.8,
+    "hold": 0.8,
+    "prompt": "Hold E to take the grenades"
+   },
+   "on_start": [
+    {
+     "action": "squad_hold",
+     "positions": {
+      "mira": [
+       201,
+       141,
+       0
+      ]
+     }
+    },
+    {
+     "action": "spawn",
+     "group": "assault",
+     "units": [
+      {
+       "pos": [
+        196,
+        76
+       ],
+       "heading": 0,
+       "alert": [
+        198,
+        112
+       ]
+      },
+      {
+       "pos": [
+        204,
+        76
+       ],
+       "heading": 0,
+       "alert": [
+        202,
+        112
+       ]
+      },
+      {
+       "pos": [
+        200,
+        72
+       ],
+       "heading": 0,
+       "alert": [
+        200,
+        104
+       ],
+       "profile": "gunner"
+      }
+     ],
+     "delay": 1.0
+    },
+    {
+     "action": "radio",
+     "speaker": "harrow",
+     "text": "Hello, Elias. You really should have stayed buried.",
+     "delay": 2.5,
+     "seconds": 3.0
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "give_grenades",
+     "kind": "smoke",
+     "count": 2
+    },
+    {
+     "action": "give_grenades",
+     "kind": "flash",
+     "count": 3
+    },
+    {
+     "action": "give_grenades",
+     "kind": "frag",
+     "count": 2
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Smoke and flashbangs. T to switch, G to throw. I need one minute at the safe!",
+     "delay": 0.5,
+     "seconds": 5.0
+    }
+   ]
+  },
+  {
+   "id": "defend",
+   "objective": {
+    "type": "survive",
+    "text": "Hold the terrace while Mira opens the safe",
+    "seconds": 60
+   },
+   "on_start": [
+    {
+     "action": "barrage",
+     "area": [
+      172,
+      100,
+      228,
+      132
+     ],
+     "count": 9,
+     "seconds": 46,
+     "radius": 5.0,
+     "damage": 55.0,
+     "delay": 6.0
+    },
+    {
+     "action": "spawn",
+     "group": "assault",
+     "units": [
+      {
+       "pos": [
+        158,
+        92
+       ],
+       "heading": 60,
+       "alert": [
+        186,
+        122
+       ]
+      },
+      {
+       "pos": [
+        164,
+        96
+       ],
+       "heading": 60,
+       "alert": [
+        190,
+        124
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        160,
+        104
+       ],
+       "heading": 80,
+       "alert": [
+        188,
+        128
+       ]
+      }
+     ],
+     "delay": 8.0
+    },
+    {
+     "action": "spawn",
+     "group": "assault",
+     "units": [
+      {
+       "pos": [
+        242,
+        92
+       ],
+       "heading": -60,
+       "alert": [
+        214,
+        122
+       ]
+      },
+      {
+       "pos": [
+        236,
+        96
+       ],
+       "heading": -60,
+       "alert": [
+        212,
+        124
+       ],
+       "profile": "veteran"
+      },
+      {
+       "pos": [
+        244,
+        106
+       ],
+       "heading": -80,
+       "alert": [
+        212,
+        130
+       ],
+       "profile": "recruit"
+      }
+     ],
+     "delay": 22.0
+    },
+    {
+     "action": "spawn",
+     "group": "assault",
+     "units": [
+      {
+       "pos": [
+        192,
+        78
+       ],
+       "heading": 0,
+       "alert": [
+        194,
+        124
+       ]
+      },
+      {
+       "pos": [
+        200,
+        74
+       ],
+       "heading": 0,
+       "alert": [
+        200,
+        122
+       ],
+       "profile": "veteran"
+      },
+      {
+       "pos": [
+        208,
+        78
+       ],
+       "heading": 0,
+       "alert": [
+        206,
+        124
+       ]
+      },
+      {
+       "pos": [
+        214,
+        82
+       ],
+       "heading": 0,
+       "alert": [
+        212,
+        126
+       ],
+       "profile": "gunner"
+      }
+     ],
+     "delay": 40.0
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Mortar! They've got a mortar somewhere up on the east slope!",
+     "delay": 12.0,
+     "seconds": 3.5294117647058822
+    },
+    {
+     "action": "radio",
+     "speaker": "harrow",
+     "text": "She'll sell you out too. She always does.",
+     "delay": 30.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Don't listen to him. Twenty more seconds!",
+     "delay": 42.0,
+     "seconds": 2.5
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Safe's open! But that mortar will flatten us before we reach the car.",
+     "delay": 0.5,
+     "seconds": 4.0588235294117645
+    },
+    {
+     "action": "refill_ammo",
+     "delay": 0.5
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      205,
+      132,
+      0.0
+     ],
+     "heading": -60,
+     "delay": 1.0
+    }
+   ]
+  },
+  {
+   "id": "mortar",
+   "objective": {
+    "type": "eliminate",
+    "group": "mortar",
+    "text": "Silence the mortar on the east slope",
+    "pos": [
+     320,
+     230,
+     1.5
+    ]
+   },
+   "on_start": [
+    {
+     "action": "spawn",
+     "group": "mortar",
+     "units": [
+      {
+       "pos": [
+        320,
+        228
+       ],
+       "heading": 200,
+       "hold": [
+        320,
+        228,
+        200
+       ]
+      },
+      {
+       "pos": [
+        324,
+        233
+       ],
+       "heading": 200,
+       "hold": [
+        324,
+        233,
+        200
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        310,
+        220
+       ],
+       "heading": 230,
+       "hold": [
+        310,
+        220,
+        230
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        330,
+        220
+       ],
+       "heading": 180,
+       "hold": [
+        330,
+        220,
+        180
+       ]
+      },
+      {
+       "pos": [
+        300,
+        208
+       ],
+       "heading": 230,
+       "hold": [
+        300,
+        208,
+        230
+       ],
+       "profile": "veteran"
+      }
+     ]
+    },
+    {
+     "action": "barrage",
+     "area": [
+      172,
+      100,
+      245,
+      150
+     ],
+     "count": 14,
+     "seconds": 90,
+     "radius": 5.0,
+     "damage": 55.0,
+     "delay": 4.0
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Garden gate in the east wall. Go - I'll hold the house!",
+     "delay": 1.0,
+     "seconds": 3.235294117647059
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "cancel_barrage"
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "Mortar's down.",
+     "delay": 0.5,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "My jeep's by the garage. There's a ferry at the far end of the lake road.",
+     "delay": 2.5,
+     "seconds": 4.294117647058823
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      318,
+      226,
+      0.0
+     ],
+     "heading": 130,
+     "delay": 1.0
+    }
+   ]
+  },
+  {
+   "id": "to_jeep",
+   "objective": {
+    "type": "reach",
+    "text": "Get to Mira's jeep by the garage",
+    "pos": [
+     230,
+     128,
+     0
+    ],
+    "radius": 3.5
+   },
+   "on_start": [
+    {
+     "action": "spawn_vehicle",
+     "kind": "player_jeep",
+     "id": "getaway_parked",
+     "pos": [
+      232,
+      128,
+      0.0
+     ],
+     "heading": 180
+    },
+    {
+     "action": "squad_hold",
+     "positions": {
+      "mira": [
+       235,
+       128,
+       180
+      ]
+     }
+    },
+    {
+     "action": "spawn",
+     "group": "assault",
+     "units": [
+      {
+       "pos": [
+        246,
+        100
+       ],
+       "heading": -60,
+       "alert": [
+        232,
+        128
+       ]
+      },
+      {
+       "pos": [
+        240,
+        96
+       ],
+       "heading": -40,
+       "alert": [
+        228,
+        126
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        170,
+        150
+       ],
+       "heading": 90,
+       "alert": [
+        226,
+        130
+       ]
+      }
+     ],
+     "delay": 3.0
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "checkpoint",
+     "pos": [
+      229,
+      128,
+      0.0
+     ],
+     "heading": 180
+    }
+   ]
+  },
+  {
+   "id": "drive",
+   "objective": {
+    "type": "reach",
+    "text": "Drive to the ferry - smash through any roadblock",
+    "pos": [
+     -372,
+     -54,
+     0
+    ],
+    "radius": 10
+   },
+   "on_start": [
+    {
+     "action": "remove_vehicle",
+     "id": "getaway_parked"
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "player_jeep",
+     "id": "getaway",
+     "pos": [
+      232,
+      128,
+      0.0
+     ],
+     "heading": 180
+    },
+    {
+     "action": "start_ride",
+     "vehicle": "getaway",
+     "drive": true,
+     "seat": [
+      -0.42,
+      -0.15,
+      0.05
+     ],
+     "squad": {
+      "mira": [
+       0.42,
+       -0.1,
+       -0.2
+      ]
+     },
+     "breakable": [
+      "roadblock_a",
+      "roadblock_b",
+      "roadblock_c"
+     ]
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "enemy_jeep",
+     "id": "ej1",
+     "path": [
+      [
+       232,
+       124,
+       0
+      ],
+      [
+       214,
+       104,
+       0
+      ],
+      [
+       201,
+       92,
+       0
+      ],
+      [
+       200,
+       60,
+       0
+      ],
+      [
+       200,
+       0,
+       0
+      ],
+      [
+       199,
+       -38,
+       0
+      ],
+      [
+       188,
+       -49,
+       0
+      ],
+      [
+       120,
+       -50,
+       0
+      ],
+      [
+       0,
+       -50,
+       0
+      ],
+      [
+       -130,
+       -50,
+       0
+      ],
+      [
+       -250,
+       -50,
+       0
+      ],
+      [
+       -372,
+       -50,
+       0
+      ]
+     ],
+     "chase_offset": -22.0,
+     "health": 260,
+     "delay": 7.0
+    },
+    {
+     "action": "spawn",
+     "group": "chasers",
+     "units": [
+      {
+       "pos": [
+        232,
+        124
+       ],
+       "heading": 180,
+       "ride": {
+        "vehicle": "ej1",
+        "seat": [
+         0.0,
+         -1.0,
+         0.55
+        ]
+       },
+       "profile": "gunner"
+      }
+     ],
+     "delay": 7.2
+    },
+    {
+     "action": "spawn_vehicle",
+     "kind": "enemy_jeep",
+     "id": "ej2",
+     "path": [
+      [
+       232,
+       124,
+       0
+      ],
+      [
+       214,
+       104,
+       0
+      ],
+      [
+       201,
+       92,
+       0
+      ],
+      [
+       200,
+       60,
+       0
+      ],
+      [
+       200,
+       0,
+       0
+      ],
+      [
+       199,
+       -38,
+       0
+      ],
+      [
+       188,
+       -49,
+       0
+      ],
+      [
+       120,
+       -50,
+       0
+      ],
+      [
+       0,
+       -50,
+       0
+      ],
+      [
+       -130,
+       -50,
+       0
+      ],
+      [
+       -250,
+       -50,
+       0
+      ],
+      [
+       -372,
+       -50,
+       0
+      ]
+     ],
+     "chase_offset": -34.0,
+     "health": 260,
+     "delay": 14.0
+    },
+    {
+     "action": "spawn",
+     "group": "chasers",
+     "units": [
+      {
+       "pos": [
+        232,
+        124
+       ],
+       "heading": 180,
+       "ride": {
+        "vehicle": "ej2",
+        "seat": [
+         0.0,
+         -1.0,
+         0.55
+        ]
+       }
+      }
+     ],
+     "delay": 14.2
+    },
+    {
+     "action": "spawn",
+     "group": "road",
+     "units": [
+      {
+       "pos": [
+        -60,
+        -39
+       ],
+       "heading": 180,
+       "hold": [
+        -60,
+        -39,
+        180
+       ]
+      },
+      {
+       "pos": [
+        -56,
+        -39
+       ],
+       "heading": 180,
+       "hold": [
+        -56,
+        -39,
+        180
+       ],
+       "profile": "recruit"
+      },
+      {
+       "pos": [
+        -150,
+        -39
+       ],
+       "heading": 180,
+       "hold": [
+        -150,
+        -39,
+        180
+       ]
+      },
+      {
+       "pos": [
+        -146,
+        -39
+       ],
+       "heading": 180,
+       "hold": [
+        -146,
+        -39,
+        180
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        -266,
+        -46
+       ],
+       "heading": 90,
+       "hold": [
+        -266,
+        -46,
+        90
+       ]
+      },
+      {
+       "pos": [
+        -266,
+        -53
+       ],
+       "heading": 90,
+       "hold": [
+        -266,
+        -53,
+        90
+       ],
+       "profile": "gunner"
+      },
+      {
+       "pos": [
+        -268,
+        -49
+       ],
+       "heading": 90,
+       "hold": [
+        -268,
+        -49,
+        90
+       ],
+       "profile": "veteran"
+      }
+     ]
+    },
+    {
+     "action": "notice",
+     "text": "[W/S] DRIVE   [A/D] STEER   [SPACE] BRAKE",
+     "delay": 1.0
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Drive! Out the gate and left at the lake - I'll shoot, you steer!",
+     "delay": 1.0,
+     "seconds": 3.823529411764706
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "Jeep behind us!",
+     "delay": 12.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "You said you were finished with Harrow.",
+     "delay": 18.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "I was.",
+     "delay": 21.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "crane",
+     "text": "You worked with him before?",
+     "delay": 23.0,
+     "seconds": 2.5
+    },
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "I moved equipment during Glass Harbour. I didn't know what he was planning.",
+     "delay": 25.5,
+     "seconds": 4.411764705882353
+    },
+    {
+     "action": "radio",
+     "speaker": "wren",
+     "text": "Elias, there's a checkpoint on the lake road. Concrete barriers. Don't slow down.",
+     "delay": 32.0,
+     "seconds": 4.5
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "end_ride",
+     "pos": [
+      -372,
+      -56,
+      0.0
+     ],
+     "heading": 170,
+     "squad": {
+      "mira": [
+       -369,
+       -56
+      ]
+     }
+    },
+    {
+     "action": "squad_follow",
+     "member": "mira"
+    },
+    {
+     "action": "checkpoint",
+     "pos": [
+      -372,
+      -56,
+      0.0
+     ],
+     "heading": 170
+    }
+   ]
+  },
+  {
+   "id": "ferry",
+   "objective": {
+    "type": "reach",
+    "text": "Run down the pier to the ferry",
+    "pos": [
+     -380,
+     -92,
+     0.25
+    ],
+    "radius": 3.5
+   },
+   "on_start": [
+    {
+     "action": "radio",
+     "speaker": "mira",
+     "text": "That's the last boat tonight. Move!",
+     "delay": 0.5,
+     "seconds": 2.5
+    }
+   ],
+   "on_complete": [
+    {
+     "action": "complete_mission",
+     "delay": 1.0
+    }
+   ]
+  }
+ ]
+}

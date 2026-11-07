@@ -1,0 +1,73 @@
+{
+ "shots": [
+  {
+   "type": "title",
+   "title": "MISSION 1:  FIRST LIGHT",
+   "subtitle": "06:00  -  FOURTEEN MINUTES EARLIER",
+   "duration": 4.0,
+   "lines": []
+  },
+  {
+   "type": "scene",
+   "from": [
+    -15,
+    -31,
+    1.8
+   ],
+   "to": [
+    -15.6,
+    -31.6,
+    1.75
+   ],
+   "look_from": [
+    -17,
+    -33.5,
+    1.55
+   ],
+   "look_to": [
+    -17,
+    -33.5,
+    1.55
+   ],
+   "lines": [
+    {
+     "speaker": "marek",
+     "text": "Voss saw movement on the northern ridge. Halden, you're with me. We walk the north fence and we report what we see."
+    }
+   ],
+   "duration": 6,
+   "cast": [
+    {
+     "model": "friendly",
+     "pos": [
+      -17,
+      -33.5
+     ],
+     "heading": 50,
+     "anim": "point",
+     "gun": false
+    },
+    {
+     "model": "friendly",
+     "pos": [
+      -19,
+      -34.5
+     ],
+     "heading": -60,
+     "anim": "stand",
+     "gun": false
+    }
+   ],
+   "caption": [
+    "OUTPOST RIDGEBACK",
+    "DAY 1 - 06:00"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "speaker": "marek",
+   "text": "Voss saw movement on the northern ridge. Halden, you're with me. We walk the north fence and we report what we see."
+  }
+ ]
+}

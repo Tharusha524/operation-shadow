@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "completed": [
+    "m01_first_light",
+    "m02_line_breaks",
+    "m03_ashfall",
+    "m04_no_way_back",
+    "m05_dead_drop"
+  ],
+  "unlocked": [
+    "m01_first_light",
+    "m02_line_breaks",
+    "m03_ashfall",
+    "m04_no_way_back",
+    "m05_dead_drop",
+    "m06_the_broker"
+  ],
+  "current_mission": "m06_the_broker",
+  "stats": {
+    "m01_first_light": {
+      "time": 402.3,
+      "kills": 11,
+      "headshots": 5,
+      "accuracy": 0.222,
+      "deaths": 0,
+      "takedowns": 0,
+      "stealth": null,
+      "intel": 0,
+      "intel_total": 0,
+      "intel_ids": [],
+      "rank": "SILVER",
+      "best_time": 402.3,
+      "best_rank": "SILVER"
+    },
+    "m02_line_breaks": {
+      "time": 479.2,
+      "kills": 29,
+      "headshots": 9,
+      "accuracy": 0.297,
+      "deaths": 0,
+      "takedowns": 0,
+      "stealth": null,
+      "intel": 0,
+      "intel_total": 0,
+      "intel_ids": [],
+      "rank": "SILVER",
+      "best_time": 479.2,
+      "best_rank": "SILVER"
+    },
+    "m03_ashfall": {
+      "time": 395.8,
+      "kills": 20,
+      "headshots": 6,
+      "accuracy": 0.361,
+      "deaths": 1,
+      "takedowns": 0,
+      "stealth": null,
+      "intel": 0,
+      "intel_total": 0,
+      "intel_ids": [],
+      "rank": "SILVER",
+      "best_time": 395.8,
+      "best_rank": "SILVER"
+    },
+    "m04_no_way_back": {
+      "time": 916.7,
+      "kills": 30,
+      "headshots": 12,
+      "accuracy": 0.334,
+      "deaths": 1,
+      "takedowns": 0,
+      "stealth": false,
+      "intel": 2,
+      "intel_total": 3,
+      "intel_ids": [
+        "m04_bridge_survey",
+        "m04_flight_log"
+      ],
+      "rank": "BRONZE",
+      "best_time": 916.7,
+      "best_rank": "BRONZE"
+    },
+    "m05_dead_drop": {
+      "time": 997.0,
+      "kills": 27,
+      "headshots": 11,
+      "accuracy": 0.502,
+      "deaths": 4,
+      "takedowns": 0,
+      "stealth": false,
+      "intel": 0,
+      "intel_total": 3,
+      "intel_ids": [],
+      "rank": "BRONZE",
+      "best_time": 997.0,
+      "best_rank": "BRONZE"
+    }
+  }
+}
