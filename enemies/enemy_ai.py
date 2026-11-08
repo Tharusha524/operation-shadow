@@ -396,8 +396,8 @@ class SoldierAI:
             self.set_state(ATTACK)
             return
         x, y, h = self.anchor
-        if math.hypot(x - self.s.motor.x, y - self.s.motor.y) > 0.8:
-            self._move_to((x, y), run=True)
+        if math.hypot(x - self.s.motor.x, y - self.s.motor.y) > 0.4:
+            self._move_to((x, y), run=True, reach=0.3)
         else:
             self._stop()
             self.desired_facing = h
@@ -429,7 +429,10 @@ class SoldierAI:
             if s.weapon.reloading and not self.is_squad and self.rng.random() < 0.05:
                 s.manager.callout(s, "reload")
         else:
-            self._stop()
+            if self.anchor is not None:
+                self._hold_anchor()            # e.g. step up onto the firing step to see again
+            else:
+                self._stop()
             s.crouch = False
             self._maybe_grenade()
             if self.lost_time > 1.6:
@@ -594,8 +597,8 @@ class SoldierAI:
 
     def _hold_anchor(self):
         x, y, _ = self.anchor
-        if math.hypot(x - self.s.motor.x, y - self.s.motor.y) > 1.0:
-            self._move_to((x, y), run=True, keep_facing=True)
+        if math.hypot(x - self.s.motor.x, y - self.s.motor.y) > 0.5:
+            self._move_to((x, y), run=True, reach=0.3, keep_facing=True)
         else:
             self._stop()
 
@@ -653,16 +656,29 @@ class SoldierAI:
             self.path_goal = goal
             self.repath_timer = 2.0
             if not self.path:
-                self._stop()
-                return False
+                return self._step_straight(goal, run, reach, keep_facing)
         while self.path and math.hypot(self.path[0][0] - x, self.path[0][1] - y) < 0.6:
             self.path.pop(0)
         if not self.path:
             self.path_goal = None
-            return math.hypot(goal[0] - x, goal[1] - y) <= reach + 0.6
+            return self._step_straight(goal, run, reach, keep_facing)
         nx_, ny_ = self.path[0]
         heading = heading_to(nx_ - x, ny_ - y)
         s.move_input = MotorInput(forward=1.0, yaw=heading, sprint=run and not s.crouch, crouch=s.crouch)
+        if not keep_facing:
+            self.desired_facing = heading
+            s.aiming = False
+        return False
+
+    def _step_straight(self, goal, run, reach, keep_facing):
+        """Last metres without a path (e.g. up onto a trench's firing step): walk straight at the goal."""
+        s = self.s
+        d = math.hypot(goal[0] - s.motor.x, goal[1] - s.motor.y)
+        if d <= reach or d > 3.0:
+            self._stop()
+            return d <= reach + 0.6
+        heading = heading_to(goal[0] - s.motor.x, goal[1] - s.motor.y)
+        s.move_input = MotorInput(forward=1.0 if d > 0.6 else 0.5, yaw=heading, sprint=False, crouch=s.crouch)
         if not keep_facing:
             self.desired_facing = heading
             s.aiming = False

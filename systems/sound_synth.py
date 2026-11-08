@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 
 SR = 22050
-SYNTH_VERSION = 8
+SYNTH_VERSION = 9
 
 
 def _t(n):
@@ -249,6 +249,7 @@ def _recipes():
     out["camera_alert"] = lambda: tones([1500, 0, 1500, 0, 1500], [0.08, 0.06, 0.08, 0.06, 0.08], 0.3)
     out["flashbang"] = lambda: sequence([gunshot(r(76), 90, 0.02, 0.08, 0.4, 0.8, 4000), tones([3800], [1.6], 0.12)],
                                         [0.0, 0.1], 1.8)
+    out["tinnitus"] = lambda: _tinnitus(r(90))
     out["smoke_pop"] = lambda: sequence([click(r(77), 700, 0.1, 0.02, 0.05),
                                         _norm(_filter(r(78).standard_normal(int(1.5 * SR)).astype(np.float32), 6000, 1500)
                                               * _env(int(1.5 * SR), 0.05, 0.8), 0.4)], [0.0, 0.08], 1.7)
@@ -311,6 +312,16 @@ def rocket_whoosh(rng, length=1.4):
     whoosh = _filter(noise, low=2500, high=300) * _env(n, 0.02, 0.6) * 1.5
     thump = np.sin(2 * math.pi * (60 + 80 * np.exp(-t / 0.05)) * t) * _env(n, 0.002, 0.1)
     return _norm(_soft_clip(whoosh + thump, 1.5), 0.85)
+
+
+def _tinnitus(rng, length=4.5):
+    """Shell shock: a high ringing in the ears with a muffled rumble under it, fading out."""
+    n = int(length * SR)
+    t = _t(n)
+    env = np.minimum(1.0, t / 0.05) * np.exp(-t / 1.8)
+    ring = np.sin(2 * math.pi * 3900 * t) * 0.6 + np.sin(2 * math.pi * 4170 * t) * 0.25
+    rumble = _filter(rng.standard_normal(n).astype(np.float32), 180, 40) * np.exp(-t / 1.0) * 2.5
+    return _norm((ring * env + rumble).astype(np.float32), 0.55)
 
 
 def whistle(rng, length=1.3):

@@ -173,6 +173,15 @@ def build_drone(materials, kamikaze=True):
     return parts
 
 
+def build_truck(materials, seed=5):
+    """Covered army truck (the map prop) as a moving model; front faces +Y."""
+    import random
+    from environments.props import build_truck as prop_truck
+    root = NodePath("truck")
+    _part(root, materials, "truck_body", lambda mb: prop_truck(mb, random.Random(seed), covered=True, cargo=False))
+    return {"root": root}
+
+
 def build_jeep(materials, enemy=False):
     """The same 4x4 as the map prop, as a moving model."""
     import random

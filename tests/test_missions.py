@@ -5,7 +5,7 @@ import pytest
 from missions.mission_data import load_campaign, load_mission
 from missions.mission_manager import COMPLETE, FAILED, MissionRunner
 
-KNOWN_ACTIONS = {"radio", "spawn", "squad_hold", "squad_follow", "destroy_prop", "explosion", "loop_start",
+KNOWN_ACTIONS = {"destroy_vehicle", "blast_group", "civ_shot", "gunfire", "player_weapons", "player_invulnerable", "spawn_civilians", "rpg", "near_miss", "debris", "tank_fire", "missile", "fire", "group_move", "radio", "spawn", "squad_hold", "squad_follow", "destroy_prop", "explosion", "loop_start",
                  "loop_stop", "smoke", "checkpoint", "notice", "sound", "refill_ammo", "complete_mission",
                  "spawn_friendly", "barrage", "squad_leader", "squad_invulnerable", "spawn_vehicle", "remove_vehicle",
                  "vehicle_command", "start_ride", "end_ride", "drone_start", "drone_end", "show_prop", "hide_prop",
@@ -61,7 +61,7 @@ class FakeCtx:
     def radio(self, speaker, text, seconds): self.log.append(("radio", speaker))
     def spawn_enemy(self, group, unit): self.groups.setdefault(group, []).append(True)
     def spawn_friendly(self, group, unit): self.log.append(("friendly", group))
-    def barrage(self, area, count, seconds, radius, damage): self.log.append(("barrage", count))
+    def barrage(self, area, count, seconds, radius, damage, *args): self.log.append(("barrage", count))
     def squad_leader(self, member, leader): self.log.append(("leader", member, leader))
     def squad_invulnerable(self, member, value): self.log.append(("invuln", member, value))
     def escort_start(self, target, route): self.log.append(("escort", target))
@@ -71,7 +71,22 @@ class FakeCtx:
     def squad_follow(self, member): self.log.append(("follow", member))
     def destroy_prop(self, pid, explode): self.destroyed.add(pid)
     def restore_prop(self, pid): self.destroyed.discard(pid)
-    def explosion(self, pos): self.log.append(("boom",))
+    def explosion(self, pos, *args): self.log.append(("boom",))
+    def missile(self, *args): self.log.append(("boom",))
+    def fire(self, *args): pass
+    def debris(self, *args): pass
+    def near_miss(self, *args): pass
+    def spawn_civilians(self, *args): pass
+    def rpg(self, *args): pass
+    def blast_group(self, *args): pass
+    def civ_shot(self, *args): pass
+    def gunfire(self, *args): pass
+    def player_weapons(self, *args): pass
+    def player_invulnerable(self, *args): pass
+    def look(self, *args): pass
+    def destroy_vehicle(self, *args): pass
+    def tank_fire(self, *args): pass
+    def group_move(self, *args): pass
     def loop(self, name, on, volume=0.5): self.log.append(("loop", name, on))
     def add_smoke(self, pos, seconds): pass
     def notice(self, text): self.log.append(("notice", text))

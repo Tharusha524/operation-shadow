@@ -82,7 +82,7 @@ class _Particle:
 
 
 class Effects:
-    MAX_PARTICLES = 450
+    MAX_PARTICLES = 1100
     MAX_DECALS = 90
     MAX_TRACERS = 40
 
@@ -231,27 +231,55 @@ class Effects:
         np_.look_at(s + d)
         np_.set_sy(entry[5])
 
-    def explosion(self, pos):
+    def explosion(self, pos, scale=1.0):
+        """Blast effect. scale 1 = grenade; 2-3 = mortar/artillery shell; 4+ = missile strike."""
         p = Vec3(*pos)
-        self.spawn("flash", p + Vec3(0, 0, 0.6), life=0.15, size=(3.5, 6.0), texture="flash", blend="add",
-                   color=(1.0, 0.75, 0.4))
-        for _ in range(10):
-            v = Vec3(_rng.uniform(-3, 3), _rng.uniform(-3, 3), _rng.uniform(1, 5))
-            self.spawn("fire", p + Vec3(0, 0, 0.4), vel=v, life=_rng.uniform(0.35, 0.7), size=(0.8, 2.2),
-                       texture="soft", blend="add", color=(1.0, 0.55, 0.2), drag=2.5)
-        for _ in range(14):
-            v = Vec3(_rng.uniform(-2.5, 2.5), _rng.uniform(-2.5, 2.5), _rng.uniform(1.5, 4.5))
-            self.spawn("smoke", p + Vec3(0, 0, 0.5), vel=v, life=_rng.uniform(2.5, 4.5), size=(1.0, 4.5), alpha=0.6,
-                       color=(0.25, 0.24, 0.22), texture="smoke", drag=1.2, gravity=-0.6)
-        for _ in range(18):
-            v = Vec3(_rng.uniform(-9, 9), _rng.uniform(-9, 9), _rng.uniform(3, 11))
-            self.spawn("spark", p + Vec3(0, 0, 0.3), vel=v, life=_rng.uniform(0.4, 1.0), size=(0.07, 0.03),
+        k = max(0.6, scale) * (1.35 if scale >= 2.0 else 1.0)   # shells and missiles: extra big
+        u = _rng.uniform
+        # Flash and fireball.
+        self.spawn("flash", p + Vec3(0, 0, 0.6 * k), life=0.12 + 0.04 * k, size=(3.5 * k, 6.0 * k), texture="flash",
+                   blend="add", color=(1.0, 0.75, 0.4))
+        self.spawn("flash", p + Vec3(0, 0, 0.2), life=0.35, size=(5.0 * k, 9.0 * k), texture="soft", blend="add",
+                   color=(1.0, 0.55, 0.25), alpha=0.7)
+        for _ in range(int(10 * k)):
+            v = Vec3(u(-3, 3), u(-3, 3), u(1, 5)) * k ** 0.6
+            self.spawn("fire", p + Vec3(u(-0.4, 0.4) * k, u(-0.4, 0.4) * k, 0.4), vel=v, life=u(0.35, 0.8) * k ** 0.4,
+                       size=(0.8 * k, 2.2 * k), texture="soft", blend="add", color=(1.0, u(0.45, 0.65), 0.2), drag=2.5)
+        # Black smoke that rises and hangs.
+        for _ in range(int(16 * k ** 0.9)):
+            r = u(0, 1.2) * k ** 0.7
+            a_ = u(0, math.tau)
+            off = Vec3(math.cos(a_) * r, math.sin(a_) * r, u(0.2, 1.5) * k ** 0.6)
+            v = Vec3(math.cos(a_) * u(0.5, 3.0), math.sin(a_) * u(0.5, 3.0), u(0.5, 5.0)) * k ** 0.45
+            g = u(0.12, 0.3)
+            self.spawn("smoke", p + off, vel=v, life=u(3.0, 6.0) * k ** 0.5, size=(u(0.6, 1.2) * k ** 0.7,
+                       u(2.5, 4.5) * k ** 0.75), alpha=u(0.3, 0.55), color=(g, g * 0.95, g * 0.88),
+                       texture="smoke", drag=1.0, gravity=-u(0.1, 0.5))
+        # Sparks and flying debris.
+        for _ in range(int(18 * k ** 0.7)):
+            v = Vec3(u(-9, 9), u(-9, 9), u(3, 11)) * k ** 0.5
+            self.spawn("spark", p + Vec3(0, 0, 0.3), vel=v, life=u(0.4, 1.0), size=(0.07, 0.03),
                        texture="spark", blend="add", gravity=14.0)
-        for _ in range(10):
-            v = Vec3(_rng.uniform(-6, 6), _rng.uniform(-6, 6), _rng.uniform(3, 9))
-            self.spawn("debris", p + Vec3(0, 0, 0.3), vel=v, life=1.2, size=(0.08, 0.08), color=(0.2, 0.18, 0.15),
-                       gravity=14.0)
-        self.decal(p + Vec3(0, 0, 0.02), (0, 0, 1), size=2.6)
+        for _ in range(int(10 * k)):
+            v = Vec3(u(-6, 6), u(-6, 6), u(3, 9)) * k ** 0.6
+            sz = u(0.06, 0.12) * k ** 0.5
+            self.spawn("debris", p + Vec3(0, 0, 0.3), vel=v, life=u(1.0, 2.0), size=(sz, sz),
+                       color=(0.2, 0.18, 0.15), gravity=14.0)
+        if scale >= 1.8:
+            # Big shells: a column of earth thrown high, then raining back down.
+            for _ in range(int(16 * k)):
+                v = Vec3(u(-2.0, 2.0), u(-2.0, 2.0), u(8, 16)) * k ** 0.45
+                self.spawn("dirt", p + Vec3(u(-0.5, 0.5), u(-0.5, 0.5), 0.2), vel=v, life=u(1.6, 2.6),
+                           size=(0.6 * k ** 0.5, 2.0 * k ** 0.6), alpha=0.85, color=(0.33, 0.27, 0.2),
+                           texture="smoke", gravity=9.0, drag=0.4)
+            # Ground shockwave: a ring of dust racing outwards.
+            for i in range(int(18 * k ** 0.5)):
+                a = i / int(18 * k ** 0.5) * math.tau
+                d = Vec3(math.cos(a), math.sin(a), 0)
+                self.spawn("dust", p + d * 0.5 + Vec3(0, 0, 0.3), vel=d * u(9, 14) * k ** 0.5 + Vec3(0, 0, 0.6),
+                           life=u(1.4, 2.4), size=(0.8 * k ** 0.5, 3.0 * k ** 0.6), alpha=0.5,
+                           color=(0.55, 0.48, 0.38), texture="smoke", drag=2.2)
+        self.decal(p + Vec3(0, 0, 0.02), (0, 0, 1), size=2.6 * k ** 0.8)
 
     def fire(self, pos, size=1.0):
         """One flame puff of a burning fire - call ~10 times per second per fire."""

@@ -266,18 +266,18 @@
           "action": "squad_hold",
           "positions": {
             "marek": [
-              -4,
-              0.4,
+              -4.04,
+              1.11,
               0
             ],
             "voss": [
-              6,
-              0.9,
+              5.96,
+              1.63,
               0
             ],
             "kell": [
-              3,
-              0.4,
+              2.94,
+              1.48,
               0
             ]
           }
@@ -303,7 +303,7 @@
       "id": "hold_line",
       "objective": {
         "type": "survive",
-        "seconds": 100,
+        "seconds": 120,
         "text": "Hold the line"
       },
       "on_start": [
@@ -313,59 +313,84 @@
           "units": [
             {
               "pos": [
-                -50,
-                0.6
+                -50.06,
+                1.48
               ]
             },
             {
               "pos": [
-                -44,
-                1.0
+                -44.06,
+                1.9
               ]
             },
             {
               "pos": [
-                -28,
-                -0.3
+                -27.92,
+                0.57
               ]
             },
             {
               "pos": [
-                -20,
-                -0.9
+                -19.93,
+                -0.13
               ]
             },
             {
               "pos": [
-                20,
-                -0.2
+                20.06,
+                0.7
               ]
             },
             {
               "pos": [
-                28,
-                -0.7
+                28.06,
+                0.14
               ]
             },
             {
               "pos": [
-                46,
-                0.6
+                45.94,
+                1.34
               ]
             },
             {
               "pos": [
-                52,
-                1.0
+                51.92,
+                1.87
               ]
+            }
+          ]
+        },
+        {
+          "action": "spawn_friendly",
+          "group": "mg_team",
+          "units": [
+            {
+              "pos": [
+                -29.94,
+                0.74
+              ],
+              "heading": 0,
+              "profile": "gunner",
+              "name": "Machine gunner"
+            },
+            {
+              "pos": [
+                30.0,
+                0.0
+              ],
+              "heading": 0,
+              "profile": "gunner",
+              "name": "Machine gunner"
             }
           ]
         },
         {
           "action": "radio",
           "speaker": "rusk",
-          "text": "Here they come! Hold your fire until they reach the wire!",
-          "seconds": 4.0
+          "text": "Here they come! Hold your fire until they reach the wire! Steady, damn it!",
+          "delay": 1.0,
+          "seconds": 5.6
         },
         {
           "action": "spawn",
@@ -377,226 +402,873 @@
                 -40,
                 114
               ],
+              "profile": "regular",
+              "heading": 180,
               "alert": [
-                -36,
+                -32.0,
                 6
               ]
             },
             {
               "pos": [
-                -30,
-                116
-              ],
-              "alert": [
-                -12,
-                6
-              ]
-            },
-            {
-              "pos": [
-                -10,
-                113
-              ],
-              "alert": [
-                -12,
-                6
-              ]
-            },
-            {
-              "pos": [
-                2,
+                -24,
                 117
               ],
-              "profile": "recruit",
+              "profile": "regular",
+              "heading": 180,
               "alert": [
-                12,
+                -19.200000000000003,
                 6
               ]
             },
             {
               "pos": [
-                15,
-                114
+                -8,
+                120
               ],
+              "profile": "regular",
+              "heading": 180,
               "alert": [
-                12,
-                6
-              ]
-            },
-            {
-              "pos": [
-                30,
-                116
-              ],
-              "profile": "recruit",
-              "alert": [
-                36,
-                6
-              ]
-            }
-          ]
-        },
-        {
-          "action": "spawn",
-          "group": "assault",
-          "delay": 32.0,
-          "units": [
-            {
-              "pos": [
-                -45,
-                115
-              ],
-              "alert": [
-                -36,
-                6
-              ]
-            },
-            {
-              "pos": [
-                -20,
-                117
-              ],
-              "alert": [
-                -12,
-                6
-              ]
-            },
-            {
-              "pos": [
-                0,
-                114
-              ],
-              "alert": [
-                0,
-                8
-              ]
-            },
-            {
-              "pos": [
-                20,
-                117
-              ],
-              "profile": "recruit",
-              "alert": [
-                12,
-                6
-              ]
-            },
-            {
-              "pos": [
-                40,
-                115
-              ],
-              "alert": [
-                36,
-                6
-              ]
-            },
-            {
-              "pos": [
-                50,
-                118
-              ],
-              "profile": "recruit",
-              "alert": [
-                56,
-                6
-              ]
-            }
-          ]
-        },
-        {
-          "action": "radio",
-          "speaker": "hammer",
-          "text": "Hammer, fire mission. Rounds on the way - heads down!",
-          "delay": 40.0,
-          "seconds": 3.5
-        },
-        {
-          "action": "barrage",
-          "delay": 41.0,
-          "area": [
-            -55,
-            45,
-            55,
-            95
-          ],
-          "count": 14,
-          "seconds": 22,
-          "radius": 6,
-          "damage": 120
-        },
-        {
-          "action": "spawn",
-          "group": "assault",
-          "delay": 62.0,
-          "units": [
-            {
-              "pos": [
-                -35,
-                114
-              ],
-              "profile": "veteran",
-              "alert": [
-                -36,
-                6
-              ]
-            },
-            {
-              "pos": [
-                -12,
-                117
-              ],
-              "alert": [
-                -12,
+                -6.4,
                 6
               ]
             },
             {
               "pos": [
                 8,
-                115
-              ],
-              "alert": [
-                12,
-                6
-              ]
-            },
-            {
-              "pos": [
-                25,
-                117
-              ],
-              "profile": "veteran",
-              "alert": [
-                36,
-                6
-              ]
-            },
-            {
-              "pos": [
-                45,
                 114
               ],
+              "profile": "veteran",
+              "heading": 180,
               "alert": [
-                36,
+                6.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                24,
+                117
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                19.200000000000003,
+                6
+              ]
+            },
+            {
+              "pos": [
+                40,
+                120
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                32.0,
                 6
               ]
             }
           ]
         },
         {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 24.0,
+          "units": [
+            {
+              "pos": [
+                -46,
+                116
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -36.800000000000004,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -30,
+                119
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -24.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -14,
+                122
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -11.200000000000001,
+                6
+              ]
+            },
+            {
+              "pos": [
+                2,
+                116
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                1.6,
+                6
+              ]
+            },
+            {
+              "pos": [
+                18,
+                119
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                14.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                34,
+                122
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                27.200000000000003,
+                6
+              ]
+            },
+            {
+              "pos": [
+                48,
+                116
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                38.400000000000006,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 48.0,
+          "units": [
+            {
+              "pos": [
+                -36,
+                115
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -28.8,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -18,
+                118
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -14.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                0,
+                121
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                0.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                18,
+                115
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                14.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                36,
+                118
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                28.8,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 72.0,
+          "units": [
+            {
+              "pos": [
+                -44,
+                117
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -35.2,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -26,
+                120
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -20.8,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -8,
+                123
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -6.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                10,
+                117
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                8.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                28,
+                120
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                22.400000000000002,
+                6
+              ]
+            },
+            {
+              "pos": [
+                46,
+                123
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                36.800000000000004,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 96.0,
+          "units": [
+            {
+              "pos": [
+                -34,
+                114
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -27.200000000000003,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -16,
+                117
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                -12.8,
+                6
+              ]
+            },
+            {
+              "pos": [
+                2,
+                120
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                1.6,
+                6
+              ]
+            },
+            {
+              "pos": [
+                20,
+                114
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                16.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                38,
+                117
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                30.400000000000002,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "rpg_team",
+          "delay": 20.0,
+          "units": [
+            {
+              "pos": [
+                -20,
+                112
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                -18,
+                40,
+                180
+              ]
+            },
+            {
+              "pos": [
+                6,
+                113
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                6,
+                26,
+                180
+              ]
+            },
+            {
+              "pos": [
+                30,
+                112
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                28,
+                33,
+                180
+              ]
+            }
+          ]
+        },
+        {
+          "action": "rpg",
+          "shooter": "rpg_team",
+          "target": "team:friendly",
+          "count": 16,
+          "interval": 6.0,
+          "delay": 34.0
+        },
+        {
+          "action": "barrage",
+          "delay": 22.0,
+          "area": [
+            -55,
+            -6,
+            55,
+            6
+          ],
+          "count": 16,
+          "seconds": 100,
+          "radius": 6,
+          "damage": 150,
+          "scale": 3.2,
+          "from": "north",
+          "target_group": "line",
+          "aimed": 0.7
+        },
+        {
+          "action": "barrage",
+          "delay": 40.0,
+          "area": [
+            -55,
+            30,
+            55,
+            100
+          ],
+          "count": 26,
+          "seconds": 70,
+          "radius": 6,
+          "damage": 220,
+          "scale": 3.2,
+          "from": "south",
+          "target_group": "team:enemy",
+          "aimed": 0.75
+        },
+        {
+          "action": "radio",
+          "speaker": "hammer",
+          "text": "Hammer, fire mission. Rounds on the way - heads down!",
+          "delay": 39.0,
+          "seconds": 4.3
+        },
+        {
           "action": "radio",
           "speaker": "marek",
-          "text": "Keep firing! Don't let them reach the trench!",
-          "delay": 70.0,
-          "seconds": 3.0
+          "text": "Keep firing! Don't let those bastards reach the trench!",
+          "delay": 14.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "RPG! Crater line, left! Shit, get down!",
+          "delay": 36.0,
+          "seconds": 3.3
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "They just keep coming! How many of these fuckers are there?!",
+          "delay": 62.0,
+          "seconds": 4.6
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "Machine guns, sweep the wire! Cut them down!",
+          "delay": 66.0,
+          "seconds": 3.6
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Medic! Rifleman down on the right! Damn it!",
+          "delay": 88.0,
+          "seconds": 3.6
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Another wave! Behind the smoke! Fuck, it's a whole battalion!",
+          "delay": 102.0,
+          "seconds": 4.3
+        },
+        {
+          "action": "refill_ammo",
+          "delay": 70.0
         }
       ],
       "on_complete": [
         {
+          "action": "radio",
+          "speaker": "bastion",
+          "text": "Kesh Ridge, Bastion: enemy armour moving on your sector. Hold them.",
+          "delay": 0.2,
+          "seconds": 4.6
+        },
+        {
           "action": "refill_ammo",
           "delay": 1.0
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            12,
+            -0.2,
+            0
+          ],
+          "heading": 10,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "id": "tanks",
+      "objective": {
+        "type": "destroy",
+        "targets": [
+          "tank1",
+          "tank2"
+        ],
+        "text": "Destroy the tanks"
+      },
+      "on_start": [
+        {
+          "action": "spawn_vehicle",
+          "kind": "tank",
+          "id": "tank1",
+          "path": [
+            [
+              -34,
+              240,
+              0
+            ],
+            [
+              -28,
+              120,
+              0
+            ],
+            [
+              -24,
+              58,
+              0
+            ]
+          ],
+          "speed": 4.0,
+          "loop": false,
+          "health": 900,
+          "delay": 0.0
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "tank",
+          "id": "tank2",
+          "path": [
+            [
+              30,
+              250,
+              0
+            ],
+            [
+              24,
+              124,
+              0
+            ],
+            [
+              18,
+              62,
+              0
+            ]
+          ],
+          "speed": 4.0,
+          "loop": false,
+          "health": 900,
+          "delay": 3.0
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "TANKS! Two of them, coming straight down the middle!",
+          "delay": 3.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "Halden! Grab the launcher - kill those fucking tanks!",
+          "delay": 6.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "give_weapon",
+          "id": "rl3",
+          "ammo": 8,
+          "delay": 7.0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Switch to the launcher, Tomas - press three! Aim for the hull!",
+          "delay": 9.0,
+          "seconds": 5.0
+        },
+        {
+          "action": "rpg",
+          "shooter": "line",
+          "target": "tank1",
+          "count": 4,
+          "interval": 9.0,
+          "delay": 14.0
+        },
+        {
+          "action": "rpg",
+          "shooter": "line",
+          "target": "tank2",
+          "count": 4,
+          "interval": 10.0,
+          "delay": 19.0
+        },
+        {
+          "action": "rpg",
+          "shooter": "rpg_team",
+          "target": "team:friendly",
+          "count": 10,
+          "interval": 6.0,
+          "delay": 4.0
+        },
+        {
+          "action": "spawn",
+          "group": "armour_inf",
+          "delay": 6.0,
+          "units": [
+            {
+              "pos": [
+                -40,
+                118
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -32.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -28,
+                121
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -22.400000000000002,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -16,
+                124
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -12.8,
+                6
+              ]
+            },
+            {
+              "pos": [
+                16,
+                118
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                12.8,
+                6
+              ]
+            },
+            {
+              "pos": [
+                28,
+                121
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                22.400000000000002,
+                6
+              ]
+            },
+            {
+              "pos": [
+                40,
+                124
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                32.0,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "armour_inf",
+          "delay": 40.0,
+          "units": [
+            {
+              "pos": [
+                -36,
+                116
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -28.8,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -20,
+                119
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                -16.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -4,
+                122
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -3.2,
+                6
+              ]
+            },
+            {
+              "pos": [
+                12,
+                116
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                9.600000000000001,
+                6
+              ]
+            },
+            {
+              "pos": [
+                28,
+                119
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                22.400000000000002,
+                6
+              ]
+            },
+            {
+              "pos": [
+                44,
+                122
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                35.2,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "barrage",
+          "delay": 8.0,
+          "area": [
+            -55,
+            -6,
+            55,
+            6
+          ],
+          "count": 10,
+          "seconds": 70,
+          "radius": 6,
+          "damage": 150,
+          "scale": 3.2,
+          "from": "north",
+          "target_group": "line",
+          "aimed": 0.6
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "That tank's turning towards us! Oh fuck, oh fuck!",
+          "delay": 30.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Rocket team's down! It's on you, Halden!",
+          "delay": 52.0,
+          "seconds": 3.3
+        },
+        {
+          "action": "refill_ammo",
+          "delay": 45.0
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Hell yes! Both tanks are burning!",
+          "delay": 0.3,
+          "seconds": 3.0
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "Machine gun, centre-right, in the crater line! Shit, it's cutting us to pieces!",
+          "delay": 3.5,
+          "seconds": 5.3
+        },
+        {
+          "action": "refill_ammo"
         },
         {
           "action": "checkpoint",
@@ -676,13 +1348,6 @@
         },
         {
           "action": "radio",
-          "speaker": "rusk",
-          "text": "Machine gun, centre-right, in the crater line! It's cutting us to pieces!",
-          "delay": 0.5,
-          "seconds": 4.0
-        },
-        {
-          "action": "radio",
           "speaker": "marek",
           "text": "Halden, Kell - with me. Voss, cover us from the trench.",
           "delay": 5.0,
@@ -697,6 +1362,564 @@
           "action": "squad_follow",
           "member": "kell",
           "delay": 5.0
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "refill_ammo"
+        },
+        {
+          "action": "refill_ammo"
+        },
+        {
+          "action": "refill_ammo"
+        },
+        {
+          "action": "refill_ammo"
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            12,
+            -0.2,
+            0
+          ],
+          "heading": 10,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "id": "breach_line",
+      "objective": {
+        "type": "survive",
+        "seconds": 22,
+        "text": "Stop the sappers!"
+      },
+      "on_start": [
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Sappers! They're running for the wire with charges!",
+          "delay": 0.5,
+          "seconds": 3.6
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "Shoot the sappers! Shoot them NOW!",
+          "delay": 2.5,
+          "seconds": 3.0
+        },
+        {
+          "action": "spawn",
+          "group": "sappers",
+          "delay": 0.5,
+          "units": [
+            {
+              "pos": [
+                -42,
+                60
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                -42,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                -30,
+                66
+              ],
+              "profile": "recruit",
+              "heading": 180,
+              "hold": [
+                -30,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                -18,
+                60
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                -18,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                -4,
+                66
+              ],
+              "profile": "recruit",
+              "heading": 180,
+              "hold": [
+                -4,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                8,
+                60
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                8,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                22,
+                66
+              ],
+              "profile": "recruit",
+              "heading": 180,
+              "hold": [
+                22,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                34,
+                60
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                34,
+                11.5,
+                180
+              ]
+            },
+            {
+              "pos": [
+                48,
+                66
+              ],
+              "profile": "recruit",
+              "heading": 180,
+              "hold": [
+                48,
+                11.5,
+                180
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "assault",
+          "delay": 3.0,
+          "units": [
+            {
+              "pos": [
+                -40,
+                112
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -32.0,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -24,
+                115
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -19.200000000000003,
+                6
+              ]
+            },
+            {
+              "pos": [
+                -8,
+                118
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -6.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                8,
+                112
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                6.4,
+                6
+              ]
+            },
+            {
+              "pos": [
+                24,
+                115
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                19.200000000000003,
+                6
+              ]
+            },
+            {
+              "pos": [
+                40,
+                118
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                32.0,
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "action": "smoke",
+          "pos": [
+            -20,
+            30,
+            0.5
+          ],
+          "seconds": 60,
+          "delay": 1.0
+        },
+        {
+          "action": "smoke",
+          "pos": [
+            20,
+            32,
+            0.5
+          ],
+          "seconds": 60,
+          "delay": 1.5
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "There's too many! I can't stop them all!",
+          "delay": 10.0,
+          "seconds": 3.6
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            -40,
+            8.0,
+            0.3
+          ],
+          "radius": 9.0,
+          "damage": 320.0,
+          "scale": 5.5,
+          "delay": 16.0
+        },
+        {
+          "action": "debris",
+          "pos": [
+            -40,
+            8.0,
+            0.8
+          ],
+          "count": 18,
+          "kind": "wood",
+          "size": 0.4,
+          "delay": 16.05
+        },
+        {
+          "action": "destroy_prop",
+          "id": "wire_a",
+          "explode": false,
+          "delay": 16.0
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            -4,
+            7.5,
+            0.3
+          ],
+          "radius": 9.0,
+          "damage": 320.0,
+          "scale": 5.5,
+          "delay": 16.7
+        },
+        {
+          "action": "debris",
+          "pos": [
+            -4,
+            7.5,
+            0.8
+          ],
+          "count": 18,
+          "kind": "wood",
+          "size": 0.4,
+          "delay": 16.75
+        },
+        {
+          "action": "destroy_prop",
+          "id": "wire_b",
+          "explode": false,
+          "delay": 16.7
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            28,
+            8.0,
+            0.3
+          ],
+          "radius": 9.0,
+          "damage": 320.0,
+          "scale": 5.5,
+          "delay": 17.4
+        },
+        {
+          "action": "debris",
+          "pos": [
+            28,
+            8.0,
+            0.8
+          ],
+          "count": 18,
+          "kind": "wood",
+          "size": 0.4,
+          "delay": 17.45
+        },
+        {
+          "action": "destroy_prop",
+          "id": "wire_c",
+          "explode": false,
+          "delay": 17.4
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            52,
+            8.0,
+            0.3
+          ],
+          "radius": 9.0,
+          "damage": 320.0,
+          "scale": 5.5,
+          "delay": 18.1
+        },
+        {
+          "action": "debris",
+          "pos": [
+            52,
+            8.0,
+            0.8
+          ],
+          "count": 18,
+          "kind": "wood",
+          "size": 0.4,
+          "delay": 18.150000000000002
+        },
+        {
+          "action": "destroy_prop",
+          "id": "wire_d",
+          "explode": false,
+          "delay": 18.1
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            -44,
+            4.0,
+            0.3
+          ],
+          "radius": 8.0,
+          "damage": 300.0,
+          "scale": 5.0,
+          "delay": 16.3
+        },
+        {
+          "action": "debris",
+          "pos": [
+            -44,
+            4.0,
+            0.8
+          ],
+          "count": 18,
+          "kind": "earth",
+          "size": 0.4,
+          "delay": 16.35
+        },
+        {
+          "action": "show_prop",
+          "id": "tcrater_1",
+          "delay": 16.35
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            -20,
+            3.0,
+            0.3
+          ],
+          "radius": 8.0,
+          "damage": 300.0,
+          "scale": 5.0,
+          "delay": 16.900000000000002
+        },
+        {
+          "action": "debris",
+          "pos": [
+            -20,
+            3.0,
+            0.8
+          ],
+          "count": 18,
+          "kind": "earth",
+          "size": 0.4,
+          "delay": 16.950000000000003
+        },
+        {
+          "action": "show_prop",
+          "id": "tcrater_2",
+          "delay": 16.950000000000003
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            3,
+            4.2,
+            0.3
+          ],
+          "radius": 8.0,
+          "damage": 300.0,
+          "scale": 5.0,
+          "delay": 17.5
+        },
+        {
+          "action": "debris",
+          "pos": [
+            3,
+            4.2,
+            0.8
+          ],
+          "count": 18,
+          "kind": "earth",
+          "size": 0.4,
+          "delay": 17.55
+        },
+        {
+          "action": "show_prop",
+          "id": "tcrater_3",
+          "delay": 17.55
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            22,
+            3.2,
+            0.3
+          ],
+          "radius": 8.0,
+          "damage": 300.0,
+          "scale": 5.0,
+          "delay": 18.1
+        },
+        {
+          "action": "debris",
+          "pos": [
+            22,
+            3.2,
+            0.8
+          ],
+          "count": 18,
+          "kind": "earth",
+          "size": 0.4,
+          "delay": 18.150000000000002
+        },
+        {
+          "action": "show_prop",
+          "id": "tcrater_4",
+          "delay": 18.150000000000002
+        },
+        {
+          "action": "explosion",
+          "pos": [
+            46,
+            4.0,
+            0.3
+          ],
+          "radius": 8.0,
+          "damage": 300.0,
+          "scale": 5.0,
+          "delay": 18.7
+        },
+        {
+          "action": "debris",
+          "pos": [
+            46,
+            4.0,
+            0.8
+          ],
+          "count": 18,
+          "kind": "earth",
+          "size": 0.4,
+          "delay": 18.75
+        },
+        {
+          "action": "show_prop",
+          "id": "tcrater_5",
+          "delay": 18.75
+        },
+        {
+          "action": "blast_group",
+          "group": "line",
+          "interval": 0.3,
+          "debris": "wood",
+          "delay": 16.4
+        },
+        {
+          "action": "blast_group",
+          "group": "mg_team",
+          "interval": 0.5,
+          "debris": "earth",
+          "delay": 17.0
+        },
+        {
+          "action": "notice",
+          "text": "THE LINE IS BROKEN",
+          "delay": 19.5
+        }
+      ],
+      "on_complete": [
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "The line's gone! Everyone back to the second line - NOW! MOVE!",
+          "delay": 0.2,
+          "seconds": 5.0
         }
       ]
     },
@@ -714,23 +1937,6 @@
       },
       "on_start": [
         {
-          "action": "sound",
-          "sound": "radio_static"
-        },
-        {
-          "action": "radio",
-          "speaker": "bastion",
-          "text": "All Kesh units: enemy armour through on the left flank. The forward line is lost.",
-          "seconds": 4.5
-        },
-        {
-          "action": "radio",
-          "speaker": "rusk",
-          "text": "They're shelling the forward trench! Everyone back to the second line - NOW!",
-          "delay": 5.0,
-          "seconds": 4.0
-        },
-        {
           "action": "squad_follow",
           "delay": 5.0
         },
@@ -746,7 +1952,11 @@
           "count": 22,
           "seconds": 35,
           "radius": 6,
-          "damage": 90
+          "damage": 150,
+          "from": "north",
+          "scale": 3.2,
+          "target_group": "line",
+          "aimed": 0.5
         },
         {
           "action": "spawn",
@@ -815,6 +2025,133 @@
               ]
             }
           ]
+        },
+        {
+          "action": "near_miss",
+          "distance": 4.0,
+          "delay": 5.0
+        },
+        {
+          "action": "group_move",
+          "group": "line",
+          "pos": [
+            -40,
+            -40.2
+          ],
+          "spread": [
+            8,
+            0
+          ],
+          "heading": 0,
+          "delay": 1.0
+        },
+        {
+          "action": "group_move",
+          "group": "mg_team",
+          "pos": [
+            -28,
+            -40.2
+          ],
+          "spread": [
+            30,
+            0
+          ],
+          "heading": 0
+        },
+        {
+          "action": "group_move",
+          "group": "line",
+          "pos": [
+            -40,
+            -40.2
+          ],
+          "spread": [
+            8,
+            0
+          ],
+          "heading": 0,
+          "delay": 1.0
+        },
+        {
+          "action": "group_move",
+          "group": "mg_team",
+          "pos": [
+            -28,
+            -40.2
+          ],
+          "spread": [
+            30,
+            0
+          ],
+          "heading": 0
+        },
+        {
+          "action": "group_move",
+          "group": "line",
+          "pos": [
+            -40,
+            -40.2
+          ],
+          "spread": [
+            8,
+            0
+          ],
+          "heading": 0,
+          "delay": 1.0
+        },
+        {
+          "action": "group_move",
+          "group": "mg_team",
+          "pos": [
+            -28,
+            -40.2
+          ],
+          "spread": [
+            30,
+            0
+          ],
+          "heading": 0
+        },
+        {
+          "action": "group_move",
+          "group": "line",
+          "pos": [
+            -40,
+            -40.2
+          ],
+          "spread": [
+            8,
+            0
+          ],
+          "heading": 0,
+          "delay": 1.0
+        },
+        {
+          "action": "group_move",
+          "group": "mg_team",
+          "pos": [
+            -28,
+            -40.2
+          ],
+          "spread": [
+            30,
+            0
+          ],
+          "heading": 0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Go, go! Don't stop for anything!",
+          "delay": 2.0,
+          "seconds": 3.0
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "They're right behind us! Fuck, run!",
+          "delay": 9.0,
+          "seconds": 3.0
         }
       ],
       "on_complete": [
@@ -827,8 +2164,8 @@
               0
             ],
             "voss": [
-              -6,
-              -40.6,
+              -6.0,
+              -40.18,
               0
             ],
             "kell": [
@@ -853,7 +2190,7 @@
       "id": "hold_second",
       "objective": {
         "type": "survive",
-        "seconds": 75,
+        "seconds": 100,
         "text": "Hold the second line until the convoy is ready"
       },
       "on_start": [
@@ -863,177 +2200,972 @@
           "units": [
             {
               "pos": [
+                -40.0,
+                -40.18
+              ]
+            },
+            {
+              "pos": [
+                -28.0,
+                -40.18
+              ]
+            },
+            {
+              "pos": [
+                -22.0,
+                -40.18
+              ]
+            },
+            {
+              "pos": [
+                2.0,
+                -40.18
+              ]
+            },
+            {
+              "pos": [
+                10.0,
+                -40.18
+              ]
+            },
+            {
+              "pos": [
+                22.0,
+                -40.18
+              ]
+            },
+            {
+              "pos": [
+                44.0,
+                -40.18
+              ]
+            }
+          ]
+        },
+        {
+          "action": "destroy_prop",
+          "id": "ptruck_a",
+          "explode": false
+        },
+        {
+          "action": "destroy_prop",
+          "id": "ptruck_b",
+          "explode": false
+        },
+        {
+          "action": "destroy_prop",
+          "id": "ptruck_c",
+          "explode": false
+        },
+        {
+          "action": "destroy_prop",
+          "id": "ptruck_d",
+          "explode": false
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck1",
+          "path": [
+            [
+              24,
+              -80.0,
+              0
+            ],
+            [
+              284,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck2",
+          "path": [
+            [
+              6,
+              -80.0,
+              0
+            ],
+            [
+              266,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck3",
+          "path": [
+            [
+              -12,
+              -80.0,
+              0
+            ],
+            [
+              248,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck4",
+          "path": [
+            [
+              -30,
+              -80.0,
+              0
+            ],
+            [
+              230,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck5",
+          "path": [
+            [
+              -42,
+              -80.0,
+              0
+            ],
+            [
+              218,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300
+        },
+        {
+          "action": "spawn_civilians",
+          "group": "kesh",
+          "units": [
+            {
+              "model": "man",
+              "delay": 2.0,
+              "path": [
+                [
+                  -41,
+                  -93
+                ],
+                [
+                  -36.0,
+                  -88
+                ],
+                [
+                  -26.0,
+                  -82.5
+                ]
+              ],
+              "speed": 3.6,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 6.5,
+              "path": [
+                [
+                  -24,
+                  -94
+                ],
+                [
+                  -19.2,
+                  -88
+                ],
+                [
+                  -8.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.0,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 11.0,
+              "path": [
+                [
+                  -7,
+                  -93
+                ],
+                [
+                  -2.3999999999999995,
+                  -88
+                ],
+                [
+                  10.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.4,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 15.5,
+              "path": [
+                [
+                  7,
+                  -94
+                ],
+                [
+                  14.400000000000002,
+                  -88
+                ],
+                [
+                  28.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.800000000000001,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 20.0,
+              "path": [
+                [
+                  24,
+                  -93
+                ],
+                [
+                  2.3999999999999986,
+                  -88
+                ],
+                [
+                  -26.0,
+                  -82.5
+                ]
+              ],
+              "speed": 3.6,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 24.5,
+              "path": [
+                [
+                  41,
+                  -94
+                ],
+                [
+                  19.2,
+                  -88
+                ],
+                [
+                  -8.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.0,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 29.0,
+              "path": [
+                [
+                  -53,
+                  -86
+                ],
+                [
+                  -28.799999999999997,
+                  -88
+                ],
+                [
+                  10.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.4,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 33.5,
+              "path": [
+                [
+                  55,
+                  -86
+                ],
+                [
+                  42.6,
+                  -88
+                ],
+                [
+                  28.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.800000000000001,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 38.0,
+              "path": [
+                [
+                  -39,
+                  -93
+                ],
+                [
+                  -36.0,
+                  -88
+                ],
+                [
+                  -26.0,
+                  -82.5
+                ]
+              ],
+              "speed": 3.6,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 42.5,
+              "path": [
+                [
+                  -25,
+                  -94
+                ],
+                [
+                  -19.2,
+                  -88
+                ],
+                [
+                  -8.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.0,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 47.0,
+              "path": [
+                [
+                  -8,
+                  -93
+                ],
+                [
+                  -2.3999999999999995,
+                  -88
+                ],
+                [
+                  10.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.4,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 51.5,
+              "path": [
+                [
+                  9,
+                  -94
+                ],
+                [
+                  14.400000000000002,
+                  -88
+                ],
+                [
+                  28.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.800000000000001,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 56.0,
+              "path": [
+                [
+                  23,
+                  -93
+                ],
+                [
+                  2.3999999999999986,
+                  -88
+                ],
+                [
+                  -26.0,
+                  -82.5
+                ]
+              ],
+              "speed": 3.6,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 60.5,
+              "path": [
+                [
+                  40,
+                  -94
+                ],
+                [
+                  19.2,
+                  -88
+                ],
+                [
+                  -8.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.0,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 65.0,
+              "path": [
+                [
+                  -51,
+                  -86
+                ],
+                [
+                  -28.799999999999997,
+                  -88
+                ],
+                [
+                  10.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.4,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 69.5,
+              "path": [
+                [
+                  54,
+                  -86
+                ],
+                [
+                  42.6,
+                  -88
+                ],
+                [
+                  28.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.800000000000001,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 74.0,
+              "path": [
+                [
+                  -40,
+                  -93
+                ],
+                [
+                  -36.0,
+                  -88
+                ],
+                [
+                  -26.0,
+                  -82.5
+                ]
+              ],
+              "speed": 3.6,
+              "board": true
+            },
+            {
+              "model": "man",
+              "delay": 78.5,
+              "path": [
+                [
+                  -23,
+                  -94
+                ],
+                [
+                  -19.2,
+                  -88
+                ],
+                [
+                  -8.0,
+                  -82.5
+                ]
+              ],
+              "speed": 4.0,
+              "board": true
+            },
+            {
+              "model": "woman",
+              "delay": 6.0,
+              "path": [
+                [
+                  -60,
+                  -72
+                ],
+                [
+                  -20,
+                  -70
+                ]
+              ],
+              "speed": 4.2,
+              "then": "terrified"
+            },
+            {
+              "model": "man",
+              "delay": 18.0,
+              "path": [
+                [
+                  60,
+                  -72
+                ],
+                [
+                  22,
+                  -70
+                ]
+              ],
+              "speed": 4.2,
+              "then": "terrified"
+            },
+            {
+              "model": "man",
+              "delay": 30.0,
+              "path": [
+                [
+                  -55,
+                  -72
+                ],
+                [
+                  -40,
+                  -70
+                ]
+              ],
+              "speed": 4.2,
+              "then": "terrified"
+            }
+          ]
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "tank",
+          "id": "tank3",
+          "path": [
+            [
+              0,
+              230,
+              0
+            ],
+            [
+              2,
+              110,
+              0
+            ],
+            [
+              4,
+              30,
+              0
+            ]
+          ],
+          "speed": 3.5,
+          "loop": false,
+          "health": 900,
+          "delay": 6.0
+        },
+        {
+          "action": "spawn",
+          "group": "push",
+          "delay": 8.0,
+          "units": [
+            {
+              "pos": [
                 -40,
-                -40.6
+                70
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -32.0,
+                -35
+              ]
+            },
+            {
+              "pos": [
+                -24,
+                73
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -19.200000000000003,
+                -35
+              ]
+            },
+            {
+              "pos": [
+                -8,
+                76
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -6.4,
+                -35
+              ]
+            },
+            {
+              "pos": [
+                8,
+                70
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                6.4,
+                -35
+              ]
+            },
+            {
+              "pos": [
+                24,
+                73
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                19.200000000000003,
+                -35
+              ]
+            },
+            {
+              "pos": [
+                40,
+                76
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                32.0,
+                -35
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "push",
+          "delay": 34.0,
+          "units": [
+            {
+              "pos": [
+                -44,
+                50
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -35.2,
+                -38
               ]
             },
             {
               "pos": [
                 -28,
-                -41.2
-              ]
-            },
-            {
-              "pos": [
-                -22,
-                -40.8
-              ]
-            },
-            {
-              "pos": [
-                2,
-                -40.8
-              ]
-            },
-            {
-              "pos": [
-                10,
-                -41.2
-              ]
-            },
-            {
-              "pos": [
-                22,
-                -40.6
-              ]
-            },
-            {
-              "pos": [
-                44,
-                -41.0
-              ]
-            }
-          ]
-        },
-        {
-          "action": "radio",
-          "speaker": "convoy",
-          "text": "Convoy Two-Six to Kesh Ridge: loading the last families now. Give us a few more minutes.",
-          "delay": 2.0,
-          "seconds": 4.5
-        },
-        {
-          "action": "spawn",
-          "group": "push",
-          "delay": 10.0,
-          "units": [
-            {
-              "pos": [
-                -36,
-                60
+                53
               ],
+              "profile": "regular",
+              "heading": 180,
               "alert": [
-                -12,
-                -36
+                -22.400000000000002,
+                -38
               ]
             },
             {
               "pos": [
                 -12,
-                70
-              ],
-              "alert": [
-                -12,
-                -36
-              ]
-            },
-            {
-              "pos": [
-                12,
-                64
-              ],
-              "alert": [
-                12,
-                -36
-              ]
-            },
-            {
-              "pos": [
-                36,
-                66
-              ],
-              "alert": [
-                36,
-                -36
-              ]
-            },
-            {
-              "pos": [
-                0,
-                80
+                56
               ],
               "profile": "veteran",
+              "heading": 180,
               "alert": [
-                0,
-                -36
+                -9.600000000000001,
+                -38
               ]
             },
             {
               "pos": [
-                24,
-                82
+                4,
+                50
               ],
-              "profile": "veteran",
+              "profile": "regular",
+              "heading": 180,
               "alert": [
-                24,
-                -36
-              ]
-            }
-          ]
-        },
-        {
-          "action": "radio",
-          "speaker": "rusk",
-          "text": "They're in the communication trenches! Watch the junctions!",
-          "delay": 35.0,
-          "seconds": 3.5
-        },
-        {
-          "action": "spawn",
-          "group": "push",
-          "delay": 40.0,
-          "units": [
-            {
-              "pos": [
-                -30,
-                30
-              ],
-              "alert": [
-                -12,
-                -36
-              ]
-            },
-            {
-              "pos": [
-                -12,
-                20
-              ],
-              "alert": [
-                -12,
-                -36
-              ]
-            },
-            {
-              "pos": [
-                36,
-                25
-              ],
-              "alert": [
-                36,
-                -36
+                3.2,
+                -38
               ]
             },
             {
               "pos": [
                 20,
-                35
+                53
               ],
+              "profile": "regular",
+              "heading": 180,
               "alert": [
-                12,
-                -36
+                16.0,
+                -38
+              ]
+            },
+            {
+              "pos": [
+                36,
+                56
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                28.8,
+                -38
+              ]
+            },
+            {
+              "pos": [
+                50,
+                50
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                40.0,
+                -38
               ]
             }
           ]
+        },
+        {
+          "action": "spawn",
+          "group": "push",
+          "delay": 62.0,
+          "units": [
+            {
+              "pos": [
+                -36,
+                30
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                -28.8,
+                -40
+              ]
+            },
+            {
+              "pos": [
+                -16,
+                33
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                -12.8,
+                -40
+              ]
+            },
+            {
+              "pos": [
+                4,
+                36
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                3.2,
+                -40
+              ]
+            },
+            {
+              "pos": [
+                24,
+                30
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "alert": [
+                19.200000000000003,
+                -40
+              ]
+            },
+            {
+              "pos": [
+                44,
+                33
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "alert": [
+                35.2,
+                -40
+              ]
+            }
+          ]
+        },
+        {
+          "action": "spawn",
+          "group": "rpg_team2",
+          "delay": 20.0,
+          "units": [
+            {
+              "pos": [
+                -24,
+                60
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                -22,
+                4,
+                180
+              ]
+            },
+            {
+              "pos": [
+                20,
+                62
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                20,
+                4,
+                180
+              ]
+            }
+          ]
+        },
+        {
+          "action": "rpg",
+          "shooter": "rpg_team2",
+          "target": "team:friendly",
+          "count": 10,
+          "interval": 7.0,
+          "delay": 30.0
+        },
+        {
+          "action": "barrage",
+          "delay": 12.0,
+          "area": [
+            -50,
+            -48,
+            50,
+            -34
+          ],
+          "count": 12,
+          "seconds": 80,
+          "radius": 6,
+          "damage": 150,
+          "scale": 3.2,
+          "from": "north",
+          "target_group": "rear",
+          "aimed": 0.6
+        },
+        {
+          "action": "barrage",
+          "delay": 26.0,
+          "area": [
+            -50,
+            -96,
+            50,
+            -66
+          ],
+          "count": 9,
+          "seconds": 70,
+          "radius": 6,
+          "damage": 200,
+          "scale": 3.2,
+          "from": "north",
+          "target_group": "civ",
+          "aimed": 0.6
+        },
+        {
+          "action": "radio",
+          "speaker": "convoy",
+          "text": "Convoy Two-Six to Kesh Ridge: loading the last families now. Give us a few more minutes.",
+          "delay": 3.0,
+          "seconds": 6.3
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "Shells are falling on the trucks! There are kids down there!",
+          "delay": 30.0,
+          "seconds": 4.6
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Eyes front, Kell! If we break, they all die!",
+          "delay": 33.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "rusk",
+          "text": "They're in the communication trenches! Shit! Watch the junctions!",
+          "delay": 48.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "Third tank! It's on the old line, shelling us!",
+          "delay": 58.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "Oh god... they hit the crowd. They hit the fucking crowd!",
+          "delay": 72.0,
+          "seconds": 4.6
+        },
+        {
+          "action": "refill_ammo",
+          "delay": 50.0
         }
       ],
       "on_complete": [
@@ -1041,17 +3173,28 @@
           "action": "radio",
           "speaker": "convoy",
           "text": "Convoy Two-Six: we're full. Last truck is waiting for you - move!",
-          "seconds": 4.0
+          "delay": 0.2,
+          "seconds": 5.0
         },
         {
           "action": "radio",
           "speaker": "rusk",
-          "text": "That's our signal. Go, Halden! We'll cover you!",
-          "delay": 4.5,
-          "seconds": 3.5
+          "text": "That's our signal! Go, Halden! Go, damn it! We'll cover you!",
+          "delay": 4.0,
+          "seconds": 4.6
         },
         {
           "action": "squad_follow"
+        },
+        {
+          "action": "checkpoint",
+          "pos": [
+            -10,
+            -43,
+            0
+          ],
+          "heading": 180,
+          "delay": 1.0
         }
       ]
     },
@@ -1060,18 +3203,513 @@
       "objective": {
         "type": "reach",
         "pos": [
-          24,
-          -76.5,
+          -34.5,
+          -78.8,
           0
         ],
-        "radius": 4,
+        "radius": 3.5,
         "text": "Get to the last truck"
       },
+      "on_complete": [],
+      "on_start": [
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck1",
+          "path": [
+            [
+              24,
+              -80.0,
+              0
+            ],
+            [
+              284,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300,
+          "if_missing": true
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck2",
+          "path": [
+            [
+              6,
+              -80.0,
+              0
+            ],
+            [
+              266,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300,
+          "if_missing": true
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck3",
+          "path": [
+            [
+              -12,
+              -80.0,
+              0
+            ],
+            [
+              248,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300,
+          "if_missing": true
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck4",
+          "path": [
+            [
+              -30,
+              -80.0,
+              0
+            ],
+            [
+              230,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300,
+          "if_missing": true
+        },
+        {
+          "action": "spawn_vehicle",
+          "kind": "truck",
+          "id": "truck5",
+          "path": [
+            [
+              -42,
+              -80.0,
+              0
+            ],
+            [
+              218,
+              -80.0,
+              0
+            ]
+          ],
+          "speed": 0.8,
+          "loop": false,
+          "paused": true,
+          "health": 300,
+          "if_missing": true
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Truck four! Get in, get in!",
+          "delay": 1.0,
+          "seconds": 3.0
+        }
+      ]
+    },
+    {
+      "id": "convoy",
+      "objective": {
+        "type": "survive",
+        "seconds": 28,
+        "text": "Get out of Kesh"
+      },
+      "on_start": [
+        {
+          "action": "player_weapons",
+          "enabled": false
+        },
+        {
+          "action": "player_invulnerable",
+          "value": true
+        },
+        {
+          "action": "start_ride",
+          "vehicle": "truck4",
+          "seat": [
+            0.0,
+            -3.0,
+            1.15
+          ],
+          "yaw": 90,
+          "squad": {
+            "marek": [
+              0.7,
+              -1.6,
+              1.15
+            ],
+            "voss": [
+              -0.7,
+              -1.8,
+              1.15
+            ],
+            "kell": [
+              0.6,
+              -2.6,
+              1.15
+            ]
+          }
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck1",
+          "paused": false,
+          "speed": 0.8
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck2",
+          "paused": false,
+          "speed": 0.8
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck3",
+          "paused": false,
+          "speed": 0.8
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck4",
+          "paused": false,
+          "speed": 0.8
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck5",
+          "paused": false,
+          "speed": 0.8
+        },
+        {
+          "action": "spawn",
+          "group": "pursuers",
+          "delay": 0.5,
+          "units": [
+            {
+              "pos": [
+                -62,
+                -66
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                -62,
+                -66,
+                90
+              ]
+            },
+            {
+              "pos": [
+                -58,
+                -62
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                -58,
+                -62,
+                90
+              ]
+            },
+            {
+              "pos": [
+                -66,
+                -72
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                -66,
+                -72,
+                90
+              ]
+            },
+            {
+              "pos": [
+                -55,
+                -70
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                -55,
+                -70,
+                90
+              ]
+            },
+            {
+              "pos": [
+                -60,
+                -58
+              ],
+              "profile": "regular",
+              "heading": 180,
+              "hold": [
+                -60,
+                -58,
+                90
+              ]
+            },
+            {
+              "pos": [
+                -50,
+                -64
+              ],
+              "profile": "veteran",
+              "heading": 180,
+              "hold": [
+                -50,
+                -64,
+                90
+              ]
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "We made it... we actually made it.",
+          "delay": 2.0,
+          "seconds": 3.3
+        },
+        {
+          "action": "radio",
+          "speaker": "voss",
+          "text": "RPG! Behind us! Truck five!",
+          "delay": 5.4,
+          "seconds": 2.7
+        },
+        {
+          "action": "rpg",
+          "shooter": "pursuers",
+          "target": "truck5",
+          "count": 3,
+          "interval": 0.8,
+          "damage": 500,
+          "delay": 6.0
+        },
+        {
+          "action": "destroy_vehicle",
+          "id": "truck5",
+          "delay": 6.5
+        },
+        {
+          "action": "gunfire",
+          "shooter": "pursuers",
+          "target": "truck5",
+          "seconds": 14.0,
+          "rate": 7.0,
+          "delay": 7.5
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "No! NO! There are people in there!",
+          "delay": 8.0,
+          "seconds": 3.3
+        },
+        {
+          "action": "spawn_civilians",
+          "group": "truck5",
+          "delay": 9.5,
+          "units": [
+            {
+              "model": "man",
+              "delay": 0.0,
+              "path": [
+                [
+                  -43.5,
+                  -81.5
+                ],
+                [
+                  -46.5,
+                  -66.0
+                ]
+              ],
+              "speed": 3.2,
+              "then": "terrified"
+            },
+            {
+              "model": "woman",
+              "delay": 0.6,
+              "path": [
+                [
+                  -41.0,
+                  -81.5
+                ],
+                [
+                  -39.0,
+                  -68.0
+                ]
+              ],
+              "speed": 3.4000000000000004,
+              "then": "terrified"
+            },
+            {
+              "model": "man",
+              "delay": 1.2,
+              "path": [
+                [
+                  -41.5,
+                  -81.5
+                ],
+                [
+                  -40.5,
+                  -93.0
+                ]
+              ],
+              "speed": 3.6,
+              "then": "terrified"
+            },
+            {
+              "model": "woman",
+              "delay": 1.7999999999999998,
+              "path": [
+                [
+                  -42.8,
+                  -81.5
+                ],
+                [
+                  -44.4,
+                  -95.0
+                ]
+              ],
+              "speed": 3.8000000000000003,
+              "then": "terrified"
+            },
+            {
+              "model": "man",
+              "delay": 2.4,
+              "path": [
+                [
+                  -40.2,
+                  -81.5
+                ],
+                [
+                  -36.6,
+                  -64.0
+                ]
+              ],
+              "speed": 4.0,
+              "then": "terrified"
+            },
+            {
+              "model": "woman",
+              "delay": 3.0,
+              "path": [
+                [
+                  -42.0,
+                  -81.5
+                ],
+                [
+                  -42.0,
+                  -91.0
+                ]
+              ],
+              "speed": 4.2,
+              "then": "terrified"
+            }
+          ]
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Keep driving! Don't stop the truck!",
+          "delay": 10.5,
+          "seconds": 3.0
+        },
+        {
+          "action": "civ_shot",
+          "group": "truck5",
+          "shooter": "pursuers",
+          "count": 6,
+          "interval": 1.4,
+          "delay": 11.5
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "They're shooting them! They're shooting them in the back!",
+          "delay": 13.0,
+          "seconds": 4.0
+        },
+        {
+          "action": "radio",
+          "speaker": "marek",
+          "text": "Don't look, Tomas. Don't look.",
+          "delay": 19.0,
+          "seconds": 2.7
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck1",
+          "speed": 6.0,
+          "delay": 20.0
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck2",
+          "speed": 6.0,
+          "delay": 20.0
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck3",
+          "speed": 6.0,
+          "delay": 20.0
+        },
+        {
+          "action": "vehicle_command",
+          "id": "truck4",
+          "speed": 6.0,
+          "delay": 20.0
+        },
+        {
+          "action": "radio",
+          "speaker": "kell",
+          "text": "We left them... we just left them there.",
+          "delay": 23.0,
+          "seconds": 3.6
+        }
+      ],
       "on_complete": [
+        {
+          "action": "player_weapons",
+          "enabled": true
+        },
+        {
+          "action": "player_invulnerable",
+          "value": false
+        },
         {
           "action": "complete_mission"
         }
       ]
     }
-  ]
+  ],
+  "knockdown": true
 }

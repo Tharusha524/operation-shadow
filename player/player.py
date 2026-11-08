@@ -77,6 +77,41 @@ class Player:
         self.health.reset()
         self.teleport(s.x, s.y, s.z, s.heading, 0.0)
 
+    shock = 0.0                   # 0..1 shell shock (set by the game): slows you down
+    knock_t = -1.0                # >= 0 while knocked down by a blast
+    KNOCK_TIME = 3.2
+
+    def knockdown(self, direction):
+        """A shell lands right next to you: thrown off your feet, on the ground, then back up."""
+        if self.knock_t >= 0.0 or not self.alive:
+            return
+        self.knock_t = 0.0
+        self._knock_side = 1.0 if direction[0] >= 0 else -1.0
+        m = self.motor
+        m.vx += direction[0] * 6.5
+        m.vy += direction[1] * 6.5
+        m.vz = 4.0
+        m.grounded = False
+
+    def _update_knock(self, dt):
+        t = self.knock_t = self.knock_t + dt
+        side = self._knock_side
+        if t < 0.45:                                   # thrown: tumble sideways, see the sky
+            k = t / 0.45
+            knock = (75.0 * side * k, -1.3 * k, 30.0 * k)
+        elif t < 2.1:                                  # lying on the ground, dazed
+            w = math.sin(t * 2.3) * 3.0
+            knock = (80.0 * side + w, -1.35, 18.0 + w)
+        elif t < self.KNOCK_TIME:                      # getting back up
+            k = 1.0 - (t - 2.1) / (self.KNOCK_TIME - 2.1)
+            k = k * k * (3 - 2 * k)
+            knock = (80.0 * side * k, -1.35 * k, 18.0 * k)
+        else:
+            knock = (0.0, 0.0, 0.0)
+            self.knock_t = -1.0
+        self.camera.knock = knock
+
+
     def update(self, dt, inp):
         weapons = self.weapons
         ads = weapons.ads if weapons else 0.0
@@ -97,7 +132,10 @@ class Player:
             self._sync()
             self.camera.update(dt, m, 0.0, fov_multiplier=fov_mult)
             return
-        if self.control_enabled and self.alive:
+        knocked = self.knock_t >= 0.0
+        if knocked:
+            self._update_knock(dt)
+        if self.control_enabled and self.alive and not knocked:
             self.camera.handle_mouse(inp.mouse_dx, inp.mouse_dy, scale=fov_mult ** 0.8)
             firing = inp.is_down("fire")
             motor_input = MotorInput(
@@ -107,7 +145,7 @@ class Player:
                 sprint=inp.is_down("sprint") and not firing and not (weapons and weapons.blocks_sprint),
                 jump=inp.was_pressed("jump"),
                 crouch=inp.is_down("crouch"),
-                speed_scale=weapons.move_multiplier if weapons else 1.0,
+                speed_scale=(weapons.move_multiplier if weapons else 1.0) * (1.0 - 0.6 * self.shock),
             )
         else:
             motor_input = MotorInput(yaw=self.camera.look.yaw, crouch=not self.alive)

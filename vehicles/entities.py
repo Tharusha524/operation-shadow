@@ -274,6 +274,8 @@ class Tank(Vehicle):
         kw.setdefault("speed", 5.0)
         super().__init__(manager, vid, **kw)
         self.turret_heading = 0.0       # relative to the hull
+        self.target = None
+        self.retarget_timer = 0.0
         self.fire_timer = self.rng.uniform(5.0, 8.0)
         self.falling = False
         self.fall_t = 0.0
@@ -284,6 +286,25 @@ class Tank(Vehicle):
 
     def center(self):
         return self.pos[0], self.pos[1], self.pos[2] + 1.4
+
+    def _pick_target(self):
+        """Nearest hostile in sight: the player or any Kareth soldier."""
+        g = self.manager.game
+        muzzle = (self.pos[0], self.pos[1], self.pos[2] + 2.3)
+        cands = []
+        p = self.player()
+        if p is not None and p.alive:
+            cands.append(p)
+        if g is not None:
+            cands += [s for s in g.soldiers.soldiers if s.team == "friendly" and s.alive]
+        cands.sort(key=lambda c: math.hypot(c.position[0] - self.pos[0], c.position[1] - self.pos[1]))
+        world = self.manager.world
+        for c in cands[:6]:
+            if math.hypot(c.position[0] - self.pos[0], c.position[1] - self.pos[1]) > 170.0:
+                break
+            if world.line_of_sight(muzzle, c.eye_position()):
+                return c
+        return None
 
     def fall(self):
         """Used when the bridge under the tank is destroyed."""
@@ -309,16 +330,22 @@ class Tank(Vehicle):
             self.sync()
             return
         self.follow_path(dt)
-        p = self.player()
-        if p is not None and p.alive:
+        self.retarget_timer -= dt
+        if self.retarget_timer <= 0.0:
+            self.retarget_timer = 2.0
+            self.target = self._pick_target()
+        p = self.target
+        if p is not None and not p.alive:
+            p = self.target = None
+        if p is not None:
             px, py, _ = p.position
             want = _angle_diff(_heading_to(px - self.pos[0], py - self.pos[1]), self.heading)
             self.turret_heading += max(-25 * dt, min(25 * dt, _angle_diff(want, self.turret_heading)))
             self.fire_timer -= dt
             muzzle = (self.pos[0], self.pos[1], self.pos[2] + 2.3)
             aligned = abs(_angle_diff(want, self.turret_heading)) < 4.0
-            if self.fire_timer <= 0 and aligned and self.can_see_player(muzzle):
-                self.fire_timer = self.rng.uniform(6.0, 9.0)
+            if self.fire_timer <= 0 and aligned and self.manager.world.line_of_sight(muzzle, p.eye_position()):
+                self.fire_timer = self.rng.uniform(5.0, 8.0)
                 err = (self.rng.uniform(-5, 5), self.rng.uniform(-5, 5))
                 self.manager.tank_shell(self, muzzle, (px + err[0], py + err[1], p.position[2]))
         self.sync()
@@ -448,6 +475,37 @@ class KamikazeDrone(Vehicle):
             r = self.parts.get(name)
             if r is not None:
                 r.set_h(self.t * 2000.0)
+
+
+class Truck(Vehicle):
+    """Evacuation truck: drives a road path. Destroyed, it burns and stops where it is."""
+    kind = "truck"
+    bullet_factor = 0.15
+    blast_factor = 1.0
+    death_blast = (7.0, 140.0)
+
+    def __init__(self, manager, vid, **kw):
+        kw.setdefault("health", 300.0)
+        kw.setdefault("speed", 6.0)
+        kw.setdefault("team", "friendly")
+        super().__init__(manager, vid, **kw)
+
+    def hitboxes(self):
+        x, y, z = self.pos
+        return (("body", "sphere", (x, y, z + 1.4, 2.4)),)
+
+    def center(self):
+        return self.pos[0], self.pos[1], self.pos[2] + 1.4
+
+    def on_destroyed(self, source):
+        root = self.parts.get("root")
+        if root is not None:
+            root.set_color_scale(0.25, 0.23, 0.21, 1)          # burnt-out wreck
+        super().on_destroyed(source)
+        g = self.manager.game
+        if g is not None:
+            g.add_fire((self.pos[0], self.pos[1], self.pos[2] + 1.0), 2.4)
+            g.debris.burst(self.center(), 20, "olive", 0.4, 10.0, 8.0)
 
 
 class Jeep(Vehicle):

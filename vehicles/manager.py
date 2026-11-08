@@ -7,18 +7,19 @@ from __future__ import annotations
 import math
 import random
 
-from vehicles.entities import Helicopter, Jeep, KamikazeDrone, PatrolBoat, Tank, Vehicle
+from vehicles.entities import Helicopter, Jeep, KamikazeDrone, PatrolBoat, Tank, Truck, Vehicle
 
 KINDS = {"attack_helicopter": Helicopter, "transport_helicopter": Helicopter, "tank": Tank,
          "patrol_boat": PatrolBoat, "player_boat": PatrolBoat, "kamikaze_drone": KamikazeDrone,
-         "player_jeep": Jeep, "enemy_jeep": Jeep}
+         "player_jeep": Jeep, "enemy_jeep": Jeep, "truck": Truck}
 SOUNDS = {"attack_helicopter": "rotor_loop", "transport_helicopter": "rotor_loop", "tank": "tank_loop",
           "patrol_boat": "boat_loop", "player_boat": "boat_loop", "kamikaze_drone": "drone_loop",
-          "player_jeep": "jeep_loop", "enemy_jeep": "jeep_loop"}
+          "player_jeep": "jeep_loop", "enemy_jeep": "jeep_loop", "truck": "jeep_loop"}
 
 
 class Rocket:
-    def __init__(self, owner, pos, vel, radius, damage, life=6.0):
+    def __init__(self, owner, pos, vel, radius, damage, life=6.0, scale=None):
+        self.scale = scale
         self.owner = owner
         self.pos = list(pos)
         self.vel = list(vel)
@@ -103,6 +104,8 @@ class VehicleManager:
             parts = models.build_boat(mats, patrol=True)
         elif kind == "player_boat":
             parts = models.build_boat(mats, patrol=False)
+        elif kind == "truck":
+            parts = models.build_truck(mats, seed=len(self.vehicles) + 5)
         elif kind in ("player_jeep", "enemy_jeep"):
             parts = models.build_jeep(mats, enemy=kind == "enemy_jeep")
         else:
@@ -216,13 +219,14 @@ class VehicleManager:
         dist = math.sqrt(sum(v * v for v in d)) or 1.0
         hit = self.world.raycast(muzzle, tuple(v / dist for v in d), dist)
         point = hit.point if hit is not None else target
-        self.shells.append([dist / 260.0, tuple(point), owner])
+        wall = hit is not None and hit.point[2] > 0.4          # hit a building / sandbags, not the ground
+        self.shells.append([dist / 260.0, tuple(point), owner, wall])
 
-    def launch_rocket(self, owner, origin, target, speed=70.0, radius=5.0, damage=300.0):
+    def launch_rocket(self, owner, origin, target, speed=70.0, radius=5.0, damage=300.0, scale=None):
         d = [target[i] - origin[i] for i in range(3)]
         dist = math.sqrt(sum(v * v for v in d)) or 1.0
         vel = [v / dist * speed for v in d]
-        r = Rocket(owner, origin, vel, radius, damage)
+        r = Rocket(owner, origin, vel, radius, damage, life=max(6.0, dist / speed + 2.0), scale=scale)
         if self.game is not None:
             r.node = self.game.weapons.rocket_model().copy_to(self.game.render)
             r.node.set_pos(*origin)
@@ -241,7 +245,9 @@ class VehicleManager:
             shell[0] -= dt
             if shell[0] <= 0:
                 if self.game is not None:
-                    self.game.explode(shell[1], 5.0, 70.0, shell[2])
+                    self.game.explode(shell[1], 7.0, 120.0, shell[2], 2.6)
+                    if len(shell) > 3 and shell[3]:
+                        self.game.debris.burst(shell[1], 16, "concrete", 0.4, 10.0, 7.0)
                 else:
                     self.combat.explode(shell[1], 5.0, 70.0, shell[2])
             else:
@@ -279,7 +285,7 @@ class VehicleManager:
                 if direct is not None and direct.alive:
                     direct.take_damage(r.damage, r.owner, "blast", direction)   # direct hit: full warhead damage
                 if self.game is not None:
-                    self.game.explode(point, r.radius, r.damage, r.owner)
+                    self.game.explode(point, r.radius, r.damage, r.owner, r.scale)
                 else:
                     self.combat.explode(point, r.radius, r.damage, r.owner)
                 if r.node is not None:
@@ -291,11 +297,20 @@ class VehicleManager:
                 r.node.set_pos(*r.pos)
             if self.game is not None:
                 r.trail_timer -= dt
+                big = (r.scale or 0) >= 3.0                  # missiles from the sky: a thick smoke trail
+                if big:                                       # fill the gap since last frame: a solid line
+                    n = min(14, max(1, int(dist / 1.2)))
+                    for i in range(1, n):
+                        q = tuple(r.pos[j] - step[j] * i / n for j in range(3))
+                        self.game.effects.spawn("smoke", q, life=8.0, size=(1.6, 6.5), alpha=0.8,
+                                                color=(0.42, 0.41, 0.4), texture="smoke", drag=0.4)
                 if r.trail_timer <= 0:
-                    r.trail_timer = 0.025
-                    self.game.effects.spawn("smoke", tuple(r.pos), life=1.6, size=(0.25, 1.4), alpha=0.5,
-                                            color=(0.75, 0.74, 0.7), texture="smoke", drag=1.5)
-                    self.game.effects.spawn("fire", tuple(r.pos), life=0.08, size=(0.35, 0.2), texture="soft",
-                                            blend="add", color=(1.0, 0.7, 0.3))
+                    r.trail_timer = 0.012 if big else 0.025
+                    self.game.effects.spawn("smoke", tuple(r.pos), life=8.0 if big else 1.6,
+                                            size=(1.6, 6.5) if big else (0.25, 1.4), alpha=0.8 if big else 0.5,
+                                            color=(0.42, 0.41, 0.4) if big else (0.75, 0.74, 0.7), texture="smoke",
+                                            drag=0.4 if big else 1.5)
+                    self.game.effects.spawn("fire", tuple(r.pos), life=0.08, size=(1.4, 0.8) if big else (0.35, 0.2),
+                                            texture="soft", blend="add", color=(1.0, 0.7, 0.3))
             keep.append(r)
         self.rockets = keep

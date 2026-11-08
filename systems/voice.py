@@ -27,7 +27,7 @@ from core.paths import DATA_DIR, user_data_dir
 
 log = logging.getLogger(__name__)
 
-VOICE_VERSION = 4
+VOICE_VERSION = 5
 SR = 22050
 DAVID, ZIRA = "Microsoft David Desktop", "Microsoft Zira Desktop"
 # speaker id -> (windows voice, pitch factor, extra speed steps, radio)
@@ -109,9 +109,37 @@ def _band(sig, low, high):
     return np.fft.irfft(spec * gain, len(sig)).astype(np.float32)
 
 
-def shape(raw, rate, speaker):
+def stressed(speaker, text):
+    """Lines shouted in combat (with "!") are delivered fast, high, shaky and breathless."""
+    return speaker != "narrator" and "!" in text
+
+
+def _panic(out, rng):
+    """Make a calm text-to-speech line sound scared: trembling voice, strain, gasps, battle behind it."""
+    n = len(out)
+    t = np.arange(n) / SR
+    wobble = 1.0 + 0.22 * np.sin(2 * math.pi * 6.5 * t + rng.uniform(0, 6)) * (0.6 + 0.4 * np.sin(2 * math.pi * 0.7 * t))
+    out = out * wobble
+    out = np.tanh(out * 3.2) / np.tanh(3.2)                     # strained, shouted
+    gasp = _band(rng.normal(0, 0.18, int(0.28 * SR)).astype(np.float32), 900.0, 4500.0)
+    gasp *= np.sin(np.linspace(0, math.pi, len(gasp))) ** 1.5
+    out = np.concatenate([gasp, np.zeros(int(0.04 * SR), np.float32), out, gasp[::-1] * 0.6])
+    # Battle behind the voice: rumble plus a few distant shots.
+    n = len(out)
+    bed = _band(rng.normal(0, 0.05, n).astype(np.float32), 40.0, 400.0)
+    for _ in range(int(n / SR * 2.5)):
+        i = int(rng.uniform(0, n - 0.08 * SR))
+        k = int(0.08 * SR)
+        bed[i:i + k] += (rng.normal(0, 0.22, k) * np.exp(-np.arange(k) / (0.012 * SR))).astype(np.float32)
+    return (out + bed).astype(np.float32)
+
+
+def shape(raw, rate, speaker, text=""):
     """Pitch-shift the raw Windows voice for this character and add the radio sound if needed."""
     _, factor, _, radio = profile(speaker)
+    panic = stressed(speaker, text)
+    if panic:
+        factor *= 1.07                                           # voice goes up under stress
     if rate != SR:
         raw = np.interp(np.arange(0, len(raw), rate / SR), np.arange(len(raw)), raw).astype(np.float32)
     # Playing the samples faster/slower moves the pitch; the speech rate was compensated when generating.
@@ -120,6 +148,8 @@ def shape(raw, rate, speaker):
     nz = np.nonzero(np.abs(out) > 0.01)[0]                     # trim silence at both ends
     if len(nz):
         out = out[max(0, nz[0] - int(0.05 * SR)): nz[-1] + int(0.15 * SR)]
+    if panic:
+        out = _panic(out, np.random.default_rng(len(out) + 7))
     if radio:
         rng = np.random.default_rng(len(out))
         out = _band(out, 350.0, 3000.0) * 1.8
@@ -132,9 +162,12 @@ def shape(raw, rate, speaker):
     return out * (0.85 / peak)
 
 
-def speech_rate(speaker):
+def speech_rate(speaker, text=""):
     """Windows speech-rate steps so the final line (after the pitch change) speaks at a natural speed."""
     _, factor, extra, _ = profile(speaker)
+    if stressed(speaker, text):
+        factor *= 1.07
+        extra += 2                                               # rushed, panicked delivery
     return max(-10, min(10, round(math.log(1.0 / factor) / math.log(1.1)) + extra))
 
 
@@ -150,7 +183,7 @@ def generate(lines, script=None):
     jobs = []
     for i, (speaker, text) in enumerate(todo):
         voice = profile(speaker)[0]
-        jobs.append({"out": str((tmp / f"{i}.wav").resolve()), "voice": voice, "rate": speech_rate(speaker),
+        jobs.append({"out": str((tmp / f"{i}.wav").resolve()), "voice": voice, "rate": speech_rate(speaker, text),
                      "pitch": "+0%", "text": spoken_text(text)})
     job_file = tmp / "jobs.json"
     job_file.write_text(json.dumps(jobs), encoding="utf-8")
@@ -167,7 +200,7 @@ def generate(lines, script=None):
         if not raw_path.is_file():
             continue
         raw, rate = _read_wav(raw_path)
-        _write_wav(line_path(speaker, text), shape(raw, rate, speaker))
+        _write_wav(line_path(speaker, text), shape(raw, rate, speaker, text))
         raw_path.unlink(missing_ok=True)
         made += 1
     return made

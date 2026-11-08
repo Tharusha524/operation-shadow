@@ -150,7 +150,8 @@ class MissionRunner:
                 ctx.spawn_friendly(a["group"], unit)
         elif kind == "barrage":
             ctx.barrage(a["area"], int(a.get("count", 10)), float(a.get("seconds", 20.0)),
-                        float(a.get("radius", 5.0)), float(a.get("damage", 70.0)))
+                        float(a.get("radius", 5.0)), float(a.get("damage", 70.0)), float(a.get("scale", 2.5)),
+                        a.get("from", "north"), a.get("target_group"), float(a.get("aimed", 0.5)))
         elif kind == "squad_hold":
             for member, pos in a["positions"].items():
                 ctx.squad_hold(member, pos)
@@ -163,8 +164,40 @@ class MissionRunner:
         elif kind == "destroy_prop":
             ctx.destroy_prop(a["id"], a.get("explode", False))
             self.destroyed.append((a["id"], self.index))
+        elif kind == "missile":
+            ctx.missile(a["target"], float(a.get("radius", 14.0)), float(a.get("damage", 300.0)),
+                        a.get("scale", 4.0), a.get("from"))
+        elif kind == "blast_group":
+            ctx.blast_group(a["group"], float(a.get("interval", 0.35)), a.get("debris", "earth"))
+        elif kind == "civ_shot":
+            ctx.civ_shot(a["group"], a.get("shooter", "team:enemy"), int(a.get("count", 1)),
+                         float(a.get("interval", 1.0)))
+        elif kind == "gunfire":
+            ctx.gunfire(a["shooter"], a["target"], float(a.get("seconds", 6.0)), float(a.get("rate", 8.0)))
+        elif kind == "destroy_vehicle":
+            ctx.destroy_vehicle(a["id"])
+        elif kind == "player_weapons":
+            ctx.player_weapons(bool(a.get("enabled", True)))
+        elif kind == "player_invulnerable":
+            ctx.player_invulnerable(bool(a.get("value", True)))
+        elif kind == "spawn_civilians":
+            ctx.spawn_civilians(a["group"], a["units"])
+        elif kind == "rpg":
+            ctx.rpg(a["shooter"], a["target"], int(a.get("count", 1)), float(a.get("interval", 4.0)),
+                    float(a.get("damage", 220.0)), float(a.get("radius", 5.0)))
+        elif kind == "near_miss":
+            ctx.near_miss(float(a.get("distance", 4.0)), float(a.get("damage", 25.0)))
+        elif kind == "debris":
+            ctx.debris(a["pos"], int(a.get("count", 14)), a.get("kind", "concrete"), float(a.get("size", 0.4)),
+                       float(a.get("speed", 9.0)))
+        elif kind == "tank_fire":
+            ctx.tank_fire(a["id"], a["target"])
+        elif kind == "fire":
+            ctx.fire(a["pos"], float(a.get("size", 1.5)))
+        elif kind == "group_move":
+            ctx.group_move(a["group"], a["pos"], a.get("spread", [2.0, 0.0]), a.get("heading", 180.0))
         elif kind == "explosion":
-            ctx.explosion(a["pos"])
+            ctx.explosion(a["pos"], float(a.get("radius", 6.0)), float(a.get("damage", 80.0)), a.get("scale"))
         elif kind == "loop_start":
             ctx.loop(a["sound"], True, a.get("volume", 0.5))
         elif kind == "loop_stop":
@@ -191,6 +224,8 @@ class MissionRunner:
         elif kind == "start_ride":
             ctx.start_ride(a["vehicle"], a.get("seat", [0.0, 1.6, -0.2]), a.get("squad", {}), a.get("drive", False),
                            a.get("breakable", []))
+            if "yaw" in a:
+                ctx.look(float(a["yaw"]), float(a.get("pitch", 0.0)))
         elif kind == "end_ride":
             ctx.end_ride(a.get("pos"), a.get("heading"), a.get("squad", {}))
         elif kind == "drone_start":

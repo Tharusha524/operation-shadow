@@ -40,6 +40,8 @@ class AudioManager:
         self._moving_loops = []
         self.music = None
         self.music_name = None
+        self._duck = 1.0
+        self._unducked = {}
         self.apply_volumes()
 
     # ------------------------------------------------------------------ files
@@ -191,9 +193,29 @@ class AudioManager:
             s = self.settings
             self._music_mgr.set_volume(s.master_volume * s.music_volume * cur)
 
+    def set_duck(self, factor):
+        """Muffle every sound effect (shell shock). 1 = normal."""
+        self._duck = max(0.0, min(1.0, factor))
+        self.apply_volumes()
+
+    def play_unducked(self, name, volume=1.0):
+        """A sound that is NOT muffled by set_duck (the ringing in your ears)."""
+        if not self.enabled or self._music_mgr is None:
+            return
+        path = self._file_for(name)
+        if path is None:
+            return
+        snd = self._unducked.get(name)
+        if snd is None:
+            snd = self._unducked[name] = self.base.loader.load_music(_pf(path))
+        snd.stop()
+        s = self.settings
+        snd.set_volume(volume * s.master_volume * s.sfx_volume / max(0.05, s.master_volume * s.music_volume))
+        snd.play()
+
     def apply_volumes(self):
         s = self.settings
         if self._sfx is not None:
-            self._sfx.set_volume(s.master_volume * s.sfx_volume)
+            self._sfx.set_volume(s.master_volume * s.sfx_volume * getattr(self, "_duck", 1.0))
         if self._music_mgr is not None:
             self._music_mgr.set_volume(s.master_volume * s.music_volume)

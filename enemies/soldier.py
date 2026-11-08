@@ -50,7 +50,9 @@ class Soldier:
         self.group = group
         cfg = MotorConfig(walk_speed=profile["walk_speed"], sprint_speed=profile["run_speed"], crouch_speed=1.6,
                           radius=0.33, ground_accel=25.0, ground_decel=25.0)
-        self.motor = PlayerMotor(manager.world, (x, y, 0.0), cfg)
+        # Start standing on a low surface under the spawn point (e.g. a trench's firing step).
+        z0 = manager.world.ground_height(x, y, 0.1, 0.5) if hasattr(manager.world, "ground_height") else 0.0
+        self.motor = PlayerMotor(manager.world, (x, y, z0), cfg)
         self.health = Health(profile["health"], invulnerable=invulnerable,
                              regen_delay=5.0 if invulnerable else None, regen_rate=25.0)
         self.weapon = create_weapon(manager.weapon_stats[profile["weapon"]], manager.rng, infinite_reserve=True)
@@ -61,6 +63,9 @@ class Soldier:
         self.aiming = False
         self.killer = None
         self.dead_time = 0.0
+        self.fling = None                   # [vx, vy, vz] while thrown by an explosion
+        self.fling_tilt = 0.0
+        self._fling_back = True
         self.model = None
         self.mount = None                   # callable -> (x, y, z) while riding a vehicle
         self.captive = False                # a prisoner: nobody shoots at them on purpose
@@ -99,6 +104,8 @@ class Soldier:
         if not self.alive:
             return False
         killed = self.health.take_damage(amount)
+        if zone == "blast":
+            self._blast(amount, direction, killed)
         if not self.silent_death:
             self.ai.on_damaged(source, amount)
         if killed:
@@ -110,11 +117,61 @@ class Soldier:
             self.manager.on_death(self, source, zone)
         return killed
 
+    def _blast(self, amount, direction, killed):
+        """Shock wave: the dead are thrown through the air, survivors are knocked back and dazed."""
+        dx, dy = direction[0], direction[1]
+        n = math.hypot(dx, dy) or 1.0
+        dx, dy = dx / n, dy / n
+        if killed:
+            push = min(15.0, 4.0 + amount / 10.0)
+            self.fling = [dx * push, dy * push, min(13.0, 4.0 + amount / 14.0)]
+            self.fling_roll = self.manager.rng.uniform(-40.0, 40.0)
+            self.fling_tilt = 0.0
+            self._fling_back = (dx * -math.sin(math.radians(self.facing)) + dy * math.cos(math.radians(self.facing))) < 0
+        else:
+            push = min(7.0, amount / 8.0)
+            self.motor.vx += dx * push
+            self.motor.vy += dy * push
+            if amount > 15:
+                self.ai.stun(min(2.5, amount / 25.0))
+
+    def _update_fling(self, dt):
+        """Ballistic flight of a body thrown by an explosion; lands on the ground and stays."""
+        vx, vy, vz = self.fling
+        m = self.motor
+        nx, ny = m.x + vx * dt, m.y + vy * dt
+        world = self.manager.world
+        if world.line_of_sight((m.x, m.y, m.z + 0.8), (nx, ny, m.z + 0.8)):
+            m.x, m.y = nx, ny
+        else:
+            vx = vy = 0.0                                   # hit a wall: slide down it
+        vz -= 18.0 * dt
+        m.z += vz * dt
+        ground = world.ground_height(m.x, m.y, 0.2, m.z + 0.4) if hasattr(world, "ground_height") else 0.0
+        airborne = m.z > ground
+        if not airborne:
+            if vz < -4.0:                                   # thud: a puff of dust where he lands
+                fx = getattr(getattr(self.manager, "game", None), "effects", None)
+                if fx is not None:
+                    for _ in range(6):
+                        fx.spawn("dust", (m.x, m.y, ground + 0.2), vel=(self.manager.rng.uniform(-2, 2),
+                                 self.manager.rng.uniform(-2, 2), self.manager.rng.uniform(0.5, 1.5)), life=1.5,
+                                 size=(0.5, 1.8), alpha=0.45, color=(0.5, 0.44, 0.36), texture="smoke", drag=2.0)
+            m.z = ground
+            vx, vy, vz = vx * 0.3, vy * 0.3, 0.0
+            if math.hypot(vx, vy) < 0.3:
+                self.fling = None
+        if self.fling is not None:
+            self.fling = [vx, vy, vz]
+        target = (80.0 if self._fling_back else -80.0) if airborne else 0.0
+        self.fling_tilt += (target - self.fling_tilt) * min(1.0, dt * (5.0 if airborne else 9.0))
+
     def revive(self, x, y, z=0.0):
         """Bring a squad member back (used when retrying from a checkpoint)."""
         self.health.reset()
         self.killer = None
         self.dead_time = 0.0
+        self.fling, self.fling_tilt = None, 0.0
         self.crouch = False
         self.motor.teleport(x, y, z)
         self.motor.height = self.motor.cfg.stand_height
@@ -150,9 +207,18 @@ class Soldier:
     def update(self, dt):
         if not self.alive:
             self.dead_time += dt
+            if self.fling is not None:
+                self._update_fling(dt)
             if self.model:
                 self.model.update(dt, x=self.motor.x, y=self.motor.y, z=self.motor.z, heading=self.facing,
                                   move_phase=0, move_speed=0, crouch=False, aim_pitch=0, aiming=False)
+                if self.fling_tilt:
+                    self.model.root.set_p(self.fling_tilt)
+                    self.model.root.set_r(getattr(self, "fling_roll", 0.0) * abs(self.fling_tilt) / 80.0)
+                    if self.fling is None and abs(self.fling_tilt) < 0.5:
+                        self.fling_tilt = 0.0
+                        self.model.root.set_p(0)
+                        self.model.root.set_r(0)
             return
         self.health.update(dt)
         self.ai.update(dt)

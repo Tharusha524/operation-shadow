@@ -120,6 +120,10 @@ class Game(ShowBase):
         self.collision_world = CollisionWorld()
         self.combat = CombatSystem(self.collision_world)
         self.effects = Effects(self)
+        from systems.debris import Debris
+        self.debris = Debris(self)
+        from systems.civilians import Civilians
+        self.civilians = Civilians(self)
         self.environment = EnvironmentManager(self, self.collision_world, settings)
         self.fires = []
         self.map_name = None
@@ -174,6 +178,8 @@ class Game(ShowBase):
         self.story_enabled = True
         self.kills = 0
         self.smoke_emitters = []
+        self._knocked_down = False       # the once-per-mission "thrown by a shell" moment has happened
+        self.shock = 0.0                 # shell shock seconds left (blur, muffled sound, slow)
         self.shells = []                 # incoming artillery: [seconds until impact, pos, whistled, radius, damage]
         self.checkpoint_weapons = None
         self._death_timer = 0.0
@@ -395,8 +401,18 @@ class Game(ShowBase):
         self.soldiers.remove_all()
         self.weapons.clear_projectiles()
         self.effects.clear()
+        self.debris.clear()
+        self.civilians.clear()
         self.smoke_emitters = []
         self.shells = []
+        self._knocked_down = False
+        self.player.knock_t = -1.0
+        self.player.camera.knock = (0.0, 0.0, 0.0)
+        if self.shock > 0.0:
+            self.shock = 0.0
+            self.player.shock = 0.0
+            self.audio.set_duck(1.0)
+            self.postfx.set_dof(None)
         self.squad = {}
         self.mission = None
         self.cinematic = None
@@ -617,14 +633,42 @@ class Game(ShowBase):
         if soldier.team == "enemy" and soldier.mount is None:
             self.pickups.drop(soldier.position)            # a fallen enemy may leave an ammo pack
 
-    def explode(self, position, radius, max_damage, source=None):
-        """Grenades, explosive props and scripted blasts all go through here."""
+    def explode(self, position, radius, max_damage, source=None, scale=None):
+        """Grenades, explosive props, shells and missiles all go through here.
+
+        scale sets the size of the effect (1 = grenade, 2-3 = shell, 4+ = missile); by default it
+        follows the blast radius."""
+        if scale is None:
+            scale = max(1.0, min(5.0, radius / 5.0))
         hits = self.combat.explode(position, radius, max_damage, source)
-        self.effects.explosion(position)
-        self.audio.play_at("explosion", position, 1.0, min_distance=10.0)
-        self.combat.emit_noise(position, 150.0, getattr(source, "team", None), source)
+        if max_damage > 0:
+            self.civilians.blast(position, radius * 0.9)
+        self.effects.explosion(position, scale)
+        if scale >= 2.0:                                     # clods of earth and stones
+            self.debris.burst(position, int(3 + 2 * scale), "earth", 0.22 + 0.04 * scale, 6.0 + scale, 6.0 + scale)
+        self.audio.play_at("explosion", position, min(1.0, 0.7 + 0.15 * scale), min_distance=10.0 * scale ** 0.7)
+        self.combat.emit_noise(position, 150.0 * scale ** 0.5, getattr(source, "team", None), source)
         d = math.dist(self.player.eye_position(), position)
-        self.player.camera.add_trauma(max(0.0, 1.0 - d / 30.0))
+        reach = 30.0 * scale ** 0.7
+        self.player.camera.add_trauma(max(0.0, 1.0 - d / reach) * min(1.4, 0.8 + 0.2 * scale))
+        if self.player.alive and scale >= 1.8 and d < max(14.0, radius * 2.2):
+            self.shell_shock(1.0 - d / max(14.0, radius * 2.2))
+            if (d < radius * 1.3 and scale >= 2.5 and not self._knocked_down and self.state == "playing"
+                    and self.mission is not None and self.mission.data.get("knockdown")):
+                self._knocked_down = True                # thrown off your feet once per mission
+                m = self.player.motor
+                dx, dy = m.x - position[0], m.y - position[1]
+                n = math.hypot(dx, dy) or 1.0
+                self.player.knockdown((dx / n, dy / n))
+                self.weapons.viewmodel.set_visible(False)
+                self.timed.append([self.player.KNOCK_TIME, lambda: self.weapons.viewmodel.set_visible(True)])
+        if self.player.alive and d < radius * 1.6 and scale >= 1.8:
+            m = self.player.motor                    # the shock wave shoves you
+            dx, dy = m.x - position[0], m.y - position[1]
+            n = math.hypot(dx, dy) or 1.0
+            push = 7.0 * (1.0 - d / (radius * 1.6))
+            m.vx += dx / n * push
+            m.vy += dy / n * push
         if source is self.player and any(k for ch, _, k in hits if ch is not self.player):
             self.hud.hit_marker(killed=True)
         return hits
@@ -671,6 +715,8 @@ class Game(ShowBase):
             self.soldiers.update(dt)
             self.vehicles.update(dt)
             self.effects.update(dt)
+            self.debris.update(dt)
+            self.civilians.update(dt)
             self._update_smoke(dt)
             self._update_fires(dt)
             self.cinematic.update(dt)
@@ -691,7 +737,8 @@ class Game(ShowBase):
         if self.drone is not None:
             self.drone.update(dt, self.input)     # after the player: the drone owns the camera
         if self.state != "dead":
-            self.weapons.update(dt, self.input, allow_input=self.player.alive and self.drone is None
+            self.weapons.update(dt, self.input, allow_input=self.player.alive and self.player.knock_t < 0.0
+                                and self.drone is None
                                 and not self.driving)
         self.soldiers.update(dt)
         self.soldiers.cull_corpses()
@@ -702,9 +749,12 @@ class Game(ShowBase):
         self._update_smoke_clouds(dt)
         self._update_field_actions(dt)
         self.effects.update(dt)
+        self.debris.update(dt)
+        self.civilians.update(dt)
         self._update_smoke(dt)
         self._update_fires(dt)
         self._update_shells(dt)
+        self._update_shock(dt)
         if self.mission is not None and self.state == "playing":
             self.mission.update(dt)
         if self.player.motor.z < C.KILL_Z:
@@ -761,18 +811,85 @@ class Game(ShowBase):
             if self.state == "playing" and math.hypot(px - x, py - y) < 0.9 * f["size"] and abs(pz - z) < 1.5:
                 self.player.take_damage(25.0 * dt, None, "legs", (0.0, 0.0, 1.0))
 
+    def shell_shock(self, amount):
+        """A blast close to you: white flash, blurred sight, muffled hearing with ringing, staggering."""
+        if amount <= 0.05 or self.state not in ("playing", "sandbox"):
+            return
+        seconds = 1.2 + 3.0 * amount
+        if seconds > self.shock + 0.5:
+            self.audio.play_unducked("tinnitus", min(1.0, 0.4 + amount))
+        self.shock = max(self.shock, seconds)
+        self.hud.flash_white(0.5 + 1.2 * amount)
+        self.player.camera.add_trauma(0.4 + 0.6 * amount)
+
+    def _update_shock(self, dt):
+        if self.shock <= 0.0:
+            return
+        self.shock = max(0.0, self.shock - dt)
+        k = min(1.0, self.shock / 2.5)
+        self.player.shock = k
+        self.audio.set_duck(1.0 - 0.8 * k)
+        if self.shock > 0.0:
+            self.postfx.set_dof(0.4, 0.3, 0.95 * k)
+        else:
+            self.postfx.set_dof(None)
+            self.player.shock = 0.0
+
+    SHELL_FALL = 2.4                     # seconds a shell is visible in the sky before impact
+
     def _update_shells(self, dt):
+        """Artillery shells: fall from the sky along a smoking trail, then explode."""
         pending = []
         for shell in self.shells:
+            if len(shell) < 9:                               # old-style entry: [t, pos, whistled, r, dmg, (scale)]
+                shell += [2.5, (0.15, 1.0), None, 0.0][len(shell) - 5:]
+            was = shell[0]
             shell[0] -= dt
+            if was > self.SHELL_FALL >= shell[0] and shell[7]:
+                # Aimed shell: pick a soldier of the target group and come down right on him.
+                group = shell[7]
+                if group.startswith("civ"):
+                    spots = [c.position for c in self.civilians.alive()]
+                elif group.startswith("team:"):
+                    spots = [s.position for s in self.soldiers.soldiers if s.team == group[5:] and s.alive]
+                else:
+                    spots = [s.position for s in self.soldiers.group_alive(group)]
+                px, py = shell[1][0], shell[1][1]
+                spots = [p for p in spots if math.hypot(p[0] - px, p[1] - py) < 35.0]      # stay in the area
+                if spots:
+                    r = self.soldiers.rng
+                    x, y, z = r.choice(spots)
+                    shell[1] = (x + r.uniform(-1.5, 1.5), y + r.uniform(-1.5, 1.5), z + 0.2)
             if not shell[2] and shell[0] <= 1.2:
                 shell[2] = True
                 self.audio.play_at("shell_whistle", shell[1], 0.7, min_distance=12.0)
             if shell[0] <= 0.0:
-                self.explode(shell[1], shell[3], shell[4], None)
-            else:
-                pending.append(shell)
+                self.explode(shell[1], shell[3], shell[4], None, shell[5])
+                continue
+            if shell[0] <= self.SHELL_FALL:
+                self._shell_trail(shell, dt)
+            pending.append(shell)
         self.shells = pending
+
+    def _shell_trail(self, shell, dt):
+        t = 1.0 - shell[0] / self.SHELL_FALL                # 0 = high in the sky, 1 = impact
+        dx, dy = shell[6]
+        n = math.hypot(dx, dy) or 1.0
+        px, py, pz = shell[1]
+        dist = 170.0 * (1.0 - t)                          # comes in low over the horizon (~30 degrees)
+        pos = (px + dx / n * dist * 0.85, py + dy / n * dist * 0.85, pz + dist * 0.5)
+        # One puff every ~1.2 m along the path since the last frame: a solid smoke line.
+        prev = shell[8] if isinstance(shell[8], tuple) else pos
+        seg = math.dist(prev, pos)
+        n = min(10, max(1, int(seg / 1.2)))
+        for i in range(n):
+            q = tuple(prev[j] + (pos[j] - prev[j]) * (i + 1) / n for j in range(3))
+            self.effects.spawn("smoke", q, life=6.0, size=(1.3, 5.0), alpha=0.75, color=(0.4, 0.39, 0.37),
+                               texture="smoke", drag=0.4)
+        shell[8] = pos
+        if True:
+            self.effects.spawn("fire", pos, life=0.07, size=(1.6, 0.9), texture="soft", blend="add",
+                               color=(1.0, 0.7, 0.35))
 
     def _update_smoke(self, dt):
         alive = []

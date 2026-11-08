@@ -440,86 +440,93 @@ class AutoTest:
         self.release()
         self.check("holding E at the relay completes objective 2", g.mission.index == 2,
                    g.hud.objective_text.getText())
-        yield 6.5
-        wave1 = g.soldiers.group_alive("wave1")
+        # The missile strike, watched from the HQ roof.
+        g.player.camera.look.yaw, g.player.camera.look.pitch = 10, -4
+        garrison0 = len(g.soldiers.group_alive("garrison"))
+        for k, t in enumerate((3.6, 1.2, 2.6, 2.4, 4.0)):
+            yield t
+            g.player.camera.look.yaw, g.player.camera.look.pitch = (10, -4) if k % 2 == 0 else (-25, -6)
+            self.screenshot(f"09a_strike_{k}")
+        tower_gone = g.environment.dynamic["tower_ne"]["destroyed"]
+        garrison1 = len(g.soldiers.group_alive("garrison"))
+        self.check("the missile strike destroys the outpost and kills defenders",
+                   tower_gone and garrison1 < garrison0, f"tower destroyed={tower_gone}, "
+                   f"riflemen {garrison0} -> {garrison1}")
+        self._skip_survive()
+        yield 1.0
+        self.check("surviving the strike starts the breach", g.mission.index == 3, g.hud.objective_text.getText())
+        # Run to the north sandbags and watch the sappers blow the fence.
+        g.player.teleport(-8, 12, 0, 0, 2)
+        yield 1.0
+        self.check("reaching the sandbags starts the defence", g.mission.index == 4, g.hud.objective_text.getText())
+        for k in range(4):
+            yield 4.5
+            g.player.camera.look.yaw, g.player.camera.look.pitch = (0, 4) if k % 2 == 0 else (-15, 2)
+            self.screenshot(f"09_breach_{k}")
         breach = g.environment.dynamic["north_breach"]["destroyed"]
-        self.check("the fence is blown open and wave 1 attacks", breach and len(wave1) == 8,
-                   f"breach={breach} enemies={len(wave1)}")
-        g.player.camera.look.yaw, g.player.camera.look.pitch = 16, 2
-        yield 0.5
-        self.screenshot("09_assault_from_roof")
-        starts = {id(e): (e.motor.x, e.motor.y) for e in wave1}
+        tanks = g.vehicles.alive_count("tank")
+        self.check("sappers blow the fence and tanks arrive", breach and tanks >= 2, f"breach={breach} tanks={tanks}")
         hits0 = g.player.hits_taken
         squad_shots0 = sum(s.weapon.shots_fired for s in g.squad.values())
-        yield 18.0
-        enemy_shots = sum(e.weapon.shots_fired for e in wave1)
+        yield 20.0
+        attackers = [e for e in g.soldiers.soldiers if e.team == "enemy" and e.group in ("n1", "n2")]
+        enemy_shots = sum(e.weapon.shots_fired for e in attackers)
         squad_shots = sum(s.weapon.shots_fired for s in g.squad.values()) - squad_shots0
-        moved = [e for e in wave1 if math.dist(starts[id(e)], (e.motor.x, e.motor.y)) > 4]
-        fighting = [e for e in g.soldiers.group_alive("wave1") if e.ai.state in ("ATTACK", "TAKE_COVER", "CHASE")]
-        hurt = [e for e in wave1 if e.health.current < e.health.maximum]
-        # Enemies that meet the squad at the breach fight from there, so only some need to push forward.
-        self.check("enemies leave their spawn and move up", len(moved) >= 2, f"{len(moved)} of 8 moved >4 m")
-        self.check("enemies engage (attack / cover / chase)", len(fighting) >= 2,
-                   ", ".join(sorted({e.ai.state for e in g.soldiers.group_alive('wave1')})))
-        self.check("enemies open fire", enemy_shots > 0, f"{enemy_shots} enemy shots, player hit "
-                                                         f"{g.player.hits_taken - hits0}x")
-        self.check("squad fights back", squad_shots > 20,
-                   f"{squad_shots} squad shots, {len(hurt)} enemies wounded")
+        self.check("waves attack through the breach", len(attackers) >= 10 and enemy_shots > 0,
+                   f"{len(attackers)} attackers, {enemy_shots} enemy shots, player hit {g.player.hits_taken - hits0}x")
+        self.check("squad fights back", squad_shots > 20, f"{squad_shots} squad shots")
         self.screenshot("10_firefight")
-
-        # Close-up of an enemy soldier.
-        e = g.soldiers.group_alive("wave1")[0]
-        g.player.teleport(e.motor.x + 3.0, e.motor.y - 6.0, e.motor.z, 0)
-        self._aim_at(e.center())
-        yield 0.25
-        self.screenshot("10b_enemy_closeup")
         # Real gunfire: find a visible enemy, aim at its chest and fire.
         target = None
         ex = g.player.eye_position()
-        for e in sorted(g.soldiers.group_alive("wave1"), key=lambda e: math.dist(ex, e.center())):
+        alive = [e for e in g.soldiers.soldiers if e.team == "enemy" and e.alive]
+        for e in sorted(alive, key=lambda e: math.dist(ex, e.center())):
             if g.collision_world.line_of_sight(ex, e.center()):
                 target = e
                 break
-        if target is None:
-            e = g.soldiers.group_alive("wave1")[0]
-            g.player.teleport(e.motor.x, e.motor.y - 12, e.motor.z, 0)
-            target = e
+        if target is None and alive:
+            target = alive[0]
+            g.player.teleport(target.motor.x, target.motor.y - 12, target.motor.z, 0)
             yield 0.3
-        hp0 = target.health.current
-        for _ in range(30):
-            self._aim_at(target.center())
-            self.hold("fire", "aim")
-            yield 0.05
-            if not target.alive:
-                break
-        self.release()
-        self.check("player bullets hit and damage an enemy soldier", target.health.current < hp0,
-                   f"hp {hp0:.0f} -> {target.health.current:.0f}, alive={target.alive}")
-        if not target.alive:
-            yield 0.8
-            self.screenshot("11_enemy_down")
-        for e in g.soldiers.group_alive("wave1"):
-            e.take_damage(9999, g.player, "body", (0, 1, 0))
+        if target is not None:
+            hp0 = target.health.current
+            for _ in range(30):
+                self._aim_at(target.center())
+                self.hold("fire", "aim")
+                yield 0.05
+                if not target.alive:
+                    break
+            self.release()
+            self.check("player bullets hit and damage an enemy soldier", target.health.current < hp0,
+                       f"hp {hp0:.0f} -> {target.health.current:.0f}, alive={target.alive}")
+        self._skip_survive()
         yield 1.0
-        # (the squad may score some kills too - those don't count as the player's)
-        self.check("eliminating wave 1 completes objective 3", g.mission.index == 3 and g.kills >= 5,
-                   f"step={g.mission.index} kills={g.kills}")
-
-        # Step 4: cipher book inside HQ.
+        self.check("holding the north line orders the fall back to the hangar", g.mission.index == 5,
+                   g.hud.objective_text.getText())
+        g.player.teleport(27, 20, 0, -10, 2)
+        yield 1.0
+        self.check("reaching the hangar starts the next defence", g.mission.index == 6, g.hud.objective_text.getText())
+        for k in range(3):
+            yield 5.0
+            g.player.camera.look.yaw, g.player.camera.look.pitch = (-20, 2) if k % 2 == 0 else (10, 6)
+            self.screenshot(f"10b_hangar_{k}")
+        self.check("debris flies from the buildings", len(g.debris.chunks) > 10, f"{len(g.debris.chunks)} chunks")
+        self._skip_survive()
+        yield 1.0
+        # Cipher book inside HQ, then the last stand.
         g.player.teleport(26.6, -30.0, 0.25, -90, -32)
         yield 0.5
         self.hold("interact")
         yield 2.5
         self.release()
-        self.check("taking the cipher book completes objective 4", g.mission.index == 4,
-                   g.hud.objective_text.getText())
-        yield from self._wait_for(lambda: g.soldiers.group_count("wave2") > 0, 10)
-        for e in g.soldiers.group_alive("wave2"):
-            e.take_damage(9999, g.player, "head", (0, 1, 0))
+        self.check("taking the cipher book starts the last stand", g.mission.index == 8, g.hud.objective_text.getText())
+        yield 6.0
+        self._skip_survive()
         yield 1.0
-        self.check("clearing wave 2 completes objective 5 and opens the gate",
-                   g.mission.index == 5 and g.environment.dynamic["main_gate"]["destroyed"],
-                   f"step={g.mission.index}")
+        self.check("holding HQ opens the gate and orders the retreat",
+                   g.mission.index == 9 and g.environment.dynamic["main_gate"]["destroyed"], f"step={g.mission.index}")
+        dead = sum(1 for s in g.soldiers.soldiers if s.team == "friendly" and s.group == "garrison" and not s.alive)
+        self.check("many Kareth soldiers die in the battle", dead >= 10, f"{dead} riflemen killed")
 
         # Death -> mission failed -> retry from checkpoint.
         g.player.invulnerable = False
@@ -530,8 +537,12 @@ class AutoTest:
         g.failed_screen.checkpoint["command"]()
         yield 1.0
         self.check("Retry from checkpoint restores the player at the last objective",
-                   g.state == "playing" and g.player.alive and g.mission.index == 5, f"step={g.mission.index}")
+                   g.state == "playing" and g.player.alive and g.mission.index == 9, f"step={g.mission.index}")
         g.player.invulnerable = True
+        g.player.teleport(0, -20, 0, 0, 2)
+        for k in range(3):
+            yield 4.0
+            self.screenshot(f"12b_fall_back_{k}")
 
         # Final step: fall back to the gate.
         g.player.teleport(0, -58, 0, 180)
@@ -561,6 +572,37 @@ class AutoTest:
         obj = self.game.mission.objective
         if obj is not None and hasattr(obj, "remaining"):
             obj.remaining = 0.2
+
+    def _linediag_tests(self):
+        """Diagnostic: what are the trench riflemen in Mission 2 doing during the battle?"""
+        g = self.game
+        g.story_enabled = False
+        g.open_briefing("m02_line_breaks")
+        yield 0.5
+        g.briefing.begin["command"]()
+        yield from self._wait_for(lambda: g.state == "cinematic", 25)
+        g.input.press_once("skip")
+        yield 0.5
+        g.player.invulnerable = True
+        g.player.teleport(-31, -28.0, 0, 180)
+        yield 1.0
+        g.player.teleport(0, 1.3, 0.4, 0, 1)
+        yield 1.0
+        for k in range(10):
+            yield 4.0
+            for s in g.soldiers.soldiers:
+                if s.team != "friendly" or not s.alive:
+                    continue
+                ai = s.ai
+                tgt = ai.target
+                td = math.dist(tgt.position[:2], s.position[:2]) if tgt is not None else -1
+                print(f"DIAG t={4 * (k + 1):3d} {str(s.group):8s} {str(s.profile_name):8s} {ai.state:10s} vis={int(ai.target_visible)} "
+                      f"aw={ai.awareness:.2f} shots={s.weapon.shots_fired:4d} mag={s.weapon.mag:3d} "
+                      f"tgt_d={td:5.1f} react={ai.reaction_timer:.1f} pos=({s.motor.x:.1f},{s.motor.y:.1f},{s.motor.z:.2f})")
+            enemies = [e for e in g.soldiers.soldiers if e.team == "enemy" and e.alive]
+            print(f"DIAG t={4 * (k + 1):3d} enemies alive {len(enemies)}, nearest y "
+                  f"{min((e.motor.y for e in enemies), default=-1):.1f}")
+        self.check("diagnostic ran", True)
 
     def _mission2_tests(self):
         g = self.game
@@ -613,9 +655,38 @@ class AutoTest:
 
         self._skip_survive()
         yield 1.5
+        # Tanks: the player gets a launcher; both sides fire RPGs.
+        self.check("holding the line brings the tanks", g.mission.index == 3, g.hud.objective_text.getText())
+        yield 9.0
+        t1, t2 = g.vehicles.find("tank1"), g.vehicles.find("tank2")
+        has_rl = any(w.stats.id == "rl3" for w in g.weapons.weapons)
+        self.check("two tanks attack and the player gets a launcher", t1 is not None and t2 is not None and has_rl,
+                   f"tanks={t1 is not None},{t2 is not None} launcher={has_rl}")
+        g.player.teleport(-6, 1.5, 0.4, 0)
+        rl = next(i for i, w in enumerate(g.weapons.weapons) if w.stats.id == "rl3")
+        g.weapons.select(rl)
+        yield 1.2
+        yield from self._wait_for(lambda: math.dist(t1.pos[:2], g.player.position[:2]) < 85 or not t1.alive, 40)
+        hp0 = t1.health.current
+        for _ in range(4):
+            g.weapons.refill_all()
+            self._aim_at(t1.center())
+            g.input.press_once("fire")
+            yield 3.0
+            if t1.health.current < hp0:
+                break
+        self.check("a launcher rocket damages a tank", t1.health.current < hp0,
+                   f"hp {hp0:.0f} -> {t1.health.current:.0f}")
+        self.screenshot("24b_m2_tanks")
+        for t in (t1, t2):
+            if t.alive:
+                t.take_damage(99999, g.player, "blast", (0, 1, 0))
+        yield 1.5
         mg = g.soldiers.group_alive("mg")
-        self.check("holding the line reveals the machine-gun nest", g.mission.index == 3 and len(mg) == 3,
+        self.check("destroying the tanks reveals the machine-gun nest", g.mission.index == 4 and len(mg) == 3,
                    g.hud.objective_text.getText())
+        g.weapons.select(0)
+        yield 0.6
         # Snipe the gunner from the firing step.
         gunner = [s for s in mg if s.profile_name == "gunner"][0]
         g.player.teleport(4, 1.5, 0.4, 0)              # standing on the trench's firing step
@@ -633,35 +704,61 @@ class AutoTest:
             yield 1.4
             if not gunner.alive:
                 break
-        eye = g.player.eye_position()
-        los = g.collision_world.line_of_sight(eye, gunner.eye_position())
-        hit = g.combat.raycast(eye, tuple((gunner.eye_position()[i] - eye[i]) / math.dist(eye, gunner.eye_position())
-                                          for i in range(3)), 200, ignore=g.player)
         self.check("sniper rifle takes out the machine gunner", not gunner.alive,
-                   f"hp={gunner.health.current:.0f} weapon={g.weapons.current.stats.name} shots={g.weapons.shots_fired} "
-                   f"los={los} ray_hits={'gunner' if hit and hit.target is gunner else (hit.point if hit else None)} "
-                   f"gunner_crouch={gunner.motor.crouching} pos=({gunner.motor.x:.1f},{gunner.motor.y:.1f})")
+                   f"hp={gunner.health.current:.0f} weapon={g.weapons.current.stats.name}")
         self.screenshot("25_m2_sniper")
         for s in g.soldiers.group_alive("mg"):
             s.take_damage(9999, g.player, "body", (0, 1, 0))
         yield 1.0
-        self.check("destroying the nest orders the fall back", g.mission.index == 4, g.hud.objective_text.getText())
+        # Sappers blow the forward line.
+        self.check("destroying the nest sends in the sappers", g.mission.index == 5, g.hud.objective_text.getText())
+        line0 = len(g.soldiers.group_alive("line"))
+        g.player.teleport(0, -8, 0, 0, 4)
+        for k in range(5):
+            yield 4.2
+            self.screenshot(f"25b_m2_breach_{k}")
+        wires = sum(1 for w in ("wire_a", "wire_b", "wire_c", "wire_d") if g.environment.dynamic[w]["destroyed"])
+        line1 = len(g.soldiers.group_alive("line"))
+        self.check("charges blow the wire and kill the men in the trench", wires == 4 and line1 < line0,
+                   f"wires destroyed {wires}/4, riflemen {line0} -> {line1}")
+        self._skip_survive()
+        yield 1.0
+        self.check("the broken line orders the fall back", g.mission.index == 6, g.hud.objective_text.getText())
         yield 12.0
         self.check("enemy shells land on the forward trench", len(g.shells) > 0 or any(
             p.kind == "fire" for p in g.effects.particles), f"{len(g.shells)} incoming")
         g.player.teleport(-12, -40.5, 0, 0)
         yield 1.0
         rear = g.soldiers.group_alive("rear")
-        self.check("reaching the second line starts the last stand", g.mission.index == 5 and len(rear) == 7,
+        self.check("reaching the second line starts the last stand", g.mission.index == 7 and len(rear) == 7,
                    f"step={g.mission.index} rear riflemen={len(rear)}")
         yield 8.0
         self.screenshot("26_m2_second_line")
+        g.player.teleport(-6, -60, 0, 180, 2)
+        for k in range(4):
+            yield 6.0
+            self.screenshot(f"26b_m2_civilians_{k}")
+        civ = len(g.civilians.people)
+        self.check("civilians flee to the trucks", civ >= 8, f"{civ} civilians, {g.civilians.dead_count()} killed")
         self._skip_survive()
         yield 1.5
-        self.check("convoy ready: run to the last truck", g.mission.index == 6, g.hud.objective_text.getText())
-        g.player.teleport(24, -74.0, 0, 180)
+        self.check("convoy ready: run to the last truck", g.mission.index == 8, g.hud.objective_text.getText())
+        g.player.teleport(-34.5, -78.8, 0, 90)
         yield 1.5
-        self.check("reaching the truck completes Mission 2", g.state in ("cinematic", "complete"))
+        self.check("climbing into truck four starts the convoy", g.mission.index == 9 and g.ride is not None,
+                   g.hud.objective_text.getText())
+        for k in range(8):
+            yield 2.2
+            self.screenshot(f"27a_m2_convoy_{k}")
+        t5 = g.vehicles.find("truck5")
+        shot = [c for c in g.civilians.people if c.group == "truck5"]
+        self.check("an RPG destroys the last truck and the enemy guns down the survivors",
+                   t5 is not None and not t5.alive and shot and all(not c.alive for c in shot),
+                   f"truck5 alive={t5.alive if t5 else None}, civilians {sum(not c.alive for c in shot)}/{len(shot)} shot")
+        self.check("you can only watch: no weapon in the truck", not g.weapons.enabled)
+        self._skip_survive()
+        yield 1.5
+        self.check("the convoy escapes and Mission 2 ends", g.state in ("cinematic", "complete"))
         yield 3.0
         self.screenshot("27_m2_outro")
         g.input.press_once("skip")
@@ -671,7 +768,8 @@ class AutoTest:
                    g.mission_end.values.getText().replace("\n", " | "))
         self.screenshot("28_m2_complete")
         g.player.invulnerable = False
-        yield from self._mission3_tests()
+        if self.only != "mission":                      # --only mission: Missions 1 and 2 only
+            yield from self._mission3_tests()
 
     # ------------------------------------------------------------------ mission 3
     def _follow_escort(self, kell, timeout, on_tick=None):
@@ -1545,6 +1643,120 @@ class AutoTest:
         self.screenshot("81_m6_results")
         g.player.invulnerable = False
         yield from self._story_tests()
+
+    def _m1strike_tests(self):
+        """Visual check of Mission 1's missile strike, seen from the HQ roof."""
+        g = self.game
+        g.story_enabled = False
+        g.open_briefing("m01_first_light")
+        yield 0.5
+        g.briefing.begin["command"]()
+        yield from self._wait_for(lambda: g.state == "cinematic", 30)
+        g.input.press_once("skip")
+        yield 0.5
+        g.player.invulnerable = True
+        g.player.teleport(3, 52, 0, 0)
+        yield 1.0
+        g.player.teleport(30.4, -35.4, 4.07, 180, -25)
+        yield 0.5
+        self.hold("interact")
+        yield 3.0
+        self.release()
+        g0 = len(g.soldiers.group_alive("garrison"))
+        g.player.teleport(6, -22, 0, 0, 6)
+        views = ((0, 8), (-10, 10), (5, 6), (-20, 4), (0, 3), (15, 4), (-5, 8), (10, 2))
+        for k in range(16):
+            yield 0.8 if k < 10 else 1.6
+            yaw, pitch = views[k % len(views)]
+            g.player.camera.look.yaw, g.player.camera.look.pitch = yaw, pitch
+            self.screenshot(f"strike_{k:02d}")
+        dead = g0 - len(g.soldiers.group_alive("garrison"))
+        flown = sum(1 for s in g.soldiers.soldiers if s.group == "garrison" and not s.alive)
+        self.check("the strike kills Kareth riflemen", dead >= 6, f"{dead} of {g0} riflemen killed")
+
+    def _knock_tests(self):
+        """Visual check: a shell lands next to the player, who is thrown down and gets back up."""
+        g = self.game
+        g.start_sandbox()
+        yield 1.5
+        g.player.invulnerable = True
+        g.mission_data_knock = True
+        m = g.player.motor
+        yaw = math.radians(g.player.camera.look.yaw)
+        g.explode((m.x - math.sin(yaw) * 4, m.y + math.cos(yaw) * 4, 0.2), 6.0, 0.0, None, 3.4)
+        g.player.knockdown((math.sin(yaw), -math.cos(yaw)))
+        for k, t in enumerate((0.25, 0.4, 0.8, 1.0, 0.9, 1.2)):
+            yield t
+            self.screenshot(f"knock_{k}")
+        self.check("the player gets back up after being thrown", g.player.knock_t < 0.0)
+
+    def _m2mortar_tests(self):
+        """Visual check: our mortars land on the attacking enemy in Mission 2 and throw them."""
+        g = self.game
+        g.story_enabled = False
+        g.open_briefing("m02_line_breaks")
+        yield 0.5
+        g.briefing.begin["command"]()
+        yield from self._wait_for(lambda: g.state == "cinematic", 25)
+        g.input.press_once("skip")
+        yield 0.5
+        g.player.invulnerable = True
+        g.player.teleport(-31, -28.0, 0, 180)
+        yield 1.0
+        g.player.teleport(0, 1.3, 0.4, 0, 1)
+        yield 42.0
+        dead0 = sum(1 for e in g.soldiers.soldiers if e.team == "enemy" and not e.alive)
+        for k in range(12):
+            yield 1.6
+            g.player.camera.look.yaw, g.player.camera.look.pitch = (0, 2) if k % 2 == 0 else (-12, 3)
+            self.screenshot(f"mortar_{k:02d}")
+        dead = sum(1 for e in g.soldiers.soldiers if e.team == "enemy" and not e.alive) - dead0
+        self.check("our mortars kill attackers", dead >= 3, f"{dead} enemies died during the barrage")
+
+    def _blast_tests(self):
+        """Visual check: a missile-size blast throws soldiers through the air."""
+        g = self.game
+        g.start_sandbox()
+        yield 1.5
+        g.player.invulnerable = True
+        px, py = g.player.motor.x, g.player.motor.y
+        g.player.teleport(px, py, 0, 0)
+        yield 0.5
+        men = []
+        for i, (ox, oy) in enumerate(((-2.5, 22), (2.0, 21), (0.5, 25), (-1.0, 19), (3.5, 24))):
+            men.append(g.soldiers.spawn("enemy", px + ox, py + oy, 180, profile="regular"))
+        for s in men:
+            s.ai.command_hold(s.motor.x, s.motor.y, 180) if hasattr(s.ai, "command_hold") else None
+        yield 1.0
+        start = [(s.motor.x, s.motor.y) for s in men]
+        g.explode((px, py + 22, 0.2), 14.0, 400.0, None, 4.0)
+        peak = 0.0
+        for k, t in enumerate((0.12, 0.25, 0.25, 0.5, 1.2)):
+            yield t
+            peak = max([peak] + [s.motor.z for s in men])
+            self.screenshot(f"blast_{k}")
+        moved = [math.dist(a, (s.motor.x, s.motor.y)) for a, s in zip(start, men)]
+        dead = sum(not s.alive for s in men)
+        self.check("a big blast kills and throws soldiers", dead >= 4 and peak > 0.8 and max(moved) > 3.0,
+                   f"{dead} dead, highest {peak:.1f} m, thrown up to {max(moved):.1f} m")
+
+    def _guns_tests(self):
+        """Screenshots of every first-person gun, at the hip and aimed (visual check of the models)."""
+        g = self.game
+        g.start_sandbox()
+        yield 1.5
+        wm = g.weapons
+        for wid in ("kr7", "kr7s", "p12", "lr50", "sg8", "rl3"):
+            idx = wm.give_weapon(wid, 10)
+            wm.select(idx)
+            yield 1.2
+            self.screenshot(f"gun_{wid}_hip")
+            self.hold("aim")
+            yield 0.8
+            self.screenshot(f"gun_{wid}_ads")
+            self.release()
+            yield 0.4
+        self.check("every gun model can be shown", True)
 
     def _weapon_tests(self):
         game = self.game

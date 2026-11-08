@@ -25,46 +25,146 @@ SIGHT = (0.05, 0.05, 0.05)
 LENS = (0.15, 0.25, 0.30)
 
 
+# Smooth painted finishes ("paint" = untextured, slightly glossy) read as machined metal and polymer.
+ANODIZED = (0.19, 0.195, 0.205)       # black anodised aluminium
+PARKERIZED = (0.3, 0.305, 0.31)       # steel parts
+RAIL = (0.14, 0.145, 0.15)
+FDE = (0.47, 0.40, 0.29)               # flat dark earth polymer
+RUBBER = (0.13, 0.13, 0.13)
+BRASS = (0.78, 0.62, 0.30)
+TUBE_GREEN = (0.22, 0.25, 0.15)
+
+
+def _blk(mb, mat, x0, x1, y0, y1, z0, z1, color):
+    """Axis-aligned box from its bounds (all six faces)."""
+    mb.box(mat, (x0 + x1) / 2, (y0 + y1) / 2, z0, x1 - x0, y1 - y0, z1 - z0, color, bottom=True)
+
+
+def _side(mb, mat, profile, width, color, x=0.0):
+    """Side silhouette [(y, z), ...] (convex) extruded across the gun's width."""
+    mb.extrude_x(mat, profile, x - width / 2, x + width / 2, color, double_sided=True)
+
+
+def _rail(mb, y0, y1, z, width=0.022):
+    """Picatinny rail: a base strip with cross slots."""
+    _blk(mb, "paint", -width / 2, width / 2, y0, y1, z, z + 0.006, RAIL)
+    y = y0 + 0.004
+    while y < y1 - 0.004:
+        _blk(mb, "paint", -width / 2 - 0.001, width / 2 + 0.001, y, y + 0.0055, z + 0.006, z + 0.0095, RAIL)
+        y += 0.010
+
+
+def _hand(mb, x, y, z, side):
+    """Gloved hand closed around a grip: palm, four fingers and a thumb."""
+    s = 1 if side == "right" else -1
+    mb.ellipsoid("fabric", x - s * 0.006, y - 0.012, z, 0.026, 0.03, 0.04, GLOVE, rings=5, segments=8)
+    for i in range(4):                                     # fingers wrap the front of the grip
+        fz = z + 0.022 - i * 0.017
+        mb.cylinder_between("fabric", (x - s * 0.022, y + 0.004, fz), (x + s * 0.024, y + 0.022, fz - 0.004),
+                            0.0085, GLOVE, segments=6, caps=True)
+    mb.cylinder_between("fabric", (x - s * 0.02, y - 0.01, z + 0.03), (x - s * 0.026, y + 0.03, z + 0.036),
+                        0.009, GLOVE, segments=6, caps=True)     # thumb
+
+
+def _sleeve(mb, wrist, elbow):
+    cuff = (wrist[0], wrist[1] - 0.035, wrist[2] - 0.012)
+    mb.cylinder_between("fabric", cuff, (cuff[0], cuff[1] - 0.025, cuff[2] - 0.01), 0.036, GLOVE, segments=10)
+    mb.cylinder_between("fabric", cuff, elbow, 0.038, SLEEVE, segments=10, radius_end=0.05)
+
+
 def _arms(mb, right_hand, left_hand):
     """Gloved hands + sleeves reaching back toward the bottom corners of the screen."""
     rx, ry, rz = right_hand
-    mb.box("fabric", rx, ry, rz - 0.035, 0.05, 0.07, 0.07, GLOVE)
-    mb.cylinder_between("fabric", (rx + 0.005, ry - 0.03, rz - 0.03), (rx + 0.09, ry - 0.36, rz - 0.22), 0.034,
-                        SLEEVE, segments=8, radius_end=0.045)
+    _hand(mb, rx, ry, rz, "right")
+    _sleeve(mb, (rx + 0.005, ry, rz - 0.01), (rx + 0.1, ry - 0.38, rz - 0.22))
     if left_hand is None:
         return
     lx, ly, lz = left_hand
-    mb.box("fabric", lx, ly, lz - 0.035, 0.06, 0.08, 0.06, GLOVE)
-    mb.cylinder_between("fabric", (lx - 0.01, ly - 0.03, lz - 0.03), (lx - 0.16, ly - 0.42, lz - 0.2), 0.034,
-                        SLEEVE, segments=8, radius_end=0.045)
+    _hand(mb, lx, ly, lz, "left")
+    _sleeve(mb, (lx - 0.01, ly, lz - 0.01), (lx - 0.17, ly - 0.44, lz - 0.2))
 
 
 def build_rifle(mb):
-    mb.box("metal", 0, 0.05, -0.095, 0.045, 0.30, 0.07, GUNMETAL)                    # receiver
-    mb.box("metal", 0, 0.30, -0.09, 0.052, 0.22, 0.06, POLYMER)                      # handguard
-    for i in range(5):
-        mb.box("metal", 0, 0.22 + i * 0.04, -0.06, 0.054, 0.012, 0.004, SIGHT)      # rail ribs
-    mb.cylinder_between("metal", (0, 0.41, -0.068), (0, 0.66, -0.068), 0.0095, GUNMETAL, segments=8)
-    mb.cylinder_between("metal", (0, 0.62, -0.068), (0, 0.68, -0.068), 0.015, SIGHT, segments=8, caps=True)
-    mb.box("metal", 0, 0.12, -0.215, 0.03, 0.075, 0.13, GUNMETAL)                    # magazine
-    mb.box("metal", 0, -0.04, -0.19, 0.03, 0.045, 0.1, POLYMER)                      # grip
-    mb.box("metal", 0, -0.21, -0.11, 0.04, 0.2, 0.075, POLYMER)                      # stock
-    mb.box("metal", 0, -0.32, -0.12, 0.045, 0.02, 0.1, SIGHT)
-    mb.box("metal", 0, 0.05, -0.06, 0.02, 0.24, 0.01, SIGHT)                          # top rail
-    _reflex_sight(mb, 0.08)
-    _arms(mb, (0.0, -0.04, -0.15), (0.0, 0.30, -0.12))
-    return (0.0, 0.69, -0.068)
+    """AR-pattern carbine: flat-top upper, free-float rail handguard, curved polymer magazine."""
+    # Upper receiver with a slimmer top deck (fake bevel), ejection port and forward assist.
+    _side(mb, "paint", [(-0.075, -0.088), (0.16, -0.088), (0.16, -0.05), (-0.075, -0.05)], 0.036, ANODIZED)
+    _side(mb, "paint", [(-0.075, -0.05), (0.16, -0.05), (0.16, -0.044), (-0.075, -0.044)], 0.026, ANODIZED)
+    _rail(mb, -0.075, 0.16, -0.044)
+    _blk(mb, "paint", 0.0175, 0.0195, 0.0, 0.065, -0.077, -0.058, RUBBER)              # ejection port
+    _blk(mb, "paint", 0.018, 0.0205, 0.004, 0.06, -0.08, -0.077, PARKERIZED)          # dust cover hinge
+    mb.cylinder_between("paint", (0.019, -0.03, -0.062), (0.029, -0.05, -0.062), 0.0075, ANODIZED, segments=10,
+                        caps=True)                                                       # forward assist
+    _blk(mb, "paint", -0.016, 0.016, -0.095, -0.075, -0.052, -0.044, ANODIZED)         # charging handle
+    _blk(mb, "paint", -0.024, -0.016, -0.093, -0.082, -0.052, -0.044, ANODIZED)        # its latch
+    # Lower receiver, magazine well, trigger group.
+    _side(mb, "paint", [(-0.065, -0.115), (-0.065, -0.088), (0.125, -0.088), (0.125, -0.112), (0.085, -0.13),
+                        (0.0, -0.13)], 0.034, ANODIZED)
+    _side(mb, "paint", [(0.06, -0.13), (0.06, -0.112), (0.125, -0.112), (0.125, -0.142), (0.064, -0.142)],
+          0.03, ANODIZED)                                                                # magazine well
+    mb.cylinder_between("paint", (0.0175, 0.075, -0.104), (0.023, 0.075, -0.104), 0.006, PARKERIZED, segments=8,
+                        caps=True)                                                       # mag release
+    mb.cylinder_between("paint", (-0.0175, -0.045, -0.098), (-0.024, -0.045, -0.098), 0.008, PARKERIZED,
+                        segments=8, caps=True)                                           # selector
+    _blk(mb, "paint", -0.004, 0.004, -0.005, 0.07, -0.16, -0.154, ANODIZED)              # trigger guard
+    _blk(mb, "paint", -0.004, 0.004, 0.062, 0.07, -0.154, -0.13, ANODIZED)
+    _side(mb, "paint", [(0.02, -0.13), (0.03, -0.13), (0.028, -0.148), (0.022, -0.15)], 0.006, PARKERIZED)
+    # Pistol grip (raked back) and buttstock on a buffer tube.
+    _side(mb, "paint", [(-0.04, -0.13), (0.0, -0.13), (-0.03, -0.23), (-0.07, -0.23)], 0.03, RUBBER)
+    _side(mb, "paint", [(-0.075, -0.225), (-0.026, -0.225), (-0.028, -0.236), (-0.072, -0.236)], 0.032, RUBBER)
+    mb.cylinder_between("paint", (0, -0.065, -0.07), (0, -0.26, -0.07), 0.0145, ANODIZED, segments=12, caps=True)
+    _blk(mb, "paint", -0.006, 0.006, -0.08, -0.065, -0.09, -0.05, ANODIZED)              # castle nut
+    _side(mb, "paint", [(-0.17, -0.045), (-0.17, -0.098), (-0.215, -0.13), (-0.36, -0.162), (-0.36, -0.045)],
+          0.038, RUBBER)
+    _side(mb, "paint", [(-0.36, -0.04), (-0.36, -0.168), (-0.375, -0.168), (-0.375, -0.04)], 0.042, RUBBER)
+    _side(mb, "paint", [(-0.2, -0.04), (-0.2, -0.05), (-0.33, -0.05), (-0.33, -0.04)], 0.03, RUBBER)  # cheek rest
+    # Curved magazine: slanted segments with ribs and a base plate.
+    ya, yb, z = 0.066, 0.12, -0.142
+    for i in range(4):
+        d = 0.009 + i * 0.003
+        _side(mb, "paint", [(ya, z), (yb, z), (yb + d, z - 0.032), (ya + d, z - 0.032)], 0.026, FDE)
+        _blk(mb, "paint", -0.0135, 0.0135, ya + d * 0.5 + 0.01, ya + d * 0.5 + 0.03, z - 0.02, z - 0.012, FDE)
+        ya, yb, z = ya + d, yb + d, z - 0.032
+    _side(mb, "paint", [(ya - 0.004, z), (yb + 0.004, z), (yb + 0.004, z - 0.01), (ya - 0.004, z - 0.01)],
+          0.03, FDE)
+    # Free-float handguard with slots and a top rail.
+    _side(mb, "paint", [(0.16, -0.098), (0.43, -0.098), (0.43, -0.046), (0.16, -0.046)], 0.046, ANODIZED)
+    _rail(mb, 0.16, 0.43, -0.046)
+    for sx in (-1, 1):
+        for row in (-0.085, -0.066):
+            for k in range(6):
+                y = 0.19 + k * 0.04
+                _blk(mb, "paint", sx * 0.0232 - 0.0005, sx * 0.0232 + 0.0005, y, y + 0.024, row, row + 0.008,
+                     RUBBER)
+    _blk(mb, "paint", -0.026, 0.026, 0.155, 0.165, -0.1, -0.044, PARKERIZED)            # barrel nut ring
+    # Barrel, gas block, muzzle brake, folded front sight.
+    mb.cylinder_between("paint", (0, 0.43, -0.07), (0, 0.6, -0.07), 0.0085, PARKERIZED, segments=12)
+    _blk(mb, "paint", -0.011, 0.011, 0.47, 0.49, -0.084, -0.058, PARKERIZED)
+    mb.cylinder_between("paint", (0, 0.6, -0.07), (0, 0.665, -0.07), 0.0125, ANODIZED, segments=12, caps=True)
+    for k in range(3):
+        y = 0.612 + k * 0.016
+        for sx in (-1, 1):
+            _blk(mb, "paint", sx * 0.0125 - 0.001, sx * 0.0125 + 0.001, y, y + 0.009, -0.075, -0.065, RUBBER)
+    _side(mb, "paint", [(0.4, -0.04), (0.425, -0.04), (0.425, -0.032), (0.4, -0.036)], 0.02, ANODIZED)
+    # Vertical foregrip and a weapon light on the right rail.
+    mb.cylinder_between("paint", (0, 0.31, -0.098), (0, 0.32, -0.172), 0.0135, RUBBER, segments=12, caps=True)
+    mb.cylinder_between("paint", (0.03, 0.35, -0.072), (0.03, 0.41, -0.072), 0.011, ANODIZED, segments=12, caps=True)
+    mb.cylinder_between("paint", (0.03, 0.41, -0.072), (0.03, 0.412, -0.072), 0.009, (0.85, 0.88, 0.9),
+                        segments=12, caps=True)
+    _blk(mb, "paint", 0.022, 0.026, 0.36, 0.4, -0.074, -0.068, ANODIZED)
+    _reflex_sight(mb, 0.06)
+    _arms(mb, (0.0, -0.045, -0.165), (0.0, 0.312, -0.135))
+    return (0.0, 0.67, -0.07)
 
 
 def _reflex_sight(mb, y):
-    """Compact red-dot sight: an open frame around the sight line with a glowing dot."""
-    mb.box("metal", 0, y, -0.05, 0.03, 0.05, 0.022, GUNMETAL)                         # mount
-    half, t = 0.02, 0.0035
-    mb.box("metal", 0, y + 0.012, -half - t, 2 * half + 2 * t, 0.012, t, GUNMETAL)  # bottom
-    mb.box("metal", 0, y + 0.012, half, 2 * half + 2 * t, 0.012, t, GUNMETAL)       # top
-    for sx in (-1, 1):
-        mb.box("metal", sx * (half + t / 2), y + 0.012, -half, t, 0.012, 2 * half, GUNMETAL)
-    mb.ellipsoid("emissive", 0, y + 0.02, 0, 0.0011, 0.0005, 0.0011, RED_DOT, rings=3, segments=6)
+    """Holographic sight: boxy housing, hooded window on the sight line and a glowing dot."""
+    _blk(mb, "paint", -0.014, 0.014, y - 0.03, y + 0.05, -0.0345, -0.022, ANODIZED)        # mount + base
+    _blk(mb, "paint", -0.017, 0.017, y - 0.02, y + 0.045, -0.022, -0.012, ANODIZED)       # battery housing
+    for b in (-0.0165, 0.0165):                                                         # hood sides
+        _blk(mb, "paint", b - 0.002, b + 0.002, y - 0.005, y + 0.045, -0.012, 0.024, ANODIZED)
+    _blk(mb, "paint", -0.0185, 0.0185, y - 0.005, y + 0.045, 0.024, 0.028, ANODIZED)    # hood top
+    _blk(mb, "paint", -0.006, 0.006, y + 0.01, y + 0.03, 0.028, 0.032, RUBBER)          # buttons
+    mb.ellipsoid("emissive", 0, y + 0.041, 0, 0.0011, 0.0005, 0.0011, RED_DOT, rings=3, segments=6)
 
 
 def build_pistol(mb, gun=True):
@@ -107,36 +207,60 @@ def build_sniper(mb, gun=True):
 
 
 def build_shotgun(mb):
-    mb.box("metal", 0, 0.02, -0.09, 0.048, 0.24, 0.07, GUNMETAL)
-    mb.cylinder_between("metal", (0, 0.13, -0.068), (0, 0.66, -0.068), 0.013, GUNMETAL, segments=8)
-    mb.cylinder_between("metal", (0, 0.13, -0.098), (0, 0.6, -0.098), 0.012, GUNMETAL, segments=8, caps=True)
-    mb.box("metal", 0, -0.04, -0.17, 0.03, 0.045, 0.1, WOOD)
-    mb.box("wood", 0, -0.22, -0.12, 0.045, 0.26, 0.08, WOOD)
-    mb.ellipsoid("metal", 0, 0.655, -0.052, 0.004, 0.004, 0.004, (0.9, 0.85, 0.6), rings=3, segments=5)
-    mb.box("metal", 0, -0.02, -0.052, 0.022, 0.012, 0.01, SIGHT)
-    _arms(mb, (0.0, -0.04, -0.14), None)        # left hand is on the pump (see build_pump)
-    return (0.0, 0.67, -0.068)
+    """Pump-action 12 gauge: steel receiver, barrel over a magazine tube, walnut stock."""
+    _side(mb, "paint", [(-0.06, -0.12), (-0.06, -0.06), (-0.04, -0.048), (0.15, -0.048), (0.15, -0.12)],
+          0.044, PARKERIZED)                                                             # receiver
+    _blk(mb, "paint", 0.0215, 0.0235, 0.02, 0.1, -0.085, -0.06, RUBBER)                 # ejection port
+    _blk(mb, "paint", -0.004, 0.004, -0.02, 0.07, -0.152, -0.146, PARKERIZED)            # trigger guard
+    _blk(mb, "paint", -0.004, 0.004, 0.064, 0.07, -0.146, -0.12, PARKERIZED)
+    _side(mb, "paint", [(0.02, -0.12), (0.03, -0.12), (0.028, -0.14), (0.022, -0.142)], 0.006, PARKERIZED)
+    mb.cylinder_between("paint", (0, 0.15, -0.068), (0, 0.68, -0.068), 0.0125, PARKERIZED, segments=14, caps=True)
+    mb.cylinder_between("paint", (0, 0.15, -0.098), (0, 0.6, -0.098), 0.0115, PARKERIZED, segments=12, caps=True)
+    _blk(mb, "paint", -0.012, 0.012, 0.58, 0.6, -0.11, -0.06, PARKERIZED)                # barrel clamp
+    _blk(mb, "paint", -0.003, 0.003, 0.15, 0.66, -0.0565, -0.0535, PARKERIZED)          # vent rib
+    mb.ellipsoid("paint", 0, 0.668, -0.05, 0.0035, 0.0035, 0.0035, BRASS, rings=3, segments=6)   # bead sight
+    _blk(mb, "paint", -0.006, 0.006, -0.03, -0.012, -0.052, -0.044, PARKERIZED)          # rear notch
+    # Walnut stock with a pistol-grip wrist and a rubber butt pad.
+    _side(mb, "wood", [(-0.06, -0.06), (-0.06, -0.125), (-0.11, -0.175), (-0.38, -0.2), (-0.38, -0.075),
+                       (-0.13, -0.062)], 0.042, WOOD)
+    _side(mb, "paint", [(-0.38, -0.07), (-0.38, -0.205), (-0.395, -0.205), (-0.395, -0.07)], 0.046, RUBBER)
+    _side(mb, "wood", [(-0.06, -0.12), (-0.02, -0.12), (-0.045, -0.2), (-0.085, -0.19)], 0.034, WOOD)
+    _arms(mb, (0.0, -0.045, -0.155), None)        # left hand is on the pump (see build_pump)
+    return (0.0, 0.69, -0.068)
 
 
 def build_pump(mb):
-    """Separate node so the forend can slide when pumping."""
-    mb.box("wood", 0, 0.36, -0.115, 0.05, 0.16, 0.05, WOOD)
-    mb.box("fabric", 0, 0.36, -0.15, 0.06, 0.08, 0.06, GLOVE)
-    mb.cylinder_between("fabric", (-0.01, 0.33, -0.14), (-0.16, -0.06, -0.33), 0.034, SLEEVE, segments=8, radius_end=0.045)
+    """Separate node so the ribbed forend can slide when pumping."""
+    _side(mb, "wood", [(0.28, -0.122), (0.44, -0.122), (0.44, -0.082), (0.28, -0.082)], 0.05, WOOD)
+    for k in range(7):
+        y = 0.295 + k * 0.02
+        for sx in (-1, 1):
+            _blk(mb, "paint", sx * 0.025 - 0.0008, sx * 0.025 + 0.0008, y, y + 0.006, -0.118, -0.086, RUBBER)
+    _hand(mb, 0.0, 0.36, -0.13, "left")
+    _sleeve(mb, (-0.01, 0.36, -0.14), (-0.17, -0.06, -0.33))
 
 
 def build_launcher(mb, gun=True):
-    """Shoulder-fired rocket launcher: long tube, optic and grip."""
-    tube = (0.30, 0.33, 0.22)
-    mb.cylinder_between("metal", (0, -0.45, -0.06), (0, 0.55, -0.06), 0.058, tube, segments=14, caps=True)
-    mb.cylinder_between("metal", (0, 0.5, -0.06), (0, 0.6, -0.06), 0.068, GUNMETAL, segments=14, caps=True)
-    mb.cylinder_between("metal", (0, -0.5, -0.06), (0, -0.42, -0.06), 0.066, GUNMETAL, segments=14, caps=True)
-    mb.box("metal", 0, 0.05, -0.12, 0.03, 0.06, 0.1, GUNMETAL)                       # grip
-    mb.box("metal", 0, 0.25, -0.13, 0.03, 0.05, 0.08, GUNMETAL)                      # front grip
-    mb.box("metal", 0.06, 0.0, -0.01, 0.03, 0.1, 0.04, GUNMETAL)                     # optic
-    mb.box("paint", 0, 0.3, -0.005, 0.004, 0.004, 0.012, RED_DOT)                    # front sight blade
-    _arms(mb, (0.0, 0.05, -0.12), (0.0, 0.25, -0.12))
-    return (0.0, 0.62, -0.06)
+    """Shoulder-fired rocket launcher: olive tube, flared venturi, optic, grips and a loaded warhead."""
+    mb.cylinder_between("paint", (0, -0.42, -0.095), (0, 0.5, -0.095), 0.056, TUBE_GREEN, segments=18)
+    for y in (0.12, 0.3, 0.46):                                                 # reinforcing bands
+        mb.cylinder_between("paint", (0, y, -0.095), (0, y + 0.025, -0.095), 0.059, ANODIZED, segments=18)
+    mb.cylinder_between("paint", (0, -0.42, -0.095), (0, -0.52, -0.095), 0.056, ANODIZED, segments=18,
+                        radius_end=0.075)                                                 # venturi flare
+    mb.cylinder_between("paint", (0, 0.5, -0.095), (0, 0.56, -0.095), 0.064, ANODIZED, segments=18, caps=True)
+    mb.cylinder_between("paint", (0, 0.56, -0.095), (0, 0.66, -0.095), 0.045, TUBE_GREEN, segments=16)  # warhead
+    mb.cylinder_between("paint", (0, 0.66, -0.095), (0, 0.76, -0.095), 0.045, TUBE_GREEN, segments=16,
+                        radius_end=0.008)
+    _blk(mb, "paint", -0.004, 0.004, 0.05, 0.3, -0.04, -0.034, ANODIZED)                # sight rail
+    _side(mb, "paint", [(0.0, -0.15), (0.06, -0.15), (0.04, -0.23), (-0.01, -0.23)], 0.03, RUBBER)   # grip
+    _side(mb, "paint", [(0.24, -0.15), (0.28, -0.15), (0.275, -0.22), (0.245, -0.22)], 0.03, RUBBER)
+    _blk(mb, "paint", -0.012, 0.012, -0.02, 0.07, -0.155, -0.145, ANODIZED)
+    _blk(mb, "paint", 0.07, 0.094, 0.0, 0.12, -0.06, -0.025, ANODIZED)                  # optic body
+    mb.cylinder_between("paint", (0.082, 0.0, -0.042), (0.082, -0.04, -0.042), 0.016, RUBBER, segments=12,
+                        caps=True)                                                       # eye cup
+    _blk(mb, "paint", -0.002, 0.002, 0.3, 0.306, -0.034, 0.0, RED_DOT)                 # front sight blade
+    _arms(mb, (0.0, 0.03, -0.19), (0.0, 0.26, -0.185))
+    return (0.0, 0.76, -0.095)
 
 
 SUPPRESSOR = (0.07, 0.07, 0.075)
@@ -169,10 +293,10 @@ BUILDERS = {"rifle": build_rifle, "pistol": build_pistol, "sniper": build_sniper
 
 POSE = {
     #            hip offset               ads offset (sight on centre)    sprint drop
-    "rifle":   ((0.15, 0.40, -0.115), (0.0, 0.26, 0.0)),
+    "rifle":   ((0.13, 0.33, -0.105), (0.0, 0.26, 0.0)),
     "pistol":  ((0.12, 0.34, -0.07), (0.0, 0.34, 0.0)),
     "sniper":  ((0.15, 0.40, -0.12), (0.0, 0.18, 0.0)),
-    "shotgun": ((0.15, 0.40, -0.115), (0.0, 0.30, 0.0)),
+    "shotgun": ((0.13, 0.33, -0.105), (0.0, 0.30, 0.0)),
     "launcher": ((0.16, 0.34, -0.08), (0.0, 0.32, 0.0)),
 }
 POSE["rifle_suppressed"] = POSE["rifle"]
@@ -203,6 +327,11 @@ class ViewModel:
         sun.set_color((1.1, 1.0, 0.85, 1))
         self.sun_np = self.scene.attach_new_node(sun)
         self.scene.set_light(self.sun_np)
+        fill = DirectionalLight("vm_fill")                       # fixed key light from above-right-behind,
+        fill.set_color((0.55, 0.53, 0.5, 1))                     # so edges and parts always read
+        fill_np = self.scene.attach_new_node(fill)
+        fill_np.set_hpr(-30, -50, 0)
+        self.scene.set_light(fill_np)
         self.anchor = self.scene.attach_new_node("anchor")        # bob/sway/ads live here
         self.models = {}
         self.muzzles = {}

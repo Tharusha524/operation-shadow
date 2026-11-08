@@ -96,14 +96,21 @@ class MissionContext:
         s.ai.command_hold(h[0], h[1], h[2] if len(h) > 2 else heading)
         return s
 
-    def barrage(self, area, count, seconds, radius, damage):
-        """Artillery: `count` shells land at random points inside area=[x0, y0, x1, y1] over `seconds`."""
+    def barrage(self, area, count, seconds, radius, damage, scale=2.5, source="north", target_group=None,
+                aimed=0.5):
+        """Artillery: `count` shells land inside area=[x0, y0, x1, y1] over `seconds`.
+
+        Shells fall visibly from the `source` side ("north"/"south") with a smoke trail. With target_group,
+        a share (`aimed`) of them come down right on top of soldiers of that group."""
         g = self.game
         rng = g.soldiers.rng
+        direction = {"north": (0.15, 1.0), "south": (-0.1, -1.0), "east": (1.0, 0.1), "west": (-1.0, 0.1)}.get(
+            source, (0.15, 1.0))
         for _ in range(count):
             when = rng.uniform(0.0, seconds)
             pos = (rng.uniform(area[0], area[2]), rng.uniform(area[1], area[3]), 0.2)
-            g.shells.append([when, pos, False, radius, damage])
+            victim = target_group if target_group and rng.random() < aimed else None
+            g.shells.append([when, pos, False, radius, damage, scale, direction, victim, 0.0])
 
     def squad_hold(self, member, pos):
         for sid, s in self._squad(member):
@@ -160,8 +167,184 @@ class MissionContext:
         if bounds:
             g.nav.rebuild(bounds)
 
-    def explosion(self, pos):
-        self.game.explode(tuple(pos), 6.0, 80.0)
+    def missile(self, target, radius, damage, scale=4.0, origin=None):
+        """A missile streaking down from the sky onto `target` [x, y]."""
+        g = self.game
+        tx, ty = target[0], target[1]
+        tz = target[2] if len(target) > 2 else 0.0
+        if origin is None:
+            origin = (tx - 90.0, ty + 330.0, 130.0)           # in low from the north, over the hills
+        g.vehicles.launch_rocket(None, tuple(origin), (tx, ty, tz), speed=150.0, radius=radius, damage=damage,
+                                 scale=scale)
+
+    def blast_group(self, group, interval=0.35, debris="earth"):
+        """Every soldier of the group is caught by an explosion, one after another (the line is blown)."""
+        g = self.game
+        for i, s in enumerate(g.soldiers.group_alive(group)):
+            def boom(s=s):
+                if not s.alive:
+                    return
+                x, y, z = s.position
+                g.explode((x + g.soldiers.rng.uniform(-0.6, 0.6), y + 0.4, z + 0.6), 4.5, 500.0, None, 4.5)
+                g.debris.burst((x, y + 1.2, z + 0.8), 12, debris, 0.4, 9.0, 8.0)
+            g.timed.append([i * interval + 0.01, boom])
+
+    def _shooter(self, spec, near):
+        g = self.game
+        if spec.startswith("team:"):
+            pool = [s for s in g.soldiers.soldiers if s.team == spec[5:] and s.alive]
+        else:
+            pool = g.soldiers.group_alive(spec)
+        if not pool:
+            return None
+        pool.sort(key=lambda s: math.hypot(s.motor.x - near[0], s.motor.y - near[1]))
+        return g.soldiers.rng.choice(pool[:3])
+
+    def _shoot_fx(self, shooter, point):
+        g = self.game
+        mx, my, mz = shooter.muzzle_position()
+        shooter.facing = math.degrees(math.atan2(-(point[0] - mx), point[1] - my))
+        g.effects.tracer((mx, my, mz), point)
+        g.effects.muzzle_flash((mx, my, mz), (0, 0, 1), 0.8)
+        g.audio.play_at("shot_enemy", (mx, my, mz), 0.8, min_distance=8.0)
+
+    def civ_shot(self, group, shooter="team:enemy", count=1, interval=1.0):
+        """Enemy soldiers gun down fleeing civilians, one by one."""
+        g = self.game
+        rng = g.soldiers.rng
+
+        def shoot():
+            people = g.civilians.alive(group)
+            if not people:
+                return
+            c = rng.choice(people)
+            x, y, z = c.position
+            s = self._shooter(shooter, (x, y))
+            if s is None:
+                return
+            for _ in range(3):
+                self._shoot_fx(s, (x + rng.uniform(-0.3, 0.3), y + rng.uniform(-0.3, 0.3), z + rng.uniform(0.8, 1.5)))
+            c.shot()
+
+        for i in range(count):
+            g.timed.append([interval * i + 0.01, shoot])
+
+    def gunfire(self, shooter, target, seconds=6.0, rate=8.0):
+        """Sustained enemy fire at a vehicle (the burning truck): tracers and sparks on it."""
+        g = self.game
+        rng = g.soldiers.rng
+
+        def burst():
+            v = g.vehicles.find(target)
+            if v is None:
+                return
+            x, y, z = v.center()
+            s = self._shooter(shooter, (x, y))
+            if s is None:
+                return
+            p = (x + rng.uniform(-1.8, 1.8), y + rng.uniform(-1.8, 1.8), z + rng.uniform(-0.6, 0.8))
+            self._shoot_fx(s, p)
+            g.effects.impact(p, (0, 0, 1), "metal")
+
+        for i in range(int(seconds * rate)):
+            g.timed.append([i / rate + rng.uniform(0, 0.08), burst])
+
+    def destroy_vehicle(self, vid):
+        v = self.game.vehicles.find(vid)
+        if v is not None and v.alive:
+            v.take_damage(1e9, None, "blast", (0.0, 0.0, 1.0))
+
+    def player_weapons(self, enabled):
+        g = self.game
+        g.weapons.enabled = enabled
+        g.weapons.viewmodel.set_visible(enabled)
+
+    def player_invulnerable(self, value):
+        self.game.player.invulnerable = value
+
+    def spawn_civilians(self, group, units):
+        self.game.civilians.spawn(group, units)
+
+    def rpg(self, shooter, target, count=1, interval=4.0, damage=220.0, radius=5.0):
+        """Rocket-propelled grenades: soldiers of `shooter` (group or "team:x") fire at `target`
+        (a vehicle id, a soldier group, "team:x" or "player"), `count` times, `interval` s apart."""
+        g = self.game
+        rng = g.soldiers.rng
+
+        def pick(spec):
+            if spec.startswith("team:"):
+                return [s for s in g.soldiers.soldiers if s.team == spec[5:] and s.alive]
+            return g.soldiers.group_alive(spec)
+
+        def fire():
+            shooters = pick(shooter)
+            if not shooters:
+                return
+            v = g.vehicles.find(target)
+            if v is not None:
+                if not v.alive:
+                    return
+                aim = v.center()
+            elif target == "player":
+                aim = g.player.eye_position()
+            else:
+                victims = pick(target)
+                if not victims:
+                    return
+                aim = rng.choice(victims).center()
+            shooters.sort(key=lambda s: math.hypot(s.motor.x - aim[0], s.motor.y - aim[1]))
+            s = rng.choice(shooters[:3])
+            ex, ey, ez = s.eye_position()
+            dist = math.hypot(aim[0] - ex, aim[1] - ey)
+            if dist > 160.0:
+                return
+            s.facing = math.degrees(math.atan2(-(aim[0] - ex), aim[1] - ey))
+            err = dist * 0.04
+            point = (aim[0] + rng.uniform(-err, err), aim[1] + rng.uniform(-err, err), aim[2] + rng.uniform(-0.5, 0.5))
+            g.vehicles.launch_rocket(s, (ex, ey, ez - 0.1), point, speed=60.0, radius=radius, damage=damage,
+                                     scale=2.6)
+            g.effects.spawn("smoke", (ex, ey, ez), life=2.0, size=(0.6, 2.5), alpha=0.5, color=(0.7, 0.68, 0.64),
+                            texture="smoke", drag=1.5)
+
+        for i in range(count):
+            if i == 0:
+                fire()
+            else:
+                g.timed.append([interval * i + rng.uniform(-0.5, 0.5), fire])
+
+    def near_miss(self, distance=4.0, damage=25.0):
+        """A shell lands a few metres from the player (in front, slightly to the side): the big scare moment."""
+        g = self.game
+        p = g.player
+        yaw = math.radians(p.camera.look.yaw + g.soldiers.rng.uniform(-50, 50))
+        x = p.motor.x - math.sin(yaw) * distance
+        y = p.motor.y + math.cos(yaw) * distance
+        g.shells.append([1.6, (x, y, p.motor.z + 0.2), False, 6.0, damage, 3.4, (0.15, 1.0), None, 0.0])
+
+    def debris(self, pos, count=14, kind="concrete", size=0.4, speed=9.0):
+        p = (pos[0], pos[1], pos[2] if len(pos) > 2 else 0.5)
+        self.game.debris.burst(p, count, kind, size, speed, speed * 0.8)
+
+    def tank_fire(self, vid, target):
+        """A tank fires its cannon at a scripted point (a building, a bunker...)."""
+        g = self.game
+        v = g.vehicles.find(vid)
+        if v is None or not v.alive:
+            return
+        t = (target[0], target[1], target[2] if len(target) > 2 else 1.0)
+        muzzle = (v.pos[0], v.pos[1], v.pos[2] + 2.3)
+        g.vehicles.tank_shell(v, muzzle, t)
+
+    def fire(self, pos, size=1.5):
+        self.game.add_fire(tuple(pos), size)
+
+    def group_move(self, group, pos, spread=(2.0, 0.0), heading=180.0):
+        """Order a group (e.g. retreating riflemen) to run to a new position, spaced out."""
+        for i, s in enumerate(self.game.soldiers.group_alive(group)):
+            s.ai.command_hold(pos[0] + spread[0] * i, pos[1] + spread[1] * i, heading)
+
+    def explosion(self, pos, radius=6.0, damage=80.0, scale=None):
+        self.game.explode(tuple(pos), radius, damage, None, scale)
 
     def loop(self, name, on, volume=0.5):
         if on:
@@ -183,6 +366,8 @@ class MissionContext:
                       "armed")
 
     def spawn_vehicle(self, a):
+        if a.get("if_missing") and self.game.vehicles.find(a["id"]) is not None:
+            return None                                  # already there (only re-created after a retry)
         params = {k: a[k] for k in self.VEHICLE_PARAMS if k in a}
         if "path" in params:
             params["path"] = [tuple(p) for p in params["path"]]
@@ -220,6 +405,10 @@ class MissionContext:
         v = self.game.vehicles.find(vid)
         if v is not None and hasattr(v, "breakables"):
             v.breakables = set(breakable)
+
+    def look(self, yaw, pitch=0.0):
+        cam = self.game.player.camera
+        cam.look.yaw, cam.look.pitch = yaw, pitch
 
     def end_ride(self, pos=None, heading=None, squad=None):
         self.game.end_ride(pos, heading, squad)
@@ -393,6 +582,7 @@ class MissionContext:
         g.end_drone()
         g.end_ride()
         g.vehicles.remove_all()
+        g.civilians.clear()                                  # re-created by the steps that spawn them
         g.tagged = []
         g.clear_charges()
         g.security.remove_all()

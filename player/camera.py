@@ -41,6 +41,7 @@ class FirstPersonCamera:
         self._roll = 0.0
         self._trauma = 0.0
         self._time = 0.0
+        self.knock = (0.0, 0.0, 0.0)          # (roll, height drop, pitch) while knocked down by a blast
 
     def detach_for_cinematic(self, fov=55.0):
         """Free the camera from the player's head so a cutscene can move it."""
@@ -109,9 +110,10 @@ class FirstPersonCamera:
         sr = shake * 3.0 * math.sin(t * 23.0 + 2.1)
 
         self.eye.set_z(self._eye_z - motor.z)
-        self.eye.set_p(self.look.pitch)
-        self.offset.set_pos(bob_x, 0.0, bob_z + self._dip)
-        self.offset.set_r(self._roll)
+        kr, kz, kp = self.knock
+        self.eye.set_p(self.look.pitch + kp)
+        self.offset.set_pos(bob_x, 0.0, bob_z + self._dip + kz)
+        self.offset.set_r(self._roll + kr)
         self.base.camera.set_hpr(sh, sp, sr)
 
     @property
